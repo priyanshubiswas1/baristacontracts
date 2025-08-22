@@ -1,4 +1,4 @@
-module github.com/PriyanshuBiswas/baristacontracts
+module github.com/priyanshubiswas1/baristacontracts
 
 go 1.24.3
 
