@@ -54,7 +54,8 @@ message UpdateResponse{
 }
 
 message DeleteRequest{
-    string token = 1;
+    string id = 1;
+    string password = 2;
 }
 
 message DeleteResponse{

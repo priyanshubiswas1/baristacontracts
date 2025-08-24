@@ -545,7 +545,8 @@ func (x *UpdateResponse) GetUser() *User {
 
 type DeleteRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Token         string                 `protobuf:"bytes,1,opt,name=token,proto3" json:"token,omitempty"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Password      string                 `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -580,9 +581,16 @@ func (*DeleteRequest) Descriptor() ([]byte, []int) {
 	return file_auth_proto_rawDescGZIP(), []int{9}
 }
 
-func (x *DeleteRequest) GetToken() string {
+func (x *DeleteRequest) GetId() string {
 	if x != nil {
-		return x.Token
+		return x.Id
+	}
+	return ""
+}
+
+func (x *DeleteRequest) GetPassword() string {
+	if x != nil {
+		return x.Password
 	}
 	return ""
 }
@@ -669,9 +677,10 @@ const file_auth_proto_rawDesc = "" +
 	"\voldpassword\x18\x04 \x01(\tR\voldpassword\"D\n" +
 	"\x0eUpdateResponse\x12\x14\n" +
 	"\x05token\x18\x01 \x01(\tR\x05token\x12\x1c\n" +
-	"\x04user\x18\x02 \x01(\v2\b.pb.UserR\x04user\"%\n" +
-	"\rDeleteRequest\x12\x14\n" +
-	"\x05token\x18\x01 \x01(\tR\x05token\"*\n" +
+	"\x04user\x18\x02 \x01(\v2\b.pb.UserR\x04user\";\n" +
+	"\rDeleteRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1a\n" +
+	"\bpassword\x18\x02 \x01(\tR\bpassword\"*\n" +
 	"\x0eDeleteResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess2\x90\x02\n" +
 	"\vAuthService\x12*\n" +
