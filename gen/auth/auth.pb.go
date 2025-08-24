@@ -428,6 +428,7 @@ type UpdateRequest struct {
 	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	User          *User                  `protobuf:"bytes,2,opt,name=user,proto3" json:"user,omitempty"`
 	Password      string                 `protobuf:"bytes,3,opt,name=password,proto3" json:"password,omitempty"`
+	Oldpassword   string                 `protobuf:"bytes,4,opt,name=oldpassword,proto3" json:"oldpassword,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -479,6 +480,13 @@ func (x *UpdateRequest) GetUser() *User {
 func (x *UpdateRequest) GetPassword() string {
 	if x != nil {
 		return x.Password
+	}
+	return ""
+}
+
+func (x *UpdateRequest) GetOldpassword() string {
+	if x != nil {
+		return x.Oldpassword
 	}
 	return ""
 }
@@ -653,11 +661,12 @@ const file_auth_proto_rawDesc = "" +
 	"identifier\"C\n" +
 	"\rLoginResponse\x12\x14\n" +
 	"\x05token\x18\x01 \x01(\tR\x05token\x12\x1c\n" +
-	"\x04user\x18\x02 \x01(\v2\b.pb.UserR\x04user\"Y\n" +
+	"\x04user\x18\x02 \x01(\v2\b.pb.UserR\x04user\"{\n" +
 	"\rUpdateRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1c\n" +
 	"\x04user\x18\x02 \x01(\v2\b.pb.UserR\x04user\x12\x1a\n" +
-	"\bpassword\x18\x03 \x01(\tR\bpassword\"D\n" +
+	"\bpassword\x18\x03 \x01(\tR\bpassword\x12 \n" +
+	"\voldpassword\x18\x04 \x01(\tR\voldpassword\"D\n" +
 	"\x0eUpdateResponse\x12\x14\n" +
 	"\x05token\x18\x01 \x01(\tR\x05token\x12\x1c\n" +
 	"\x04user\x18\x02 \x01(\v2\b.pb.UserR\x04user\"\x1f\n" +
