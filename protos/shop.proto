@@ -1,0 +1,60 @@
+syntax = "proto3";
+package pb;
+
+option go_package = "/";
+
+message Shop {
+    string shopId = 1;
+    string shopName = 2;
+}
+
+message GetByOwnerIdRequest{
+    string token = 1;
+}
+
+message GetByOwnerIdResponse{
+    repeated Shop shops = 1;
+}
+
+message GetByShopIdRequest{
+    string shopId = 1;
+}
+
+message GetShopByIdResponse{
+    Shop Shop = 1;
+}
+
+message CreateRequest{
+    string token = 1;
+    string shopName = 2;
+}
+
+message CreateResponse{
+    Shop Shop = 1;
+}
+
+message UpdateRequest{
+    string token = 1;
+    string shopName = 2;
+}
+
+message UpdateResponse{
+    Shop Shop = 1;
+}
+
+message DeleteRequest{
+    string token = 1;
+    string shopId = 2;
+}
+
+message DeleteResponse{
+    bool success = 1;
+}
+
+service ShopService{
+    rpc GetShopByOwnerId(GetByOwnerIdRequest) returns (GetByOwnerIdResponse);
+    rpc GetShopById(GetByShopIdRequest) returns (GetShopByIdResponse);
+    rpc RegisterShop(CreateRequest) returns (CreateResponse);
+    rpc UpdateShop(UpdateRequest) returns (UpdateResponse);
+    rpc DeleteShop(DeleteRequest) returns (DeleteResponse);
+}
