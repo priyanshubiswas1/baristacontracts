@@ -35,7 +35,7 @@ message CreateResponse{
 
 message UpdateRequest{
     string token = 1;
-    string shopName = 2;
+    Shop Shop = 2;
 }
 
 message UpdateResponse{

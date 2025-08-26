@@ -348,7 +348,7 @@ func (x *CreateResponse) GetShop() *Shop {
 type UpdateRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Token         string                 `protobuf:"bytes,1,opt,name=token,proto3" json:"token,omitempty"`
-	ShopName      string                 `protobuf:"bytes,2,opt,name=shopName,proto3" json:"shopName,omitempty"`
+	Shop          *Shop                  `protobuf:"bytes,2,opt,name=Shop,proto3" json:"Shop,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -390,11 +390,11 @@ func (x *UpdateRequest) GetToken() string {
 	return ""
 }
 
-func (x *UpdateRequest) GetShopName() string {
+func (x *UpdateRequest) GetShop() *Shop {
 	if x != nil {
-		return x.ShopName
+		return x.Shop
 	}
-	return ""
+	return nil
 }
 
 type UpdateResponse struct {
@@ -558,10 +558,10 @@ const file_shop_proto_rawDesc = "" +
 	"\x05token\x18\x01 \x01(\tR\x05token\x12\x1a\n" +
 	"\bshopName\x18\x02 \x01(\tR\bshopName\".\n" +
 	"\x0eCreateResponse\x12\x1c\n" +
-	"\x04Shop\x18\x01 \x01(\v2\b.pb.ShopR\x04Shop\"A\n" +
+	"\x04Shop\x18\x01 \x01(\v2\b.pb.ShopR\x04Shop\"C\n" +
 	"\rUpdateRequest\x12\x14\n" +
-	"\x05token\x18\x01 \x01(\tR\x05token\x12\x1a\n" +
-	"\bshopName\x18\x02 \x01(\tR\bshopName\".\n" +
+	"\x05token\x18\x01 \x01(\tR\x05token\x12\x1c\n" +
+	"\x04Shop\x18\x02 \x01(\v2\b.pb.ShopR\x04Shop\".\n" +
 	"\x0eUpdateResponse\x12\x1c\n" +
 	"\x04Shop\x18\x01 \x01(\v2\b.pb.ShopR\x04Shop\"=\n" +
 	"\rDeleteRequest\x12\x14\n" +
@@ -608,22 +608,23 @@ var file_shop_proto_depIdxs = []int32{
 	0,  // 0: pb.GetByOwnerIdResponse.shops:type_name -> pb.Shop
 	0,  // 1: pb.GetShopByIdResponse.Shop:type_name -> pb.Shop
 	0,  // 2: pb.CreateResponse.Shop:type_name -> pb.Shop
-	0,  // 3: pb.UpdateResponse.Shop:type_name -> pb.Shop
-	1,  // 4: pb.ShopService.GetShopByOwnerId:input_type -> pb.GetByOwnerIdRequest
-	3,  // 5: pb.ShopService.GetShopById:input_type -> pb.GetByShopIdRequest
-	5,  // 6: pb.ShopService.RegisterShop:input_type -> pb.CreateRequest
-	7,  // 7: pb.ShopService.UpdateShop:input_type -> pb.UpdateRequest
-	9,  // 8: pb.ShopService.DeleteShop:input_type -> pb.DeleteRequest
-	2,  // 9: pb.ShopService.GetShopByOwnerId:output_type -> pb.GetByOwnerIdResponse
-	4,  // 10: pb.ShopService.GetShopById:output_type -> pb.GetShopByIdResponse
-	6,  // 11: pb.ShopService.RegisterShop:output_type -> pb.CreateResponse
-	8,  // 12: pb.ShopService.UpdateShop:output_type -> pb.UpdateResponse
-	10, // 13: pb.ShopService.DeleteShop:output_type -> pb.DeleteResponse
-	9,  // [9:14] is the sub-list for method output_type
-	4,  // [4:9] is the sub-list for method input_type
-	4,  // [4:4] is the sub-list for extension type_name
-	4,  // [4:4] is the sub-list for extension extendee
-	0,  // [0:4] is the sub-list for field type_name
+	0,  // 3: pb.UpdateRequest.Shop:type_name -> pb.Shop
+	0,  // 4: pb.UpdateResponse.Shop:type_name -> pb.Shop
+	1,  // 5: pb.ShopService.GetShopByOwnerId:input_type -> pb.GetByOwnerIdRequest
+	3,  // 6: pb.ShopService.GetShopById:input_type -> pb.GetByShopIdRequest
+	5,  // 7: pb.ShopService.RegisterShop:input_type -> pb.CreateRequest
+	7,  // 8: pb.ShopService.UpdateShop:input_type -> pb.UpdateRequest
+	9,  // 9: pb.ShopService.DeleteShop:input_type -> pb.DeleteRequest
+	2,  // 10: pb.ShopService.GetShopByOwnerId:output_type -> pb.GetByOwnerIdResponse
+	4,  // 11: pb.ShopService.GetShopById:output_type -> pb.GetShopByIdResponse
+	6,  // 12: pb.ShopService.RegisterShop:output_type -> pb.CreateResponse
+	8,  // 13: pb.ShopService.UpdateShop:output_type -> pb.UpdateResponse
+	10, // 14: pb.ShopService.DeleteShop:output_type -> pb.DeleteResponse
+	10, // [10:15] is the sub-list for method output_type
+	5,  // [5:10] is the sub-list for method input_type
+	5,  // [5:5] is the sub-list for extension type_name
+	5,  // [5:5] is the sub-list for extension extendee
+	0,  // [0:5] is the sub-list for field type_name
 }
 
 func init() { file_shop_proto_init() }
