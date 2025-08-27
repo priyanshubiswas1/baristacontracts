@@ -4,7 +4,7 @@
 // - protoc             v6.31.1
 // source: shop.proto
 
-package __
+package shop
 
 import (
 	context "context"
@@ -19,11 +19,11 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	ShopService_GetShopByOwnerId_FullMethodName = "/pb.ShopService/GetShopByOwnerId"
-	ShopService_GetShopById_FullMethodName      = "/pb.ShopService/GetShopById"
-	ShopService_RegisterShop_FullMethodName     = "/pb.ShopService/RegisterShop"
-	ShopService_UpdateShop_FullMethodName       = "/pb.ShopService/UpdateShop"
-	ShopService_DeleteShop_FullMethodName       = "/pb.ShopService/DeleteShop"
+	ShopService_GetShopByOwnerId_FullMethodName = "/shop.ShopService/GetShopByOwnerId"
+	ShopService_GetShopById_FullMethodName      = "/shop.ShopService/GetShopById"
+	ShopService_RegisterShop_FullMethodName     = "/shop.ShopService/RegisterShop"
+	ShopService_UpdateShop_FullMethodName       = "/shop.ShopService/UpdateShop"
+	ShopService_DeleteShop_FullMethodName       = "/shop.ShopService/DeleteShop"
 )
 
 // ShopServiceClient is the client API for ShopService service.
@@ -244,7 +244,7 @@ func _ShopService_DeleteShop_Handler(srv interface{}, ctx context.Context, dec f
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var ShopService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "pb.ShopService",
+	ServiceName: "shop.ShopService",
 	HandlerType: (*ShopServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{

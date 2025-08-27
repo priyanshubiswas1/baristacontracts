@@ -4,7 +4,7 @@
 // 	protoc        v6.31.1
 // source: shop.proto
 
-package __
+package shop
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -594,44 +594,49 @@ var File_shop_proto protoreflect.FileDescriptor
 const file_shop_proto_rawDesc = "" +
 	"\n" +
 	"\n" +
-	"shop.proto\x12\x02pb\":\n" +
+	"shop.proto\x12\x04shop\":\n" +
 	"\x04Shop\x12\x16\n" +
 	"\x06shopId\x18\x01 \x01(\tR\x06shopId\x12\x1a\n" +
 	"\bshopName\x18\x02 \x01(\tR\bshopName\"=\n" +
 	"\x05Token\x12\x18\n" +
 	"\aownerId\x18\x01 \x01(\tR\aownerId\x12\x1a\n" +
-	"\bpassword\x18\x02 \x01(\tR\bpassword\"6\n" +
-	"\x13GetByOwnerIdRequest\x12\x1f\n" +
-	"\x05token\x18\x01 \x01(\v2\t.pb.TokenR\x05token\"6\n" +
-	"\x14GetByOwnerIdResponse\x12\x1e\n" +
-	"\x05shops\x18\x01 \x03(\v2\b.pb.ShopR\x05shops\",\n" +
+	"\bpassword\x18\x02 \x01(\tR\bpassword\"8\n" +
+	"\x13GetByOwnerIdRequest\x12!\n" +
+	"\x05token\x18\x01 \x01(\v2\v.shop.TokenR\x05token\"8\n" +
+	"\x14GetByOwnerIdResponse\x12 \n" +
+	"\x05shops\x18\x01 \x03(\v2\n" +
+	".shop.ShopR\x05shops\",\n" +
 	"\x12GetByShopIdRequest\x12\x16\n" +
-	"\x06shopId\x18\x01 \x01(\tR\x06shopId\"3\n" +
-	"\x13GetShopByIdResponse\x12\x1c\n" +
-	"\x04Shop\x18\x01 \x01(\v2\b.pb.ShopR\x04Shop\"L\n" +
-	"\rCreateRequest\x12\x1f\n" +
-	"\x05token\x18\x01 \x01(\v2\t.pb.TokenR\x05token\x12\x1a\n" +
-	"\bshopName\x18\x02 \x01(\tR\bshopName\".\n" +
-	"\x0eCreateResponse\x12\x1c\n" +
-	"\x04Shop\x18\x01 \x01(\v2\b.pb.ShopR\x04Shop\"N\n" +
-	"\rUpdateRequest\x12\x1f\n" +
-	"\x05token\x18\x01 \x01(\v2\t.pb.TokenR\x05token\x12\x1c\n" +
-	"\x04Shop\x18\x02 \x01(\v2\b.pb.ShopR\x04Shop\".\n" +
-	"\x0eUpdateResponse\x12\x1c\n" +
-	"\x04Shop\x18\x01 \x01(\v2\b.pb.ShopR\x04Shop\"H\n" +
-	"\rDeleteRequest\x12\x1f\n" +
-	"\x05token\x18\x01 \x01(\v2\t.pb.TokenR\x05token\x12\x16\n" +
+	"\x06shopId\x18\x01 \x01(\tR\x06shopId\"5\n" +
+	"\x13GetShopByIdResponse\x12\x1e\n" +
+	"\x04Shop\x18\x01 \x01(\v2\n" +
+	".shop.ShopR\x04Shop\"N\n" +
+	"\rCreateRequest\x12!\n" +
+	"\x05token\x18\x01 \x01(\v2\v.shop.TokenR\x05token\x12\x1a\n" +
+	"\bshopName\x18\x02 \x01(\tR\bshopName\"0\n" +
+	"\x0eCreateResponse\x12\x1e\n" +
+	"\x04Shop\x18\x01 \x01(\v2\n" +
+	".shop.ShopR\x04Shop\"R\n" +
+	"\rUpdateRequest\x12!\n" +
+	"\x05token\x18\x01 \x01(\v2\v.shop.TokenR\x05token\x12\x1e\n" +
+	"\x04Shop\x18\x02 \x01(\v2\n" +
+	".shop.ShopR\x04Shop\"0\n" +
+	"\x0eUpdateResponse\x12\x1e\n" +
+	"\x04Shop\x18\x01 \x01(\v2\n" +
+	".shop.ShopR\x04Shop\"J\n" +
+	"\rDeleteRequest\x12!\n" +
+	"\x05token\x18\x01 \x01(\v2\v.shop.TokenR\x05token\x12\x16\n" +
 	"\x06shopId\x18\x02 \x01(\tR\x06shopId\"*\n" +
 	"\x0eDeleteResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess2\xb5\x02\n" +
-	"\vShopService\x12E\n" +
-	"\x10GetShopByOwnerId\x12\x17.pb.GetByOwnerIdRequest\x1a\x18.pb.GetByOwnerIdResponse\x12>\n" +
-	"\vGetShopById\x12\x16.pb.GetByShopIdRequest\x1a\x17.pb.GetShopByIdResponse\x125\n" +
-	"\fRegisterShop\x12\x11.pb.CreateRequest\x1a\x12.pb.CreateResponse\x123\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess2\xc9\x02\n" +
+	"\vShopService\x12I\n" +
+	"\x10GetShopByOwnerId\x12\x19.shop.GetByOwnerIdRequest\x1a\x1a.shop.GetByOwnerIdResponse\x12B\n" +
+	"\vGetShopById\x12\x18.shop.GetByShopIdRequest\x1a\x19.shop.GetShopByIdResponse\x129\n" +
+	"\fRegisterShop\x12\x13.shop.CreateRequest\x1a\x14.shop.CreateResponse\x127\n" +
 	"\n" +
-	"UpdateShop\x12\x11.pb.UpdateRequest\x1a\x12.pb.UpdateResponse\x123\n" +
+	"UpdateShop\x12\x13.shop.UpdateRequest\x1a\x14.shop.UpdateResponse\x127\n" +
 	"\n" +
-	"DeleteShop\x12\x11.pb.DeleteRequest\x1a\x12.pb.DeleteResponseB\x03Z\x01/b\x06proto3"
+	"DeleteShop\x12\x13.shop.DeleteRequest\x1a\x14.shop.DeleteResponseB\aZ\x05/shopb\x06proto3"
 
 var (
 	file_shop_proto_rawDescOnce sync.Once
@@ -647,39 +652,39 @@ func file_shop_proto_rawDescGZIP() []byte {
 
 var file_shop_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
 var file_shop_proto_goTypes = []any{
-	(*Shop)(nil),                 // 0: pb.Shop
-	(*Token)(nil),                // 1: pb.Token
-	(*GetByOwnerIdRequest)(nil),  // 2: pb.GetByOwnerIdRequest
-	(*GetByOwnerIdResponse)(nil), // 3: pb.GetByOwnerIdResponse
-	(*GetByShopIdRequest)(nil),   // 4: pb.GetByShopIdRequest
-	(*GetShopByIdResponse)(nil),  // 5: pb.GetShopByIdResponse
-	(*CreateRequest)(nil),        // 6: pb.CreateRequest
-	(*CreateResponse)(nil),       // 7: pb.CreateResponse
-	(*UpdateRequest)(nil),        // 8: pb.UpdateRequest
-	(*UpdateResponse)(nil),       // 9: pb.UpdateResponse
-	(*DeleteRequest)(nil),        // 10: pb.DeleteRequest
-	(*DeleteResponse)(nil),       // 11: pb.DeleteResponse
+	(*Shop)(nil),                 // 0: shop.Shop
+	(*Token)(nil),                // 1: shop.Token
+	(*GetByOwnerIdRequest)(nil),  // 2: shop.GetByOwnerIdRequest
+	(*GetByOwnerIdResponse)(nil), // 3: shop.GetByOwnerIdResponse
+	(*GetByShopIdRequest)(nil),   // 4: shop.GetByShopIdRequest
+	(*GetShopByIdResponse)(nil),  // 5: shop.GetShopByIdResponse
+	(*CreateRequest)(nil),        // 6: shop.CreateRequest
+	(*CreateResponse)(nil),       // 7: shop.CreateResponse
+	(*UpdateRequest)(nil),        // 8: shop.UpdateRequest
+	(*UpdateResponse)(nil),       // 9: shop.UpdateResponse
+	(*DeleteRequest)(nil),        // 10: shop.DeleteRequest
+	(*DeleteResponse)(nil),       // 11: shop.DeleteResponse
 }
 var file_shop_proto_depIdxs = []int32{
-	1,  // 0: pb.GetByOwnerIdRequest.token:type_name -> pb.Token
-	0,  // 1: pb.GetByOwnerIdResponse.shops:type_name -> pb.Shop
-	0,  // 2: pb.GetShopByIdResponse.Shop:type_name -> pb.Shop
-	1,  // 3: pb.CreateRequest.token:type_name -> pb.Token
-	0,  // 4: pb.CreateResponse.Shop:type_name -> pb.Shop
-	1,  // 5: pb.UpdateRequest.token:type_name -> pb.Token
-	0,  // 6: pb.UpdateRequest.Shop:type_name -> pb.Shop
-	0,  // 7: pb.UpdateResponse.Shop:type_name -> pb.Shop
-	1,  // 8: pb.DeleteRequest.token:type_name -> pb.Token
-	2,  // 9: pb.ShopService.GetShopByOwnerId:input_type -> pb.GetByOwnerIdRequest
-	4,  // 10: pb.ShopService.GetShopById:input_type -> pb.GetByShopIdRequest
-	6,  // 11: pb.ShopService.RegisterShop:input_type -> pb.CreateRequest
-	8,  // 12: pb.ShopService.UpdateShop:input_type -> pb.UpdateRequest
-	10, // 13: pb.ShopService.DeleteShop:input_type -> pb.DeleteRequest
-	3,  // 14: pb.ShopService.GetShopByOwnerId:output_type -> pb.GetByOwnerIdResponse
-	5,  // 15: pb.ShopService.GetShopById:output_type -> pb.GetShopByIdResponse
-	7,  // 16: pb.ShopService.RegisterShop:output_type -> pb.CreateResponse
-	9,  // 17: pb.ShopService.UpdateShop:output_type -> pb.UpdateResponse
-	11, // 18: pb.ShopService.DeleteShop:output_type -> pb.DeleteResponse
+	1,  // 0: shop.GetByOwnerIdRequest.token:type_name -> shop.Token
+	0,  // 1: shop.GetByOwnerIdResponse.shops:type_name -> shop.Shop
+	0,  // 2: shop.GetShopByIdResponse.Shop:type_name -> shop.Shop
+	1,  // 3: shop.CreateRequest.token:type_name -> shop.Token
+	0,  // 4: shop.CreateResponse.Shop:type_name -> shop.Shop
+	1,  // 5: shop.UpdateRequest.token:type_name -> shop.Token
+	0,  // 6: shop.UpdateRequest.Shop:type_name -> shop.Shop
+	0,  // 7: shop.UpdateResponse.Shop:type_name -> shop.Shop
+	1,  // 8: shop.DeleteRequest.token:type_name -> shop.Token
+	2,  // 9: shop.ShopService.GetShopByOwnerId:input_type -> shop.GetByOwnerIdRequest
+	4,  // 10: shop.ShopService.GetShopById:input_type -> shop.GetByShopIdRequest
+	6,  // 11: shop.ShopService.RegisterShop:input_type -> shop.CreateRequest
+	8,  // 12: shop.ShopService.UpdateShop:input_type -> shop.UpdateRequest
+	10, // 13: shop.ShopService.DeleteShop:input_type -> shop.DeleteRequest
+	3,  // 14: shop.ShopService.GetShopByOwnerId:output_type -> shop.GetByOwnerIdResponse
+	5,  // 15: shop.ShopService.GetShopById:output_type -> shop.GetShopByIdResponse
+	7,  // 16: shop.ShopService.RegisterShop:output_type -> shop.CreateResponse
+	9,  // 17: shop.ShopService.UpdateShop:output_type -> shop.UpdateResponse
+	11, // 18: shop.ShopService.DeleteShop:output_type -> shop.DeleteResponse
 	14, // [14:19] is the sub-list for method output_type
 	9,  // [9:14] is the sub-list for method input_type
 	9,  // [9:9] is the sub-list for extension type_name
