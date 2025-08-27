@@ -1,7 +1,7 @@
 syntax = "proto3";
-package pb;
+package auth;
 
-option go_package = "/";
+option go_package = "/auth";
 
 message User {
     string name = 1;
