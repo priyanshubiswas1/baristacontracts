@@ -127,7 +127,7 @@ func (x *Token) GetPassword() string {
 
 type GetByOwnerIdRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Token         *Token                 `protobuf:"bytes,1,opt,name=token,proto3" json:"token,omitempty"`
+	OwnerId       string                 `protobuf:"bytes,1,opt,name=ownerId,proto3" json:"ownerId,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -162,11 +162,11 @@ func (*GetByOwnerIdRequest) Descriptor() ([]byte, []int) {
 	return file_shop_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *GetByOwnerIdRequest) GetToken() *Token {
+func (x *GetByOwnerIdRequest) GetOwnerId() string {
 	if x != nil {
-		return x.Token
+		return x.OwnerId
 	}
-	return nil
+	return ""
 }
 
 type GetByOwnerIdResponse struct {
@@ -303,7 +303,7 @@ func (x *GetShopByIdResponse) GetShop() *Shop {
 
 type CreateRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Token         *Token                 `protobuf:"bytes,1,opt,name=token,proto3" json:"token,omitempty"`
+	OwnerId       string                 `protobuf:"bytes,1,opt,name=ownerId,proto3" json:"ownerId,omitempty"`
 	ShopName      string                 `protobuf:"bytes,2,opt,name=shopName,proto3" json:"shopName,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -339,11 +339,11 @@ func (*CreateRequest) Descriptor() ([]byte, []int) {
 	return file_shop_proto_rawDescGZIP(), []int{6}
 }
 
-func (x *CreateRequest) GetToken() *Token {
+func (x *CreateRequest) GetOwnerId() string {
 	if x != nil {
-		return x.Token
+		return x.OwnerId
 	}
-	return nil
+	return ""
 }
 
 func (x *CreateRequest) GetShopName() string {
@@ -399,7 +399,7 @@ func (x *CreateResponse) GetShop() *Shop {
 
 type UpdateRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Token         *Token                 `protobuf:"bytes,1,opt,name=token,proto3" json:"token,omitempty"`
+	OwnerId       string                 `protobuf:"bytes,1,opt,name=ownerId,proto3" json:"ownerId,omitempty"`
 	Shop          *Shop                  `protobuf:"bytes,2,opt,name=Shop,proto3" json:"Shop,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -435,11 +435,11 @@ func (*UpdateRequest) Descriptor() ([]byte, []int) {
 	return file_shop_proto_rawDescGZIP(), []int{8}
 }
 
-func (x *UpdateRequest) GetToken() *Token {
+func (x *UpdateRequest) GetOwnerId() string {
 	if x != nil {
-		return x.Token
+		return x.OwnerId
 	}
-	return nil
+	return ""
 }
 
 func (x *UpdateRequest) GetShop() *Shop {
@@ -495,7 +495,7 @@ func (x *UpdateResponse) GetShop() *Shop {
 
 type DeleteRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Token         *Token                 `protobuf:"bytes,1,opt,name=token,proto3" json:"token,omitempty"`
+	OwnerId       string                 `protobuf:"bytes,1,opt,name=ownerId,proto3" json:"ownerId,omitempty"`
 	ShopId        string                 `protobuf:"bytes,2,opt,name=shopId,proto3" json:"shopId,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -531,11 +531,11 @@ func (*DeleteRequest) Descriptor() ([]byte, []int) {
 	return file_shop_proto_rawDescGZIP(), []int{10}
 }
 
-func (x *DeleteRequest) GetToken() *Token {
+func (x *DeleteRequest) GetOwnerId() string {
 	if x != nil {
-		return x.Token
+		return x.OwnerId
 	}
-	return nil
+	return ""
 }
 
 func (x *DeleteRequest) GetShopId() string {
@@ -600,9 +600,9 @@ const file_shop_proto_rawDesc = "" +
 	"\bshopName\x18\x02 \x01(\tR\bshopName\"=\n" +
 	"\x05Token\x12\x18\n" +
 	"\aownerId\x18\x01 \x01(\tR\aownerId\x12\x1a\n" +
-	"\bpassword\x18\x02 \x01(\tR\bpassword\"8\n" +
-	"\x13GetByOwnerIdRequest\x12!\n" +
-	"\x05token\x18\x01 \x01(\v2\v.shop.TokenR\x05token\"8\n" +
+	"\bpassword\x18\x02 \x01(\tR\bpassword\"/\n" +
+	"\x13GetByOwnerIdRequest\x12\x18\n" +
+	"\aownerId\x18\x01 \x01(\tR\aownerId\"8\n" +
 	"\x14GetByOwnerIdResponse\x12 \n" +
 	"\x05shops\x18\x01 \x03(\v2\n" +
 	".shop.ShopR\x05shops\",\n" +
@@ -610,22 +610,22 @@ const file_shop_proto_rawDesc = "" +
 	"\x06shopId\x18\x01 \x01(\tR\x06shopId\"5\n" +
 	"\x13GetShopByIdResponse\x12\x1e\n" +
 	"\x04Shop\x18\x01 \x01(\v2\n" +
-	".shop.ShopR\x04Shop\"N\n" +
-	"\rCreateRequest\x12!\n" +
-	"\x05token\x18\x01 \x01(\v2\v.shop.TokenR\x05token\x12\x1a\n" +
+	".shop.ShopR\x04Shop\"E\n" +
+	"\rCreateRequest\x12\x18\n" +
+	"\aownerId\x18\x01 \x01(\tR\aownerId\x12\x1a\n" +
 	"\bshopName\x18\x02 \x01(\tR\bshopName\"0\n" +
 	"\x0eCreateResponse\x12\x1e\n" +
 	"\x04Shop\x18\x01 \x01(\v2\n" +
-	".shop.ShopR\x04Shop\"R\n" +
-	"\rUpdateRequest\x12!\n" +
-	"\x05token\x18\x01 \x01(\v2\v.shop.TokenR\x05token\x12\x1e\n" +
+	".shop.ShopR\x04Shop\"I\n" +
+	"\rUpdateRequest\x12\x18\n" +
+	"\aownerId\x18\x01 \x01(\tR\aownerId\x12\x1e\n" +
 	"\x04Shop\x18\x02 \x01(\v2\n" +
 	".shop.ShopR\x04Shop\"0\n" +
 	"\x0eUpdateResponse\x12\x1e\n" +
 	"\x04Shop\x18\x01 \x01(\v2\n" +
-	".shop.ShopR\x04Shop\"J\n" +
-	"\rDeleteRequest\x12!\n" +
-	"\x05token\x18\x01 \x01(\v2\v.shop.TokenR\x05token\x12\x16\n" +
+	".shop.ShopR\x04Shop\"A\n" +
+	"\rDeleteRequest\x12\x18\n" +
+	"\aownerId\x18\x01 \x01(\tR\aownerId\x12\x16\n" +
 	"\x06shopId\x18\x02 \x01(\tR\x06shopId\"*\n" +
 	"\x0eDeleteResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess2\xc9\x02\n" +
@@ -666,30 +666,26 @@ var file_shop_proto_goTypes = []any{
 	(*DeleteResponse)(nil),       // 11: shop.DeleteResponse
 }
 var file_shop_proto_depIdxs = []int32{
-	1,  // 0: shop.GetByOwnerIdRequest.token:type_name -> shop.Token
-	0,  // 1: shop.GetByOwnerIdResponse.shops:type_name -> shop.Shop
-	0,  // 2: shop.GetShopByIdResponse.Shop:type_name -> shop.Shop
-	1,  // 3: shop.CreateRequest.token:type_name -> shop.Token
-	0,  // 4: shop.CreateResponse.Shop:type_name -> shop.Shop
-	1,  // 5: shop.UpdateRequest.token:type_name -> shop.Token
-	0,  // 6: shop.UpdateRequest.Shop:type_name -> shop.Shop
-	0,  // 7: shop.UpdateResponse.Shop:type_name -> shop.Shop
-	1,  // 8: shop.DeleteRequest.token:type_name -> shop.Token
-	2,  // 9: shop.ShopService.GetShopByOwnerId:input_type -> shop.GetByOwnerIdRequest
-	4,  // 10: shop.ShopService.GetShopById:input_type -> shop.GetByShopIdRequest
-	6,  // 11: shop.ShopService.RegisterShop:input_type -> shop.CreateRequest
-	8,  // 12: shop.ShopService.UpdateShop:input_type -> shop.UpdateRequest
-	10, // 13: shop.ShopService.DeleteShop:input_type -> shop.DeleteRequest
-	3,  // 14: shop.ShopService.GetShopByOwnerId:output_type -> shop.GetByOwnerIdResponse
-	5,  // 15: shop.ShopService.GetShopById:output_type -> shop.GetShopByIdResponse
-	7,  // 16: shop.ShopService.RegisterShop:output_type -> shop.CreateResponse
-	9,  // 17: shop.ShopService.UpdateShop:output_type -> shop.UpdateResponse
-	11, // 18: shop.ShopService.DeleteShop:output_type -> shop.DeleteResponse
-	14, // [14:19] is the sub-list for method output_type
-	9,  // [9:14] is the sub-list for method input_type
-	9,  // [9:9] is the sub-list for extension type_name
-	9,  // [9:9] is the sub-list for extension extendee
-	0,  // [0:9] is the sub-list for field type_name
+	0,  // 0: shop.GetByOwnerIdResponse.shops:type_name -> shop.Shop
+	0,  // 1: shop.GetShopByIdResponse.Shop:type_name -> shop.Shop
+	0,  // 2: shop.CreateResponse.Shop:type_name -> shop.Shop
+	0,  // 3: shop.UpdateRequest.Shop:type_name -> shop.Shop
+	0,  // 4: shop.UpdateResponse.Shop:type_name -> shop.Shop
+	2,  // 5: shop.ShopService.GetShopByOwnerId:input_type -> shop.GetByOwnerIdRequest
+	4,  // 6: shop.ShopService.GetShopById:input_type -> shop.GetByShopIdRequest
+	6,  // 7: shop.ShopService.RegisterShop:input_type -> shop.CreateRequest
+	8,  // 8: shop.ShopService.UpdateShop:input_type -> shop.UpdateRequest
+	10, // 9: shop.ShopService.DeleteShop:input_type -> shop.DeleteRequest
+	3,  // 10: shop.ShopService.GetShopByOwnerId:output_type -> shop.GetByOwnerIdResponse
+	5,  // 11: shop.ShopService.GetShopById:output_type -> shop.GetShopByIdResponse
+	7,  // 12: shop.ShopService.RegisterShop:output_type -> shop.CreateResponse
+	9,  // 13: shop.ShopService.UpdateShop:output_type -> shop.UpdateResponse
+	11, // 14: shop.ShopService.DeleteShop:output_type -> shop.DeleteResponse
+	10, // [10:15] is the sub-list for method output_type
+	5,  // [5:10] is the sub-list for method input_type
+	5,  // [5:5] is the sub-list for extension type_name
+	5,  // [5:5] is the sub-list for extension extendee
+	0,  // [0:5] is the sub-list for field type_name
 }
 
 func init() { file_shop_proto_init() }

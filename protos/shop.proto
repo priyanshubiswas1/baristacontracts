@@ -14,7 +14,7 @@ message Token {
 }
 
 message GetByOwnerIdRequest{
-    Token token = 1;
+    string ownerId = 1;
 }
 
 message GetByOwnerIdResponse{
@@ -30,7 +30,7 @@ message GetShopByIdResponse{
 }
 
 message CreateRequest{
-    Token token = 1;
+    string ownerId = 1;
     string shopName = 2;
 }
 
@@ -39,7 +39,7 @@ message CreateResponse{
 }
 
 message UpdateRequest{
-    Token token = 1;
+    string ownerId = 1;
     Shop Shop = 2;
 }
 
@@ -48,7 +48,7 @@ message UpdateResponse{
 }
 
 message DeleteRequest{
-    Token token = 1;
+    string ownerId = 1;
     string shopId = 2;
 }
 
