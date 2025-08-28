@@ -19,21 +19,21 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	ShopService_CreateMenu_FullMethodName      = "/menu.ShopService/CreateMenu"
-	ShopService_GetMenus_FullMethodName        = "/menu.ShopService/GetMenus"
-	ShopService_DeleteMenu_FullMethodName      = "/menu.ShopService/DeleteMenu"
-	ShopService_CreateMenuItem_FullMethodName  = "/menu.ShopService/CreateMenuItem"
-	ShopService_GetMenuItems_FullMethodName    = "/menu.ShopService/GetMenuItems"
-	ShopService_GetMenuItem_FullMethodName     = "/menu.ShopService/GetMenuItem"
-	ShopService_UpdateMenuItem_FullMethodName  = "/menu.ShopService/UpdateMenuItem"
-	ShopService_DeleteMenuItem_FullMethodName  = "/menu.ShopService/DeleteMenuItem"
-	ShopService_DeleteMenuItems_FullMethodName = "/menu.ShopService/DeleteMenuItems"
+	MenuService_CreateMenu_FullMethodName      = "/menu.MenuService/CreateMenu"
+	MenuService_GetMenus_FullMethodName        = "/menu.MenuService/GetMenus"
+	MenuService_DeleteMenu_FullMethodName      = "/menu.MenuService/DeleteMenu"
+	MenuService_CreateMenuItem_FullMethodName  = "/menu.MenuService/CreateMenuItem"
+	MenuService_GetMenuItems_FullMethodName    = "/menu.MenuService/GetMenuItems"
+	MenuService_GetMenuItem_FullMethodName     = "/menu.MenuService/GetMenuItem"
+	MenuService_UpdateMenuItem_FullMethodName  = "/menu.MenuService/UpdateMenuItem"
+	MenuService_DeleteMenuItem_FullMethodName  = "/menu.MenuService/DeleteMenuItem"
+	MenuService_DeleteMenuItems_FullMethodName = "/menu.MenuService/DeleteMenuItems"
 )
 
-// ShopServiceClient is the client API for ShopService service.
+// MenuServiceClient is the client API for MenuService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type ShopServiceClient interface {
+type MenuServiceClient interface {
 	CreateMenu(ctx context.Context, in *CreateMenuRequest, opts ...grpc.CallOption) (*CreateMenuResponse, error)
 	GetMenus(ctx context.Context, in *GetMenusRequest, opts ...grpc.CallOption) (*GetMenusResponse, error)
 	DeleteMenu(ctx context.Context, in *DeleteMenuRequest, opts ...grpc.CallOption) (*DeleteMenuResponse, error)
@@ -45,108 +45,108 @@ type ShopServiceClient interface {
 	DeleteMenuItems(ctx context.Context, in *DeleteMenuItemsRequest, opts ...grpc.CallOption) (*DeleteMenuItemsResponse, error)
 }
 
-type shopServiceClient struct {
+type menuServiceClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewShopServiceClient(cc grpc.ClientConnInterface) ShopServiceClient {
-	return &shopServiceClient{cc}
+func NewMenuServiceClient(cc grpc.ClientConnInterface) MenuServiceClient {
+	return &menuServiceClient{cc}
 }
 
-func (c *shopServiceClient) CreateMenu(ctx context.Context, in *CreateMenuRequest, opts ...grpc.CallOption) (*CreateMenuResponse, error) {
+func (c *menuServiceClient) CreateMenu(ctx context.Context, in *CreateMenuRequest, opts ...grpc.CallOption) (*CreateMenuResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(CreateMenuResponse)
-	err := c.cc.Invoke(ctx, ShopService_CreateMenu_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, MenuService_CreateMenu_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *shopServiceClient) GetMenus(ctx context.Context, in *GetMenusRequest, opts ...grpc.CallOption) (*GetMenusResponse, error) {
+func (c *menuServiceClient) GetMenus(ctx context.Context, in *GetMenusRequest, opts ...grpc.CallOption) (*GetMenusResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(GetMenusResponse)
-	err := c.cc.Invoke(ctx, ShopService_GetMenus_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, MenuService_GetMenus_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *shopServiceClient) DeleteMenu(ctx context.Context, in *DeleteMenuRequest, opts ...grpc.CallOption) (*DeleteMenuResponse, error) {
+func (c *menuServiceClient) DeleteMenu(ctx context.Context, in *DeleteMenuRequest, opts ...grpc.CallOption) (*DeleteMenuResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(DeleteMenuResponse)
-	err := c.cc.Invoke(ctx, ShopService_DeleteMenu_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, MenuService_DeleteMenu_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *shopServiceClient) CreateMenuItem(ctx context.Context, in *CreateMenuItemRequest, opts ...grpc.CallOption) (*CreateMenuItemRequest, error) {
+func (c *menuServiceClient) CreateMenuItem(ctx context.Context, in *CreateMenuItemRequest, opts ...grpc.CallOption) (*CreateMenuItemRequest, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(CreateMenuItemRequest)
-	err := c.cc.Invoke(ctx, ShopService_CreateMenuItem_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, MenuService_CreateMenuItem_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *shopServiceClient) GetMenuItems(ctx context.Context, in *GetMenuItemsRequest, opts ...grpc.CallOption) (*GetMenuItemsRequest, error) {
+func (c *menuServiceClient) GetMenuItems(ctx context.Context, in *GetMenuItemsRequest, opts ...grpc.CallOption) (*GetMenuItemsRequest, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(GetMenuItemsRequest)
-	err := c.cc.Invoke(ctx, ShopService_GetMenuItems_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, MenuService_GetMenuItems_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *shopServiceClient) GetMenuItem(ctx context.Context, in *GetMenuItemRequest, opts ...grpc.CallOption) (*GetMenuItemRequest, error) {
+func (c *menuServiceClient) GetMenuItem(ctx context.Context, in *GetMenuItemRequest, opts ...grpc.CallOption) (*GetMenuItemRequest, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(GetMenuItemRequest)
-	err := c.cc.Invoke(ctx, ShopService_GetMenuItem_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, MenuService_GetMenuItem_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *shopServiceClient) UpdateMenuItem(ctx context.Context, in *GetMenuItemRequest, opts ...grpc.CallOption) (*GetMenuItemRequest, error) {
+func (c *menuServiceClient) UpdateMenuItem(ctx context.Context, in *GetMenuItemRequest, opts ...grpc.CallOption) (*GetMenuItemRequest, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(GetMenuItemRequest)
-	err := c.cc.Invoke(ctx, ShopService_UpdateMenuItem_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, MenuService_UpdateMenuItem_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *shopServiceClient) DeleteMenuItem(ctx context.Context, in *DeleteMenuItemRequest, opts ...grpc.CallOption) (*DeleteMenuItemResponse, error) {
+func (c *menuServiceClient) DeleteMenuItem(ctx context.Context, in *DeleteMenuItemRequest, opts ...grpc.CallOption) (*DeleteMenuItemResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(DeleteMenuItemResponse)
-	err := c.cc.Invoke(ctx, ShopService_DeleteMenuItem_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, MenuService_DeleteMenuItem_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *shopServiceClient) DeleteMenuItems(ctx context.Context, in *DeleteMenuItemsRequest, opts ...grpc.CallOption) (*DeleteMenuItemsResponse, error) {
+func (c *menuServiceClient) DeleteMenuItems(ctx context.Context, in *DeleteMenuItemsRequest, opts ...grpc.CallOption) (*DeleteMenuItemsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(DeleteMenuItemsResponse)
-	err := c.cc.Invoke(ctx, ShopService_DeleteMenuItems_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, MenuService_DeleteMenuItems_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// ShopServiceServer is the server API for ShopService service.
-// All implementations must embed UnimplementedShopServiceServer
+// MenuServiceServer is the server API for MenuService service.
+// All implementations must embed UnimplementedMenuServiceServer
 // for forward compatibility.
-type ShopServiceServer interface {
+type MenuServiceServer interface {
 	CreateMenu(context.Context, *CreateMenuRequest) (*CreateMenuResponse, error)
 	GetMenus(context.Context, *GetMenusRequest) (*GetMenusResponse, error)
 	DeleteMenu(context.Context, *DeleteMenuRequest) (*DeleteMenuResponse, error)
@@ -156,268 +156,268 @@ type ShopServiceServer interface {
 	UpdateMenuItem(context.Context, *GetMenuItemRequest) (*GetMenuItemRequest, error)
 	DeleteMenuItem(context.Context, *DeleteMenuItemRequest) (*DeleteMenuItemResponse, error)
 	DeleteMenuItems(context.Context, *DeleteMenuItemsRequest) (*DeleteMenuItemsResponse, error)
-	mustEmbedUnimplementedShopServiceServer()
+	mustEmbedUnimplementedMenuServiceServer()
 }
 
-// UnimplementedShopServiceServer must be embedded to have
+// UnimplementedMenuServiceServer must be embedded to have
 // forward compatible implementations.
 //
 // NOTE: this should be embedded by value instead of pointer to avoid a nil
 // pointer dereference when methods are called.
-type UnimplementedShopServiceServer struct{}
+type UnimplementedMenuServiceServer struct{}
 
-func (UnimplementedShopServiceServer) CreateMenu(context.Context, *CreateMenuRequest) (*CreateMenuResponse, error) {
+func (UnimplementedMenuServiceServer) CreateMenu(context.Context, *CreateMenuRequest) (*CreateMenuResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateMenu not implemented")
 }
-func (UnimplementedShopServiceServer) GetMenus(context.Context, *GetMenusRequest) (*GetMenusResponse, error) {
+func (UnimplementedMenuServiceServer) GetMenus(context.Context, *GetMenusRequest) (*GetMenusResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetMenus not implemented")
 }
-func (UnimplementedShopServiceServer) DeleteMenu(context.Context, *DeleteMenuRequest) (*DeleteMenuResponse, error) {
+func (UnimplementedMenuServiceServer) DeleteMenu(context.Context, *DeleteMenuRequest) (*DeleteMenuResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteMenu not implemented")
 }
-func (UnimplementedShopServiceServer) CreateMenuItem(context.Context, *CreateMenuItemRequest) (*CreateMenuItemRequest, error) {
+func (UnimplementedMenuServiceServer) CreateMenuItem(context.Context, *CreateMenuItemRequest) (*CreateMenuItemRequest, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateMenuItem not implemented")
 }
-func (UnimplementedShopServiceServer) GetMenuItems(context.Context, *GetMenuItemsRequest) (*GetMenuItemsRequest, error) {
+func (UnimplementedMenuServiceServer) GetMenuItems(context.Context, *GetMenuItemsRequest) (*GetMenuItemsRequest, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetMenuItems not implemented")
 }
-func (UnimplementedShopServiceServer) GetMenuItem(context.Context, *GetMenuItemRequest) (*GetMenuItemRequest, error) {
+func (UnimplementedMenuServiceServer) GetMenuItem(context.Context, *GetMenuItemRequest) (*GetMenuItemRequest, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetMenuItem not implemented")
 }
-func (UnimplementedShopServiceServer) UpdateMenuItem(context.Context, *GetMenuItemRequest) (*GetMenuItemRequest, error) {
+func (UnimplementedMenuServiceServer) UpdateMenuItem(context.Context, *GetMenuItemRequest) (*GetMenuItemRequest, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateMenuItem not implemented")
 }
-func (UnimplementedShopServiceServer) DeleteMenuItem(context.Context, *DeleteMenuItemRequest) (*DeleteMenuItemResponse, error) {
+func (UnimplementedMenuServiceServer) DeleteMenuItem(context.Context, *DeleteMenuItemRequest) (*DeleteMenuItemResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteMenuItem not implemented")
 }
-func (UnimplementedShopServiceServer) DeleteMenuItems(context.Context, *DeleteMenuItemsRequest) (*DeleteMenuItemsResponse, error) {
+func (UnimplementedMenuServiceServer) DeleteMenuItems(context.Context, *DeleteMenuItemsRequest) (*DeleteMenuItemsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteMenuItems not implemented")
 }
-func (UnimplementedShopServiceServer) mustEmbedUnimplementedShopServiceServer() {}
-func (UnimplementedShopServiceServer) testEmbeddedByValue()                     {}
+func (UnimplementedMenuServiceServer) mustEmbedUnimplementedMenuServiceServer() {}
+func (UnimplementedMenuServiceServer) testEmbeddedByValue()                     {}
 
-// UnsafeShopServiceServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to ShopServiceServer will
+// UnsafeMenuServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to MenuServiceServer will
 // result in compilation errors.
-type UnsafeShopServiceServer interface {
-	mustEmbedUnimplementedShopServiceServer()
+type UnsafeMenuServiceServer interface {
+	mustEmbedUnimplementedMenuServiceServer()
 }
 
-func RegisterShopServiceServer(s grpc.ServiceRegistrar, srv ShopServiceServer) {
-	// If the following call pancis, it indicates UnimplementedShopServiceServer was
+func RegisterMenuServiceServer(s grpc.ServiceRegistrar, srv MenuServiceServer) {
+	// If the following call pancis, it indicates UnimplementedMenuServiceServer was
 	// embedded by pointer and is nil.  This will cause panics if an
 	// unimplemented method is ever invoked, so we test this at initialization
 	// time to prevent it from happening at runtime later due to I/O.
 	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
 		t.testEmbeddedByValue()
 	}
-	s.RegisterService(&ShopService_ServiceDesc, srv)
+	s.RegisterService(&MenuService_ServiceDesc, srv)
 }
 
-func _ShopService_CreateMenu_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _MenuService_CreateMenu_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(CreateMenuRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ShopServiceServer).CreateMenu(ctx, in)
+		return srv.(MenuServiceServer).CreateMenu(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ShopService_CreateMenu_FullMethodName,
+		FullMethod: MenuService_CreateMenu_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ShopServiceServer).CreateMenu(ctx, req.(*CreateMenuRequest))
+		return srv.(MenuServiceServer).CreateMenu(ctx, req.(*CreateMenuRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ShopService_GetMenus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _MenuService_GetMenus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetMenusRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ShopServiceServer).GetMenus(ctx, in)
+		return srv.(MenuServiceServer).GetMenus(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ShopService_GetMenus_FullMethodName,
+		FullMethod: MenuService_GetMenus_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ShopServiceServer).GetMenus(ctx, req.(*GetMenusRequest))
+		return srv.(MenuServiceServer).GetMenus(ctx, req.(*GetMenusRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ShopService_DeleteMenu_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _MenuService_DeleteMenu_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(DeleteMenuRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ShopServiceServer).DeleteMenu(ctx, in)
+		return srv.(MenuServiceServer).DeleteMenu(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ShopService_DeleteMenu_FullMethodName,
+		FullMethod: MenuService_DeleteMenu_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ShopServiceServer).DeleteMenu(ctx, req.(*DeleteMenuRequest))
+		return srv.(MenuServiceServer).DeleteMenu(ctx, req.(*DeleteMenuRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ShopService_CreateMenuItem_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _MenuService_CreateMenuItem_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(CreateMenuItemRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ShopServiceServer).CreateMenuItem(ctx, in)
+		return srv.(MenuServiceServer).CreateMenuItem(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ShopService_CreateMenuItem_FullMethodName,
+		FullMethod: MenuService_CreateMenuItem_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ShopServiceServer).CreateMenuItem(ctx, req.(*CreateMenuItemRequest))
+		return srv.(MenuServiceServer).CreateMenuItem(ctx, req.(*CreateMenuItemRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ShopService_GetMenuItems_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _MenuService_GetMenuItems_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetMenuItemsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ShopServiceServer).GetMenuItems(ctx, in)
+		return srv.(MenuServiceServer).GetMenuItems(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ShopService_GetMenuItems_FullMethodName,
+		FullMethod: MenuService_GetMenuItems_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ShopServiceServer).GetMenuItems(ctx, req.(*GetMenuItemsRequest))
+		return srv.(MenuServiceServer).GetMenuItems(ctx, req.(*GetMenuItemsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ShopService_GetMenuItem_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _MenuService_GetMenuItem_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetMenuItemRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ShopServiceServer).GetMenuItem(ctx, in)
+		return srv.(MenuServiceServer).GetMenuItem(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ShopService_GetMenuItem_FullMethodName,
+		FullMethod: MenuService_GetMenuItem_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ShopServiceServer).GetMenuItem(ctx, req.(*GetMenuItemRequest))
+		return srv.(MenuServiceServer).GetMenuItem(ctx, req.(*GetMenuItemRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ShopService_UpdateMenuItem_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _MenuService_UpdateMenuItem_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetMenuItemRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ShopServiceServer).UpdateMenuItem(ctx, in)
+		return srv.(MenuServiceServer).UpdateMenuItem(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ShopService_UpdateMenuItem_FullMethodName,
+		FullMethod: MenuService_UpdateMenuItem_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ShopServiceServer).UpdateMenuItem(ctx, req.(*GetMenuItemRequest))
+		return srv.(MenuServiceServer).UpdateMenuItem(ctx, req.(*GetMenuItemRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ShopService_DeleteMenuItem_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _MenuService_DeleteMenuItem_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(DeleteMenuItemRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ShopServiceServer).DeleteMenuItem(ctx, in)
+		return srv.(MenuServiceServer).DeleteMenuItem(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ShopService_DeleteMenuItem_FullMethodName,
+		FullMethod: MenuService_DeleteMenuItem_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ShopServiceServer).DeleteMenuItem(ctx, req.(*DeleteMenuItemRequest))
+		return srv.(MenuServiceServer).DeleteMenuItem(ctx, req.(*DeleteMenuItemRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ShopService_DeleteMenuItems_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _MenuService_DeleteMenuItems_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(DeleteMenuItemsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ShopServiceServer).DeleteMenuItems(ctx, in)
+		return srv.(MenuServiceServer).DeleteMenuItems(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ShopService_DeleteMenuItems_FullMethodName,
+		FullMethod: MenuService_DeleteMenuItems_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ShopServiceServer).DeleteMenuItems(ctx, req.(*DeleteMenuItemsRequest))
+		return srv.(MenuServiceServer).DeleteMenuItems(ctx, req.(*DeleteMenuItemsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-// ShopService_ServiceDesc is the grpc.ServiceDesc for ShopService service.
+// MenuService_ServiceDesc is the grpc.ServiceDesc for MenuService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var ShopService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "menu.ShopService",
-	HandlerType: (*ShopServiceServer)(nil),
+var MenuService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "menu.MenuService",
+	HandlerType: (*MenuServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "CreateMenu",
-			Handler:    _ShopService_CreateMenu_Handler,
+			Handler:    _MenuService_CreateMenu_Handler,
 		},
 		{
 			MethodName: "GetMenus",
-			Handler:    _ShopService_GetMenus_Handler,
+			Handler:    _MenuService_GetMenus_Handler,
 		},
 		{
 			MethodName: "DeleteMenu",
-			Handler:    _ShopService_DeleteMenu_Handler,
+			Handler:    _MenuService_DeleteMenu_Handler,
 		},
 		{
 			MethodName: "CreateMenuItem",
-			Handler:    _ShopService_CreateMenuItem_Handler,
+			Handler:    _MenuService_CreateMenuItem_Handler,
 		},
 		{
 			MethodName: "GetMenuItems",
-			Handler:    _ShopService_GetMenuItems_Handler,
+			Handler:    _MenuService_GetMenuItems_Handler,
 		},
 		{
 			MethodName: "GetMenuItem",
-			Handler:    _ShopService_GetMenuItem_Handler,
+			Handler:    _MenuService_GetMenuItem_Handler,
 		},
 		{
 			MethodName: "UpdateMenuItem",
-			Handler:    _ShopService_UpdateMenuItem_Handler,
+			Handler:    _MenuService_UpdateMenuItem_Handler,
 		},
 		{
 			MethodName: "DeleteMenuItem",
-			Handler:    _ShopService_DeleteMenuItem_Handler,
+			Handler:    _MenuService_DeleteMenuItem_Handler,
 		},
 		{
 			MethodName: "DeleteMenuItems",
-			Handler:    _ShopService_DeleteMenuItems_Handler,
+			Handler:    _MenuService_DeleteMenuItems_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

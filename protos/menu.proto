@@ -99,7 +99,7 @@ message DeleteMenuItemResponse{
     bool success = 1;
 }
 
-service ShopService{
+service MenuService{
     rpc CreateMenu(CreateMenuRequest) returns (CreateMenuResponse);
     rpc GetMenus(GetMenusRequest) returns (GetMenusResponse);
     rpc DeleteMenu(DeleteMenuRequest) returns (DeleteMenuResponse);
