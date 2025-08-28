@@ -1,0 +1,112 @@
+syntax = "proto3";
+package menu;
+
+option go_package = "/menu";
+
+message Menu {
+    string menuId = 1;
+    string shopId = 2;
+    string name = 3;
+}
+
+message MenuItem {
+    string menuItemId = 1;
+    string menuId = 2;
+    string name = 3;
+    string description = 4;
+    string category = 5;
+    float price = 6;
+    string image = 7;
+    bool isAvailable = 8;
+}
+
+message CreateMenuRequest{
+    string shopId = 1;
+    string name = 2;
+}
+
+message CreateMenuResponse{
+    Menu menu = 1;
+}
+
+message GetMenusRequest{
+    string shopId = 1;
+}
+
+message GetMenusResponse{
+    repeated Menu menus = 1;
+}
+
+message DeleteMenuRequest{
+    string menuId = 1;
+}
+
+message DeleteMenuResponse{
+    bool success = 1;
+}
+
+message CreateMenuItemRequest{
+    string menuId = 1;
+    string name = 2;
+    string description = 3;
+    string category = 4;
+    float price = 5;
+    string image = 6;
+    bool isAvailable = 7;
+}
+
+message CreateMenuItemResponse{
+    MenuItem menuItem = 1;
+}
+
+message GetMenuItemsRequest{
+    string menuId = 1;
+}
+
+message GetMenuItemsResponse{
+    repeated MenuItem menuItems = 1;
+}
+
+message GetMenuItemRequest{
+    string menuItemId = 1;
+}
+
+message GetMenuItemResponse{
+    MenuItem MenuItem = 1;
+}
+
+message UpdateMenuItemRequest{
+    MenuItem menuItem = 1;
+}
+
+message UpdateMenuItemResponse{
+    bool success = 1;
+}
+
+message DeleteMenuItemsRequest{
+    string menuId = 1;
+}
+
+message DeleteMenuItemsResponse{
+    bool success = 1;
+}
+
+message DeleteMenuItemRequest{
+    string menuItemId = 1;
+}
+
+message DeleteMenuItemResponse{
+    bool success = 1;
+}
+
+service ShopService{
+    rpc CreateMenu(CreateMenuRequest) returns (CreateMenuResponse);
+    rpc GetMenus(GetMenusRequest) returns (GetMenusResponse);
+    rpc DeleteMenu(DeleteMenuRequest) returns (DeleteMenuResponse);
+    rpc CreateMenuItem(CreateMenuItemRequest) returns (CreateMenuItemRequest);
+    rpc GetMenuItems(GetMenuItemsRequest) returns (GetMenuItemsRequest);
+    rpc GetMenuItem(GetMenuItemRequest) returns (GetMenuItemRequest);
+    rpc UpdateMenuItem(GetMenuItemRequest) returns (GetMenuItemRequest);
+    rpc DeleteMenuItem(DeleteMenuItemRequest) returns (DeleteMenuItemResponse);
+    rpc DeleteMenuItems(DeleteMenuItemsRequest) returns (DeleteMenuItemsResponse);
+}
