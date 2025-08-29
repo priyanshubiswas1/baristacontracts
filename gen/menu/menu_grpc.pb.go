@@ -37,10 +37,10 @@ type MenuServiceClient interface {
 	CreateMenu(ctx context.Context, in *CreateMenuRequest, opts ...grpc.CallOption) (*CreateMenuResponse, error)
 	GetMenus(ctx context.Context, in *GetMenusRequest, opts ...grpc.CallOption) (*GetMenusResponse, error)
 	DeleteMenu(ctx context.Context, in *DeleteMenuRequest, opts ...grpc.CallOption) (*DeleteMenuResponse, error)
-	CreateMenuItem(ctx context.Context, in *CreateMenuItemRequest, opts ...grpc.CallOption) (*CreateMenuItemRequest, error)
-	GetMenuItems(ctx context.Context, in *GetMenuItemsRequest, opts ...grpc.CallOption) (*GetMenuItemsRequest, error)
-	GetMenuItem(ctx context.Context, in *GetMenuItemRequest, opts ...grpc.CallOption) (*GetMenuItemRequest, error)
-	UpdateMenuItem(ctx context.Context, in *GetMenuItemRequest, opts ...grpc.CallOption) (*GetMenuItemRequest, error)
+	CreateMenuItem(ctx context.Context, in *CreateMenuItemRequest, opts ...grpc.CallOption) (*CreateMenuItemResponse, error)
+	GetMenuItems(ctx context.Context, in *GetMenuItemsRequest, opts ...grpc.CallOption) (*GetMenuItemsResponse, error)
+	GetMenuItem(ctx context.Context, in *GetMenuItemRequest, opts ...grpc.CallOption) (*GetMenuItemResponse, error)
+	UpdateMenuItem(ctx context.Context, in *GetMenuItemRequest, opts ...grpc.CallOption) (*GetMenuItemResponse, error)
 	DeleteMenuItem(ctx context.Context, in *DeleteMenuItemRequest, opts ...grpc.CallOption) (*DeleteMenuItemResponse, error)
 	DeleteMenuItems(ctx context.Context, in *DeleteMenuItemsRequest, opts ...grpc.CallOption) (*DeleteMenuItemsResponse, error)
 }
@@ -83,9 +83,9 @@ func (c *menuServiceClient) DeleteMenu(ctx context.Context, in *DeleteMenuReques
 	return out, nil
 }
 
-func (c *menuServiceClient) CreateMenuItem(ctx context.Context, in *CreateMenuItemRequest, opts ...grpc.CallOption) (*CreateMenuItemRequest, error) {
+func (c *menuServiceClient) CreateMenuItem(ctx context.Context, in *CreateMenuItemRequest, opts ...grpc.CallOption) (*CreateMenuItemResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CreateMenuItemRequest)
+	out := new(CreateMenuItemResponse)
 	err := c.cc.Invoke(ctx, MenuService_CreateMenuItem_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -93,9 +93,9 @@ func (c *menuServiceClient) CreateMenuItem(ctx context.Context, in *CreateMenuIt
 	return out, nil
 }
 
-func (c *menuServiceClient) GetMenuItems(ctx context.Context, in *GetMenuItemsRequest, opts ...grpc.CallOption) (*GetMenuItemsRequest, error) {
+func (c *menuServiceClient) GetMenuItems(ctx context.Context, in *GetMenuItemsRequest, opts ...grpc.CallOption) (*GetMenuItemsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GetMenuItemsRequest)
+	out := new(GetMenuItemsResponse)
 	err := c.cc.Invoke(ctx, MenuService_GetMenuItems_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -103,9 +103,9 @@ func (c *menuServiceClient) GetMenuItems(ctx context.Context, in *GetMenuItemsRe
 	return out, nil
 }
 
-func (c *menuServiceClient) GetMenuItem(ctx context.Context, in *GetMenuItemRequest, opts ...grpc.CallOption) (*GetMenuItemRequest, error) {
+func (c *menuServiceClient) GetMenuItem(ctx context.Context, in *GetMenuItemRequest, opts ...grpc.CallOption) (*GetMenuItemResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GetMenuItemRequest)
+	out := new(GetMenuItemResponse)
 	err := c.cc.Invoke(ctx, MenuService_GetMenuItem_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -113,9 +113,9 @@ func (c *menuServiceClient) GetMenuItem(ctx context.Context, in *GetMenuItemRequ
 	return out, nil
 }
 
-func (c *menuServiceClient) UpdateMenuItem(ctx context.Context, in *GetMenuItemRequest, opts ...grpc.CallOption) (*GetMenuItemRequest, error) {
+func (c *menuServiceClient) UpdateMenuItem(ctx context.Context, in *GetMenuItemRequest, opts ...grpc.CallOption) (*GetMenuItemResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GetMenuItemRequest)
+	out := new(GetMenuItemResponse)
 	err := c.cc.Invoke(ctx, MenuService_UpdateMenuItem_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -150,10 +150,10 @@ type MenuServiceServer interface {
 	CreateMenu(context.Context, *CreateMenuRequest) (*CreateMenuResponse, error)
 	GetMenus(context.Context, *GetMenusRequest) (*GetMenusResponse, error)
 	DeleteMenu(context.Context, *DeleteMenuRequest) (*DeleteMenuResponse, error)
-	CreateMenuItem(context.Context, *CreateMenuItemRequest) (*CreateMenuItemRequest, error)
-	GetMenuItems(context.Context, *GetMenuItemsRequest) (*GetMenuItemsRequest, error)
-	GetMenuItem(context.Context, *GetMenuItemRequest) (*GetMenuItemRequest, error)
-	UpdateMenuItem(context.Context, *GetMenuItemRequest) (*GetMenuItemRequest, error)
+	CreateMenuItem(context.Context, *CreateMenuItemRequest) (*CreateMenuItemResponse, error)
+	GetMenuItems(context.Context, *GetMenuItemsRequest) (*GetMenuItemsResponse, error)
+	GetMenuItem(context.Context, *GetMenuItemRequest) (*GetMenuItemResponse, error)
+	UpdateMenuItem(context.Context, *GetMenuItemRequest) (*GetMenuItemResponse, error)
 	DeleteMenuItem(context.Context, *DeleteMenuItemRequest) (*DeleteMenuItemResponse, error)
 	DeleteMenuItems(context.Context, *DeleteMenuItemsRequest) (*DeleteMenuItemsResponse, error)
 	mustEmbedUnimplementedMenuServiceServer()
@@ -175,16 +175,16 @@ func (UnimplementedMenuServiceServer) GetMenus(context.Context, *GetMenusRequest
 func (UnimplementedMenuServiceServer) DeleteMenu(context.Context, *DeleteMenuRequest) (*DeleteMenuResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteMenu not implemented")
 }
-func (UnimplementedMenuServiceServer) CreateMenuItem(context.Context, *CreateMenuItemRequest) (*CreateMenuItemRequest, error) {
+func (UnimplementedMenuServiceServer) CreateMenuItem(context.Context, *CreateMenuItemRequest) (*CreateMenuItemResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateMenuItem not implemented")
 }
-func (UnimplementedMenuServiceServer) GetMenuItems(context.Context, *GetMenuItemsRequest) (*GetMenuItemsRequest, error) {
+func (UnimplementedMenuServiceServer) GetMenuItems(context.Context, *GetMenuItemsRequest) (*GetMenuItemsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetMenuItems not implemented")
 }
-func (UnimplementedMenuServiceServer) GetMenuItem(context.Context, *GetMenuItemRequest) (*GetMenuItemRequest, error) {
+func (UnimplementedMenuServiceServer) GetMenuItem(context.Context, *GetMenuItemRequest) (*GetMenuItemResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetMenuItem not implemented")
 }
-func (UnimplementedMenuServiceServer) UpdateMenuItem(context.Context, *GetMenuItemRequest) (*GetMenuItemRequest, error) {
+func (UnimplementedMenuServiceServer) UpdateMenuItem(context.Context, *GetMenuItemRequest) (*GetMenuItemResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateMenuItem not implemented")
 }
 func (UnimplementedMenuServiceServer) DeleteMenuItem(context.Context, *DeleteMenuItemRequest) (*DeleteMenuItemResponse, error) {

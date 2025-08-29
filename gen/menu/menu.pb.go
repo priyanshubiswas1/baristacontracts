@@ -1098,17 +1098,17 @@ const file_menu_proto_rawDesc = "" +
 	"menuItemId\x18\x01 \x01(\tR\n" +
 	"menuItemId\"2\n" +
 	"\x16DeleteMenuItemResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess2\x82\x05\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess2\x86\x05\n" +
 	"\vMenuService\x12?\n" +
 	"\n" +
 	"CreateMenu\x12\x17.menu.CreateMenuRequest\x1a\x18.menu.CreateMenuResponse\x129\n" +
 	"\bGetMenus\x12\x15.menu.GetMenusRequest\x1a\x16.menu.GetMenusResponse\x12?\n" +
 	"\n" +
-	"DeleteMenu\x12\x17.menu.DeleteMenuRequest\x1a\x18.menu.DeleteMenuResponse\x12J\n" +
-	"\x0eCreateMenuItem\x12\x1b.menu.CreateMenuItemRequest\x1a\x1b.menu.CreateMenuItemRequest\x12D\n" +
-	"\fGetMenuItems\x12\x19.menu.GetMenuItemsRequest\x1a\x19.menu.GetMenuItemsRequest\x12A\n" +
-	"\vGetMenuItem\x12\x18.menu.GetMenuItemRequest\x1a\x18.menu.GetMenuItemRequest\x12D\n" +
-	"\x0eUpdateMenuItem\x12\x18.menu.GetMenuItemRequest\x1a\x18.menu.GetMenuItemRequest\x12K\n" +
+	"DeleteMenu\x12\x17.menu.DeleteMenuRequest\x1a\x18.menu.DeleteMenuResponse\x12K\n" +
+	"\x0eCreateMenuItem\x12\x1b.menu.CreateMenuItemRequest\x1a\x1c.menu.CreateMenuItemResponse\x12E\n" +
+	"\fGetMenuItems\x12\x19.menu.GetMenuItemsRequest\x1a\x1a.menu.GetMenuItemsResponse\x12B\n" +
+	"\vGetMenuItem\x12\x18.menu.GetMenuItemRequest\x1a\x19.menu.GetMenuItemResponse\x12E\n" +
+	"\x0eUpdateMenuItem\x12\x18.menu.GetMenuItemRequest\x1a\x19.menu.GetMenuItemResponse\x12K\n" +
 	"\x0eDeleteMenuItem\x12\x1b.menu.DeleteMenuItemRequest\x1a\x1c.menu.DeleteMenuItemResponse\x12N\n" +
 	"\x0fDeleteMenuItems\x12\x1c.menu.DeleteMenuItemsRequest\x1a\x1d.menu.DeleteMenuItemsResponseB\aZ\x05/menub\x06proto3"
 
@@ -1166,10 +1166,10 @@ var file_menu_proto_depIdxs = []int32{
 	3,  // 15: menu.MenuService.CreateMenu:output_type -> menu.CreateMenuResponse
 	5,  // 16: menu.MenuService.GetMenus:output_type -> menu.GetMenusResponse
 	7,  // 17: menu.MenuService.DeleteMenu:output_type -> menu.DeleteMenuResponse
-	8,  // 18: menu.MenuService.CreateMenuItem:output_type -> menu.CreateMenuItemRequest
-	10, // 19: menu.MenuService.GetMenuItems:output_type -> menu.GetMenuItemsRequest
-	12, // 20: menu.MenuService.GetMenuItem:output_type -> menu.GetMenuItemRequest
-	12, // 21: menu.MenuService.UpdateMenuItem:output_type -> menu.GetMenuItemRequest
+	9,  // 18: menu.MenuService.CreateMenuItem:output_type -> menu.CreateMenuItemResponse
+	11, // 19: menu.MenuService.GetMenuItems:output_type -> menu.GetMenuItemsResponse
+	13, // 20: menu.MenuService.GetMenuItem:output_type -> menu.GetMenuItemResponse
+	13, // 21: menu.MenuService.UpdateMenuItem:output_type -> menu.GetMenuItemResponse
 	19, // 22: menu.MenuService.DeleteMenuItem:output_type -> menu.DeleteMenuItemResponse
 	17, // 23: menu.MenuService.DeleteMenuItems:output_type -> menu.DeleteMenuItemsResponse
 	15, // [15:24] is the sub-list for method output_type

@@ -103,10 +103,10 @@ service MenuService{
     rpc CreateMenu(CreateMenuRequest) returns (CreateMenuResponse);
     rpc GetMenus(GetMenusRequest) returns (GetMenusResponse);
     rpc DeleteMenu(DeleteMenuRequest) returns (DeleteMenuResponse);
-    rpc CreateMenuItem(CreateMenuItemRequest) returns (CreateMenuItemRequest);
-    rpc GetMenuItems(GetMenuItemsRequest) returns (GetMenuItemsRequest);
-    rpc GetMenuItem(GetMenuItemRequest) returns (GetMenuItemRequest);
-    rpc UpdateMenuItem(GetMenuItemRequest) returns (GetMenuItemRequest);
+    rpc CreateMenuItem(CreateMenuItemRequest) returns (CreateMenuItemResponse);
+    rpc GetMenuItems(GetMenuItemsRequest) returns (GetMenuItemsResponse);
+    rpc GetMenuItem(GetMenuItemRequest) returns (GetMenuItemResponse);
+    rpc UpdateMenuItem(GetMenuItemRequest) returns (GetMenuItemResponse);
     rpc DeleteMenuItem(DeleteMenuItemRequest) returns (DeleteMenuItemResponse);
     rpc DeleteMenuItems(DeleteMenuItemsRequest) returns (DeleteMenuItemsResponse);
 }
