@@ -8,11 +8,6 @@ message Shop {
     string shopName = 2;
 }
 
-message Token {
-    string ownerId = 1;
-    string password = 2;
-}
-
 message GetByOwnerIdRequest{
     string ownerId = 1;
 }

@@ -4,7 +4,7 @@
 // 	protoc        v6.31.1
 // source: auth.proto
 
-package __
+package auth
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -644,7 +644,7 @@ var File_auth_proto protoreflect.FileDescriptor
 const file_auth_proto_rawDesc = "" +
 	"\n" +
 	"\n" +
-	"auth.proto\x12\x02pb\"`\n" +
+	"auth.proto\x12\x04auth\"`\n" +
 	"\x04User\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12\x14\n" +
 	"\x05email\x18\x02 \x01(\tR\x05email\x12\x14\n" +
@@ -652,45 +652,51 @@ const file_auth_proto_rawDesc = "" +
 	"\aaddress\x18\x04 \x01(\tR\aaddress\"\x1c\n" +
 	"\n" +
 	"GetRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\"+\n" +
-	"\vGetResponse\x12\x1c\n" +
-	"\x04user\x18\x01 \x01(\v2\b.pb.UserR\x04user\"K\n" +
-	"\x0fRegisterRequest\x12\x1c\n" +
-	"\x04user\x18\x01 \x01(\v2\b.pb.UserR\x04user\x12\x1a\n" +
-	"\bpassword\x18\x02 \x01(\tR\bpassword\"F\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\"-\n" +
+	"\vGetResponse\x12\x1e\n" +
+	"\x04user\x18\x01 \x01(\v2\n" +
+	".auth.UserR\x04user\"M\n" +
+	"\x0fRegisterRequest\x12\x1e\n" +
+	"\x04user\x18\x01 \x01(\v2\n" +
+	".auth.UserR\x04user\x12\x1a\n" +
+	"\bpassword\x18\x02 \x01(\tR\bpassword\"H\n" +
 	"\x10RegisterResponse\x12\x14\n" +
-	"\x05token\x18\x01 \x01(\tR\x05token\x12\x1c\n" +
-	"\x04user\x18\x02 \x01(\v2\b.pb.UserR\x04user\"t\n" +
+	"\x05token\x18\x01 \x01(\tR\x05token\x12\x1e\n" +
+	"\x04user\x18\x02 \x01(\v2\n" +
+	".auth.UserR\x04user\"t\n" +
 	"\fLoginRequest\x12\x16\n" +
 	"\x05email\x18\x01 \x01(\tH\x00R\x05email\x12\"\n" +
 	"\vphonenumber\x18\x02 \x01(\tH\x00R\vphonenumber\x12\x1a\n" +
 	"\bpassword\x18\x03 \x01(\tR\bpasswordB\f\n" +
 	"\n" +
-	"identifier\"C\n" +
+	"identifier\"E\n" +
 	"\rLoginResponse\x12\x14\n" +
-	"\x05token\x18\x01 \x01(\tR\x05token\x12\x1c\n" +
-	"\x04user\x18\x02 \x01(\v2\b.pb.UserR\x04user\"{\n" +
+	"\x05token\x18\x01 \x01(\tR\x05token\x12\x1e\n" +
+	"\x04user\x18\x02 \x01(\v2\n" +
+	".auth.UserR\x04user\"}\n" +
 	"\rUpdateRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1c\n" +
-	"\x04user\x18\x02 \x01(\v2\b.pb.UserR\x04user\x12\x1a\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1e\n" +
+	"\x04user\x18\x02 \x01(\v2\n" +
+	".auth.UserR\x04user\x12\x1a\n" +
 	"\bpassword\x18\x03 \x01(\tR\bpassword\x12 \n" +
-	"\voldpassword\x18\x04 \x01(\tR\voldpassword\"D\n" +
+	"\voldpassword\x18\x04 \x01(\tR\voldpassword\"F\n" +
 	"\x0eUpdateResponse\x12\x14\n" +
-	"\x05token\x18\x01 \x01(\tR\x05token\x12\x1c\n" +
-	"\x04user\x18\x02 \x01(\v2\b.pb.UserR\x04user\";\n" +
+	"\x05token\x18\x01 \x01(\tR\x05token\x12\x1e\n" +
+	"\x04user\x18\x02 \x01(\v2\n" +
+	".auth.UserR\x04user\";\n" +
 	"\rDeleteRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1a\n" +
 	"\bpassword\x18\x02 \x01(\tR\bpassword\"*\n" +
 	"\x0eDeleteResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess2\x90\x02\n" +
-	"\vAuthService\x12*\n" +
-	"\aGetUser\x12\x0e.pb.GetRequest\x1a\x0f.pb.GetResponse\x129\n" +
-	"\fRegisterUser\x12\x13.pb.RegisterRequest\x1a\x14.pb.RegisterResponse\x120\n" +
-	"\tLoginUser\x12\x10.pb.LoginRequest\x1a\x11.pb.LoginResponse\x123\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess2\xa4\x02\n" +
+	"\vAuthService\x12.\n" +
+	"\aGetUser\x12\x10.auth.GetRequest\x1a\x11.auth.GetResponse\x12=\n" +
+	"\fRegisterUser\x12\x15.auth.RegisterRequest\x1a\x16.auth.RegisterResponse\x124\n" +
+	"\tLoginUser\x12\x12.auth.LoginRequest\x1a\x13.auth.LoginResponse\x127\n" +
 	"\n" +
-	"UpdateUser\x12\x11.pb.UpdateRequest\x1a\x12.pb.UpdateResponse\x123\n" +
+	"UpdateUser\x12\x13.auth.UpdateRequest\x1a\x14.auth.UpdateResponse\x127\n" +
 	"\n" +
-	"DeleteUser\x12\x11.pb.DeleteRequest\x1a\x12.pb.DeleteResponseB\x03Z\x01/b\x06proto3"
+	"DeleteUser\x12\x13.auth.DeleteRequest\x1a\x14.auth.DeleteResponseB\aZ\x05/authb\x06proto3"
 
 var (
 	file_auth_proto_rawDescOnce sync.Once
@@ -706,35 +712,35 @@ func file_auth_proto_rawDescGZIP() []byte {
 
 var file_auth_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
 var file_auth_proto_goTypes = []any{
-	(*User)(nil),             // 0: pb.User
-	(*GetRequest)(nil),       // 1: pb.GetRequest
-	(*GetResponse)(nil),      // 2: pb.GetResponse
-	(*RegisterRequest)(nil),  // 3: pb.RegisterRequest
-	(*RegisterResponse)(nil), // 4: pb.RegisterResponse
-	(*LoginRequest)(nil),     // 5: pb.LoginRequest
-	(*LoginResponse)(nil),    // 6: pb.LoginResponse
-	(*UpdateRequest)(nil),    // 7: pb.UpdateRequest
-	(*UpdateResponse)(nil),   // 8: pb.UpdateResponse
-	(*DeleteRequest)(nil),    // 9: pb.DeleteRequest
-	(*DeleteResponse)(nil),   // 10: pb.DeleteResponse
+	(*User)(nil),             // 0: auth.User
+	(*GetRequest)(nil),       // 1: auth.GetRequest
+	(*GetResponse)(nil),      // 2: auth.GetResponse
+	(*RegisterRequest)(nil),  // 3: auth.RegisterRequest
+	(*RegisterResponse)(nil), // 4: auth.RegisterResponse
+	(*LoginRequest)(nil),     // 5: auth.LoginRequest
+	(*LoginResponse)(nil),    // 6: auth.LoginResponse
+	(*UpdateRequest)(nil),    // 7: auth.UpdateRequest
+	(*UpdateResponse)(nil),   // 8: auth.UpdateResponse
+	(*DeleteRequest)(nil),    // 9: auth.DeleteRequest
+	(*DeleteResponse)(nil),   // 10: auth.DeleteResponse
 }
 var file_auth_proto_depIdxs = []int32{
-	0,  // 0: pb.GetResponse.user:type_name -> pb.User
-	0,  // 1: pb.RegisterRequest.user:type_name -> pb.User
-	0,  // 2: pb.RegisterResponse.user:type_name -> pb.User
-	0,  // 3: pb.LoginResponse.user:type_name -> pb.User
-	0,  // 4: pb.UpdateRequest.user:type_name -> pb.User
-	0,  // 5: pb.UpdateResponse.user:type_name -> pb.User
-	1,  // 6: pb.AuthService.GetUser:input_type -> pb.GetRequest
-	3,  // 7: pb.AuthService.RegisterUser:input_type -> pb.RegisterRequest
-	5,  // 8: pb.AuthService.LoginUser:input_type -> pb.LoginRequest
-	7,  // 9: pb.AuthService.UpdateUser:input_type -> pb.UpdateRequest
-	9,  // 10: pb.AuthService.DeleteUser:input_type -> pb.DeleteRequest
-	2,  // 11: pb.AuthService.GetUser:output_type -> pb.GetResponse
-	4,  // 12: pb.AuthService.RegisterUser:output_type -> pb.RegisterResponse
-	6,  // 13: pb.AuthService.LoginUser:output_type -> pb.LoginResponse
-	8,  // 14: pb.AuthService.UpdateUser:output_type -> pb.UpdateResponse
-	10, // 15: pb.AuthService.DeleteUser:output_type -> pb.DeleteResponse
+	0,  // 0: auth.GetResponse.user:type_name -> auth.User
+	0,  // 1: auth.RegisterRequest.user:type_name -> auth.User
+	0,  // 2: auth.RegisterResponse.user:type_name -> auth.User
+	0,  // 3: auth.LoginResponse.user:type_name -> auth.User
+	0,  // 4: auth.UpdateRequest.user:type_name -> auth.User
+	0,  // 5: auth.UpdateResponse.user:type_name -> auth.User
+	1,  // 6: auth.AuthService.GetUser:input_type -> auth.GetRequest
+	3,  // 7: auth.AuthService.RegisterUser:input_type -> auth.RegisterRequest
+	5,  // 8: auth.AuthService.LoginUser:input_type -> auth.LoginRequest
+	7,  // 9: auth.AuthService.UpdateUser:input_type -> auth.UpdateRequest
+	9,  // 10: auth.AuthService.DeleteUser:input_type -> auth.DeleteRequest
+	2,  // 11: auth.AuthService.GetUser:output_type -> auth.GetResponse
+	4,  // 12: auth.AuthService.RegisterUser:output_type -> auth.RegisterResponse
+	6,  // 13: auth.AuthService.LoginUser:output_type -> auth.LoginResponse
+	8,  // 14: auth.AuthService.UpdateUser:output_type -> auth.UpdateResponse
+	10, // 15: auth.AuthService.DeleteUser:output_type -> auth.DeleteResponse
 	11, // [11:16] is the sub-list for method output_type
 	6,  // [6:11] is the sub-list for method input_type
 	6,  // [6:6] is the sub-list for extension type_name

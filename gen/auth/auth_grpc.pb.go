@@ -4,7 +4,7 @@
 // - protoc             v6.31.1
 // source: auth.proto
 
-package __
+package auth
 
 import (
 	context "context"
@@ -19,11 +19,11 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	AuthService_GetUser_FullMethodName      = "/pb.AuthService/GetUser"
-	AuthService_RegisterUser_FullMethodName = "/pb.AuthService/RegisterUser"
-	AuthService_LoginUser_FullMethodName    = "/pb.AuthService/LoginUser"
-	AuthService_UpdateUser_FullMethodName   = "/pb.AuthService/UpdateUser"
-	AuthService_DeleteUser_FullMethodName   = "/pb.AuthService/DeleteUser"
+	AuthService_GetUser_FullMethodName      = "/auth.AuthService/GetUser"
+	AuthService_RegisterUser_FullMethodName = "/auth.AuthService/RegisterUser"
+	AuthService_LoginUser_FullMethodName    = "/auth.AuthService/LoginUser"
+	AuthService_UpdateUser_FullMethodName   = "/auth.AuthService/UpdateUser"
+	AuthService_DeleteUser_FullMethodName   = "/auth.AuthService/DeleteUser"
 )
 
 // AuthServiceClient is the client API for AuthService service.
@@ -244,7 +244,7 @@ func _AuthService_DeleteUser_Handler(srv interface{}, ctx context.Context, dec f
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var AuthService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "pb.AuthService",
+	ServiceName: "auth.AuthService",
 	HandlerType: (*AuthServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{

@@ -73,58 +73,6 @@ func (x *Shop) GetShopName() string {
 	return ""
 }
 
-type Token struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	OwnerId       string                 `protobuf:"bytes,1,opt,name=ownerId,proto3" json:"ownerId,omitempty"`
-	Password      string                 `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *Token) Reset() {
-	*x = Token{}
-	mi := &file_shop_proto_msgTypes[1]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *Token) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*Token) ProtoMessage() {}
-
-func (x *Token) ProtoReflect() protoreflect.Message {
-	mi := &file_shop_proto_msgTypes[1]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use Token.ProtoReflect.Descriptor instead.
-func (*Token) Descriptor() ([]byte, []int) {
-	return file_shop_proto_rawDescGZIP(), []int{1}
-}
-
-func (x *Token) GetOwnerId() string {
-	if x != nil {
-		return x.OwnerId
-	}
-	return ""
-}
-
-func (x *Token) GetPassword() string {
-	if x != nil {
-		return x.Password
-	}
-	return ""
-}
-
 type GetByOwnerIdRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	OwnerId       string                 `protobuf:"bytes,1,opt,name=ownerId,proto3" json:"ownerId,omitempty"`
@@ -134,7 +82,7 @@ type GetByOwnerIdRequest struct {
 
 func (x *GetByOwnerIdRequest) Reset() {
 	*x = GetByOwnerIdRequest{}
-	mi := &file_shop_proto_msgTypes[2]
+	mi := &file_shop_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -146,7 +94,7 @@ func (x *GetByOwnerIdRequest) String() string {
 func (*GetByOwnerIdRequest) ProtoMessage() {}
 
 func (x *GetByOwnerIdRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_shop_proto_msgTypes[2]
+	mi := &file_shop_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -159,7 +107,7 @@ func (x *GetByOwnerIdRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetByOwnerIdRequest.ProtoReflect.Descriptor instead.
 func (*GetByOwnerIdRequest) Descriptor() ([]byte, []int) {
-	return file_shop_proto_rawDescGZIP(), []int{2}
+	return file_shop_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *GetByOwnerIdRequest) GetOwnerId() string {
@@ -178,7 +126,7 @@ type GetByOwnerIdResponse struct {
 
 func (x *GetByOwnerIdResponse) Reset() {
 	*x = GetByOwnerIdResponse{}
-	mi := &file_shop_proto_msgTypes[3]
+	mi := &file_shop_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -190,7 +138,7 @@ func (x *GetByOwnerIdResponse) String() string {
 func (*GetByOwnerIdResponse) ProtoMessage() {}
 
 func (x *GetByOwnerIdResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_shop_proto_msgTypes[3]
+	mi := &file_shop_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -203,7 +151,7 @@ func (x *GetByOwnerIdResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetByOwnerIdResponse.ProtoReflect.Descriptor instead.
 func (*GetByOwnerIdResponse) Descriptor() ([]byte, []int) {
-	return file_shop_proto_rawDescGZIP(), []int{3}
+	return file_shop_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *GetByOwnerIdResponse) GetShops() []*Shop {
@@ -222,7 +170,7 @@ type GetByShopIdRequest struct {
 
 func (x *GetByShopIdRequest) Reset() {
 	*x = GetByShopIdRequest{}
-	mi := &file_shop_proto_msgTypes[4]
+	mi := &file_shop_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -234,7 +182,7 @@ func (x *GetByShopIdRequest) String() string {
 func (*GetByShopIdRequest) ProtoMessage() {}
 
 func (x *GetByShopIdRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_shop_proto_msgTypes[4]
+	mi := &file_shop_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -247,7 +195,7 @@ func (x *GetByShopIdRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetByShopIdRequest.ProtoReflect.Descriptor instead.
 func (*GetByShopIdRequest) Descriptor() ([]byte, []int) {
-	return file_shop_proto_rawDescGZIP(), []int{4}
+	return file_shop_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *GetByShopIdRequest) GetShopId() string {
@@ -266,7 +214,7 @@ type GetShopByIdResponse struct {
 
 func (x *GetShopByIdResponse) Reset() {
 	*x = GetShopByIdResponse{}
-	mi := &file_shop_proto_msgTypes[5]
+	mi := &file_shop_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -278,7 +226,7 @@ func (x *GetShopByIdResponse) String() string {
 func (*GetShopByIdResponse) ProtoMessage() {}
 
 func (x *GetShopByIdResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_shop_proto_msgTypes[5]
+	mi := &file_shop_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -291,7 +239,7 @@ func (x *GetShopByIdResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetShopByIdResponse.ProtoReflect.Descriptor instead.
 func (*GetShopByIdResponse) Descriptor() ([]byte, []int) {
-	return file_shop_proto_rawDescGZIP(), []int{5}
+	return file_shop_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *GetShopByIdResponse) GetShop() *Shop {
@@ -311,7 +259,7 @@ type CreateRequest struct {
 
 func (x *CreateRequest) Reset() {
 	*x = CreateRequest{}
-	mi := &file_shop_proto_msgTypes[6]
+	mi := &file_shop_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -323,7 +271,7 @@ func (x *CreateRequest) String() string {
 func (*CreateRequest) ProtoMessage() {}
 
 func (x *CreateRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_shop_proto_msgTypes[6]
+	mi := &file_shop_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -336,7 +284,7 @@ func (x *CreateRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateRequest.ProtoReflect.Descriptor instead.
 func (*CreateRequest) Descriptor() ([]byte, []int) {
-	return file_shop_proto_rawDescGZIP(), []int{6}
+	return file_shop_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *CreateRequest) GetOwnerId() string {
@@ -362,7 +310,7 @@ type CreateResponse struct {
 
 func (x *CreateResponse) Reset() {
 	*x = CreateResponse{}
-	mi := &file_shop_proto_msgTypes[7]
+	mi := &file_shop_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -374,7 +322,7 @@ func (x *CreateResponse) String() string {
 func (*CreateResponse) ProtoMessage() {}
 
 func (x *CreateResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_shop_proto_msgTypes[7]
+	mi := &file_shop_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -387,7 +335,7 @@ func (x *CreateResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateResponse.ProtoReflect.Descriptor instead.
 func (*CreateResponse) Descriptor() ([]byte, []int) {
-	return file_shop_proto_rawDescGZIP(), []int{7}
+	return file_shop_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *CreateResponse) GetShop() *Shop {
@@ -407,7 +355,7 @@ type UpdateRequest struct {
 
 func (x *UpdateRequest) Reset() {
 	*x = UpdateRequest{}
-	mi := &file_shop_proto_msgTypes[8]
+	mi := &file_shop_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -419,7 +367,7 @@ func (x *UpdateRequest) String() string {
 func (*UpdateRequest) ProtoMessage() {}
 
 func (x *UpdateRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_shop_proto_msgTypes[8]
+	mi := &file_shop_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -432,7 +380,7 @@ func (x *UpdateRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateRequest.ProtoReflect.Descriptor instead.
 func (*UpdateRequest) Descriptor() ([]byte, []int) {
-	return file_shop_proto_rawDescGZIP(), []int{8}
+	return file_shop_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *UpdateRequest) GetOwnerId() string {
@@ -458,7 +406,7 @@ type UpdateResponse struct {
 
 func (x *UpdateResponse) Reset() {
 	*x = UpdateResponse{}
-	mi := &file_shop_proto_msgTypes[9]
+	mi := &file_shop_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -470,7 +418,7 @@ func (x *UpdateResponse) String() string {
 func (*UpdateResponse) ProtoMessage() {}
 
 func (x *UpdateResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_shop_proto_msgTypes[9]
+	mi := &file_shop_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -483,7 +431,7 @@ func (x *UpdateResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateResponse.ProtoReflect.Descriptor instead.
 func (*UpdateResponse) Descriptor() ([]byte, []int) {
-	return file_shop_proto_rawDescGZIP(), []int{9}
+	return file_shop_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *UpdateResponse) GetShop() *Shop {
@@ -503,7 +451,7 @@ type DeleteRequest struct {
 
 func (x *DeleteRequest) Reset() {
 	*x = DeleteRequest{}
-	mi := &file_shop_proto_msgTypes[10]
+	mi := &file_shop_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -515,7 +463,7 @@ func (x *DeleteRequest) String() string {
 func (*DeleteRequest) ProtoMessage() {}
 
 func (x *DeleteRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_shop_proto_msgTypes[10]
+	mi := &file_shop_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -528,7 +476,7 @@ func (x *DeleteRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteRequest.ProtoReflect.Descriptor instead.
 func (*DeleteRequest) Descriptor() ([]byte, []int) {
-	return file_shop_proto_rawDescGZIP(), []int{10}
+	return file_shop_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *DeleteRequest) GetOwnerId() string {
@@ -554,7 +502,7 @@ type DeleteResponse struct {
 
 func (x *DeleteResponse) Reset() {
 	*x = DeleteResponse{}
-	mi := &file_shop_proto_msgTypes[11]
+	mi := &file_shop_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -566,7 +514,7 @@ func (x *DeleteResponse) String() string {
 func (*DeleteResponse) ProtoMessage() {}
 
 func (x *DeleteResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_shop_proto_msgTypes[11]
+	mi := &file_shop_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -579,7 +527,7 @@ func (x *DeleteResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteResponse.ProtoReflect.Descriptor instead.
 func (*DeleteResponse) Descriptor() ([]byte, []int) {
-	return file_shop_proto_rawDescGZIP(), []int{11}
+	return file_shop_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *DeleteResponse) GetSuccess() bool {
@@ -597,10 +545,7 @@ const file_shop_proto_rawDesc = "" +
 	"shop.proto\x12\x04shop\":\n" +
 	"\x04Shop\x12\x16\n" +
 	"\x06shopId\x18\x01 \x01(\tR\x06shopId\x12\x1a\n" +
-	"\bshopName\x18\x02 \x01(\tR\bshopName\"=\n" +
-	"\x05Token\x12\x18\n" +
-	"\aownerId\x18\x01 \x01(\tR\aownerId\x12\x1a\n" +
-	"\bpassword\x18\x02 \x01(\tR\bpassword\"/\n" +
+	"\bshopName\x18\x02 \x01(\tR\bshopName\"/\n" +
 	"\x13GetByOwnerIdRequest\x12\x18\n" +
 	"\aownerId\x18\x01 \x01(\tR\aownerId\"8\n" +
 	"\x14GetByOwnerIdResponse\x12 \n" +
@@ -650,20 +595,19 @@ func file_shop_proto_rawDescGZIP() []byte {
 	return file_shop_proto_rawDescData
 }
 
-var file_shop_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
+var file_shop_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
 var file_shop_proto_goTypes = []any{
 	(*Shop)(nil),                 // 0: shop.Shop
-	(*Token)(nil),                // 1: shop.Token
-	(*GetByOwnerIdRequest)(nil),  // 2: shop.GetByOwnerIdRequest
-	(*GetByOwnerIdResponse)(nil), // 3: shop.GetByOwnerIdResponse
-	(*GetByShopIdRequest)(nil),   // 4: shop.GetByShopIdRequest
-	(*GetShopByIdResponse)(nil),  // 5: shop.GetShopByIdResponse
-	(*CreateRequest)(nil),        // 6: shop.CreateRequest
-	(*CreateResponse)(nil),       // 7: shop.CreateResponse
-	(*UpdateRequest)(nil),        // 8: shop.UpdateRequest
-	(*UpdateResponse)(nil),       // 9: shop.UpdateResponse
-	(*DeleteRequest)(nil),        // 10: shop.DeleteRequest
-	(*DeleteResponse)(nil),       // 11: shop.DeleteResponse
+	(*GetByOwnerIdRequest)(nil),  // 1: shop.GetByOwnerIdRequest
+	(*GetByOwnerIdResponse)(nil), // 2: shop.GetByOwnerIdResponse
+	(*GetByShopIdRequest)(nil),   // 3: shop.GetByShopIdRequest
+	(*GetShopByIdResponse)(nil),  // 4: shop.GetShopByIdResponse
+	(*CreateRequest)(nil),        // 5: shop.CreateRequest
+	(*CreateResponse)(nil),       // 6: shop.CreateResponse
+	(*UpdateRequest)(nil),        // 7: shop.UpdateRequest
+	(*UpdateResponse)(nil),       // 8: shop.UpdateResponse
+	(*DeleteRequest)(nil),        // 9: shop.DeleteRequest
+	(*DeleteResponse)(nil),       // 10: shop.DeleteResponse
 }
 var file_shop_proto_depIdxs = []int32{
 	0,  // 0: shop.GetByOwnerIdResponse.shops:type_name -> shop.Shop
@@ -671,16 +615,16 @@ var file_shop_proto_depIdxs = []int32{
 	0,  // 2: shop.CreateResponse.Shop:type_name -> shop.Shop
 	0,  // 3: shop.UpdateRequest.Shop:type_name -> shop.Shop
 	0,  // 4: shop.UpdateResponse.Shop:type_name -> shop.Shop
-	2,  // 5: shop.ShopService.GetShopByOwnerId:input_type -> shop.GetByOwnerIdRequest
-	4,  // 6: shop.ShopService.GetShopById:input_type -> shop.GetByShopIdRequest
-	6,  // 7: shop.ShopService.RegisterShop:input_type -> shop.CreateRequest
-	8,  // 8: shop.ShopService.UpdateShop:input_type -> shop.UpdateRequest
-	10, // 9: shop.ShopService.DeleteShop:input_type -> shop.DeleteRequest
-	3,  // 10: shop.ShopService.GetShopByOwnerId:output_type -> shop.GetByOwnerIdResponse
-	5,  // 11: shop.ShopService.GetShopById:output_type -> shop.GetShopByIdResponse
-	7,  // 12: shop.ShopService.RegisterShop:output_type -> shop.CreateResponse
-	9,  // 13: shop.ShopService.UpdateShop:output_type -> shop.UpdateResponse
-	11, // 14: shop.ShopService.DeleteShop:output_type -> shop.DeleteResponse
+	1,  // 5: shop.ShopService.GetShopByOwnerId:input_type -> shop.GetByOwnerIdRequest
+	3,  // 6: shop.ShopService.GetShopById:input_type -> shop.GetByShopIdRequest
+	5,  // 7: shop.ShopService.RegisterShop:input_type -> shop.CreateRequest
+	7,  // 8: shop.ShopService.UpdateShop:input_type -> shop.UpdateRequest
+	9,  // 9: shop.ShopService.DeleteShop:input_type -> shop.DeleteRequest
+	2,  // 10: shop.ShopService.GetShopByOwnerId:output_type -> shop.GetByOwnerIdResponse
+	4,  // 11: shop.ShopService.GetShopById:output_type -> shop.GetShopByIdResponse
+	6,  // 12: shop.ShopService.RegisterShop:output_type -> shop.CreateResponse
+	8,  // 13: shop.ShopService.UpdateShop:output_type -> shop.UpdateResponse
+	10, // 14: shop.ShopService.DeleteShop:output_type -> shop.DeleteResponse
 	10, // [10:15] is the sub-list for method output_type
 	5,  // [5:10] is the sub-list for method input_type
 	5,  // [5:5] is the sub-list for extension type_name
@@ -699,7 +643,7 @@ func file_shop_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_shop_proto_rawDesc), len(file_shop_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   12,
+			NumMessages:   11,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
