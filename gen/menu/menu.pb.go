@@ -608,7 +608,7 @@ type CreateItemRequest struct {
 	Name          string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	ShopId        string                 `protobuf:"bytes,2,opt,name=shopId,proto3" json:"shopId,omitempty"`
 	Description   string                 `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
-	Category      string                 `protobuf:"bytes,4,opt,name=category,proto3" json:"category,omitempty"`
+	CategoryId    string                 `protobuf:"bytes,4,opt,name=categoryId,proto3" json:"categoryId,omitempty"`
 	Price         float32                `protobuf:"fixed32,5,opt,name=price,proto3" json:"price,omitempty"`
 	Image         string                 `protobuf:"bytes,6,opt,name=image,proto3" json:"image,omitempty"`
 	IsAvailable   bool                   `protobuf:"varint,7,opt,name=isAvailable,proto3" json:"isAvailable,omitempty"`
@@ -667,9 +667,9 @@ func (x *CreateItemRequest) GetDescription() string {
 	return ""
 }
 
-func (x *CreateItemRequest) GetCategory() string {
+func (x *CreateItemRequest) GetCategoryId() string {
 	if x != nil {
-		return x.Category
+		return x.CategoryId
 	}
 	return ""
 }
@@ -917,7 +917,14 @@ func (x *GetItemsResponse) GetItems() []*Item {
 
 type UpdateItemRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Item          *Item                  `protobuf:"bytes,1,opt,name=item,proto3" json:"item,omitempty"`
+	ItemId        string                 `protobuf:"bytes,1,opt,name=itemId,proto3" json:"itemId,omitempty"`
+	ShopId        string                 `protobuf:"bytes,2,opt,name=shopId,proto3" json:"shopId,omitempty"`
+	Name          string                 `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
+	Description   string                 `protobuf:"bytes,4,opt,name=description,proto3" json:"description,omitempty"`
+	CategoryId    string                 `protobuf:"bytes,5,opt,name=categoryId,proto3" json:"categoryId,omitempty"`
+	Price         float32                `protobuf:"fixed32,6,opt,name=price,proto3" json:"price,omitempty"`
+	Image         string                 `protobuf:"bytes,7,opt,name=image,proto3" json:"image,omitempty"`
+	IsAvailable   bool                   `protobuf:"varint,8,opt,name=isAvailable,proto3" json:"isAvailable,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -952,11 +959,60 @@ func (*UpdateItemRequest) Descriptor() ([]byte, []int) {
 	return file_menu_proto_rawDescGZIP(), []int{17}
 }
 
-func (x *UpdateItemRequest) GetItem() *Item {
+func (x *UpdateItemRequest) GetItemId() string {
 	if x != nil {
-		return x.Item
+		return x.ItemId
 	}
-	return nil
+	return ""
+}
+
+func (x *UpdateItemRequest) GetShopId() string {
+	if x != nil {
+		return x.ShopId
+	}
+	return ""
+}
+
+func (x *UpdateItemRequest) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *UpdateItemRequest) GetDescription() string {
+	if x != nil {
+		return x.Description
+	}
+	return ""
+}
+
+func (x *UpdateItemRequest) GetCategoryId() string {
+	if x != nil {
+		return x.CategoryId
+	}
+	return ""
+}
+
+func (x *UpdateItemRequest) GetPrice() float32 {
+	if x != nil {
+		return x.Price
+	}
+	return 0
+}
+
+func (x *UpdateItemRequest) GetImage() string {
+	if x != nil {
+		return x.Image
+	}
+	return ""
+}
+
+func (x *UpdateItemRequest) GetIsAvailable() bool {
+	if x != nil {
+		return x.IsAvailable
+	}
+	return false
 }
 
 type UpdateItemResponse struct {
@@ -1460,6 +1516,347 @@ func (x *DeleteMenuItemsResponse) GetSuccess() bool {
 	return false
 }
 
+// CATEGORY
+type Category struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	ShopId        string                 `protobuf:"bytes,2,opt,name=shopId,proto3" json:"shopId,omitempty"`
+	Name          string                 `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Category) Reset() {
+	*x = Category{}
+	mi := &file_menu_proto_msgTypes[29]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Category) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Category) ProtoMessage() {}
+
+func (x *Category) ProtoReflect() protoreflect.Message {
+	mi := &file_menu_proto_msgTypes[29]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Category.ProtoReflect.Descriptor instead.
+func (*Category) Descriptor() ([]byte, []int) {
+	return file_menu_proto_rawDescGZIP(), []int{29}
+}
+
+func (x *Category) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *Category) GetShopId() string {
+	if x != nil {
+		return x.ShopId
+	}
+	return ""
+}
+
+func (x *Category) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+type CreateCategoryRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ShopId        string                 `protobuf:"bytes,1,opt,name=shopId,proto3" json:"shopId,omitempty"`
+	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateCategoryRequest) Reset() {
+	*x = CreateCategoryRequest{}
+	mi := &file_menu_proto_msgTypes[30]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateCategoryRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateCategoryRequest) ProtoMessage() {}
+
+func (x *CreateCategoryRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_menu_proto_msgTypes[30]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateCategoryRequest.ProtoReflect.Descriptor instead.
+func (*CreateCategoryRequest) Descriptor() ([]byte, []int) {
+	return file_menu_proto_rawDescGZIP(), []int{30}
+}
+
+func (x *CreateCategoryRequest) GetShopId() string {
+	if x != nil {
+		return x.ShopId
+	}
+	return ""
+}
+
+func (x *CreateCategoryRequest) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+type CreateCategoryResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateCategoryResponse) Reset() {
+	*x = CreateCategoryResponse{}
+	mi := &file_menu_proto_msgTypes[31]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateCategoryResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateCategoryResponse) ProtoMessage() {}
+
+func (x *CreateCategoryResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_menu_proto_msgTypes[31]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateCategoryResponse.ProtoReflect.Descriptor instead.
+func (*CreateCategoryResponse) Descriptor() ([]byte, []int) {
+	return file_menu_proto_rawDescGZIP(), []int{31}
+}
+
+func (x *CreateCategoryResponse) GetSuccess() bool {
+	if x != nil {
+		return x.Success
+	}
+	return false
+}
+
+type GetCategoryRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ShopId        string                 `protobuf:"bytes,1,opt,name=shopId,proto3" json:"shopId,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetCategoryRequest) Reset() {
+	*x = GetCategoryRequest{}
+	mi := &file_menu_proto_msgTypes[32]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetCategoryRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetCategoryRequest) ProtoMessage() {}
+
+func (x *GetCategoryRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_menu_proto_msgTypes[32]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetCategoryRequest.ProtoReflect.Descriptor instead.
+func (*GetCategoryRequest) Descriptor() ([]byte, []int) {
+	return file_menu_proto_rawDescGZIP(), []int{32}
+}
+
+func (x *GetCategoryRequest) GetShopId() string {
+	if x != nil {
+		return x.ShopId
+	}
+	return ""
+}
+
+type GetCategoryResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Categories    []*Category            `protobuf:"bytes,1,rep,name=categories,proto3" json:"categories,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetCategoryResponse) Reset() {
+	*x = GetCategoryResponse{}
+	mi := &file_menu_proto_msgTypes[33]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetCategoryResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetCategoryResponse) ProtoMessage() {}
+
+func (x *GetCategoryResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_menu_proto_msgTypes[33]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetCategoryResponse.ProtoReflect.Descriptor instead.
+func (*GetCategoryResponse) Descriptor() ([]byte, []int) {
+	return file_menu_proto_rawDescGZIP(), []int{33}
+}
+
+func (x *GetCategoryResponse) GetCategories() []*Category {
+	if x != nil {
+		return x.Categories
+	}
+	return nil
+}
+
+type DeleteCategoryRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	ShopId        string                 `protobuf:"bytes,2,opt,name=shopId,proto3" json:"shopId,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteCategoryRequest) Reset() {
+	*x = DeleteCategoryRequest{}
+	mi := &file_menu_proto_msgTypes[34]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteCategoryRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteCategoryRequest) ProtoMessage() {}
+
+func (x *DeleteCategoryRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_menu_proto_msgTypes[34]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteCategoryRequest.ProtoReflect.Descriptor instead.
+func (*DeleteCategoryRequest) Descriptor() ([]byte, []int) {
+	return file_menu_proto_rawDescGZIP(), []int{34}
+}
+
+func (x *DeleteCategoryRequest) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *DeleteCategoryRequest) GetShopId() string {
+	if x != nil {
+		return x.ShopId
+	}
+	return ""
+}
+
+type DeleteCategoryResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteCategoryResponse) Reset() {
+	*x = DeleteCategoryResponse{}
+	mi := &file_menu_proto_msgTypes[35]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteCategoryResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteCategoryResponse) ProtoMessage() {}
+
+func (x *DeleteCategoryResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_menu_proto_msgTypes[35]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteCategoryResponse.ProtoReflect.Descriptor instead.
+func (*DeleteCategoryResponse) Descriptor() ([]byte, []int) {
+	return file_menu_proto_rawDescGZIP(), []int{35}
+}
+
+func (x *DeleteCategoryResponse) GetSuccess() bool {
+	if x != nil {
+		return x.Success
+	}
+	return false
+}
+
 var File_menu_proto protoreflect.FileDescriptor
 
 const file_menu_proto_rawDesc = "" +
@@ -1503,12 +1900,14 @@ const file_menu_proto_rawDesc = "" +
 	"\x11DeleteMenuRequest\x12\x16\n" +
 	"\x06menuId\x18\x01 \x01(\tR\x06menuId\".\n" +
 	"\x12DeleteMenuResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess\"\xcb\x01\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\"\xcf\x01\n" +
 	"\x11CreateItemRequest\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12\x16\n" +
 	"\x06shopId\x18\x02 \x01(\tR\x06shopId\x12 \n" +
-	"\vdescription\x18\x03 \x01(\tR\vdescription\x12\x1a\n" +
-	"\bcategory\x18\x04 \x01(\tR\bcategory\x12\x14\n" +
+	"\vdescription\x18\x03 \x01(\tR\vdescription\x12\x1e\n" +
+	"\n" +
+	"categoryId\x18\x04 \x01(\tR\n" +
+	"categoryId\x12\x14\n" +
 	"\x05price\x18\x05 \x01(\x02R\x05price\x12\x14\n" +
 	"\x05image\x18\x06 \x01(\tR\x05image\x12 \n" +
 	"\visAvailable\x18\a \x01(\bR\visAvailable\"4\n" +
@@ -1524,10 +1923,18 @@ const file_menu_proto_rawDesc = "" +
 	"\x06shopId\x18\x01 \x01(\tR\x06shopId\"4\n" +
 	"\x10GetItemsResponse\x12 \n" +
 	"\x05items\x18\x01 \x03(\v2\n" +
-	".menu.ItemR\x05items\"3\n" +
-	"\x11UpdateItemRequest\x12\x1e\n" +
-	"\x04item\x18\x01 \x01(\v2\n" +
-	".menu.ItemR\x04item\".\n" +
+	".menu.ItemR\x05items\"\xe7\x01\n" +
+	"\x11UpdateItemRequest\x12\x16\n" +
+	"\x06itemId\x18\x01 \x01(\tR\x06itemId\x12\x16\n" +
+	"\x06shopId\x18\x02 \x01(\tR\x06shopId\x12\x12\n" +
+	"\x04name\x18\x03 \x01(\tR\x04name\x12 \n" +
+	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x1e\n" +
+	"\n" +
+	"categoryId\x18\x05 \x01(\tR\n" +
+	"categoryId\x12\x14\n" +
+	"\x05price\x18\x06 \x01(\x02R\x05price\x12\x14\n" +
+	"\x05image\x18\a \x01(\tR\x05image\x12 \n" +
+	"\visAvailable\x18\b \x01(\bR\visAvailable\".\n" +
 	"\x12UpdateItemResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\"+\n" +
 	"\x11DeleteItemRequest\x12\x16\n" +
@@ -1552,7 +1959,27 @@ const file_menu_proto_rawDesc = "" +
 	"\x16DeleteMenuItemsRequest\x12\x16\n" +
 	"\x06menuId\x18\x01 \x01(\tR\x06menuId\"3\n" +
 	"\x17DeleteMenuItemsResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess2\xe9\x06\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\"F\n" +
+	"\bCategory\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x16\n" +
+	"\x06shopId\x18\x02 \x01(\tR\x06shopId\x12\x12\n" +
+	"\x04name\x18\x03 \x01(\tR\x04name\"C\n" +
+	"\x15CreateCategoryRequest\x12\x16\n" +
+	"\x06shopId\x18\x01 \x01(\tR\x06shopId\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\"2\n" +
+	"\x16CreateCategoryResponse\x12\x18\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\",\n" +
+	"\x12GetCategoryRequest\x12\x16\n" +
+	"\x06shopId\x18\x01 \x01(\tR\x06shopId\"E\n" +
+	"\x13GetCategoryResponse\x12.\n" +
+	"\n" +
+	"categories\x18\x01 \x03(\v2\x0e.menu.CategoryR\n" +
+	"categories\"?\n" +
+	"\x15DeleteCategoryRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x16\n" +
+	"\x06shopId\x18\x02 \x01(\tR\x06shopId\"2\n" +
+	"\x16DeleteCategoryResponse\x12\x18\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess2\xc7\b\n" +
 	"\vMenuService\x12?\n" +
 	"\n" +
 	"CreateMenu\x12\x17.menu.CreateMenuRequest\x1a\x18.menu.CreateMenuResponse\x129\n" +
@@ -1571,7 +1998,10 @@ const file_menu_proto_rawDesc = "" +
 	"\x0eCreateMenuItem\x12\x1b.menu.CreateMenuItemRequest\x1a\x1c.menu.CreateMenuItemResponse\x12E\n" +
 	"\fGetMenuItems\x12\x19.menu.GetMenuItemsRequest\x1a\x1a.menu.GetMenuItemsResponse\x12K\n" +
 	"\x0eDeleteMenuItem\x12\x1b.menu.DeleteMenuItemRequest\x1a\x1c.menu.DeleteMenuItemResponse\x12N\n" +
-	"\x0fDeleteMenuItems\x12\x1c.menu.DeleteMenuItemsRequest\x1a\x1d.menu.DeleteMenuItemsResponseB\aZ\x05/menub\x06proto3"
+	"\x0fDeleteMenuItems\x12\x1c.menu.DeleteMenuItemsRequest\x1a\x1d.menu.DeleteMenuItemsResponse\x12K\n" +
+	"\x0eCreateCategory\x12\x1b.menu.CreateCategoryRequest\x1a\x1c.menu.CreateCategoryResponse\x12B\n" +
+	"\vGetCategory\x12\x18.menu.GetCategoryRequest\x1a\x19.menu.GetCategoryResponse\x12K\n" +
+	"\x0eDeleteCategory\x12\x1b.menu.DeleteCategoryRequest\x1a\x1c.menu.DeleteCategoryResponseB\aZ\x05/menub\x06proto3"
 
 var (
 	file_menu_proto_rawDescOnce sync.Once
@@ -1585,7 +2015,7 @@ func file_menu_proto_rawDescGZIP() []byte {
 	return file_menu_proto_rawDescData
 }
 
-var file_menu_proto_msgTypes = make([]protoimpl.MessageInfo, 29)
+var file_menu_proto_msgTypes = make([]protoimpl.MessageInfo, 36)
 var file_menu_proto_goTypes = []any{
 	(*Menu)(nil),                    // 0: menu.Menu
 	(*Item)(nil),                    // 1: menu.Item
@@ -1616,6 +2046,13 @@ var file_menu_proto_goTypes = []any{
 	(*DeleteMenuItemResponse)(nil),  // 26: menu.DeleteMenuItemResponse
 	(*DeleteMenuItemsRequest)(nil),  // 27: menu.DeleteMenuItemsRequest
 	(*DeleteMenuItemsResponse)(nil), // 28: menu.DeleteMenuItemsResponse
+	(*Category)(nil),                // 29: menu.Category
+	(*CreateCategoryRequest)(nil),   // 30: menu.CreateCategoryRequest
+	(*CreateCategoryResponse)(nil),  // 31: menu.CreateCategoryResponse
+	(*GetCategoryRequest)(nil),      // 32: menu.GetCategoryRequest
+	(*GetCategoryResponse)(nil),     // 33: menu.GetCategoryResponse
+	(*DeleteCategoryRequest)(nil),   // 34: menu.DeleteCategoryRequest
+	(*DeleteCategoryResponse)(nil),  // 35: menu.DeleteCategoryResponse
 }
 var file_menu_proto_depIdxs = []int32{
 	0,  // 0: menu.CreateMenuResponse.menu:type_name -> menu.Menu
@@ -1623,9 +2060,9 @@ var file_menu_proto_depIdxs = []int32{
 	1,  // 2: menu.CreateItemResponse.item:type_name -> menu.Item
 	1,  // 3: menu.GetItemResponse.item:type_name -> menu.Item
 	1,  // 4: menu.GetItemsResponse.items:type_name -> menu.Item
-	1,  // 5: menu.UpdateItemRequest.item:type_name -> menu.Item
-	2,  // 6: menu.CreateMenuItemResponse.menuItem:type_name -> menu.MenuItem
-	1,  // 7: menu.GetMenuItemsResponse.items:type_name -> menu.Item
+	2,  // 5: menu.CreateMenuItemResponse.menuItem:type_name -> menu.MenuItem
+	1,  // 6: menu.GetMenuItemsResponse.items:type_name -> menu.Item
+	29, // 7: menu.GetCategoryResponse.categories:type_name -> menu.Category
 	3,  // 8: menu.MenuService.CreateMenu:input_type -> menu.CreateMenuRequest
 	5,  // 9: menu.MenuService.GetMenus:input_type -> menu.GetMenusRequest
 	7,  // 10: menu.MenuService.SetMenu:input_type -> menu.SetMenuRequest
@@ -1639,21 +2076,27 @@ var file_menu_proto_depIdxs = []int32{
 	23, // 18: menu.MenuService.GetMenuItems:input_type -> menu.GetMenuItemsRequest
 	25, // 19: menu.MenuService.DeleteMenuItem:input_type -> menu.DeleteMenuItemRequest
 	27, // 20: menu.MenuService.DeleteMenuItems:input_type -> menu.DeleteMenuItemsRequest
-	4,  // 21: menu.MenuService.CreateMenu:output_type -> menu.CreateMenuResponse
-	6,  // 22: menu.MenuService.GetMenus:output_type -> menu.GetMenusResponse
-	8,  // 23: menu.MenuService.SetMenu:output_type -> menu.SetMenuResponse
-	10, // 24: menu.MenuService.DeleteMenu:output_type -> menu.DeleteMenuResponse
-	12, // 25: menu.MenuService.CreateItem:output_type -> menu.CreateItemResponse
-	14, // 26: menu.MenuService.GetItem:output_type -> menu.GetItemResponse
-	16, // 27: menu.MenuService.GetItems:output_type -> menu.GetItemsResponse
-	18, // 28: menu.MenuService.UpdateItem:output_type -> menu.UpdateItemResponse
-	20, // 29: menu.MenuService.DeleteItem:output_type -> menu.DeleteItemResponse
-	22, // 30: menu.MenuService.CreateMenuItem:output_type -> menu.CreateMenuItemResponse
-	24, // 31: menu.MenuService.GetMenuItems:output_type -> menu.GetMenuItemsResponse
-	26, // 32: menu.MenuService.DeleteMenuItem:output_type -> menu.DeleteMenuItemResponse
-	28, // 33: menu.MenuService.DeleteMenuItems:output_type -> menu.DeleteMenuItemsResponse
-	21, // [21:34] is the sub-list for method output_type
-	8,  // [8:21] is the sub-list for method input_type
+	30, // 21: menu.MenuService.CreateCategory:input_type -> menu.CreateCategoryRequest
+	32, // 22: menu.MenuService.GetCategory:input_type -> menu.GetCategoryRequest
+	34, // 23: menu.MenuService.DeleteCategory:input_type -> menu.DeleteCategoryRequest
+	4,  // 24: menu.MenuService.CreateMenu:output_type -> menu.CreateMenuResponse
+	6,  // 25: menu.MenuService.GetMenus:output_type -> menu.GetMenusResponse
+	8,  // 26: menu.MenuService.SetMenu:output_type -> menu.SetMenuResponse
+	10, // 27: menu.MenuService.DeleteMenu:output_type -> menu.DeleteMenuResponse
+	12, // 28: menu.MenuService.CreateItem:output_type -> menu.CreateItemResponse
+	14, // 29: menu.MenuService.GetItem:output_type -> menu.GetItemResponse
+	16, // 30: menu.MenuService.GetItems:output_type -> menu.GetItemsResponse
+	18, // 31: menu.MenuService.UpdateItem:output_type -> menu.UpdateItemResponse
+	20, // 32: menu.MenuService.DeleteItem:output_type -> menu.DeleteItemResponse
+	22, // 33: menu.MenuService.CreateMenuItem:output_type -> menu.CreateMenuItemResponse
+	24, // 34: menu.MenuService.GetMenuItems:output_type -> menu.GetMenuItemsResponse
+	26, // 35: menu.MenuService.DeleteMenuItem:output_type -> menu.DeleteMenuItemResponse
+	28, // 36: menu.MenuService.DeleteMenuItems:output_type -> menu.DeleteMenuItemsResponse
+	31, // 37: menu.MenuService.CreateCategory:output_type -> menu.CreateCategoryResponse
+	33, // 38: menu.MenuService.GetCategory:output_type -> menu.GetCategoryResponse
+	35, // 39: menu.MenuService.DeleteCategory:output_type -> menu.DeleteCategoryResponse
+	24, // [24:40] is the sub-list for method output_type
+	8,  // [8:24] is the sub-list for method input_type
 	8,  // [8:8] is the sub-list for extension type_name
 	8,  // [8:8] is the sub-list for extension extendee
 	0,  // [0:8] is the sub-list for field type_name
@@ -1670,7 +2113,7 @@ func file_menu_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_menu_proto_rawDesc), len(file_menu_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   29,
+			NumMessages:   36,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
