@@ -9,9 +9,9 @@ message Menu {
     string name = 3;
 }
 
-message MenuItem {
-    string menuItemId = 1;
-    string menuId = 2;
+message Item {
+    string itemId = 1;
+    string shopId = 2;
     string name = 3;
     string description = 4;
     string category = 5;
@@ -20,93 +20,119 @@ message MenuItem {
     bool isAvailable = 8;
 }
 
+message MenuItem {
+    string menuItemId = 1;
+    string menuId = 2;
+    string itemId = 3;
+}
+
+//MENU
 message CreateMenuRequest{
     string shopId = 1;
     string name = 2;
 }
-
 message CreateMenuResponse{
     Menu menu = 1;
 }
-
 message GetMenusRequest{
     string shopId = 1;
 }
-
 message GetMenusResponse{
     repeated Menu menus = 1;
 }
-
+message SetMenuRequest{
+    Menu menu = 1;
+}
+message SetMenuResponse{
+    bool success = 1;
+}
 message DeleteMenuRequest{
     string menuId = 1;
 }
-
 message DeleteMenuResponse{
     bool success = 1;
 }
 
-message CreateMenuItemRequest{
-    string menuId = 1;
-    string name = 2;
+//ITEM
+message CreateItemRequest{
+    string name = 1;
+    string shopId = 2;
     string description = 3;
     string category = 4;
     float price = 5;
     string image = 6;
     bool isAvailable = 7;
 }
+message CreateItemResponse{
+    Item item = 1;
+}
+message GetItemRequest{
+    string itemId = 1;
+}
+message GetItemResponse{
+    Item item = 1;
+}
+message GetItemsRequest{
+    string shopId = 1;
+}
+message GetItemsResponse{
+    repeated Item items = 1;
+}
+message UpdateItemRequest{
+    Item item = 1;
+}
+message UpdateItemResponse{
+    bool success = 1;
+}
+message DeleteItemRequest{
+    string itemId = 1;
+}
+message DeleteItemResponse{
+    bool success = 1;
+}
 
+//MENU-ITEMS
+message CreateMenuItemRequest{
+    string menuId = 1;
+    string itemId = 2;
+}
 message CreateMenuItemResponse{
     MenuItem menuItem = 1;
 }
-
 message GetMenuItemsRequest{
     string menuId = 1;
 }
-
 message GetMenuItemsResponse{
-    repeated MenuItem menuItems = 1;
+    repeated Item items = 1;
 }
-
-message GetMenuItemRequest{
-    string menuItemId = 1;
+message DeleteMenuItemRequest{
+    string menuId = 1;
+    string itemId = 2;
 }
-
-message GetMenuItemResponse{
-    MenuItem MenuItem = 1;
-}
-
-message UpdateMenuItemRequest{
-    MenuItem menuItem = 1;
-}
-
-message UpdateMenuItemResponse{
+message DeleteMenuItemResponse{
     bool success = 1;
 }
-
 message DeleteMenuItemsRequest{
     string menuId = 1;
 }
-
 message DeleteMenuItemsResponse{
-    bool success = 1;
-}
-
-message DeleteMenuItemRequest{
-    string menuItemId = 1;
-}
-
-message DeleteMenuItemResponse{
     bool success = 1;
 }
 
 service MenuService{
     rpc CreateMenu(CreateMenuRequest) returns (CreateMenuResponse);
     rpc GetMenus(GetMenusRequest) returns (GetMenusResponse);
+    rpc SetMenu(SetMenuRequest) returns (SetMenuResponse);
     rpc DeleteMenu(DeleteMenuRequest) returns (DeleteMenuResponse);
+    
+    rpc CreateItem(CreateItemRequest) returns (CreateItemResponse);
+    rpc GetItem(GetItemRequest) returns (GetItemResponse);
+    rpc GetItems(GetItemsRequest) returns (GetItemsResponse);
+    rpc UpdateItem(UpdateItemRequest) returns (UpdateItemResponse);
+    rpc DeleteItem(DeleteItemRequest) returns (DeleteItemResponse);
+    
     rpc CreateMenuItem(CreateMenuItemRequest) returns (CreateMenuItemResponse);
     rpc GetMenuItems(GetMenuItemsRequest) returns (GetMenuItemsResponse);
-    rpc GetMenuItem(GetMenuItemRequest) returns (GetMenuItemResponse);
-    rpc UpdateMenuItem(UpdateMenuItemRequest) returns (UpdateMenuItemResponse);
     rpc DeleteMenuItem(DeleteMenuItemRequest) returns (DeleteMenuItemResponse);
     rpc DeleteMenuItems(DeleteMenuItemsRequest) returns (DeleteMenuItemsResponse);
 }

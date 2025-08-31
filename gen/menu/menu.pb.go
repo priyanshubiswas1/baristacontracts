@@ -81,10 +81,10 @@ func (x *Menu) GetName() string {
 	return ""
 }
 
-type MenuItem struct {
+type Item struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	MenuItemId    string                 `protobuf:"bytes,1,opt,name=menuItemId,proto3" json:"menuItemId,omitempty"`
-	MenuId        string                 `protobuf:"bytes,2,opt,name=menuId,proto3" json:"menuId,omitempty"`
+	ItemId        string                 `protobuf:"bytes,1,opt,name=itemId,proto3" json:"itemId,omitempty"`
+	ShopId        string                 `protobuf:"bytes,2,opt,name=shopId,proto3" json:"shopId,omitempty"`
 	Name          string                 `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
 	Description   string                 `protobuf:"bytes,4,opt,name=description,proto3" json:"description,omitempty"`
 	Category      string                 `protobuf:"bytes,5,opt,name=category,proto3" json:"category,omitempty"`
@@ -95,9 +95,104 @@ type MenuItem struct {
 	sizeCache     protoimpl.SizeCache
 }
 
+func (x *Item) Reset() {
+	*x = Item{}
+	mi := &file_menu_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Item) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Item) ProtoMessage() {}
+
+func (x *Item) ProtoReflect() protoreflect.Message {
+	mi := &file_menu_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Item.ProtoReflect.Descriptor instead.
+func (*Item) Descriptor() ([]byte, []int) {
+	return file_menu_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *Item) GetItemId() string {
+	if x != nil {
+		return x.ItemId
+	}
+	return ""
+}
+
+func (x *Item) GetShopId() string {
+	if x != nil {
+		return x.ShopId
+	}
+	return ""
+}
+
+func (x *Item) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *Item) GetDescription() string {
+	if x != nil {
+		return x.Description
+	}
+	return ""
+}
+
+func (x *Item) GetCategory() string {
+	if x != nil {
+		return x.Category
+	}
+	return ""
+}
+
+func (x *Item) GetPrice() float32 {
+	if x != nil {
+		return x.Price
+	}
+	return 0
+}
+
+func (x *Item) GetImage() string {
+	if x != nil {
+		return x.Image
+	}
+	return ""
+}
+
+func (x *Item) GetIsAvailable() bool {
+	if x != nil {
+		return x.IsAvailable
+	}
+	return false
+}
+
+type MenuItem struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	MenuItemId    string                 `protobuf:"bytes,1,opt,name=menuItemId,proto3" json:"menuItemId,omitempty"`
+	MenuId        string                 `protobuf:"bytes,2,opt,name=menuId,proto3" json:"menuId,omitempty"`
+	ItemId        string                 `protobuf:"bytes,3,opt,name=itemId,proto3" json:"itemId,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
 func (x *MenuItem) Reset() {
 	*x = MenuItem{}
-	mi := &file_menu_proto_msgTypes[1]
+	mi := &file_menu_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -109,7 +204,7 @@ func (x *MenuItem) String() string {
 func (*MenuItem) ProtoMessage() {}
 
 func (x *MenuItem) ProtoReflect() protoreflect.Message {
-	mi := &file_menu_proto_msgTypes[1]
+	mi := &file_menu_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -122,7 +217,7 @@ func (x *MenuItem) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MenuItem.ProtoReflect.Descriptor instead.
 func (*MenuItem) Descriptor() ([]byte, []int) {
-	return file_menu_proto_rawDescGZIP(), []int{1}
+	return file_menu_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *MenuItem) GetMenuItemId() string {
@@ -139,48 +234,14 @@ func (x *MenuItem) GetMenuId() string {
 	return ""
 }
 
-func (x *MenuItem) GetName() string {
+func (x *MenuItem) GetItemId() string {
 	if x != nil {
-		return x.Name
+		return x.ItemId
 	}
 	return ""
 }
 
-func (x *MenuItem) GetDescription() string {
-	if x != nil {
-		return x.Description
-	}
-	return ""
-}
-
-func (x *MenuItem) GetCategory() string {
-	if x != nil {
-		return x.Category
-	}
-	return ""
-}
-
-func (x *MenuItem) GetPrice() float32 {
-	if x != nil {
-		return x.Price
-	}
-	return 0
-}
-
-func (x *MenuItem) GetImage() string {
-	if x != nil {
-		return x.Image
-	}
-	return ""
-}
-
-func (x *MenuItem) GetIsAvailable() bool {
-	if x != nil {
-		return x.IsAvailable
-	}
-	return false
-}
-
+// MENU
 type CreateMenuRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ShopId        string                 `protobuf:"bytes,1,opt,name=shopId,proto3" json:"shopId,omitempty"`
@@ -191,7 +252,7 @@ type CreateMenuRequest struct {
 
 func (x *CreateMenuRequest) Reset() {
 	*x = CreateMenuRequest{}
-	mi := &file_menu_proto_msgTypes[2]
+	mi := &file_menu_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -203,7 +264,7 @@ func (x *CreateMenuRequest) String() string {
 func (*CreateMenuRequest) ProtoMessage() {}
 
 func (x *CreateMenuRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_menu_proto_msgTypes[2]
+	mi := &file_menu_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -216,7 +277,7 @@ func (x *CreateMenuRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateMenuRequest.ProtoReflect.Descriptor instead.
 func (*CreateMenuRequest) Descriptor() ([]byte, []int) {
-	return file_menu_proto_rawDescGZIP(), []int{2}
+	return file_menu_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *CreateMenuRequest) GetShopId() string {
@@ -242,7 +303,7 @@ type CreateMenuResponse struct {
 
 func (x *CreateMenuResponse) Reset() {
 	*x = CreateMenuResponse{}
-	mi := &file_menu_proto_msgTypes[3]
+	mi := &file_menu_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -254,7 +315,7 @@ func (x *CreateMenuResponse) String() string {
 func (*CreateMenuResponse) ProtoMessage() {}
 
 func (x *CreateMenuResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_menu_proto_msgTypes[3]
+	mi := &file_menu_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -267,7 +328,7 @@ func (x *CreateMenuResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateMenuResponse.ProtoReflect.Descriptor instead.
 func (*CreateMenuResponse) Descriptor() ([]byte, []int) {
-	return file_menu_proto_rawDescGZIP(), []int{3}
+	return file_menu_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *CreateMenuResponse) GetMenu() *Menu {
@@ -286,7 +347,7 @@ type GetMenusRequest struct {
 
 func (x *GetMenusRequest) Reset() {
 	*x = GetMenusRequest{}
-	mi := &file_menu_proto_msgTypes[4]
+	mi := &file_menu_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -298,7 +359,7 @@ func (x *GetMenusRequest) String() string {
 func (*GetMenusRequest) ProtoMessage() {}
 
 func (x *GetMenusRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_menu_proto_msgTypes[4]
+	mi := &file_menu_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -311,7 +372,7 @@ func (x *GetMenusRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetMenusRequest.ProtoReflect.Descriptor instead.
 func (*GetMenusRequest) Descriptor() ([]byte, []int) {
-	return file_menu_proto_rawDescGZIP(), []int{4}
+	return file_menu_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *GetMenusRequest) GetShopId() string {
@@ -330,7 +391,7 @@ type GetMenusResponse struct {
 
 func (x *GetMenusResponse) Reset() {
 	*x = GetMenusResponse{}
-	mi := &file_menu_proto_msgTypes[5]
+	mi := &file_menu_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -342,7 +403,7 @@ func (x *GetMenusResponse) String() string {
 func (*GetMenusResponse) ProtoMessage() {}
 
 func (x *GetMenusResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_menu_proto_msgTypes[5]
+	mi := &file_menu_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -355,7 +416,7 @@ func (x *GetMenusResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetMenusResponse.ProtoReflect.Descriptor instead.
 func (*GetMenusResponse) Descriptor() ([]byte, []int) {
-	return file_menu_proto_rawDescGZIP(), []int{5}
+	return file_menu_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *GetMenusResponse) GetMenus() []*Menu {
@@ -363,6 +424,94 @@ func (x *GetMenusResponse) GetMenus() []*Menu {
 		return x.Menus
 	}
 	return nil
+}
+
+type SetMenuRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Menu          *Menu                  `protobuf:"bytes,1,opt,name=menu,proto3" json:"menu,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SetMenuRequest) Reset() {
+	*x = SetMenuRequest{}
+	mi := &file_menu_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SetMenuRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SetMenuRequest) ProtoMessage() {}
+
+func (x *SetMenuRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_menu_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SetMenuRequest.ProtoReflect.Descriptor instead.
+func (*SetMenuRequest) Descriptor() ([]byte, []int) {
+	return file_menu_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *SetMenuRequest) GetMenu() *Menu {
+	if x != nil {
+		return x.Menu
+	}
+	return nil
+}
+
+type SetMenuResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SetMenuResponse) Reset() {
+	*x = SetMenuResponse{}
+	mi := &file_menu_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SetMenuResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SetMenuResponse) ProtoMessage() {}
+
+func (x *SetMenuResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_menu_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SetMenuResponse.ProtoReflect.Descriptor instead.
+func (*SetMenuResponse) Descriptor() ([]byte, []int) {
+	return file_menu_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *SetMenuResponse) GetSuccess() bool {
+	if x != nil {
+		return x.Success
+	}
+	return false
 }
 
 type DeleteMenuRequest struct {
@@ -374,7 +523,7 @@ type DeleteMenuRequest struct {
 
 func (x *DeleteMenuRequest) Reset() {
 	*x = DeleteMenuRequest{}
-	mi := &file_menu_proto_msgTypes[6]
+	mi := &file_menu_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -386,7 +535,7 @@ func (x *DeleteMenuRequest) String() string {
 func (*DeleteMenuRequest) ProtoMessage() {}
 
 func (x *DeleteMenuRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_menu_proto_msgTypes[6]
+	mi := &file_menu_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -399,7 +548,7 @@ func (x *DeleteMenuRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteMenuRequest.ProtoReflect.Descriptor instead.
 func (*DeleteMenuRequest) Descriptor() ([]byte, []int) {
-	return file_menu_proto_rawDescGZIP(), []int{6}
+	return file_menu_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *DeleteMenuRequest) GetMenuId() string {
@@ -418,7 +567,7 @@ type DeleteMenuResponse struct {
 
 func (x *DeleteMenuResponse) Reset() {
 	*x = DeleteMenuResponse{}
-	mi := &file_menu_proto_msgTypes[7]
+	mi := &file_menu_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -430,7 +579,7 @@ func (x *DeleteMenuResponse) String() string {
 func (*DeleteMenuResponse) ProtoMessage() {}
 
 func (x *DeleteMenuResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_menu_proto_msgTypes[7]
+	mi := &file_menu_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -443,7 +592,7 @@ func (x *DeleteMenuResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteMenuResponse.ProtoReflect.Descriptor instead.
 func (*DeleteMenuResponse) Descriptor() ([]byte, []int) {
-	return file_menu_proto_rawDescGZIP(), []int{7}
+	return file_menu_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *DeleteMenuResponse) GetSuccess() bool {
@@ -453,10 +602,11 @@ func (x *DeleteMenuResponse) GetSuccess() bool {
 	return false
 }
 
-type CreateMenuItemRequest struct {
+// ITEM
+type CreateItemRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	MenuId        string                 `protobuf:"bytes,1,opt,name=menuId,proto3" json:"menuId,omitempty"`
-	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	Name          string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	ShopId        string                 `protobuf:"bytes,2,opt,name=shopId,proto3" json:"shopId,omitempty"`
 	Description   string                 `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
 	Category      string                 `protobuf:"bytes,4,opt,name=category,proto3" json:"category,omitempty"`
 	Price         float32                `protobuf:"fixed32,5,opt,name=price,proto3" json:"price,omitempty"`
@@ -466,9 +616,493 @@ type CreateMenuItemRequest struct {
 	sizeCache     protoimpl.SizeCache
 }
 
+func (x *CreateItemRequest) Reset() {
+	*x = CreateItemRequest{}
+	mi := &file_menu_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateItemRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateItemRequest) ProtoMessage() {}
+
+func (x *CreateItemRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_menu_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateItemRequest.ProtoReflect.Descriptor instead.
+func (*CreateItemRequest) Descriptor() ([]byte, []int) {
+	return file_menu_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *CreateItemRequest) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *CreateItemRequest) GetShopId() string {
+	if x != nil {
+		return x.ShopId
+	}
+	return ""
+}
+
+func (x *CreateItemRequest) GetDescription() string {
+	if x != nil {
+		return x.Description
+	}
+	return ""
+}
+
+func (x *CreateItemRequest) GetCategory() string {
+	if x != nil {
+		return x.Category
+	}
+	return ""
+}
+
+func (x *CreateItemRequest) GetPrice() float32 {
+	if x != nil {
+		return x.Price
+	}
+	return 0
+}
+
+func (x *CreateItemRequest) GetImage() string {
+	if x != nil {
+		return x.Image
+	}
+	return ""
+}
+
+func (x *CreateItemRequest) GetIsAvailable() bool {
+	if x != nil {
+		return x.IsAvailable
+	}
+	return false
+}
+
+type CreateItemResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Item          *Item                  `protobuf:"bytes,1,opt,name=item,proto3" json:"item,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateItemResponse) Reset() {
+	*x = CreateItemResponse{}
+	mi := &file_menu_proto_msgTypes[12]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateItemResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateItemResponse) ProtoMessage() {}
+
+func (x *CreateItemResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_menu_proto_msgTypes[12]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateItemResponse.ProtoReflect.Descriptor instead.
+func (*CreateItemResponse) Descriptor() ([]byte, []int) {
+	return file_menu_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *CreateItemResponse) GetItem() *Item {
+	if x != nil {
+		return x.Item
+	}
+	return nil
+}
+
+type GetItemRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ItemId        string                 `protobuf:"bytes,1,opt,name=itemId,proto3" json:"itemId,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetItemRequest) Reset() {
+	*x = GetItemRequest{}
+	mi := &file_menu_proto_msgTypes[13]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetItemRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetItemRequest) ProtoMessage() {}
+
+func (x *GetItemRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_menu_proto_msgTypes[13]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetItemRequest.ProtoReflect.Descriptor instead.
+func (*GetItemRequest) Descriptor() ([]byte, []int) {
+	return file_menu_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *GetItemRequest) GetItemId() string {
+	if x != nil {
+		return x.ItemId
+	}
+	return ""
+}
+
+type GetItemResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Item          *Item                  `protobuf:"bytes,1,opt,name=item,proto3" json:"item,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetItemResponse) Reset() {
+	*x = GetItemResponse{}
+	mi := &file_menu_proto_msgTypes[14]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetItemResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetItemResponse) ProtoMessage() {}
+
+func (x *GetItemResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_menu_proto_msgTypes[14]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetItemResponse.ProtoReflect.Descriptor instead.
+func (*GetItemResponse) Descriptor() ([]byte, []int) {
+	return file_menu_proto_rawDescGZIP(), []int{14}
+}
+
+func (x *GetItemResponse) GetItem() *Item {
+	if x != nil {
+		return x.Item
+	}
+	return nil
+}
+
+type GetItemsRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ShopId        string                 `protobuf:"bytes,1,opt,name=shopId,proto3" json:"shopId,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetItemsRequest) Reset() {
+	*x = GetItemsRequest{}
+	mi := &file_menu_proto_msgTypes[15]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetItemsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetItemsRequest) ProtoMessage() {}
+
+func (x *GetItemsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_menu_proto_msgTypes[15]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetItemsRequest.ProtoReflect.Descriptor instead.
+func (*GetItemsRequest) Descriptor() ([]byte, []int) {
+	return file_menu_proto_rawDescGZIP(), []int{15}
+}
+
+func (x *GetItemsRequest) GetShopId() string {
+	if x != nil {
+		return x.ShopId
+	}
+	return ""
+}
+
+type GetItemsResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Items         []*Item                `protobuf:"bytes,1,rep,name=items,proto3" json:"items,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetItemsResponse) Reset() {
+	*x = GetItemsResponse{}
+	mi := &file_menu_proto_msgTypes[16]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetItemsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetItemsResponse) ProtoMessage() {}
+
+func (x *GetItemsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_menu_proto_msgTypes[16]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetItemsResponse.ProtoReflect.Descriptor instead.
+func (*GetItemsResponse) Descriptor() ([]byte, []int) {
+	return file_menu_proto_rawDescGZIP(), []int{16}
+}
+
+func (x *GetItemsResponse) GetItems() []*Item {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+type UpdateItemRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Item          *Item                  `protobuf:"bytes,1,opt,name=item,proto3" json:"item,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateItemRequest) Reset() {
+	*x = UpdateItemRequest{}
+	mi := &file_menu_proto_msgTypes[17]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateItemRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateItemRequest) ProtoMessage() {}
+
+func (x *UpdateItemRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_menu_proto_msgTypes[17]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateItemRequest.ProtoReflect.Descriptor instead.
+func (*UpdateItemRequest) Descriptor() ([]byte, []int) {
+	return file_menu_proto_rawDescGZIP(), []int{17}
+}
+
+func (x *UpdateItemRequest) GetItem() *Item {
+	if x != nil {
+		return x.Item
+	}
+	return nil
+}
+
+type UpdateItemResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateItemResponse) Reset() {
+	*x = UpdateItemResponse{}
+	mi := &file_menu_proto_msgTypes[18]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateItemResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateItemResponse) ProtoMessage() {}
+
+func (x *UpdateItemResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_menu_proto_msgTypes[18]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateItemResponse.ProtoReflect.Descriptor instead.
+func (*UpdateItemResponse) Descriptor() ([]byte, []int) {
+	return file_menu_proto_rawDescGZIP(), []int{18}
+}
+
+func (x *UpdateItemResponse) GetSuccess() bool {
+	if x != nil {
+		return x.Success
+	}
+	return false
+}
+
+type DeleteItemRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ItemId        string                 `protobuf:"bytes,1,opt,name=itemId,proto3" json:"itemId,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteItemRequest) Reset() {
+	*x = DeleteItemRequest{}
+	mi := &file_menu_proto_msgTypes[19]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteItemRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteItemRequest) ProtoMessage() {}
+
+func (x *DeleteItemRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_menu_proto_msgTypes[19]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteItemRequest.ProtoReflect.Descriptor instead.
+func (*DeleteItemRequest) Descriptor() ([]byte, []int) {
+	return file_menu_proto_rawDescGZIP(), []int{19}
+}
+
+func (x *DeleteItemRequest) GetItemId() string {
+	if x != nil {
+		return x.ItemId
+	}
+	return ""
+}
+
+type DeleteItemResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteItemResponse) Reset() {
+	*x = DeleteItemResponse{}
+	mi := &file_menu_proto_msgTypes[20]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteItemResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteItemResponse) ProtoMessage() {}
+
+func (x *DeleteItemResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_menu_proto_msgTypes[20]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteItemResponse.ProtoReflect.Descriptor instead.
+func (*DeleteItemResponse) Descriptor() ([]byte, []int) {
+	return file_menu_proto_rawDescGZIP(), []int{20}
+}
+
+func (x *DeleteItemResponse) GetSuccess() bool {
+	if x != nil {
+		return x.Success
+	}
+	return false
+}
+
+// MENU-ITEMS
+type CreateMenuItemRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	MenuId        string                 `protobuf:"bytes,1,opt,name=menuId,proto3" json:"menuId,omitempty"`
+	ItemId        string                 `protobuf:"bytes,2,opt,name=itemId,proto3" json:"itemId,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
 func (x *CreateMenuItemRequest) Reset() {
 	*x = CreateMenuItemRequest{}
-	mi := &file_menu_proto_msgTypes[8]
+	mi := &file_menu_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -480,7 +1114,7 @@ func (x *CreateMenuItemRequest) String() string {
 func (*CreateMenuItemRequest) ProtoMessage() {}
 
 func (x *CreateMenuItemRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_menu_proto_msgTypes[8]
+	mi := &file_menu_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -493,7 +1127,7 @@ func (x *CreateMenuItemRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateMenuItemRequest.ProtoReflect.Descriptor instead.
 func (*CreateMenuItemRequest) Descriptor() ([]byte, []int) {
-	return file_menu_proto_rawDescGZIP(), []int{8}
+	return file_menu_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *CreateMenuItemRequest) GetMenuId() string {
@@ -503,46 +1137,11 @@ func (x *CreateMenuItemRequest) GetMenuId() string {
 	return ""
 }
 
-func (x *CreateMenuItemRequest) GetName() string {
+func (x *CreateMenuItemRequest) GetItemId() string {
 	if x != nil {
-		return x.Name
+		return x.ItemId
 	}
 	return ""
-}
-
-func (x *CreateMenuItemRequest) GetDescription() string {
-	if x != nil {
-		return x.Description
-	}
-	return ""
-}
-
-func (x *CreateMenuItemRequest) GetCategory() string {
-	if x != nil {
-		return x.Category
-	}
-	return ""
-}
-
-func (x *CreateMenuItemRequest) GetPrice() float32 {
-	if x != nil {
-		return x.Price
-	}
-	return 0
-}
-
-func (x *CreateMenuItemRequest) GetImage() string {
-	if x != nil {
-		return x.Image
-	}
-	return ""
-}
-
-func (x *CreateMenuItemRequest) GetIsAvailable() bool {
-	if x != nil {
-		return x.IsAvailable
-	}
-	return false
 }
 
 type CreateMenuItemResponse struct {
@@ -554,7 +1153,7 @@ type CreateMenuItemResponse struct {
 
 func (x *CreateMenuItemResponse) Reset() {
 	*x = CreateMenuItemResponse{}
-	mi := &file_menu_proto_msgTypes[9]
+	mi := &file_menu_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -566,7 +1165,7 @@ func (x *CreateMenuItemResponse) String() string {
 func (*CreateMenuItemResponse) ProtoMessage() {}
 
 func (x *CreateMenuItemResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_menu_proto_msgTypes[9]
+	mi := &file_menu_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -579,7 +1178,7 @@ func (x *CreateMenuItemResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateMenuItemResponse.ProtoReflect.Descriptor instead.
 func (*CreateMenuItemResponse) Descriptor() ([]byte, []int) {
-	return file_menu_proto_rawDescGZIP(), []int{9}
+	return file_menu_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *CreateMenuItemResponse) GetMenuItem() *MenuItem {
@@ -598,7 +1197,7 @@ type GetMenuItemsRequest struct {
 
 func (x *GetMenuItemsRequest) Reset() {
 	*x = GetMenuItemsRequest{}
-	mi := &file_menu_proto_msgTypes[10]
+	mi := &file_menu_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -610,7 +1209,7 @@ func (x *GetMenuItemsRequest) String() string {
 func (*GetMenuItemsRequest) ProtoMessage() {}
 
 func (x *GetMenuItemsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_menu_proto_msgTypes[10]
+	mi := &file_menu_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -623,7 +1222,7 @@ func (x *GetMenuItemsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetMenuItemsRequest.ProtoReflect.Descriptor instead.
 func (*GetMenuItemsRequest) Descriptor() ([]byte, []int) {
-	return file_menu_proto_rawDescGZIP(), []int{10}
+	return file_menu_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *GetMenuItemsRequest) GetMenuId() string {
@@ -635,14 +1234,14 @@ func (x *GetMenuItemsRequest) GetMenuId() string {
 
 type GetMenuItemsResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	MenuItems     []*MenuItem            `protobuf:"bytes,1,rep,name=menuItems,proto3" json:"menuItems,omitempty"`
+	Items         []*Item                `protobuf:"bytes,1,rep,name=items,proto3" json:"items,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *GetMenuItemsResponse) Reset() {
 	*x = GetMenuItemsResponse{}
-	mi := &file_menu_proto_msgTypes[11]
+	mi := &file_menu_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -654,7 +1253,7 @@ func (x *GetMenuItemsResponse) String() string {
 func (*GetMenuItemsResponse) ProtoMessage() {}
 
 func (x *GetMenuItemsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_menu_proto_msgTypes[11]
+	mi := &file_menu_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -667,38 +1266,39 @@ func (x *GetMenuItemsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetMenuItemsResponse.ProtoReflect.Descriptor instead.
 func (*GetMenuItemsResponse) Descriptor() ([]byte, []int) {
-	return file_menu_proto_rawDescGZIP(), []int{11}
+	return file_menu_proto_rawDescGZIP(), []int{24}
 }
 
-func (x *GetMenuItemsResponse) GetMenuItems() []*MenuItem {
+func (x *GetMenuItemsResponse) GetItems() []*Item {
 	if x != nil {
-		return x.MenuItems
+		return x.Items
 	}
 	return nil
 }
 
-type GetMenuItemRequest struct {
+type DeleteMenuItemRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	MenuItemId    string                 `protobuf:"bytes,1,opt,name=menuItemId,proto3" json:"menuItemId,omitempty"`
+	MenuId        string                 `protobuf:"bytes,1,opt,name=menuId,proto3" json:"menuId,omitempty"`
+	ItemId        string                 `protobuf:"bytes,2,opt,name=itemId,proto3" json:"itemId,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *GetMenuItemRequest) Reset() {
-	*x = GetMenuItemRequest{}
-	mi := &file_menu_proto_msgTypes[12]
+func (x *DeleteMenuItemRequest) Reset() {
+	*x = DeleteMenuItemRequest{}
+	mi := &file_menu_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GetMenuItemRequest) String() string {
+func (x *DeleteMenuItemRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetMenuItemRequest) ProtoMessage() {}
+func (*DeleteMenuItemRequest) ProtoMessage() {}
 
-func (x *GetMenuItemRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_menu_proto_msgTypes[12]
+func (x *DeleteMenuItemRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_menu_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -709,128 +1309,47 @@ func (x *GetMenuItemRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetMenuItemRequest.ProtoReflect.Descriptor instead.
-func (*GetMenuItemRequest) Descriptor() ([]byte, []int) {
-	return file_menu_proto_rawDescGZIP(), []int{12}
+// Deprecated: Use DeleteMenuItemRequest.ProtoReflect.Descriptor instead.
+func (*DeleteMenuItemRequest) Descriptor() ([]byte, []int) {
+	return file_menu_proto_rawDescGZIP(), []int{25}
 }
 
-func (x *GetMenuItemRequest) GetMenuItemId() string {
+func (x *DeleteMenuItemRequest) GetMenuId() string {
 	if x != nil {
-		return x.MenuItemId
+		return x.MenuId
 	}
 	return ""
 }
 
-type GetMenuItemResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	MenuItem      *MenuItem              `protobuf:"bytes,1,opt,name=MenuItem,proto3" json:"MenuItem,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *GetMenuItemResponse) Reset() {
-	*x = GetMenuItemResponse{}
-	mi := &file_menu_proto_msgTypes[13]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *GetMenuItemResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GetMenuItemResponse) ProtoMessage() {}
-
-func (x *GetMenuItemResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_menu_proto_msgTypes[13]
+func (x *DeleteMenuItemRequest) GetItemId() string {
 	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
+		return x.ItemId
 	}
-	return mi.MessageOf(x)
+	return ""
 }
 
-// Deprecated: Use GetMenuItemResponse.ProtoReflect.Descriptor instead.
-func (*GetMenuItemResponse) Descriptor() ([]byte, []int) {
-	return file_menu_proto_rawDescGZIP(), []int{13}
-}
-
-func (x *GetMenuItemResponse) GetMenuItem() *MenuItem {
-	if x != nil {
-		return x.MenuItem
-	}
-	return nil
-}
-
-type UpdateMenuItemRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	MenuItem      *MenuItem              `protobuf:"bytes,1,opt,name=menuItem,proto3" json:"menuItem,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateMenuItemRequest) Reset() {
-	*x = UpdateMenuItemRequest{}
-	mi := &file_menu_proto_msgTypes[14]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateMenuItemRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateMenuItemRequest) ProtoMessage() {}
-
-func (x *UpdateMenuItemRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_menu_proto_msgTypes[14]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateMenuItemRequest.ProtoReflect.Descriptor instead.
-func (*UpdateMenuItemRequest) Descriptor() ([]byte, []int) {
-	return file_menu_proto_rawDescGZIP(), []int{14}
-}
-
-func (x *UpdateMenuItemRequest) GetMenuItem() *MenuItem {
-	if x != nil {
-		return x.MenuItem
-	}
-	return nil
-}
-
-type UpdateMenuItemResponse struct {
+type DeleteMenuItemResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *UpdateMenuItemResponse) Reset() {
-	*x = UpdateMenuItemResponse{}
-	mi := &file_menu_proto_msgTypes[15]
+func (x *DeleteMenuItemResponse) Reset() {
+	*x = DeleteMenuItemResponse{}
+	mi := &file_menu_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *UpdateMenuItemResponse) String() string {
+func (x *DeleteMenuItemResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UpdateMenuItemResponse) ProtoMessage() {}
+func (*DeleteMenuItemResponse) ProtoMessage() {}
 
-func (x *UpdateMenuItemResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_menu_proto_msgTypes[15]
+func (x *DeleteMenuItemResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_menu_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -841,12 +1360,12 @@ func (x *UpdateMenuItemResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UpdateMenuItemResponse.ProtoReflect.Descriptor instead.
-func (*UpdateMenuItemResponse) Descriptor() ([]byte, []int) {
-	return file_menu_proto_rawDescGZIP(), []int{15}
+// Deprecated: Use DeleteMenuItemResponse.ProtoReflect.Descriptor instead.
+func (*DeleteMenuItemResponse) Descriptor() ([]byte, []int) {
+	return file_menu_proto_rawDescGZIP(), []int{26}
 }
 
-func (x *UpdateMenuItemResponse) GetSuccess() bool {
+func (x *DeleteMenuItemResponse) GetSuccess() bool {
 	if x != nil {
 		return x.Success
 	}
@@ -862,7 +1381,7 @@ type DeleteMenuItemsRequest struct {
 
 func (x *DeleteMenuItemsRequest) Reset() {
 	*x = DeleteMenuItemsRequest{}
-	mi := &file_menu_proto_msgTypes[16]
+	mi := &file_menu_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -874,7 +1393,7 @@ func (x *DeleteMenuItemsRequest) String() string {
 func (*DeleteMenuItemsRequest) ProtoMessage() {}
 
 func (x *DeleteMenuItemsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_menu_proto_msgTypes[16]
+	mi := &file_menu_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -887,7 +1406,7 @@ func (x *DeleteMenuItemsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteMenuItemsRequest.ProtoReflect.Descriptor instead.
 func (*DeleteMenuItemsRequest) Descriptor() ([]byte, []int) {
-	return file_menu_proto_rawDescGZIP(), []int{16}
+	return file_menu_proto_rawDescGZIP(), []int{27}
 }
 
 func (x *DeleteMenuItemsRequest) GetMenuId() string {
@@ -906,7 +1425,7 @@ type DeleteMenuItemsResponse struct {
 
 func (x *DeleteMenuItemsResponse) Reset() {
 	*x = DeleteMenuItemsResponse{}
-	mi := &file_menu_proto_msgTypes[17]
+	mi := &file_menu_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -918,7 +1437,7 @@ func (x *DeleteMenuItemsResponse) String() string {
 func (*DeleteMenuItemsResponse) ProtoMessage() {}
 
 func (x *DeleteMenuItemsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_menu_proto_msgTypes[17]
+	mi := &file_menu_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -931,98 +1450,10 @@ func (x *DeleteMenuItemsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteMenuItemsResponse.ProtoReflect.Descriptor instead.
 func (*DeleteMenuItemsResponse) Descriptor() ([]byte, []int) {
-	return file_menu_proto_rawDescGZIP(), []int{17}
+	return file_menu_proto_rawDescGZIP(), []int{28}
 }
 
 func (x *DeleteMenuItemsResponse) GetSuccess() bool {
-	if x != nil {
-		return x.Success
-	}
-	return false
-}
-
-type DeleteMenuItemRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	MenuItemId    string                 `protobuf:"bytes,1,opt,name=menuItemId,proto3" json:"menuItemId,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteMenuItemRequest) Reset() {
-	*x = DeleteMenuItemRequest{}
-	mi := &file_menu_proto_msgTypes[18]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteMenuItemRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteMenuItemRequest) ProtoMessage() {}
-
-func (x *DeleteMenuItemRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_menu_proto_msgTypes[18]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteMenuItemRequest.ProtoReflect.Descriptor instead.
-func (*DeleteMenuItemRequest) Descriptor() ([]byte, []int) {
-	return file_menu_proto_rawDescGZIP(), []int{18}
-}
-
-func (x *DeleteMenuItemRequest) GetMenuItemId() string {
-	if x != nil {
-		return x.MenuItemId
-	}
-	return ""
-}
-
-type DeleteMenuItemResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteMenuItemResponse) Reset() {
-	*x = DeleteMenuItemResponse{}
-	mi := &file_menu_proto_msgTypes[19]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteMenuItemResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteMenuItemResponse) ProtoMessage() {}
-
-func (x *DeleteMenuItemResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_menu_proto_msgTypes[19]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteMenuItemResponse.ProtoReflect.Descriptor instead.
-func (*DeleteMenuItemResponse) Descriptor() ([]byte, []int) {
-	return file_menu_proto_rawDescGZIP(), []int{19}
-}
-
-func (x *DeleteMenuItemResponse) GetSuccess() bool {
 	if x != nil {
 		return x.Success
 	}
@@ -1038,18 +1469,22 @@ const file_menu_proto_rawDesc = "" +
 	"\x04Menu\x12\x16\n" +
 	"\x06menuId\x18\x01 \x01(\tR\x06menuId\x12\x16\n" +
 	"\x06shopId\x18\x02 \x01(\tR\x06shopId\x12\x12\n" +
-	"\x04name\x18\x03 \x01(\tR\x04name\"\xe2\x01\n" +
-	"\bMenuItem\x12\x1e\n" +
-	"\n" +
-	"menuItemId\x18\x01 \x01(\tR\n" +
-	"menuItemId\x12\x16\n" +
-	"\x06menuId\x18\x02 \x01(\tR\x06menuId\x12\x12\n" +
+	"\x04name\x18\x03 \x01(\tR\x04name\"\xd6\x01\n" +
+	"\x04Item\x12\x16\n" +
+	"\x06itemId\x18\x01 \x01(\tR\x06itemId\x12\x16\n" +
+	"\x06shopId\x18\x02 \x01(\tR\x06shopId\x12\x12\n" +
 	"\x04name\x18\x03 \x01(\tR\x04name\x12 \n" +
 	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x1a\n" +
 	"\bcategory\x18\x05 \x01(\tR\bcategory\x12\x14\n" +
 	"\x05price\x18\x06 \x01(\x02R\x05price\x12\x14\n" +
 	"\x05image\x18\a \x01(\tR\x05image\x12 \n" +
-	"\visAvailable\x18\b \x01(\bR\visAvailable\"?\n" +
+	"\visAvailable\x18\b \x01(\bR\visAvailable\"Z\n" +
+	"\bMenuItem\x12\x1e\n" +
+	"\n" +
+	"menuItemId\x18\x01 \x01(\tR\n" +
+	"menuItemId\x12\x16\n" +
+	"\x06menuId\x18\x02 \x01(\tR\x06menuId\x12\x16\n" +
+	"\x06itemId\x18\x03 \x01(\tR\x06itemId\"?\n" +
 	"\x11CreateMenuRequest\x12\x16\n" +
 	"\x06shopId\x18\x01 \x01(\tR\x06shopId\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\"4\n" +
@@ -1060,55 +1495,82 @@ const file_menu_proto_rawDesc = "" +
 	"\x06shopId\x18\x01 \x01(\tR\x06shopId\"4\n" +
 	"\x10GetMenusResponse\x12 \n" +
 	"\x05menus\x18\x01 \x03(\v2\n" +
-	".menu.MenuR\x05menus\"+\n" +
+	".menu.MenuR\x05menus\"0\n" +
+	"\x0eSetMenuRequest\x12\x1e\n" +
+	"\x04menu\x18\x01 \x01(\v2\n" +
+	".menu.MenuR\x04menu\"+\n" +
+	"\x0fSetMenuResponse\x12\x18\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\"+\n" +
 	"\x11DeleteMenuRequest\x12\x16\n" +
 	"\x06menuId\x18\x01 \x01(\tR\x06menuId\".\n" +
 	"\x12DeleteMenuResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess\"\xcf\x01\n" +
-	"\x15CreateMenuItemRequest\x12\x16\n" +
-	"\x06menuId\x18\x01 \x01(\tR\x06menuId\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12 \n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\"\xcb\x01\n" +
+	"\x11CreateItemRequest\x12\x12\n" +
+	"\x04name\x18\x01 \x01(\tR\x04name\x12\x16\n" +
+	"\x06shopId\x18\x02 \x01(\tR\x06shopId\x12 \n" +
 	"\vdescription\x18\x03 \x01(\tR\vdescription\x12\x1a\n" +
 	"\bcategory\x18\x04 \x01(\tR\bcategory\x12\x14\n" +
 	"\x05price\x18\x05 \x01(\x02R\x05price\x12\x14\n" +
 	"\x05image\x18\x06 \x01(\tR\x05image\x12 \n" +
-	"\visAvailable\x18\a \x01(\bR\visAvailable\"D\n" +
+	"\visAvailable\x18\a \x01(\bR\visAvailable\"4\n" +
+	"\x12CreateItemResponse\x12\x1e\n" +
+	"\x04item\x18\x01 \x01(\v2\n" +
+	".menu.ItemR\x04item\"(\n" +
+	"\x0eGetItemRequest\x12\x16\n" +
+	"\x06itemId\x18\x01 \x01(\tR\x06itemId\"1\n" +
+	"\x0fGetItemResponse\x12\x1e\n" +
+	"\x04item\x18\x01 \x01(\v2\n" +
+	".menu.ItemR\x04item\")\n" +
+	"\x0fGetItemsRequest\x12\x16\n" +
+	"\x06shopId\x18\x01 \x01(\tR\x06shopId\"4\n" +
+	"\x10GetItemsResponse\x12 \n" +
+	"\x05items\x18\x01 \x03(\v2\n" +
+	".menu.ItemR\x05items\"3\n" +
+	"\x11UpdateItemRequest\x12\x1e\n" +
+	"\x04item\x18\x01 \x01(\v2\n" +
+	".menu.ItemR\x04item\".\n" +
+	"\x12UpdateItemResponse\x12\x18\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\"+\n" +
+	"\x11DeleteItemRequest\x12\x16\n" +
+	"\x06itemId\x18\x01 \x01(\tR\x06itemId\".\n" +
+	"\x12DeleteItemResponse\x12\x18\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\"G\n" +
+	"\x15CreateMenuItemRequest\x12\x16\n" +
+	"\x06menuId\x18\x01 \x01(\tR\x06menuId\x12\x16\n" +
+	"\x06itemId\x18\x02 \x01(\tR\x06itemId\"D\n" +
 	"\x16CreateMenuItemResponse\x12*\n" +
 	"\bmenuItem\x18\x01 \x01(\v2\x0e.menu.MenuItemR\bmenuItem\"-\n" +
 	"\x13GetMenuItemsRequest\x12\x16\n" +
-	"\x06menuId\x18\x01 \x01(\tR\x06menuId\"D\n" +
-	"\x14GetMenuItemsResponse\x12,\n" +
-	"\tmenuItems\x18\x01 \x03(\v2\x0e.menu.MenuItemR\tmenuItems\"4\n" +
-	"\x12GetMenuItemRequest\x12\x1e\n" +
-	"\n" +
-	"menuItemId\x18\x01 \x01(\tR\n" +
-	"menuItemId\"A\n" +
-	"\x13GetMenuItemResponse\x12*\n" +
-	"\bMenuItem\x18\x01 \x01(\v2\x0e.menu.MenuItemR\bMenuItem\"C\n" +
-	"\x15UpdateMenuItemRequest\x12*\n" +
-	"\bmenuItem\x18\x01 \x01(\v2\x0e.menu.MenuItemR\bmenuItem\"2\n" +
-	"\x16UpdateMenuItemResponse\x12\x18\n" +
+	"\x06menuId\x18\x01 \x01(\tR\x06menuId\"8\n" +
+	"\x14GetMenuItemsResponse\x12 \n" +
+	"\x05items\x18\x01 \x03(\v2\n" +
+	".menu.ItemR\x05items\"G\n" +
+	"\x15DeleteMenuItemRequest\x12\x16\n" +
+	"\x06menuId\x18\x01 \x01(\tR\x06menuId\x12\x16\n" +
+	"\x06itemId\x18\x02 \x01(\tR\x06itemId\"2\n" +
+	"\x16DeleteMenuItemResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\"0\n" +
 	"\x16DeleteMenuItemsRequest\x12\x16\n" +
 	"\x06menuId\x18\x01 \x01(\tR\x06menuId\"3\n" +
 	"\x17DeleteMenuItemsResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess\"7\n" +
-	"\x15DeleteMenuItemRequest\x12\x1e\n" +
-	"\n" +
-	"menuItemId\x18\x01 \x01(\tR\n" +
-	"menuItemId\"2\n" +
-	"\x16DeleteMenuItemResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess2\x8c\x05\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess2\xe9\x06\n" +
 	"\vMenuService\x12?\n" +
 	"\n" +
 	"CreateMenu\x12\x17.menu.CreateMenuRequest\x1a\x18.menu.CreateMenuResponse\x129\n" +
-	"\bGetMenus\x12\x15.menu.GetMenusRequest\x1a\x16.menu.GetMenusResponse\x12?\n" +
+	"\bGetMenus\x12\x15.menu.GetMenusRequest\x1a\x16.menu.GetMenusResponse\x126\n" +
+	"\aSetMenu\x12\x14.menu.SetMenuRequest\x1a\x15.menu.SetMenuResponse\x12?\n" +
 	"\n" +
-	"DeleteMenu\x12\x17.menu.DeleteMenuRequest\x1a\x18.menu.DeleteMenuResponse\x12K\n" +
+	"DeleteMenu\x12\x17.menu.DeleteMenuRequest\x1a\x18.menu.DeleteMenuResponse\x12?\n" +
+	"\n" +
+	"CreateItem\x12\x17.menu.CreateItemRequest\x1a\x18.menu.CreateItemResponse\x126\n" +
+	"\aGetItem\x12\x14.menu.GetItemRequest\x1a\x15.menu.GetItemResponse\x129\n" +
+	"\bGetItems\x12\x15.menu.GetItemsRequest\x1a\x16.menu.GetItemsResponse\x12?\n" +
+	"\n" +
+	"UpdateItem\x12\x17.menu.UpdateItemRequest\x1a\x18.menu.UpdateItemResponse\x12?\n" +
+	"\n" +
+	"DeleteItem\x12\x17.menu.DeleteItemRequest\x1a\x18.menu.DeleteItemResponse\x12K\n" +
 	"\x0eCreateMenuItem\x12\x1b.menu.CreateMenuItemRequest\x1a\x1c.menu.CreateMenuItemResponse\x12E\n" +
-	"\fGetMenuItems\x12\x19.menu.GetMenuItemsRequest\x1a\x1a.menu.GetMenuItemsResponse\x12B\n" +
-	"\vGetMenuItem\x12\x18.menu.GetMenuItemRequest\x1a\x19.menu.GetMenuItemResponse\x12K\n" +
-	"\x0eUpdateMenuItem\x12\x1b.menu.UpdateMenuItemRequest\x1a\x1c.menu.UpdateMenuItemResponse\x12K\n" +
+	"\fGetMenuItems\x12\x19.menu.GetMenuItemsRequest\x1a\x1a.menu.GetMenuItemsResponse\x12K\n" +
 	"\x0eDeleteMenuItem\x12\x1b.menu.DeleteMenuItemRequest\x1a\x1c.menu.DeleteMenuItemResponse\x12N\n" +
 	"\x0fDeleteMenuItems\x12\x1c.menu.DeleteMenuItemsRequest\x1a\x1d.menu.DeleteMenuItemsResponseB\aZ\x05/menub\x06proto3"
 
@@ -1124,59 +1586,79 @@ func file_menu_proto_rawDescGZIP() []byte {
 	return file_menu_proto_rawDescData
 }
 
-var file_menu_proto_msgTypes = make([]protoimpl.MessageInfo, 20)
+var file_menu_proto_msgTypes = make([]protoimpl.MessageInfo, 29)
 var file_menu_proto_goTypes = []any{
 	(*Menu)(nil),                    // 0: menu.Menu
-	(*MenuItem)(nil),                // 1: menu.MenuItem
-	(*CreateMenuRequest)(nil),       // 2: menu.CreateMenuRequest
-	(*CreateMenuResponse)(nil),      // 3: menu.CreateMenuResponse
-	(*GetMenusRequest)(nil),         // 4: menu.GetMenusRequest
-	(*GetMenusResponse)(nil),        // 5: menu.GetMenusResponse
-	(*DeleteMenuRequest)(nil),       // 6: menu.DeleteMenuRequest
-	(*DeleteMenuResponse)(nil),      // 7: menu.DeleteMenuResponse
-	(*CreateMenuItemRequest)(nil),   // 8: menu.CreateMenuItemRequest
-	(*CreateMenuItemResponse)(nil),  // 9: menu.CreateMenuItemResponse
-	(*GetMenuItemsRequest)(nil),     // 10: menu.GetMenuItemsRequest
-	(*GetMenuItemsResponse)(nil),    // 11: menu.GetMenuItemsResponse
-	(*GetMenuItemRequest)(nil),      // 12: menu.GetMenuItemRequest
-	(*GetMenuItemResponse)(nil),     // 13: menu.GetMenuItemResponse
-	(*UpdateMenuItemRequest)(nil),   // 14: menu.UpdateMenuItemRequest
-	(*UpdateMenuItemResponse)(nil),  // 15: menu.UpdateMenuItemResponse
-	(*DeleteMenuItemsRequest)(nil),  // 16: menu.DeleteMenuItemsRequest
-	(*DeleteMenuItemsResponse)(nil), // 17: menu.DeleteMenuItemsResponse
-	(*DeleteMenuItemRequest)(nil),   // 18: menu.DeleteMenuItemRequest
-	(*DeleteMenuItemResponse)(nil),  // 19: menu.DeleteMenuItemResponse
+	(*Item)(nil),                    // 1: menu.Item
+	(*MenuItem)(nil),                // 2: menu.MenuItem
+	(*CreateMenuRequest)(nil),       // 3: menu.CreateMenuRequest
+	(*CreateMenuResponse)(nil),      // 4: menu.CreateMenuResponse
+	(*GetMenusRequest)(nil),         // 5: menu.GetMenusRequest
+	(*GetMenusResponse)(nil),        // 6: menu.GetMenusResponse
+	(*SetMenuRequest)(nil),          // 7: menu.SetMenuRequest
+	(*SetMenuResponse)(nil),         // 8: menu.SetMenuResponse
+	(*DeleteMenuRequest)(nil),       // 9: menu.DeleteMenuRequest
+	(*DeleteMenuResponse)(nil),      // 10: menu.DeleteMenuResponse
+	(*CreateItemRequest)(nil),       // 11: menu.CreateItemRequest
+	(*CreateItemResponse)(nil),      // 12: menu.CreateItemResponse
+	(*GetItemRequest)(nil),          // 13: menu.GetItemRequest
+	(*GetItemResponse)(nil),         // 14: menu.GetItemResponse
+	(*GetItemsRequest)(nil),         // 15: menu.GetItemsRequest
+	(*GetItemsResponse)(nil),        // 16: menu.GetItemsResponse
+	(*UpdateItemRequest)(nil),       // 17: menu.UpdateItemRequest
+	(*UpdateItemResponse)(nil),      // 18: menu.UpdateItemResponse
+	(*DeleteItemRequest)(nil),       // 19: menu.DeleteItemRequest
+	(*DeleteItemResponse)(nil),      // 20: menu.DeleteItemResponse
+	(*CreateMenuItemRequest)(nil),   // 21: menu.CreateMenuItemRequest
+	(*CreateMenuItemResponse)(nil),  // 22: menu.CreateMenuItemResponse
+	(*GetMenuItemsRequest)(nil),     // 23: menu.GetMenuItemsRequest
+	(*GetMenuItemsResponse)(nil),    // 24: menu.GetMenuItemsResponse
+	(*DeleteMenuItemRequest)(nil),   // 25: menu.DeleteMenuItemRequest
+	(*DeleteMenuItemResponse)(nil),  // 26: menu.DeleteMenuItemResponse
+	(*DeleteMenuItemsRequest)(nil),  // 27: menu.DeleteMenuItemsRequest
+	(*DeleteMenuItemsResponse)(nil), // 28: menu.DeleteMenuItemsResponse
 }
 var file_menu_proto_depIdxs = []int32{
 	0,  // 0: menu.CreateMenuResponse.menu:type_name -> menu.Menu
 	0,  // 1: menu.GetMenusResponse.menus:type_name -> menu.Menu
-	1,  // 2: menu.CreateMenuItemResponse.menuItem:type_name -> menu.MenuItem
-	1,  // 3: menu.GetMenuItemsResponse.menuItems:type_name -> menu.MenuItem
-	1,  // 4: menu.GetMenuItemResponse.MenuItem:type_name -> menu.MenuItem
-	1,  // 5: menu.UpdateMenuItemRequest.menuItem:type_name -> menu.MenuItem
-	2,  // 6: menu.MenuService.CreateMenu:input_type -> menu.CreateMenuRequest
-	4,  // 7: menu.MenuService.GetMenus:input_type -> menu.GetMenusRequest
-	6,  // 8: menu.MenuService.DeleteMenu:input_type -> menu.DeleteMenuRequest
-	8,  // 9: menu.MenuService.CreateMenuItem:input_type -> menu.CreateMenuItemRequest
-	10, // 10: menu.MenuService.GetMenuItems:input_type -> menu.GetMenuItemsRequest
-	12, // 11: menu.MenuService.GetMenuItem:input_type -> menu.GetMenuItemRequest
-	14, // 12: menu.MenuService.UpdateMenuItem:input_type -> menu.UpdateMenuItemRequest
-	18, // 13: menu.MenuService.DeleteMenuItem:input_type -> menu.DeleteMenuItemRequest
-	16, // 14: menu.MenuService.DeleteMenuItems:input_type -> menu.DeleteMenuItemsRequest
-	3,  // 15: menu.MenuService.CreateMenu:output_type -> menu.CreateMenuResponse
-	5,  // 16: menu.MenuService.GetMenus:output_type -> menu.GetMenusResponse
-	7,  // 17: menu.MenuService.DeleteMenu:output_type -> menu.DeleteMenuResponse
-	9,  // 18: menu.MenuService.CreateMenuItem:output_type -> menu.CreateMenuItemResponse
-	11, // 19: menu.MenuService.GetMenuItems:output_type -> menu.GetMenuItemsResponse
-	13, // 20: menu.MenuService.GetMenuItem:output_type -> menu.GetMenuItemResponse
-	15, // 21: menu.MenuService.UpdateMenuItem:output_type -> menu.UpdateMenuItemResponse
-	19, // 22: menu.MenuService.DeleteMenuItem:output_type -> menu.DeleteMenuItemResponse
-	17, // 23: menu.MenuService.DeleteMenuItems:output_type -> menu.DeleteMenuItemsResponse
-	15, // [15:24] is the sub-list for method output_type
-	6,  // [6:15] is the sub-list for method input_type
-	6,  // [6:6] is the sub-list for extension type_name
-	6,  // [6:6] is the sub-list for extension extendee
-	0,  // [0:6] is the sub-list for field type_name
+	0,  // 2: menu.SetMenuRequest.menu:type_name -> menu.Menu
+	1,  // 3: menu.CreateItemResponse.item:type_name -> menu.Item
+	1,  // 4: menu.GetItemResponse.item:type_name -> menu.Item
+	1,  // 5: menu.GetItemsResponse.items:type_name -> menu.Item
+	1,  // 6: menu.UpdateItemRequest.item:type_name -> menu.Item
+	2,  // 7: menu.CreateMenuItemResponse.menuItem:type_name -> menu.MenuItem
+	1,  // 8: menu.GetMenuItemsResponse.items:type_name -> menu.Item
+	3,  // 9: menu.MenuService.CreateMenu:input_type -> menu.CreateMenuRequest
+	5,  // 10: menu.MenuService.GetMenus:input_type -> menu.GetMenusRequest
+	7,  // 11: menu.MenuService.SetMenu:input_type -> menu.SetMenuRequest
+	9,  // 12: menu.MenuService.DeleteMenu:input_type -> menu.DeleteMenuRequest
+	11, // 13: menu.MenuService.CreateItem:input_type -> menu.CreateItemRequest
+	13, // 14: menu.MenuService.GetItem:input_type -> menu.GetItemRequest
+	15, // 15: menu.MenuService.GetItems:input_type -> menu.GetItemsRequest
+	17, // 16: menu.MenuService.UpdateItem:input_type -> menu.UpdateItemRequest
+	19, // 17: menu.MenuService.DeleteItem:input_type -> menu.DeleteItemRequest
+	21, // 18: menu.MenuService.CreateMenuItem:input_type -> menu.CreateMenuItemRequest
+	23, // 19: menu.MenuService.GetMenuItems:input_type -> menu.GetMenuItemsRequest
+	25, // 20: menu.MenuService.DeleteMenuItem:input_type -> menu.DeleteMenuItemRequest
+	27, // 21: menu.MenuService.DeleteMenuItems:input_type -> menu.DeleteMenuItemsRequest
+	4,  // 22: menu.MenuService.CreateMenu:output_type -> menu.CreateMenuResponse
+	6,  // 23: menu.MenuService.GetMenus:output_type -> menu.GetMenusResponse
+	8,  // 24: menu.MenuService.SetMenu:output_type -> menu.SetMenuResponse
+	10, // 25: menu.MenuService.DeleteMenu:output_type -> menu.DeleteMenuResponse
+	12, // 26: menu.MenuService.CreateItem:output_type -> menu.CreateItemResponse
+	14, // 27: menu.MenuService.GetItem:output_type -> menu.GetItemResponse
+	16, // 28: menu.MenuService.GetItems:output_type -> menu.GetItemsResponse
+	18, // 29: menu.MenuService.UpdateItem:output_type -> menu.UpdateItemResponse
+	20, // 30: menu.MenuService.DeleteItem:output_type -> menu.DeleteItemResponse
+	22, // 31: menu.MenuService.CreateMenuItem:output_type -> menu.CreateMenuItemResponse
+	24, // 32: menu.MenuService.GetMenuItems:output_type -> menu.GetMenuItemsResponse
+	26, // 33: menu.MenuService.DeleteMenuItem:output_type -> menu.DeleteMenuItemResponse
+	28, // 34: menu.MenuService.DeleteMenuItems:output_type -> menu.DeleteMenuItemsResponse
+	22, // [22:35] is the sub-list for method output_type
+	9,  // [9:22] is the sub-list for method input_type
+	9,  // [9:9] is the sub-list for extension type_name
+	9,  // [9:9] is the sub-list for extension extendee
+	0,  // [0:9] is the sub-list for field type_name
 }
 
 func init() { file_menu_proto_init() }
@@ -1190,7 +1672,7 @@ func file_menu_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_menu_proto_rawDesc), len(file_menu_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   20,
+			NumMessages:   29,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
