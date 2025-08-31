@@ -41,7 +41,7 @@ message GetMenusResponse{
     repeated Menu menus = 1;
 }
 message SetMenuRequest{
-    Menu menu = 1;
+    string menuId = 1;
 }
 message SetMenuResponse{
     bool success = 1;

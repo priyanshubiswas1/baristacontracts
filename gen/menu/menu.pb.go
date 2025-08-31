@@ -428,7 +428,7 @@ func (x *GetMenusResponse) GetMenus() []*Menu {
 
 type SetMenuRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Menu          *Menu                  `protobuf:"bytes,1,opt,name=menu,proto3" json:"menu,omitempty"`
+	MenuId        string                 `protobuf:"bytes,1,opt,name=menuId,proto3" json:"menuId,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -463,11 +463,11 @@ func (*SetMenuRequest) Descriptor() ([]byte, []int) {
 	return file_menu_proto_rawDescGZIP(), []int{7}
 }
 
-func (x *SetMenuRequest) GetMenu() *Menu {
+func (x *SetMenuRequest) GetMenuId() string {
 	if x != nil {
-		return x.Menu
+		return x.MenuId
 	}
-	return nil
+	return ""
 }
 
 type SetMenuResponse struct {
@@ -1495,10 +1495,9 @@ const file_menu_proto_rawDesc = "" +
 	"\x06shopId\x18\x01 \x01(\tR\x06shopId\"4\n" +
 	"\x10GetMenusResponse\x12 \n" +
 	"\x05menus\x18\x01 \x03(\v2\n" +
-	".menu.MenuR\x05menus\"0\n" +
-	"\x0eSetMenuRequest\x12\x1e\n" +
-	"\x04menu\x18\x01 \x01(\v2\n" +
-	".menu.MenuR\x04menu\"+\n" +
+	".menu.MenuR\x05menus\"(\n" +
+	"\x0eSetMenuRequest\x12\x16\n" +
+	"\x06menuId\x18\x01 \x01(\tR\x06menuId\"+\n" +
 	"\x0fSetMenuResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\"+\n" +
 	"\x11DeleteMenuRequest\x12\x16\n" +
@@ -1621,44 +1620,43 @@ var file_menu_proto_goTypes = []any{
 var file_menu_proto_depIdxs = []int32{
 	0,  // 0: menu.CreateMenuResponse.menu:type_name -> menu.Menu
 	0,  // 1: menu.GetMenusResponse.menus:type_name -> menu.Menu
-	0,  // 2: menu.SetMenuRequest.menu:type_name -> menu.Menu
-	1,  // 3: menu.CreateItemResponse.item:type_name -> menu.Item
-	1,  // 4: menu.GetItemResponse.item:type_name -> menu.Item
-	1,  // 5: menu.GetItemsResponse.items:type_name -> menu.Item
-	1,  // 6: menu.UpdateItemRequest.item:type_name -> menu.Item
-	2,  // 7: menu.CreateMenuItemResponse.menuItem:type_name -> menu.MenuItem
-	1,  // 8: menu.GetMenuItemsResponse.items:type_name -> menu.Item
-	3,  // 9: menu.MenuService.CreateMenu:input_type -> menu.CreateMenuRequest
-	5,  // 10: menu.MenuService.GetMenus:input_type -> menu.GetMenusRequest
-	7,  // 11: menu.MenuService.SetMenu:input_type -> menu.SetMenuRequest
-	9,  // 12: menu.MenuService.DeleteMenu:input_type -> menu.DeleteMenuRequest
-	11, // 13: menu.MenuService.CreateItem:input_type -> menu.CreateItemRequest
-	13, // 14: menu.MenuService.GetItem:input_type -> menu.GetItemRequest
-	15, // 15: menu.MenuService.GetItems:input_type -> menu.GetItemsRequest
-	17, // 16: menu.MenuService.UpdateItem:input_type -> menu.UpdateItemRequest
-	19, // 17: menu.MenuService.DeleteItem:input_type -> menu.DeleteItemRequest
-	21, // 18: menu.MenuService.CreateMenuItem:input_type -> menu.CreateMenuItemRequest
-	23, // 19: menu.MenuService.GetMenuItems:input_type -> menu.GetMenuItemsRequest
-	25, // 20: menu.MenuService.DeleteMenuItem:input_type -> menu.DeleteMenuItemRequest
-	27, // 21: menu.MenuService.DeleteMenuItems:input_type -> menu.DeleteMenuItemsRequest
-	4,  // 22: menu.MenuService.CreateMenu:output_type -> menu.CreateMenuResponse
-	6,  // 23: menu.MenuService.GetMenus:output_type -> menu.GetMenusResponse
-	8,  // 24: menu.MenuService.SetMenu:output_type -> menu.SetMenuResponse
-	10, // 25: menu.MenuService.DeleteMenu:output_type -> menu.DeleteMenuResponse
-	12, // 26: menu.MenuService.CreateItem:output_type -> menu.CreateItemResponse
-	14, // 27: menu.MenuService.GetItem:output_type -> menu.GetItemResponse
-	16, // 28: menu.MenuService.GetItems:output_type -> menu.GetItemsResponse
-	18, // 29: menu.MenuService.UpdateItem:output_type -> menu.UpdateItemResponse
-	20, // 30: menu.MenuService.DeleteItem:output_type -> menu.DeleteItemResponse
-	22, // 31: menu.MenuService.CreateMenuItem:output_type -> menu.CreateMenuItemResponse
-	24, // 32: menu.MenuService.GetMenuItems:output_type -> menu.GetMenuItemsResponse
-	26, // 33: menu.MenuService.DeleteMenuItem:output_type -> menu.DeleteMenuItemResponse
-	28, // 34: menu.MenuService.DeleteMenuItems:output_type -> menu.DeleteMenuItemsResponse
-	22, // [22:35] is the sub-list for method output_type
-	9,  // [9:22] is the sub-list for method input_type
-	9,  // [9:9] is the sub-list for extension type_name
-	9,  // [9:9] is the sub-list for extension extendee
-	0,  // [0:9] is the sub-list for field type_name
+	1,  // 2: menu.CreateItemResponse.item:type_name -> menu.Item
+	1,  // 3: menu.GetItemResponse.item:type_name -> menu.Item
+	1,  // 4: menu.GetItemsResponse.items:type_name -> menu.Item
+	1,  // 5: menu.UpdateItemRequest.item:type_name -> menu.Item
+	2,  // 6: menu.CreateMenuItemResponse.menuItem:type_name -> menu.MenuItem
+	1,  // 7: menu.GetMenuItemsResponse.items:type_name -> menu.Item
+	3,  // 8: menu.MenuService.CreateMenu:input_type -> menu.CreateMenuRequest
+	5,  // 9: menu.MenuService.GetMenus:input_type -> menu.GetMenusRequest
+	7,  // 10: menu.MenuService.SetMenu:input_type -> menu.SetMenuRequest
+	9,  // 11: menu.MenuService.DeleteMenu:input_type -> menu.DeleteMenuRequest
+	11, // 12: menu.MenuService.CreateItem:input_type -> menu.CreateItemRequest
+	13, // 13: menu.MenuService.GetItem:input_type -> menu.GetItemRequest
+	15, // 14: menu.MenuService.GetItems:input_type -> menu.GetItemsRequest
+	17, // 15: menu.MenuService.UpdateItem:input_type -> menu.UpdateItemRequest
+	19, // 16: menu.MenuService.DeleteItem:input_type -> menu.DeleteItemRequest
+	21, // 17: menu.MenuService.CreateMenuItem:input_type -> menu.CreateMenuItemRequest
+	23, // 18: menu.MenuService.GetMenuItems:input_type -> menu.GetMenuItemsRequest
+	25, // 19: menu.MenuService.DeleteMenuItem:input_type -> menu.DeleteMenuItemRequest
+	27, // 20: menu.MenuService.DeleteMenuItems:input_type -> menu.DeleteMenuItemsRequest
+	4,  // 21: menu.MenuService.CreateMenu:output_type -> menu.CreateMenuResponse
+	6,  // 22: menu.MenuService.GetMenus:output_type -> menu.GetMenusResponse
+	8,  // 23: menu.MenuService.SetMenu:output_type -> menu.SetMenuResponse
+	10, // 24: menu.MenuService.DeleteMenu:output_type -> menu.DeleteMenuResponse
+	12, // 25: menu.MenuService.CreateItem:output_type -> menu.CreateItemResponse
+	14, // 26: menu.MenuService.GetItem:output_type -> menu.GetItemResponse
+	16, // 27: menu.MenuService.GetItems:output_type -> menu.GetItemsResponse
+	18, // 28: menu.MenuService.UpdateItem:output_type -> menu.UpdateItemResponse
+	20, // 29: menu.MenuService.DeleteItem:output_type -> menu.DeleteItemResponse
+	22, // 30: menu.MenuService.CreateMenuItem:output_type -> menu.CreateMenuItemResponse
+	24, // 31: menu.MenuService.GetMenuItems:output_type -> menu.GetMenuItemsResponse
+	26, // 32: menu.MenuService.DeleteMenuItem:output_type -> menu.DeleteMenuItemResponse
+	28, // 33: menu.MenuService.DeleteMenuItems:output_type -> menu.DeleteMenuItemsResponse
+	21, // [21:34] is the sub-list for method output_type
+	8,  // [8:21] is the sub-list for method input_type
+	8,  // [8:8] is the sub-list for extension type_name
+	8,  // [8:8] is the sub-list for extension extendee
+	0,  // [0:8] is the sub-list for field type_name
 }
 
 func init() { file_menu_proto_init() }
