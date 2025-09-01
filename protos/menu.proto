@@ -26,6 +26,12 @@ message MenuItem {
     string itemId = 3;
 }
 
+message Category{
+    string id = 1;
+    string shopId = 2;
+    string name = 3;
+}
+
 //MENU
 message CreateMenuRequest{
     string shopId = 1;
@@ -127,17 +133,12 @@ message DeleteMenuItemsResponse{
 }
 
 //CATEGORY
-message Category{
-    string id = 1;
-    string shopId = 2;
-    string name = 3;
-}
 message CreateCategoryRequest{
     string shopId = 1;
     string name = 2;
 }
 message CreateCategoryResponse{
-    bool success = 1;
+    Category category = 1;
 }
 message GetCategoryRequest{
     string shopId = 1;
