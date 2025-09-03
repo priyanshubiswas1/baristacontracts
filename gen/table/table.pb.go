@@ -93,7 +93,6 @@ type CreateTableRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ShopId        string                 `protobuf:"bytes,1,opt,name=shop_id,json=shopId,proto3" json:"shop_id,omitempty"`
 	TableNumber   string                 `protobuf:"bytes,2,opt,name=table_number,json=tableNumber,proto3" json:"table_number,omitempty"`
-	QrUrl         string                 `protobuf:"bytes,3,opt,name=qr_url,json=qrUrl,proto3" json:"qr_url,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -138,13 +137,6 @@ func (x *CreateTableRequest) GetShopId() string {
 func (x *CreateTableRequest) GetTableNumber() string {
 	if x != nil {
 		return x.TableNumber
-	}
-	return ""
-}
-
-func (x *CreateTableRequest) GetQrUrl() string {
-	if x != nil {
-		return x.QrUrl
 	}
 	return ""
 }
@@ -570,11 +562,10 @@ const file_table_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x17\n" +
 	"\ashop_id\x18\x02 \x01(\tR\x06shopId\x12!\n" +
 	"\ftable_number\x18\x03 \x01(\tR\vtableNumber\x12\x15\n" +
-	"\x06qr_url\x18\x04 \x01(\tR\x05qrUrl\"g\n" +
+	"\x06qr_url\x18\x04 \x01(\tR\x05qrUrl\"P\n" +
 	"\x12CreateTableRequest\x12\x17\n" +
 	"\ashop_id\x18\x01 \x01(\tR\x06shopId\x12!\n" +
-	"\ftable_number\x18\x02 \x01(\tR\vtableNumber\x12\x15\n" +
-	"\x06qr_url\x18\x03 \x01(\tR\x05qrUrl\"9\n" +
+	"\ftable_number\x18\x02 \x01(\tR\vtableNumber\"9\n" +
 	"\x13CreateTableResponse\x12\"\n" +
 	"\x05table\x18\x01 \x01(\v2\f.table.TableR\x05table\"+\n" +
 	"\x10GetTablesRequest\x12\x17\n" +

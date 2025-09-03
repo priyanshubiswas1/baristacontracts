@@ -13,7 +13,6 @@ message Table{
 message CreateTableRequest{
     string shop_id = 1;
     string table_number = 2;
-    string qr_url = 3;
 }
 
 message CreateTableResponse{
