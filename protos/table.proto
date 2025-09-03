@@ -1,0 +1,63 @@
+syntax = "proto3";
+package table;
+
+option go_package = "/table";
+
+message Table{
+    string id = 1;
+    string shop_id = 2;
+    string table_number = 3;
+    string qr_url = 4;
+}
+
+message CreateTableRequest{
+    string shop_id = 1;
+    string table_number = 2;
+    string qr_url = 3;
+}
+
+message CreateTableResponse{
+    Table table = 1;
+}
+
+message GetTablesRequest{
+    string shop_id = 1;
+}
+
+message GetTablesResponse{
+    repeated Table tables = 1;
+}
+
+message GetTableRequest{
+    string id = 1;
+    string shop_id = 2;
+}
+
+message GetTableResponse{
+    Table table = 1;
+}
+
+message UpdateTableRequest{
+    Table table = 1;
+}
+
+message UpdateTableResponse{
+    bool success = 1;
+}
+
+message DeleteTableRequest{
+    string id = 1;
+    string shop_id = 2;
+}
+
+message DeleteTableResponse{
+    bool success = 1;
+}
+
+service TableService{
+    rpc CreateTable(CreateTableRequest) returns (CreateTableResponse);
+    rpc GetTable(GetTableRequest) returns (GetTableResponse);
+    rpc GetTables(GetTablesRequest) returns (GetTablesResponse);
+    rpc UpdateTable(UpdateTableRequest) returns (UpdateTableResponse);
+    rpc DeleteTable(DeleteTableRequest) returns (DeleteTableResponse);
+}
