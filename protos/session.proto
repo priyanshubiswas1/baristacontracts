@@ -1,0 +1,72 @@
+syntax = "proto3";
+package session;
+
+option go_package = "/session";
+
+message Session {
+    string sessionId = 1;
+    string shopId = 2;
+    string tableId = 3;
+    int32 otp = 5;
+    string sessionStatus = 6;
+    float totalAmount = 7;
+    bool isPaid = 8;
+    string paymentMethod = 9;
+    bool active = 10;
+}
+
+message GetAllSessionsRequest{
+    string shopId = 1;
+}
+
+message GetAllSessionsResponse{
+    repeated Session sessions = 1;
+}
+
+message GetActiveSessionRequest{
+    string shopId = 1;
+    string tableId = 2;
+}
+
+message GetActiveSessionResponse{
+    Session session = 1;
+}
+
+message GetSessionRequest{
+    string sessionId = 1;
+}
+
+message GetSessionResponse{
+    Session session = 1;
+}
+
+message CreateSessionRequest{
+    string shopId = 1;
+    string tableId = 2;
+    int32 otp = 3;
+    string sessionStatus = 4;
+    float totalAmount = 5;
+    bool isPaid = 6;
+    string paymentMethod = 7;
+    bool active = 8;
+}
+
+message CreateSessionResponse{
+    Session session = 1;
+}
+
+message UpdateSessionRequest{
+    Session session = 1;
+}
+
+message UpdateSessionResponse{
+    bool success = 1;
+}
+
+service SessionService{
+    rpc GetAllSessions(GetAllSessionsRequest) returns (GetAllSessionsResponse);
+    rpc GetActiveSession(GetActiveSessionRequest) returns (GetActiveSessionResponse);
+    rpc GetSessionById(GetSessionRequest) returns (GetSessionResponse);
+    rpc CreateSession(CreateSessionRequest) returns (CreateSessionResponse);
+    rpc UpdateSession(UpdateSessionRequest) returns (UpdateSessionResponse);
+}
