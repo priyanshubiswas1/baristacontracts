@@ -26,7 +26,7 @@ type Session struct {
 	SessionId     string                 `protobuf:"bytes,1,opt,name=sessionId,proto3" json:"sessionId,omitempty"`
 	ShopId        string                 `protobuf:"bytes,2,opt,name=shopId,proto3" json:"shopId,omitempty"`
 	TableId       string                 `protobuf:"bytes,3,opt,name=tableId,proto3" json:"tableId,omitempty"`
-	Otp           int32                  `protobuf:"varint,5,opt,name=otp,proto3" json:"otp,omitempty"`
+	Otp           string                 `protobuf:"bytes,5,opt,name=otp,proto3" json:"otp,omitempty"`
 	SessionStatus string                 `protobuf:"bytes,6,opt,name=sessionStatus,proto3" json:"sessionStatus,omitempty"`
 	TotalAmount   float32                `protobuf:"fixed32,7,opt,name=totalAmount,proto3" json:"totalAmount,omitempty"`
 	IsPaid        bool                   `protobuf:"varint,8,opt,name=isPaid,proto3" json:"isPaid,omitempty"`
@@ -88,11 +88,11 @@ func (x *Session) GetTableId() string {
 	return ""
 }
 
-func (x *Session) GetOtp() int32 {
+func (x *Session) GetOtp() string {
 	if x != nil {
 		return x.Otp
 	}
-	return 0
+	return ""
 }
 
 func (x *Session) GetSessionStatus() string {
@@ -517,7 +517,7 @@ type CreateSessionRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ShopId        string                 `protobuf:"bytes,1,opt,name=shopId,proto3" json:"shopId,omitempty"`
 	TableId       string                 `protobuf:"bytes,2,opt,name=tableId,proto3" json:"tableId,omitempty"`
-	Otp           int32                  `protobuf:"varint,3,opt,name=otp,proto3" json:"otp,omitempty"`
+	Otp           string                 `protobuf:"bytes,3,opt,name=otp,proto3" json:"otp,omitempty"`
 	SessionStatus string                 `protobuf:"bytes,4,opt,name=sessionStatus,proto3" json:"sessionStatus,omitempty"`
 	TotalAmount   float32                `protobuf:"fixed32,5,opt,name=totalAmount,proto3" json:"totalAmount,omitempty"`
 	IsPaid        bool                   `protobuf:"varint,6,opt,name=isPaid,proto3" json:"isPaid,omitempty"`
@@ -571,11 +571,11 @@ func (x *CreateSessionRequest) GetTableId() string {
 	return ""
 }
 
-func (x *CreateSessionRequest) GetOtp() int32 {
+func (x *CreateSessionRequest) GetOtp() string {
 	if x != nil {
 		return x.Otp
 	}
-	return 0
+	return ""
 }
 
 func (x *CreateSessionRequest) GetSessionStatus() string {
@@ -669,7 +669,7 @@ type JoinSessionRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ShopId        string                 `protobuf:"bytes,1,opt,name=shopId,proto3" json:"shopId,omitempty"`
 	TableId       string                 `protobuf:"bytes,2,opt,name=tableId,proto3" json:"tableId,omitempty"`
-	Otp           int32                  `protobuf:"varint,3,opt,name=otp,proto3" json:"otp,omitempty"`
+	Otp           string                 `protobuf:"bytes,3,opt,name=otp,proto3" json:"otp,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -718,11 +718,11 @@ func (x *JoinSessionRequest) GetTableId() string {
 	return ""
 }
 
-func (x *JoinSessionRequest) GetOtp() int32 {
+func (x *JoinSessionRequest) GetOtp() string {
 	if x != nil {
 		return x.Otp
 	}
-	return 0
+	return ""
 }
 
 type JoinSessionResponse struct {
@@ -874,7 +874,7 @@ const file_session_proto_rawDesc = "" +
 	"\tsessionId\x18\x01 \x01(\tR\tsessionId\x12\x16\n" +
 	"\x06shopId\x18\x02 \x01(\tR\x06shopId\x12\x18\n" +
 	"\atableId\x18\x03 \x01(\tR\atableId\x12\x10\n" +
-	"\x03otp\x18\x05 \x01(\x05R\x03otp\x12$\n" +
+	"\x03otp\x18\x05 \x01(\tR\x03otp\x12$\n" +
 	"\rsessionStatus\x18\x06 \x01(\tR\rsessionStatus\x12 \n" +
 	"\vtotalAmount\x18\a \x01(\x02R\vtotalAmount\x12\x16\n" +
 	"\x06isPaid\x18\b \x01(\bR\x06isPaid\x12$\n" +
@@ -904,7 +904,7 @@ const file_session_proto_rawDesc = "" +
 	"\x14CreateSessionRequest\x12\x16\n" +
 	"\x06shopId\x18\x01 \x01(\tR\x06shopId\x12\x18\n" +
 	"\atableId\x18\x02 \x01(\tR\atableId\x12\x10\n" +
-	"\x03otp\x18\x03 \x01(\x05R\x03otp\x12$\n" +
+	"\x03otp\x18\x03 \x01(\tR\x03otp\x12$\n" +
 	"\rsessionStatus\x18\x04 \x01(\tR\rsessionStatus\x12 \n" +
 	"\vtotalAmount\x18\x05 \x01(\x02R\vtotalAmount\x12\x16\n" +
 	"\x06isPaid\x18\x06 \x01(\bR\x06isPaid\x12$\n" +
@@ -916,7 +916,7 @@ const file_session_proto_rawDesc = "" +
 	"\x12JoinSessionRequest\x12\x16\n" +
 	"\x06shopId\x18\x01 \x01(\tR\x06shopId\x12\x18\n" +
 	"\atableId\x18\x02 \x01(\tR\atableId\x12\x10\n" +
-	"\x03otp\x18\x03 \x01(\x05R\x03otp\"W\n" +
+	"\x03otp\x18\x03 \x01(\tR\x03otp\"W\n" +
 	"\x13JoinSessionResponse\x12*\n" +
 	"\asession\x18\x01 \x01(\v2\x10.session.SessionR\asession\x12\x14\n" +
 	"\x05token\x18\x02 \x01(\tR\x05token\"B\n" +

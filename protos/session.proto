@@ -7,7 +7,7 @@ message Session {
     string sessionId = 1;
     string shopId = 2;
     string tableId = 3;
-    int32 otp = 5;
+    string otp = 5;
     string sessionStatus = 6;
     float totalAmount = 7;
     bool isPaid = 8;
@@ -54,7 +54,7 @@ message SendSessionOTPResponse{
 message CreateSessionRequest{
     string shopId = 1;
     string tableId = 2;
-    int32 otp = 3;
+    string otp = 3;
     string sessionStatus = 4;
     float totalAmount = 5;
     bool isPaid = 6;
@@ -70,7 +70,7 @@ message CreateSessionResponse{
 message JoinSessionRequest{
     string shopId = 1;
     string tableId = 2;
-    int32 otp = 3;
+    string otp = 3;
 }
 
 message JoinSessionResponse{
