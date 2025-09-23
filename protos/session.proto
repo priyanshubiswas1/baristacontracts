@@ -12,7 +12,8 @@ message Session {
     float totalAmount = 7;
     bool isPaid = 8;
     string paymentMethod = 9;
-    bool active = 10;
+    int32 phoneNumber = 10;
+    bool active = 11;
 }
 
 message GetAllSessionsRequest{
@@ -40,6 +41,16 @@ message GetSessionResponse{
     Session session = 1;
 }
 
+message SendSessionOTPRequest{
+    string shopId = 1;
+    string tableId = 2;
+    int32 phoneNo = 3;
+}
+
+message SendSessionOTPResponse{
+    bool success = 1;
+}
+
 message CreateSessionRequest{
     string shopId = 1;
     string tableId = 2;
@@ -53,6 +64,18 @@ message CreateSessionRequest{
 
 message CreateSessionResponse{
     Session session = 1;
+    string token = 2;
+}
+
+message JoinSessionRequest{
+    string shopId = 1;
+    string tableId = 2;
+    int32 otp = 3;
+}
+
+message JoinSessionResponse{
+    Session session = 1;
+    string token = 2;
 }
 
 message UpdateSessionRequest{
@@ -67,6 +90,8 @@ service SessionService{
     rpc GetAllSessions(GetAllSessionsRequest) returns (GetAllSessionsResponse);
     rpc GetActiveSession(GetActiveSessionRequest) returns (GetActiveSessionResponse);
     rpc GetSessionById(GetSessionRequest) returns (GetSessionResponse);
+    rpc SendSessionOTP(SendSessionOTPRequest) returns (SendSessionOTPResponse);
     rpc CreateSession(CreateSessionRequest) returns (CreateSessionResponse);
+    rpc JoinSession(JoinSessionRequest) returns (JoinSessionResponse);
     rpc UpdateSession(UpdateSessionRequest) returns (UpdateSessionResponse);
 }
