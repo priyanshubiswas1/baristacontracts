@@ -413,7 +413,7 @@ type SendSessionOTPRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ShopId        string                 `protobuf:"bytes,1,opt,name=shopId,proto3" json:"shopId,omitempty"`
 	TableId       string                 `protobuf:"bytes,2,opt,name=tableId,proto3" json:"tableId,omitempty"`
-	PhoneNo       int32                  `protobuf:"varint,3,opt,name=phoneNo,proto3" json:"phoneNo,omitempty"`
+	PhoneNo       string                 `protobuf:"bytes,3,opt,name=phoneNo,proto3" json:"phoneNo,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -462,11 +462,11 @@ func (x *SendSessionOTPRequest) GetTableId() string {
 	return ""
 }
 
-func (x *SendSessionOTPRequest) GetPhoneNo() int32 {
+func (x *SendSessionOTPRequest) GetPhoneNo() string {
 	if x != nil {
 		return x.PhoneNo
 	}
-	return 0
+	return ""
 }
 
 type SendSessionOTPResponse struct {
@@ -898,7 +898,7 @@ const file_session_proto_rawDesc = "" +
 	"\x15SendSessionOTPRequest\x12\x16\n" +
 	"\x06shopId\x18\x01 \x01(\tR\x06shopId\x12\x18\n" +
 	"\atableId\x18\x02 \x01(\tR\atableId\x12\x18\n" +
-	"\aphoneNo\x18\x03 \x01(\x05R\aphoneNo\"2\n" +
+	"\aphoneNo\x18\x03 \x01(\tR\aphoneNo\"2\n" +
 	"\x16SendSessionOTPResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\"\xf8\x01\n" +
 	"\x14CreateSessionRequest\x12\x16\n" +

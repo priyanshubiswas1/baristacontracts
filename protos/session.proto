@@ -44,7 +44,7 @@ message GetSessionResponse{
 message SendSessionOTPRequest{
     string shopId = 1;
     string tableId = 2;
-    int32 phoneNo = 3;
+    string phoneNo = 3;
 }
 
 message SendSessionOTPResponse{
