@@ -31,7 +31,7 @@ type Session struct {
 	TotalAmount   float32                `protobuf:"fixed32,7,opt,name=totalAmount,proto3" json:"totalAmount,omitempty"`
 	IsPaid        bool                   `protobuf:"varint,8,opt,name=isPaid,proto3" json:"isPaid,omitempty"`
 	PaymentMethod string                 `protobuf:"bytes,9,opt,name=paymentMethod,proto3" json:"paymentMethod,omitempty"`
-	PhoneNumber   int32                  `protobuf:"varint,10,opt,name=phoneNumber,proto3" json:"phoneNumber,omitempty"`
+	PhoneNumber   string                 `protobuf:"bytes,10,opt,name=phoneNumber,proto3" json:"phoneNumber,omitempty"`
 	Active        bool                   `protobuf:"varint,11,opt,name=active,proto3" json:"active,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -123,11 +123,11 @@ func (x *Session) GetPaymentMethod() string {
 	return ""
 }
 
-func (x *Session) GetPhoneNumber() int32 {
+func (x *Session) GetPhoneNumber() string {
 	if x != nil {
 		return x.PhoneNumber
 	}
-	return 0
+	return ""
 }
 
 func (x *Session) GetActive() bool {
@@ -880,7 +880,7 @@ const file_session_proto_rawDesc = "" +
 	"\x06isPaid\x18\b \x01(\bR\x06isPaid\x12$\n" +
 	"\rpaymentMethod\x18\t \x01(\tR\rpaymentMethod\x12 \n" +
 	"\vphoneNumber\x18\n" +
-	" \x01(\x05R\vphoneNumber\x12\x16\n" +
+	" \x01(\tR\vphoneNumber\x12\x16\n" +
 	"\x06active\x18\v \x01(\bR\x06active\"/\n" +
 	"\x15GetAllSessionsRequest\x12\x16\n" +
 	"\x06shopId\x18\x01 \x01(\tR\x06shopId\"F\n" +

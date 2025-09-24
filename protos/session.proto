@@ -12,7 +12,7 @@ message Session {
     float totalAmount = 7;
     bool isPaid = 8;
     string paymentMethod = 9;
-    int32 phoneNumber = 10;
+    string phoneNumber = 10;
     bool active = 11;
 }
 
