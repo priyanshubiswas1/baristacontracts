@@ -1,0 +1,77 @@
+syntax = "proto3";
+package order;
+
+option go_package = "/order";
+
+message Order {
+    string orderId = 1;
+    string sessionId = 2;
+    string orderStatus = 3;
+    string specialNotes = 5;
+}
+
+message OrderItem {
+    string orderItemId = 1;
+    string orderId = 2;
+    string itemId = 3;
+    string quantity = 4;
+    string priceAtOrderTime = 5;
+}
+
+message OrderItemReq {
+    string itemId = 1;
+    string quantity = 2;
+    string priceAtOrderTime = 3;
+}
+
+message GetOrdersBySessionIdRequest{
+   string sessionId = 1;
+}
+
+message GetOrdersBySessionIdResponse{
+   repeated OrderItem orderitems =1;
+}
+
+message GetOrderByIdRequest{
+    string orderId = 1;
+}
+
+message GetOrderByIdResponse{
+   repeated OrderItem orderitems = 1;
+}
+
+message CreateOrderRequest{
+    string sessionId = 1;
+    string specialNotes = 2;
+    repeated OrderItemReq orderItems = 3;
+}
+
+message CreateOrderResponse{
+    Order order = 1;
+    repeated OrderItem orderItems = 2;
+}
+
+message UpdateOrderRequest{
+   string orderId = 1;
+   string orderStatus = 2;
+}
+
+message UpdateOrderResponse{
+   bool success = 1;
+}
+
+message CancelOrderRequest{
+   string orderId = 1;
+}
+
+message CancelOrderResponse{
+   bool success = 1;
+}
+
+service OrderService{
+    rpc GetOrdersBySessionId(GetOrdersBySessionIdRequest) returns (GetOrdersBySessionIdResponse);
+    rpc GetOrderById(GetOrderByIdRequest) returns (GetOrderByIdResponse);
+    rpc CreateOrder(CreateOrderRequest) returns (CreateOrderResponse);
+    rpc UpdateOrder(UpdateOrderRequest) returns (UpdateOrderResponse);
+    rpc CancelOrder(CancelOrderRequest) returns (CancelOrderResponse);
+}
