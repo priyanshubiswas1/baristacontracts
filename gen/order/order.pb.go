@@ -94,8 +94,8 @@ type OrderItem struct {
 	OrderItemId      string                 `protobuf:"bytes,1,opt,name=orderItemId,proto3" json:"orderItemId,omitempty"`
 	OrderId          string                 `protobuf:"bytes,2,opt,name=orderId,proto3" json:"orderId,omitempty"`
 	ItemId           string                 `protobuf:"bytes,3,opt,name=itemId,proto3" json:"itemId,omitempty"`
-	Quantity         string                 `protobuf:"bytes,4,opt,name=quantity,proto3" json:"quantity,omitempty"`
-	PriceAtOrderTime string                 `protobuf:"bytes,5,opt,name=priceAtOrderTime,proto3" json:"priceAtOrderTime,omitempty"`
+	Quantity         int32                  `protobuf:"varint,4,opt,name=quantity,proto3" json:"quantity,omitempty"`
+	PriceAtOrderTime float32                `protobuf:"fixed32,5,opt,name=priceAtOrderTime,proto3" json:"priceAtOrderTime,omitempty"`
 	unknownFields    protoimpl.UnknownFields
 	sizeCache        protoimpl.SizeCache
 }
@@ -151,25 +151,25 @@ func (x *OrderItem) GetItemId() string {
 	return ""
 }
 
-func (x *OrderItem) GetQuantity() string {
+func (x *OrderItem) GetQuantity() int32 {
 	if x != nil {
 		return x.Quantity
 	}
-	return ""
+	return 0
 }
 
-func (x *OrderItem) GetPriceAtOrderTime() string {
+func (x *OrderItem) GetPriceAtOrderTime() float32 {
 	if x != nil {
 		return x.PriceAtOrderTime
 	}
-	return ""
+	return 0
 }
 
 type OrderItemReq struct {
 	state            protoimpl.MessageState `protogen:"open.v1"`
 	ItemId           string                 `protobuf:"bytes,1,opt,name=itemId,proto3" json:"itemId,omitempty"`
-	Quantity         string                 `protobuf:"bytes,2,opt,name=quantity,proto3" json:"quantity,omitempty"`
-	PriceAtOrderTime string                 `protobuf:"bytes,3,opt,name=priceAtOrderTime,proto3" json:"priceAtOrderTime,omitempty"`
+	Quantity         int32                  `protobuf:"varint,2,opt,name=quantity,proto3" json:"quantity,omitempty"`
+	PriceAtOrderTime float32                `protobuf:"fixed32,3,opt,name=priceAtOrderTime,proto3" json:"priceAtOrderTime,omitempty"`
 	unknownFields    protoimpl.UnknownFields
 	sizeCache        protoimpl.SizeCache
 }
@@ -211,18 +211,18 @@ func (x *OrderItemReq) GetItemId() string {
 	return ""
 }
 
-func (x *OrderItemReq) GetQuantity() string {
+func (x *OrderItemReq) GetQuantity() int32 {
 	if x != nil {
 		return x.Quantity
 	}
-	return ""
+	return 0
 }
 
-func (x *OrderItemReq) GetPriceAtOrderTime() string {
+func (x *OrderItemReq) GetPriceAtOrderTime() float32 {
 	if x != nil {
 		return x.PriceAtOrderTime
 	}
-	return ""
+	return 0
 }
 
 type GetOrdersBySessionIdRequest struct {
@@ -711,12 +711,12 @@ const file_order_proto_rawDesc = "" +
 	"\vorderItemId\x18\x01 \x01(\tR\vorderItemId\x12\x18\n" +
 	"\aorderId\x18\x02 \x01(\tR\aorderId\x12\x16\n" +
 	"\x06itemId\x18\x03 \x01(\tR\x06itemId\x12\x1a\n" +
-	"\bquantity\x18\x04 \x01(\tR\bquantity\x12*\n" +
-	"\x10priceAtOrderTime\x18\x05 \x01(\tR\x10priceAtOrderTime\"n\n" +
+	"\bquantity\x18\x04 \x01(\x05R\bquantity\x12*\n" +
+	"\x10priceAtOrderTime\x18\x05 \x01(\x02R\x10priceAtOrderTime\"n\n" +
 	"\fOrderItemReq\x12\x16\n" +
 	"\x06itemId\x18\x01 \x01(\tR\x06itemId\x12\x1a\n" +
-	"\bquantity\x18\x02 \x01(\tR\bquantity\x12*\n" +
-	"\x10priceAtOrderTime\x18\x03 \x01(\tR\x10priceAtOrderTime\";\n" +
+	"\bquantity\x18\x02 \x01(\x05R\bquantity\x12*\n" +
+	"\x10priceAtOrderTime\x18\x03 \x01(\x02R\x10priceAtOrderTime\";\n" +
 	"\x1bGetOrdersBySessionIdRequest\x12\x1c\n" +
 	"\tsessionId\x18\x01 \x01(\tR\tsessionId\"P\n" +
 	"\x1cGetOrdersBySessionIdResponse\x120\n" +

@@ -14,14 +14,14 @@ message OrderItem {
     string orderItemId = 1;
     string orderId = 2;
     string itemId = 3;
-    string quantity = 4;
-    string priceAtOrderTime = 5;
+    int32 quantity = 4;
+    float priceAtOrderTime = 5;
 }
 
 message OrderItemReq {
     string itemId = 1;
-    string quantity = 2;
-    string priceAtOrderTime = 3;
+    int32 quantity = 2;
+    float priceAtOrderTime = 3;
 }
 
 message GetOrdersBySessionIdRequest{
