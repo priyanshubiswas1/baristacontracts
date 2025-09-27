@@ -31,6 +31,7 @@ message GetOrdersBySessionIdRequest{
 
 message GetOrdersBySessionIdResponse{
    repeated OrderItem orderitems = 1;
+   float totalSessionPrice = 3;
 }
 
 message GetOrderByIdRequest{
@@ -39,6 +40,7 @@ message GetOrderByIdRequest{
 
 message GetOrderByIdResponse{
    repeated OrderItem orderitems = 1;
+   float totalOrderPrice = 3;
 }
 
 message CreateOrderRequest{

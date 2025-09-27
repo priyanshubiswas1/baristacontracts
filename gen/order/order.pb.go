@@ -278,10 +278,11 @@ func (x *GetOrdersBySessionIdRequest) GetSessionId() string {
 }
 
 type GetOrdersBySessionIdResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Orderitems    []*OrderItem           `protobuf:"bytes,1,rep,name=orderitems,proto3" json:"orderitems,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state             protoimpl.MessageState `protogen:"open.v1"`
+	Orderitems        []*OrderItem           `protobuf:"bytes,1,rep,name=orderitems,proto3" json:"orderitems,omitempty"`
+	TotalSessionPrice float32                `protobuf:"fixed32,3,opt,name=totalSessionPrice,proto3" json:"totalSessionPrice,omitempty"`
+	unknownFields     protoimpl.UnknownFields
+	sizeCache         protoimpl.SizeCache
 }
 
 func (x *GetOrdersBySessionIdResponse) Reset() {
@@ -319,6 +320,13 @@ func (x *GetOrdersBySessionIdResponse) GetOrderitems() []*OrderItem {
 		return x.Orderitems
 	}
 	return nil
+}
+
+func (x *GetOrdersBySessionIdResponse) GetTotalSessionPrice() float32 {
+	if x != nil {
+		return x.TotalSessionPrice
+	}
+	return 0
 }
 
 type GetOrderByIdRequest struct {
@@ -366,10 +374,11 @@ func (x *GetOrderByIdRequest) GetOrderId() string {
 }
 
 type GetOrderByIdResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Orderitems    []*OrderItem           `protobuf:"bytes,1,rep,name=orderitems,proto3" json:"orderitems,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	Orderitems      []*OrderItem           `protobuf:"bytes,1,rep,name=orderitems,proto3" json:"orderitems,omitempty"`
+	TotalOrderPrice float32                `protobuf:"fixed32,3,opt,name=totalOrderPrice,proto3" json:"totalOrderPrice,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
 }
 
 func (x *GetOrderByIdResponse) Reset() {
@@ -407,6 +416,13 @@ func (x *GetOrderByIdResponse) GetOrderitems() []*OrderItem {
 		return x.Orderitems
 	}
 	return nil
+}
+
+func (x *GetOrderByIdResponse) GetTotalOrderPrice() float32 {
+	if x != nil {
+		return x.TotalOrderPrice
+	}
+	return 0
 }
 
 type CreateOrderRequest struct {
@@ -727,17 +743,19 @@ const file_order_proto_rawDesc = "" +
 	"\bquantity\x18\x02 \x01(\x05R\bquantity\x12*\n" +
 	"\x10priceAtOrderTime\x18\x03 \x01(\x02R\x10priceAtOrderTime\";\n" +
 	"\x1bGetOrdersBySessionIdRequest\x12\x1c\n" +
-	"\tsessionId\x18\x01 \x01(\tR\tsessionId\"P\n" +
+	"\tsessionId\x18\x01 \x01(\tR\tsessionId\"~\n" +
 	"\x1cGetOrdersBySessionIdResponse\x120\n" +
 	"\n" +
 	"orderitems\x18\x01 \x03(\v2\x10.order.OrderItemR\n" +
-	"orderitems\"/\n" +
+	"orderitems\x12,\n" +
+	"\x11totalSessionPrice\x18\x03 \x01(\x02R\x11totalSessionPrice\"/\n" +
 	"\x13GetOrderByIdRequest\x12\x18\n" +
-	"\aorderId\x18\x01 \x01(\tR\aorderId\"H\n" +
+	"\aorderId\x18\x01 \x01(\tR\aorderId\"r\n" +
 	"\x14GetOrderByIdResponse\x120\n" +
 	"\n" +
 	"orderitems\x18\x01 \x03(\v2\x10.order.OrderItemR\n" +
-	"orderitems\"\x8b\x01\n" +
+	"orderitems\x12(\n" +
+	"\x0ftotalOrderPrice\x18\x03 \x01(\x02R\x0ftotalOrderPrice\"\x8b\x01\n" +
 	"\x12CreateOrderRequest\x12\x1c\n" +
 	"\tsessionId\x18\x01 \x01(\tR\tsessionId\x12\"\n" +
 	"\fspecialNotes\x18\x02 \x01(\tR\fspecialNotes\x123\n" +
