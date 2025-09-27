@@ -16,6 +16,7 @@ message OrderItem {
     string itemId = 3;
     int32 quantity = 4;
     float priceAtOrderTime = 5;
+    string orderStatus = 6;
 }
 
 message OrderItemReq {
@@ -29,7 +30,7 @@ message GetOrdersBySessionIdRequest{
 }
 
 message GetOrdersBySessionIdResponse{
-   repeated OrderItem orderitems =1;
+   repeated OrderItem orderitems = 1;
 }
 
 message GetOrderByIdRequest{
