@@ -233,6 +233,8 @@ type RegisterResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Token         string                 `protobuf:"bytes,1,opt,name=token,proto3" json:"token,omitempty"`
 	User          *User                  `protobuf:"bytes,2,opt,name=user,proto3" json:"user,omitempty"`
+	ShopId        string                 `protobuf:"bytes,3,opt,name=shopId,proto3" json:"shopId,omitempty"`
+	MenuId        string                 `protobuf:"bytes,4,opt,name=menuId,proto3" json:"menuId,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -279,6 +281,20 @@ func (x *RegisterResponse) GetUser() *User {
 		return x.User
 	}
 	return nil
+}
+
+func (x *RegisterResponse) GetShopId() string {
+	if x != nil {
+		return x.ShopId
+	}
+	return ""
+}
+
+func (x *RegisterResponse) GetMenuId() string {
+	if x != nil {
+		return x.MenuId
+	}
+	return ""
 }
 
 type LoginRequest struct {
@@ -375,6 +391,8 @@ type LoginResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Token         string                 `protobuf:"bytes,1,opt,name=token,proto3" json:"token,omitempty"`
 	User          *User                  `protobuf:"bytes,2,opt,name=user,proto3" json:"user,omitempty"`
+	ShopId        string                 `protobuf:"bytes,3,opt,name=shopId,proto3" json:"shopId,omitempty"`
+	MenuId        string                 `protobuf:"bytes,4,opt,name=menuId,proto3" json:"menuId,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -421,6 +439,20 @@ func (x *LoginResponse) GetUser() *User {
 		return x.User
 	}
 	return nil
+}
+
+func (x *LoginResponse) GetShopId() string {
+	if x != nil {
+		return x.ShopId
+	}
+	return ""
+}
+
+func (x *LoginResponse) GetMenuId() string {
+	if x != nil {
+		return x.MenuId
+	}
+	return ""
 }
 
 type UpdateRequest struct {
@@ -659,21 +691,25 @@ const file_auth_proto_rawDesc = "" +
 	"\x0fRegisterRequest\x12\x1e\n" +
 	"\x04user\x18\x01 \x01(\v2\n" +
 	".auth.UserR\x04user\x12\x1a\n" +
-	"\bpassword\x18\x02 \x01(\tR\bpassword\"H\n" +
+	"\bpassword\x18\x02 \x01(\tR\bpassword\"x\n" +
 	"\x10RegisterResponse\x12\x14\n" +
 	"\x05token\x18\x01 \x01(\tR\x05token\x12\x1e\n" +
 	"\x04user\x18\x02 \x01(\v2\n" +
-	".auth.UserR\x04user\"t\n" +
+	".auth.UserR\x04user\x12\x16\n" +
+	"\x06shopId\x18\x03 \x01(\tR\x06shopId\x12\x16\n" +
+	"\x06menuId\x18\x04 \x01(\tR\x06menuId\"t\n" +
 	"\fLoginRequest\x12\x16\n" +
 	"\x05email\x18\x01 \x01(\tH\x00R\x05email\x12\"\n" +
 	"\vphonenumber\x18\x02 \x01(\tH\x00R\vphonenumber\x12\x1a\n" +
 	"\bpassword\x18\x03 \x01(\tR\bpasswordB\f\n" +
 	"\n" +
-	"identifier\"E\n" +
+	"identifier\"u\n" +
 	"\rLoginResponse\x12\x14\n" +
 	"\x05token\x18\x01 \x01(\tR\x05token\x12\x1e\n" +
 	"\x04user\x18\x02 \x01(\v2\n" +
-	".auth.UserR\x04user\"}\n" +
+	".auth.UserR\x04user\x12\x16\n" +
+	"\x06shopId\x18\x03 \x01(\tR\x06shopId\x12\x16\n" +
+	"\x06menuId\x18\x04 \x01(\tR\x06menuId\"}\n" +
 	"\rUpdateRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1e\n" +
 	"\x04user\x18\x02 \x01(\v2\n" +

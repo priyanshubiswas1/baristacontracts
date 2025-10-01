@@ -26,6 +26,8 @@ message RegisterRequest{
 message RegisterResponse{
     string token = 1;
     User user = 2;
+    string shopId = 3;
+    string menuId = 4;
 }
 
 message LoginRequest{
@@ -39,6 +41,8 @@ message LoginRequest{
 message LoginResponse{
     string token = 1;
     User user = 2;
+    string shopId = 3;
+    string menuId = 4;
 }
 
 message UpdateRequest{
