@@ -19,22 +19,23 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	MenuService_CreateMenu_FullMethodName      = "/menu.MenuService/CreateMenu"
-	MenuService_GetMenus_FullMethodName        = "/menu.MenuService/GetMenus"
-	MenuService_SetMenu_FullMethodName         = "/menu.MenuService/SetMenu"
-	MenuService_DeleteMenu_FullMethodName      = "/menu.MenuService/DeleteMenu"
-	MenuService_CreateItem_FullMethodName      = "/menu.MenuService/CreateItem"
-	MenuService_GetItem_FullMethodName         = "/menu.MenuService/GetItem"
-	MenuService_GetItems_FullMethodName        = "/menu.MenuService/GetItems"
-	MenuService_UpdateItem_FullMethodName      = "/menu.MenuService/UpdateItem"
-	MenuService_DeleteItem_FullMethodName      = "/menu.MenuService/DeleteItem"
-	MenuService_CreateMenuItem_FullMethodName  = "/menu.MenuService/CreateMenuItem"
-	MenuService_GetMenuItems_FullMethodName    = "/menu.MenuService/GetMenuItems"
-	MenuService_DeleteMenuItem_FullMethodName  = "/menu.MenuService/DeleteMenuItem"
-	MenuService_DeleteMenuItems_FullMethodName = "/menu.MenuService/DeleteMenuItems"
-	MenuService_CreateCategory_FullMethodName  = "/menu.MenuService/CreateCategory"
-	MenuService_GetCategory_FullMethodName     = "/menu.MenuService/GetCategory"
-	MenuService_DeleteCategory_FullMethodName  = "/menu.MenuService/DeleteCategory"
+	MenuService_CreateMenu_FullMethodName           = "/menu.MenuService/CreateMenu"
+	MenuService_GetMenus_FullMethodName             = "/menu.MenuService/GetMenus"
+	MenuService_SetMenu_FullMethodName              = "/menu.MenuService/SetMenu"
+	MenuService_DeleteMenu_FullMethodName           = "/menu.MenuService/DeleteMenu"
+	MenuService_CreateItem_FullMethodName           = "/menu.MenuService/CreateItem"
+	MenuService_GetItem_FullMethodName              = "/menu.MenuService/GetItem"
+	MenuService_GetItems_FullMethodName             = "/menu.MenuService/GetItems"
+	MenuService_UpdateItem_FullMethodName           = "/menu.MenuService/UpdateItem"
+	MenuService_DeleteItem_FullMethodName           = "/menu.MenuService/DeleteItem"
+	MenuService_CreateMenuItem_FullMethodName       = "/menu.MenuService/CreateMenuItem"
+	MenuService_GetMenuItems_FullMethodName         = "/menu.MenuService/GetMenuItems"
+	MenuService_DeleteMenuItem_FullMethodName       = "/menu.MenuService/DeleteMenuItem"
+	MenuService_DeleteMenuItems_FullMethodName      = "/menu.MenuService/DeleteMenuItems"
+	MenuService_CreateCategory_FullMethodName       = "/menu.MenuService/CreateCategory"
+	MenuService_GetCategory_FullMethodName          = "/menu.MenuService/GetCategory"
+	MenuService_GetCategoryWithItems_FullMethodName = "/menu.MenuService/GetCategoryWithItems"
+	MenuService_DeleteCategory_FullMethodName       = "/menu.MenuService/DeleteCategory"
 )
 
 // MenuServiceClient is the client API for MenuService service.
@@ -56,6 +57,7 @@ type MenuServiceClient interface {
 	DeleteMenuItems(ctx context.Context, in *DeleteMenuItemsRequest, opts ...grpc.CallOption) (*DeleteMenuItemsResponse, error)
 	CreateCategory(ctx context.Context, in *CreateCategoryRequest, opts ...grpc.CallOption) (*CreateCategoryResponse, error)
 	GetCategory(ctx context.Context, in *GetCategoryRequest, opts ...grpc.CallOption) (*GetCategoryResponse, error)
+	GetCategoryWithItems(ctx context.Context, in *GetCategoryRequest, opts ...grpc.CallOption) (*GetCategoryWithItemsResponse, error)
 	DeleteCategory(ctx context.Context, in *DeleteCategoryRequest, opts ...grpc.CallOption) (*DeleteCategoryResponse, error)
 }
 
@@ -217,6 +219,16 @@ func (c *menuServiceClient) GetCategory(ctx context.Context, in *GetCategoryRequ
 	return out, nil
 }
 
+func (c *menuServiceClient) GetCategoryWithItems(ctx context.Context, in *GetCategoryRequest, opts ...grpc.CallOption) (*GetCategoryWithItemsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetCategoryWithItemsResponse)
+	err := c.cc.Invoke(ctx, MenuService_GetCategoryWithItems_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *menuServiceClient) DeleteCategory(ctx context.Context, in *DeleteCategoryRequest, opts ...grpc.CallOption) (*DeleteCategoryResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(DeleteCategoryResponse)
@@ -246,6 +258,7 @@ type MenuServiceServer interface {
 	DeleteMenuItems(context.Context, *DeleteMenuItemsRequest) (*DeleteMenuItemsResponse, error)
 	CreateCategory(context.Context, *CreateCategoryRequest) (*CreateCategoryResponse, error)
 	GetCategory(context.Context, *GetCategoryRequest) (*GetCategoryResponse, error)
+	GetCategoryWithItems(context.Context, *GetCategoryRequest) (*GetCategoryWithItemsResponse, error)
 	DeleteCategory(context.Context, *DeleteCategoryRequest) (*DeleteCategoryResponse, error)
 	mustEmbedUnimplementedMenuServiceServer()
 }
@@ -301,6 +314,9 @@ func (UnimplementedMenuServiceServer) CreateCategory(context.Context, *CreateCat
 }
 func (UnimplementedMenuServiceServer) GetCategory(context.Context, *GetCategoryRequest) (*GetCategoryResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetCategory not implemented")
+}
+func (UnimplementedMenuServiceServer) GetCategoryWithItems(context.Context, *GetCategoryRequest) (*GetCategoryWithItemsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetCategoryWithItems not implemented")
 }
 func (UnimplementedMenuServiceServer) DeleteCategory(context.Context, *DeleteCategoryRequest) (*DeleteCategoryResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteCategory not implemented")
@@ -596,6 +612,24 @@ func _MenuService_GetCategory_Handler(srv interface{}, ctx context.Context, dec 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _MenuService_GetCategoryWithItems_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetCategoryRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MenuServiceServer).GetCategoryWithItems(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: MenuService_GetCategoryWithItems_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MenuServiceServer).GetCategoryWithItems(ctx, req.(*GetCategoryRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _MenuService_DeleteCategory_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(DeleteCategoryRequest)
 	if err := dec(in); err != nil {
@@ -680,6 +714,10 @@ var MenuService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetCategory",
 			Handler:    _MenuService_GetCategory_Handler,
+		},
+		{
+			MethodName: "GetCategoryWithItems",
+			Handler:    _MenuService_GetCategoryWithItems_Handler,
 		},
 		{
 			MethodName: "DeleteCategory",

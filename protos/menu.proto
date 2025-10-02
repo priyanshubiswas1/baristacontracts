@@ -32,6 +32,13 @@ message Category{
     string name = 3;
 }
 
+message CategoryWithItems{
+    string id = 1;
+    string shopId = 2;
+    string name = 3;
+    repeated Item items = 4;
+}
+
 //MENU
 message CreateMenuRequest{
     string shopId = 1;
@@ -146,6 +153,9 @@ message GetCategoryRequest{
 message GetCategoryResponse{
     repeated Category categories = 1;
 }
+message GetCategoryWithItemsResponse{
+    repeated Category categories = 1;
+}
 message DeleteCategoryRequest{
     string id = 1;
     string shopId = 2;
@@ -173,5 +183,6 @@ service MenuService{
     
     rpc CreateCategory(CreateCategoryRequest) returns (CreateCategoryResponse);
     rpc GetCategory(GetCategoryRequest) returns (GetCategoryResponse);
+    rpc GetCategoryWithItems(GetCategoryRequest) returns (GetCategoryWithItemsResponse);
     rpc DeleteCategory(DeleteCategoryRequest) returns (DeleteCategoryResponse);
 }
