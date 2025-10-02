@@ -19,11 +19,12 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	AuthService_GetUser_FullMethodName      = "/auth.AuthService/GetUser"
-	AuthService_RegisterUser_FullMethodName = "/auth.AuthService/RegisterUser"
-	AuthService_LoginUser_FullMethodName    = "/auth.AuthService/LoginUser"
-	AuthService_UpdateUser_FullMethodName   = "/auth.AuthService/UpdateUser"
-	AuthService_DeleteUser_FullMethodName   = "/auth.AuthService/DeleteUser"
+	AuthService_GetUser_FullMethodName                  = "/auth.AuthService/GetUser"
+	AuthService_RegisterUser_FullMethodName             = "/auth.AuthService/RegisterUser"
+	AuthService_RegisterUserWithShopMenu_FullMethodName = "/auth.AuthService/RegisterUserWithShopMenu"
+	AuthService_LoginUser_FullMethodName                = "/auth.AuthService/LoginUser"
+	AuthService_UpdateUser_FullMethodName               = "/auth.AuthService/UpdateUser"
+	AuthService_DeleteUser_FullMethodName               = "/auth.AuthService/DeleteUser"
 )
 
 // AuthServiceClient is the client API for AuthService service.
@@ -32,6 +33,7 @@ const (
 type AuthServiceClient interface {
 	GetUser(ctx context.Context, in *GetRequest, opts ...grpc.CallOption) (*GetResponse, error)
 	RegisterUser(ctx context.Context, in *RegisterRequest, opts ...grpc.CallOption) (*RegisterResponse, error)
+	RegisterUserWithShopMenu(ctx context.Context, in *RegisterRequest, opts ...grpc.CallOption) (*RegisterUserWithShopMenuResponse, error)
 	LoginUser(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*LoginResponse, error)
 	UpdateUser(ctx context.Context, in *UpdateRequest, opts ...grpc.CallOption) (*UpdateResponse, error)
 	DeleteUser(ctx context.Context, in *DeleteRequest, opts ...grpc.CallOption) (*DeleteResponse, error)
@@ -59,6 +61,16 @@ func (c *authServiceClient) RegisterUser(ctx context.Context, in *RegisterReques
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(RegisterResponse)
 	err := c.cc.Invoke(ctx, AuthService_RegisterUser_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *authServiceClient) RegisterUserWithShopMenu(ctx context.Context, in *RegisterRequest, opts ...grpc.CallOption) (*RegisterUserWithShopMenuResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(RegisterUserWithShopMenuResponse)
+	err := c.cc.Invoke(ctx, AuthService_RegisterUserWithShopMenu_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -101,6 +113,7 @@ func (c *authServiceClient) DeleteUser(ctx context.Context, in *DeleteRequest, o
 type AuthServiceServer interface {
 	GetUser(context.Context, *GetRequest) (*GetResponse, error)
 	RegisterUser(context.Context, *RegisterRequest) (*RegisterResponse, error)
+	RegisterUserWithShopMenu(context.Context, *RegisterRequest) (*RegisterUserWithShopMenuResponse, error)
 	LoginUser(context.Context, *LoginRequest) (*LoginResponse, error)
 	UpdateUser(context.Context, *UpdateRequest) (*UpdateResponse, error)
 	DeleteUser(context.Context, *DeleteRequest) (*DeleteResponse, error)
@@ -119,6 +132,9 @@ func (UnimplementedAuthServiceServer) GetUser(context.Context, *GetRequest) (*Ge
 }
 func (UnimplementedAuthServiceServer) RegisterUser(context.Context, *RegisterRequest) (*RegisterResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RegisterUser not implemented")
+}
+func (UnimplementedAuthServiceServer) RegisterUserWithShopMenu(context.Context, *RegisterRequest) (*RegisterUserWithShopMenuResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RegisterUserWithShopMenu not implemented")
 }
 func (UnimplementedAuthServiceServer) LoginUser(context.Context, *LoginRequest) (*LoginResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method LoginUser not implemented")
@@ -182,6 +198,24 @@ func _AuthService_RegisterUser_Handler(srv interface{}, ctx context.Context, dec
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(AuthServiceServer).RegisterUser(ctx, req.(*RegisterRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AuthService_RegisterUserWithShopMenu_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RegisterRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthServiceServer).RegisterUserWithShopMenu(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AuthService_RegisterUserWithShopMenu_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthServiceServer).RegisterUserWithShopMenu(ctx, req.(*RegisterRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -254,6 +288,10 @@ var AuthService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "RegisterUser",
 			Handler:    _AuthService_RegisterUser_Handler,
+		},
+		{
+			MethodName: "RegisterUserWithShopMenu",
+			Handler:    _AuthService_RegisterUserWithShopMenu_Handler,
 		},
 		{
 			MethodName: "LoginUser",

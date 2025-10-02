@@ -26,6 +26,11 @@ message RegisterRequest{
 message RegisterResponse{
     string token = 1;
     User user = 2;
+}
+
+message RegisterUserWithShopMenuResponse{
+    string token = 1;
+    User user = 2;
     string shopId = 3;
     string menuId = 4;
 }
@@ -69,6 +74,7 @@ message DeleteResponse{
 service AuthService{
     rpc GetUser(GetRequest) returns (GetResponse);
     rpc RegisterUser(RegisterRequest) returns (RegisterResponse);
+    rpc RegisterUserWithShopMenu(RegisterRequest) returns (RegisterUserWithShopMenuResponse);
     rpc LoginUser(LoginRequest) returns (LoginResponse);
     rpc UpdateUser(UpdateRequest) returns (UpdateResponse);
     rpc DeleteUser(DeleteRequest) returns (DeleteResponse);

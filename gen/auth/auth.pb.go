@@ -233,8 +233,6 @@ type RegisterResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Token         string                 `protobuf:"bytes,1,opt,name=token,proto3" json:"token,omitempty"`
 	User          *User                  `protobuf:"bytes,2,opt,name=user,proto3" json:"user,omitempty"`
-	ShopId        string                 `protobuf:"bytes,3,opt,name=shopId,proto3" json:"shopId,omitempty"`
-	MenuId        string                 `protobuf:"bytes,4,opt,name=menuId,proto3" json:"menuId,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -283,14 +281,68 @@ func (x *RegisterResponse) GetUser() *User {
 	return nil
 }
 
-func (x *RegisterResponse) GetShopId() string {
+type RegisterUserWithShopMenuResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Token         string                 `protobuf:"bytes,1,opt,name=token,proto3" json:"token,omitempty"`
+	User          *User                  `protobuf:"bytes,2,opt,name=user,proto3" json:"user,omitempty"`
+	ShopId        string                 `protobuf:"bytes,3,opt,name=shopId,proto3" json:"shopId,omitempty"`
+	MenuId        string                 `protobuf:"bytes,4,opt,name=menuId,proto3" json:"menuId,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RegisterUserWithShopMenuResponse) Reset() {
+	*x = RegisterUserWithShopMenuResponse{}
+	mi := &file_auth_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RegisterUserWithShopMenuResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RegisterUserWithShopMenuResponse) ProtoMessage() {}
+
+func (x *RegisterUserWithShopMenuResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_auth_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RegisterUserWithShopMenuResponse.ProtoReflect.Descriptor instead.
+func (*RegisterUserWithShopMenuResponse) Descriptor() ([]byte, []int) {
+	return file_auth_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *RegisterUserWithShopMenuResponse) GetToken() string {
+	if x != nil {
+		return x.Token
+	}
+	return ""
+}
+
+func (x *RegisterUserWithShopMenuResponse) GetUser() *User {
+	if x != nil {
+		return x.User
+	}
+	return nil
+}
+
+func (x *RegisterUserWithShopMenuResponse) GetShopId() string {
 	if x != nil {
 		return x.ShopId
 	}
 	return ""
 }
 
-func (x *RegisterResponse) GetMenuId() string {
+func (x *RegisterUserWithShopMenuResponse) GetMenuId() string {
 	if x != nil {
 		return x.MenuId
 	}
@@ -311,7 +363,7 @@ type LoginRequest struct {
 
 func (x *LoginRequest) Reset() {
 	*x = LoginRequest{}
-	mi := &file_auth_proto_msgTypes[5]
+	mi := &file_auth_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -323,7 +375,7 @@ func (x *LoginRequest) String() string {
 func (*LoginRequest) ProtoMessage() {}
 
 func (x *LoginRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_proto_msgTypes[5]
+	mi := &file_auth_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -336,7 +388,7 @@ func (x *LoginRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LoginRequest.ProtoReflect.Descriptor instead.
 func (*LoginRequest) Descriptor() ([]byte, []int) {
-	return file_auth_proto_rawDescGZIP(), []int{5}
+	return file_auth_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *LoginRequest) GetIdentifier() isLoginRequest_Identifier {
@@ -399,7 +451,7 @@ type LoginResponse struct {
 
 func (x *LoginResponse) Reset() {
 	*x = LoginResponse{}
-	mi := &file_auth_proto_msgTypes[6]
+	mi := &file_auth_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -411,7 +463,7 @@ func (x *LoginResponse) String() string {
 func (*LoginResponse) ProtoMessage() {}
 
 func (x *LoginResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_proto_msgTypes[6]
+	mi := &file_auth_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -424,7 +476,7 @@ func (x *LoginResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LoginResponse.ProtoReflect.Descriptor instead.
 func (*LoginResponse) Descriptor() ([]byte, []int) {
-	return file_auth_proto_rawDescGZIP(), []int{6}
+	return file_auth_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *LoginResponse) GetToken() string {
@@ -467,7 +519,7 @@ type UpdateRequest struct {
 
 func (x *UpdateRequest) Reset() {
 	*x = UpdateRequest{}
-	mi := &file_auth_proto_msgTypes[7]
+	mi := &file_auth_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -479,7 +531,7 @@ func (x *UpdateRequest) String() string {
 func (*UpdateRequest) ProtoMessage() {}
 
 func (x *UpdateRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_proto_msgTypes[7]
+	mi := &file_auth_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -492,7 +544,7 @@ func (x *UpdateRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateRequest.ProtoReflect.Descriptor instead.
 func (*UpdateRequest) Descriptor() ([]byte, []int) {
-	return file_auth_proto_rawDescGZIP(), []int{7}
+	return file_auth_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *UpdateRequest) GetId() string {
@@ -533,7 +585,7 @@ type UpdateResponse struct {
 
 func (x *UpdateResponse) Reset() {
 	*x = UpdateResponse{}
-	mi := &file_auth_proto_msgTypes[8]
+	mi := &file_auth_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -545,7 +597,7 @@ func (x *UpdateResponse) String() string {
 func (*UpdateResponse) ProtoMessage() {}
 
 func (x *UpdateResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_proto_msgTypes[8]
+	mi := &file_auth_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -558,7 +610,7 @@ func (x *UpdateResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateResponse.ProtoReflect.Descriptor instead.
 func (*UpdateResponse) Descriptor() ([]byte, []int) {
-	return file_auth_proto_rawDescGZIP(), []int{8}
+	return file_auth_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *UpdateResponse) GetToken() string {
@@ -585,7 +637,7 @@ type DeleteRequest struct {
 
 func (x *DeleteRequest) Reset() {
 	*x = DeleteRequest{}
-	mi := &file_auth_proto_msgTypes[9]
+	mi := &file_auth_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -597,7 +649,7 @@ func (x *DeleteRequest) String() string {
 func (*DeleteRequest) ProtoMessage() {}
 
 func (x *DeleteRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_proto_msgTypes[9]
+	mi := &file_auth_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -610,7 +662,7 @@ func (x *DeleteRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteRequest.ProtoReflect.Descriptor instead.
 func (*DeleteRequest) Descriptor() ([]byte, []int) {
-	return file_auth_proto_rawDescGZIP(), []int{9}
+	return file_auth_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *DeleteRequest) GetId() string {
@@ -636,7 +688,7 @@ type DeleteResponse struct {
 
 func (x *DeleteResponse) Reset() {
 	*x = DeleteResponse{}
-	mi := &file_auth_proto_msgTypes[10]
+	mi := &file_auth_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -648,7 +700,7 @@ func (x *DeleteResponse) String() string {
 func (*DeleteResponse) ProtoMessage() {}
 
 func (x *DeleteResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_proto_msgTypes[10]
+	mi := &file_auth_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -661,7 +713,7 @@ func (x *DeleteResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteResponse.ProtoReflect.Descriptor instead.
 func (*DeleteResponse) Descriptor() ([]byte, []int) {
-	return file_auth_proto_rawDescGZIP(), []int{10}
+	return file_auth_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *DeleteResponse) GetSuccess() bool {
@@ -691,8 +743,12 @@ const file_auth_proto_rawDesc = "" +
 	"\x0fRegisterRequest\x12\x1e\n" +
 	"\x04user\x18\x01 \x01(\v2\n" +
 	".auth.UserR\x04user\x12\x1a\n" +
-	"\bpassword\x18\x02 \x01(\tR\bpassword\"x\n" +
+	"\bpassword\x18\x02 \x01(\tR\bpassword\"H\n" +
 	"\x10RegisterResponse\x12\x14\n" +
+	"\x05token\x18\x01 \x01(\tR\x05token\x12\x1e\n" +
+	"\x04user\x18\x02 \x01(\v2\n" +
+	".auth.UserR\x04user\"\x88\x01\n" +
+	" RegisterUserWithShopMenuResponse\x12\x14\n" +
 	"\x05token\x18\x01 \x01(\tR\x05token\x12\x1e\n" +
 	"\x04user\x18\x02 \x01(\v2\n" +
 	".auth.UserR\x04user\x12\x16\n" +
@@ -724,10 +780,11 @@ const file_auth_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1a\n" +
 	"\bpassword\x18\x02 \x01(\tR\bpassword\"*\n" +
 	"\x0eDeleteResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess2\xa4\x02\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess2\xff\x02\n" +
 	"\vAuthService\x12.\n" +
 	"\aGetUser\x12\x10.auth.GetRequest\x1a\x11.auth.GetResponse\x12=\n" +
-	"\fRegisterUser\x12\x15.auth.RegisterRequest\x1a\x16.auth.RegisterResponse\x124\n" +
+	"\fRegisterUser\x12\x15.auth.RegisterRequest\x1a\x16.auth.RegisterResponse\x12Y\n" +
+	"\x18RegisterUserWithShopMenu\x12\x15.auth.RegisterRequest\x1a&.auth.RegisterUserWithShopMenuResponse\x124\n" +
 	"\tLoginUser\x12\x12.auth.LoginRequest\x1a\x13.auth.LoginResponse\x127\n" +
 	"\n" +
 	"UpdateUser\x12\x13.auth.UpdateRequest\x1a\x14.auth.UpdateResponse\x127\n" +
@@ -746,42 +803,46 @@ func file_auth_proto_rawDescGZIP() []byte {
 	return file_auth_proto_rawDescData
 }
 
-var file_auth_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
+var file_auth_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
 var file_auth_proto_goTypes = []any{
-	(*User)(nil),             // 0: auth.User
-	(*GetRequest)(nil),       // 1: auth.GetRequest
-	(*GetResponse)(nil),      // 2: auth.GetResponse
-	(*RegisterRequest)(nil),  // 3: auth.RegisterRequest
-	(*RegisterResponse)(nil), // 4: auth.RegisterResponse
-	(*LoginRequest)(nil),     // 5: auth.LoginRequest
-	(*LoginResponse)(nil),    // 6: auth.LoginResponse
-	(*UpdateRequest)(nil),    // 7: auth.UpdateRequest
-	(*UpdateResponse)(nil),   // 8: auth.UpdateResponse
-	(*DeleteRequest)(nil),    // 9: auth.DeleteRequest
-	(*DeleteResponse)(nil),   // 10: auth.DeleteResponse
+	(*User)(nil),                             // 0: auth.User
+	(*GetRequest)(nil),                       // 1: auth.GetRequest
+	(*GetResponse)(nil),                      // 2: auth.GetResponse
+	(*RegisterRequest)(nil),                  // 3: auth.RegisterRequest
+	(*RegisterResponse)(nil),                 // 4: auth.RegisterResponse
+	(*RegisterUserWithShopMenuResponse)(nil), // 5: auth.RegisterUserWithShopMenuResponse
+	(*LoginRequest)(nil),                     // 6: auth.LoginRequest
+	(*LoginResponse)(nil),                    // 7: auth.LoginResponse
+	(*UpdateRequest)(nil),                    // 8: auth.UpdateRequest
+	(*UpdateResponse)(nil),                   // 9: auth.UpdateResponse
+	(*DeleteRequest)(nil),                    // 10: auth.DeleteRequest
+	(*DeleteResponse)(nil),                   // 11: auth.DeleteResponse
 }
 var file_auth_proto_depIdxs = []int32{
 	0,  // 0: auth.GetResponse.user:type_name -> auth.User
 	0,  // 1: auth.RegisterRequest.user:type_name -> auth.User
 	0,  // 2: auth.RegisterResponse.user:type_name -> auth.User
-	0,  // 3: auth.LoginResponse.user:type_name -> auth.User
-	0,  // 4: auth.UpdateRequest.user:type_name -> auth.User
-	0,  // 5: auth.UpdateResponse.user:type_name -> auth.User
-	1,  // 6: auth.AuthService.GetUser:input_type -> auth.GetRequest
-	3,  // 7: auth.AuthService.RegisterUser:input_type -> auth.RegisterRequest
-	5,  // 8: auth.AuthService.LoginUser:input_type -> auth.LoginRequest
-	7,  // 9: auth.AuthService.UpdateUser:input_type -> auth.UpdateRequest
-	9,  // 10: auth.AuthService.DeleteUser:input_type -> auth.DeleteRequest
-	2,  // 11: auth.AuthService.GetUser:output_type -> auth.GetResponse
-	4,  // 12: auth.AuthService.RegisterUser:output_type -> auth.RegisterResponse
-	6,  // 13: auth.AuthService.LoginUser:output_type -> auth.LoginResponse
-	8,  // 14: auth.AuthService.UpdateUser:output_type -> auth.UpdateResponse
-	10, // 15: auth.AuthService.DeleteUser:output_type -> auth.DeleteResponse
-	11, // [11:16] is the sub-list for method output_type
-	6,  // [6:11] is the sub-list for method input_type
-	6,  // [6:6] is the sub-list for extension type_name
-	6,  // [6:6] is the sub-list for extension extendee
-	0,  // [0:6] is the sub-list for field type_name
+	0,  // 3: auth.RegisterUserWithShopMenuResponse.user:type_name -> auth.User
+	0,  // 4: auth.LoginResponse.user:type_name -> auth.User
+	0,  // 5: auth.UpdateRequest.user:type_name -> auth.User
+	0,  // 6: auth.UpdateResponse.user:type_name -> auth.User
+	1,  // 7: auth.AuthService.GetUser:input_type -> auth.GetRequest
+	3,  // 8: auth.AuthService.RegisterUser:input_type -> auth.RegisterRequest
+	3,  // 9: auth.AuthService.RegisterUserWithShopMenu:input_type -> auth.RegisterRequest
+	6,  // 10: auth.AuthService.LoginUser:input_type -> auth.LoginRequest
+	8,  // 11: auth.AuthService.UpdateUser:input_type -> auth.UpdateRequest
+	10, // 12: auth.AuthService.DeleteUser:input_type -> auth.DeleteRequest
+	2,  // 13: auth.AuthService.GetUser:output_type -> auth.GetResponse
+	4,  // 14: auth.AuthService.RegisterUser:output_type -> auth.RegisterResponse
+	5,  // 15: auth.AuthService.RegisterUserWithShopMenu:output_type -> auth.RegisterUserWithShopMenuResponse
+	7,  // 16: auth.AuthService.LoginUser:output_type -> auth.LoginResponse
+	9,  // 17: auth.AuthService.UpdateUser:output_type -> auth.UpdateResponse
+	11, // 18: auth.AuthService.DeleteUser:output_type -> auth.DeleteResponse
+	13, // [13:19] is the sub-list for method output_type
+	7,  // [7:13] is the sub-list for method input_type
+	7,  // [7:7] is the sub-list for extension type_name
+	7,  // [7:7] is the sub-list for extension extendee
+	0,  // [0:7] is the sub-list for field type_name
 }
 
 func init() { file_auth_proto_init() }
@@ -789,7 +850,7 @@ func file_auth_proto_init() {
 	if File_auth_proto != nil {
 		return
 	}
-	file_auth_proto_msgTypes[5].OneofWrappers = []any{
+	file_auth_proto_msgTypes[6].OneofWrappers = []any{
 		(*LoginRequest_Email)(nil),
 		(*LoginRequest_Phonenumber)(nil),
 	}
@@ -799,7 +860,7 @@ func file_auth_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_auth_proto_rawDesc), len(file_auth_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   11,
+			NumMessages:   12,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
