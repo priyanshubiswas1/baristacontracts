@@ -154,7 +154,7 @@ message GetCategoryResponse{
     repeated Category categories = 1;
 }
 message GetCategoryWithItemsResponse{
-    repeated Category categories = 1;
+    repeated CategoryWithItems categories = 1;
 }
 message DeleteCategoryRequest{
     string id = 1;

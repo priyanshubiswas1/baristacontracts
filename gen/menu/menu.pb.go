@@ -1831,7 +1831,7 @@ func (x *GetCategoryResponse) GetCategories() []*Category {
 
 type GetCategoryWithItemsResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Categories    []*Category            `protobuf:"bytes,1,rep,name=categories,proto3" json:"categories,omitempty"`
+	Categories    []*CategoryWithItems   `protobuf:"bytes,1,rep,name=categories,proto3" json:"categories,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1866,7 +1866,7 @@ func (*GetCategoryWithItemsResponse) Descriptor() ([]byte, []int) {
 	return file_menu_proto_rawDescGZIP(), []int{35}
 }
 
-func (x *GetCategoryWithItemsResponse) GetCategories() []*Category {
+func (x *GetCategoryWithItemsResponse) GetCategories() []*CategoryWithItems {
 	if x != nil {
 		return x.Categories
 	}
@@ -2092,10 +2092,10 @@ const file_menu_proto_rawDesc = "" +
 	"\x13GetCategoryResponse\x12.\n" +
 	"\n" +
 	"categories\x18\x01 \x03(\v2\x0e.menu.CategoryR\n" +
-	"categories\"N\n" +
-	"\x1cGetCategoryWithItemsResponse\x12.\n" +
+	"categories\"W\n" +
+	"\x1cGetCategoryWithItemsResponse\x127\n" +
 	"\n" +
-	"categories\x18\x01 \x03(\v2\x0e.menu.CategoryR\n" +
+	"categories\x18\x01 \x03(\v2\x17.menu.CategoryWithItemsR\n" +
 	"categories\"?\n" +
 	"\x15DeleteCategoryRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x16\n" +
@@ -2190,7 +2190,7 @@ var file_menu_proto_depIdxs = []int32{
 	1,  // 7: menu.GetMenuItemsResponse.items:type_name -> menu.Item
 	3,  // 8: menu.CreateCategoryResponse.category:type_name -> menu.Category
 	3,  // 9: menu.GetCategoryResponse.categories:type_name -> menu.Category
-	3,  // 10: menu.GetCategoryWithItemsResponse.categories:type_name -> menu.Category
+	4,  // 10: menu.GetCategoryWithItemsResponse.categories:type_name -> menu.CategoryWithItems
 	5,  // 11: menu.MenuService.CreateMenu:input_type -> menu.CreateMenuRequest
 	7,  // 12: menu.MenuService.GetMenus:input_type -> menu.GetMenusRequest
 	9,  // 13: menu.MenuService.SetMenu:input_type -> menu.SetMenuRequest
