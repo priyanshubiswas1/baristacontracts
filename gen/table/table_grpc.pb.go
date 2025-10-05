@@ -19,11 +19,12 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	TableService_CreateTable_FullMethodName = "/table.TableService/CreateTable"
-	TableService_GetTable_FullMethodName    = "/table.TableService/GetTable"
-	TableService_GetTables_FullMethodName   = "/table.TableService/GetTables"
-	TableService_UpdateTable_FullMethodName = "/table.TableService/UpdateTable"
-	TableService_DeleteTable_FullMethodName = "/table.TableService/DeleteTable"
+	TableService_CreateTable_FullMethodName         = "/table.TableService/CreateTable"
+	TableService_GetTable_FullMethodName            = "/table.TableService/GetTable"
+	TableService_GetTableBySessionID_FullMethodName = "/table.TableService/GetTableBySessionID"
+	TableService_GetTables_FullMethodName           = "/table.TableService/GetTables"
+	TableService_UpdateTable_FullMethodName         = "/table.TableService/UpdateTable"
+	TableService_DeleteTable_FullMethodName         = "/table.TableService/DeleteTable"
 )
 
 // TableServiceClient is the client API for TableService service.
@@ -32,6 +33,7 @@ const (
 type TableServiceClient interface {
 	CreateTable(ctx context.Context, in *CreateTableRequest, opts ...grpc.CallOption) (*CreateTableResponse, error)
 	GetTable(ctx context.Context, in *GetTableRequest, opts ...grpc.CallOption) (*GetTableResponse, error)
+	GetTableBySessionID(ctx context.Context, in *GetTableBySessionIDRequest, opts ...grpc.CallOption) (*GetTableBySessionIDResponse, error)
 	GetTables(ctx context.Context, in *GetTablesRequest, opts ...grpc.CallOption) (*GetTablesResponse, error)
 	UpdateTable(ctx context.Context, in *UpdateTableRequest, opts ...grpc.CallOption) (*UpdateTableResponse, error)
 	DeleteTable(ctx context.Context, in *DeleteTableRequest, opts ...grpc.CallOption) (*DeleteTableResponse, error)
@@ -59,6 +61,16 @@ func (c *tableServiceClient) GetTable(ctx context.Context, in *GetTableRequest, 
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(GetTableResponse)
 	err := c.cc.Invoke(ctx, TableService_GetTable_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *tableServiceClient) GetTableBySessionID(ctx context.Context, in *GetTableBySessionIDRequest, opts ...grpc.CallOption) (*GetTableBySessionIDResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetTableBySessionIDResponse)
+	err := c.cc.Invoke(ctx, TableService_GetTableBySessionID_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -101,6 +113,7 @@ func (c *tableServiceClient) DeleteTable(ctx context.Context, in *DeleteTableReq
 type TableServiceServer interface {
 	CreateTable(context.Context, *CreateTableRequest) (*CreateTableResponse, error)
 	GetTable(context.Context, *GetTableRequest) (*GetTableResponse, error)
+	GetTableBySessionID(context.Context, *GetTableBySessionIDRequest) (*GetTableBySessionIDResponse, error)
 	GetTables(context.Context, *GetTablesRequest) (*GetTablesResponse, error)
 	UpdateTable(context.Context, *UpdateTableRequest) (*UpdateTableResponse, error)
 	DeleteTable(context.Context, *DeleteTableRequest) (*DeleteTableResponse, error)
@@ -119,6 +132,9 @@ func (UnimplementedTableServiceServer) CreateTable(context.Context, *CreateTable
 }
 func (UnimplementedTableServiceServer) GetTable(context.Context, *GetTableRequest) (*GetTableResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetTable not implemented")
+}
+func (UnimplementedTableServiceServer) GetTableBySessionID(context.Context, *GetTableBySessionIDRequest) (*GetTableBySessionIDResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetTableBySessionID not implemented")
 }
 func (UnimplementedTableServiceServer) GetTables(context.Context, *GetTablesRequest) (*GetTablesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetTables not implemented")
@@ -182,6 +198,24 @@ func _TableService_GetTable_Handler(srv interface{}, ctx context.Context, dec fu
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(TableServiceServer).GetTable(ctx, req.(*GetTableRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _TableService_GetTableBySessionID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetTableBySessionIDRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TableServiceServer).GetTableBySessionID(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: TableService_GetTableBySessionID_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TableServiceServer).GetTableBySessionID(ctx, req.(*GetTableBySessionIDRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -254,6 +288,10 @@ var TableService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetTable",
 			Handler:    _TableService_GetTable_Handler,
+		},
+		{
+			MethodName: "GetTableBySessionID",
+			Handler:    _TableService_GetTableBySessionID_Handler,
 		},
 		{
 			MethodName: "GetTables",

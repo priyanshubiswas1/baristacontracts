@@ -36,6 +36,16 @@ message GetTableResponse{
     Table table = 1;
 }
 
+message GetTableBySessionIDRequest{
+    string id = 1;
+    string session_id = 2;
+}
+
+message GetTableBySessionIDResponse{
+    string id = 1;
+    string table_number = 2;
+}
+
 message UpdateTableRequest{
     Table table = 1;
 }
@@ -56,6 +66,7 @@ message DeleteTableResponse{
 service TableService{
     rpc CreateTable(CreateTableRequest) returns (CreateTableResponse);
     rpc GetTable(GetTableRequest) returns (GetTableResponse);
+    rpc GetTableBySessionID(GetTableBySessionIDRequest) returns (GetTableBySessionIDResponse);
     rpc GetTables(GetTablesRequest) returns (GetTablesResponse);
     rpc UpdateTable(UpdateTableRequest) returns (UpdateTableResponse);
     rpc DeleteTable(DeleteTableRequest) returns (DeleteTableResponse);
