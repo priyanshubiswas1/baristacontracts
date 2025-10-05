@@ -35,7 +35,7 @@ const (
 type SessionServiceClient interface {
 	GetAllSessions(ctx context.Context, in *GetAllSessionsRequest, opts ...grpc.CallOption) (*GetAllSessionsResponse, error)
 	GetActiveSession(ctx context.Context, in *GetActiveSessionRequest, opts ...grpc.CallOption) (*GetActiveSessionResponse, error)
-	GetAllActiveSessions(ctx context.Context, in *GetAllSessionsRequest, opts ...grpc.CallOption) (*GetAllSessionsResponse, error)
+	GetAllActiveSessions(ctx context.Context, in *GetAllSessionsRequest, opts ...grpc.CallOption) (*GetAllActiveSessionsResponse, error)
 	GetSessionById(ctx context.Context, in *GetSessionRequest, opts ...grpc.CallOption) (*GetSessionResponse, error)
 	SendSessionOTP(ctx context.Context, in *SendSessionOTPRequest, opts ...grpc.CallOption) (*SendSessionOTPResponse, error)
 	CreateSession(ctx context.Context, in *CreateSessionRequest, opts ...grpc.CallOption) (*CreateSessionResponse, error)
@@ -71,9 +71,9 @@ func (c *sessionServiceClient) GetActiveSession(ctx context.Context, in *GetActi
 	return out, nil
 }
 
-func (c *sessionServiceClient) GetAllActiveSessions(ctx context.Context, in *GetAllSessionsRequest, opts ...grpc.CallOption) (*GetAllSessionsResponse, error) {
+func (c *sessionServiceClient) GetAllActiveSessions(ctx context.Context, in *GetAllSessionsRequest, opts ...grpc.CallOption) (*GetAllActiveSessionsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GetAllSessionsResponse)
+	out := new(GetAllActiveSessionsResponse)
 	err := c.cc.Invoke(ctx, SessionService_GetAllActiveSessions_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -137,7 +137,7 @@ func (c *sessionServiceClient) UpdateSession(ctx context.Context, in *UpdateSess
 type SessionServiceServer interface {
 	GetAllSessions(context.Context, *GetAllSessionsRequest) (*GetAllSessionsResponse, error)
 	GetActiveSession(context.Context, *GetActiveSessionRequest) (*GetActiveSessionResponse, error)
-	GetAllActiveSessions(context.Context, *GetAllSessionsRequest) (*GetAllSessionsResponse, error)
+	GetAllActiveSessions(context.Context, *GetAllSessionsRequest) (*GetAllActiveSessionsResponse, error)
 	GetSessionById(context.Context, *GetSessionRequest) (*GetSessionResponse, error)
 	SendSessionOTP(context.Context, *SendSessionOTPRequest) (*SendSessionOTPResponse, error)
 	CreateSession(context.Context, *CreateSessionRequest) (*CreateSessionResponse, error)
@@ -159,7 +159,7 @@ func (UnimplementedSessionServiceServer) GetAllSessions(context.Context, *GetAll
 func (UnimplementedSessionServiceServer) GetActiveSession(context.Context, *GetActiveSessionRequest) (*GetActiveSessionResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetActiveSession not implemented")
 }
-func (UnimplementedSessionServiceServer) GetAllActiveSessions(context.Context, *GetAllSessionsRequest) (*GetAllSessionsResponse, error) {
+func (UnimplementedSessionServiceServer) GetAllActiveSessions(context.Context, *GetAllSessionsRequest) (*GetAllActiveSessionsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAllActiveSessions not implemented")
 }
 func (UnimplementedSessionServiceServer) GetSessionById(context.Context, *GetSessionRequest) (*GetSessionResponse, error) {
