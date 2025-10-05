@@ -923,10 +923,11 @@ const file_session_proto_rawDesc = "" +
 	"\x14UpdateSessionRequest\x12*\n" +
 	"\asession\x18\x01 \x01(\v2\x10.session.SessionR\asession\"1\n" +
 	"\x15UpdateSessionResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess2\xc4\x04\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess2\x9d\x05\n" +
 	"\x0eSessionService\x12Q\n" +
 	"\x0eGetAllSessions\x12\x1e.session.GetAllSessionsRequest\x1a\x1f.session.GetAllSessionsResponse\x12W\n" +
-	"\x10GetActiveSession\x12 .session.GetActiveSessionRequest\x1a!.session.GetActiveSessionResponse\x12I\n" +
+	"\x10GetActiveSession\x12 .session.GetActiveSessionRequest\x1a!.session.GetActiveSessionResponse\x12W\n" +
+	"\x14GetAllActiveSessions\x12\x1e.session.GetAllSessionsRequest\x1a\x1f.session.GetAllSessionsResponse\x12I\n" +
 	"\x0eGetSessionById\x12\x1a.session.GetSessionRequest\x1a\x1b.session.GetSessionResponse\x12Q\n" +
 	"\x0eSendSessionOTP\x12\x1e.session.SendSessionOTPRequest\x1a\x1f.session.SendSessionOTPResponse\x12N\n" +
 	"\rCreateSession\x12\x1d.session.CreateSessionRequest\x1a\x1e.session.CreateSessionResponse\x12H\n" +
@@ -973,20 +974,22 @@ var file_session_proto_depIdxs = []int32{
 	0,  // 5: session.UpdateSessionRequest.session:type_name -> session.Session
 	1,  // 6: session.SessionService.GetAllSessions:input_type -> session.GetAllSessionsRequest
 	3,  // 7: session.SessionService.GetActiveSession:input_type -> session.GetActiveSessionRequest
-	5,  // 8: session.SessionService.GetSessionById:input_type -> session.GetSessionRequest
-	7,  // 9: session.SessionService.SendSessionOTP:input_type -> session.SendSessionOTPRequest
-	9,  // 10: session.SessionService.CreateSession:input_type -> session.CreateSessionRequest
-	11, // 11: session.SessionService.JoinSession:input_type -> session.JoinSessionRequest
-	13, // 12: session.SessionService.UpdateSession:input_type -> session.UpdateSessionRequest
-	2,  // 13: session.SessionService.GetAllSessions:output_type -> session.GetAllSessionsResponse
-	4,  // 14: session.SessionService.GetActiveSession:output_type -> session.GetActiveSessionResponse
-	6,  // 15: session.SessionService.GetSessionById:output_type -> session.GetSessionResponse
-	8,  // 16: session.SessionService.SendSessionOTP:output_type -> session.SendSessionOTPResponse
-	10, // 17: session.SessionService.CreateSession:output_type -> session.CreateSessionResponse
-	12, // 18: session.SessionService.JoinSession:output_type -> session.JoinSessionResponse
-	14, // 19: session.SessionService.UpdateSession:output_type -> session.UpdateSessionResponse
-	13, // [13:20] is the sub-list for method output_type
-	6,  // [6:13] is the sub-list for method input_type
+	1,  // 8: session.SessionService.GetAllActiveSessions:input_type -> session.GetAllSessionsRequest
+	5,  // 9: session.SessionService.GetSessionById:input_type -> session.GetSessionRequest
+	7,  // 10: session.SessionService.SendSessionOTP:input_type -> session.SendSessionOTPRequest
+	9,  // 11: session.SessionService.CreateSession:input_type -> session.CreateSessionRequest
+	11, // 12: session.SessionService.JoinSession:input_type -> session.JoinSessionRequest
+	13, // 13: session.SessionService.UpdateSession:input_type -> session.UpdateSessionRequest
+	2,  // 14: session.SessionService.GetAllSessions:output_type -> session.GetAllSessionsResponse
+	4,  // 15: session.SessionService.GetActiveSession:output_type -> session.GetActiveSessionResponse
+	2,  // 16: session.SessionService.GetAllActiveSessions:output_type -> session.GetAllSessionsResponse
+	6,  // 17: session.SessionService.GetSessionById:output_type -> session.GetSessionResponse
+	8,  // 18: session.SessionService.SendSessionOTP:output_type -> session.SendSessionOTPResponse
+	10, // 19: session.SessionService.CreateSession:output_type -> session.CreateSessionResponse
+	12, // 20: session.SessionService.JoinSession:output_type -> session.JoinSessionResponse
+	14, // 21: session.SessionService.UpdateSession:output_type -> session.UpdateSessionResponse
+	14, // [14:22] is the sub-list for method output_type
+	6,  // [6:14] is the sub-list for method input_type
 	6,  // [6:6] is the sub-list for extension type_name
 	6,  // [6:6] is the sub-list for extension extendee
 	0,  // [0:6] is the sub-list for field type_name

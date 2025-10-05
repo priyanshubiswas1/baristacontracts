@@ -89,6 +89,7 @@ message UpdateSessionResponse{
 service SessionService{
     rpc GetAllSessions(GetAllSessionsRequest) returns (GetAllSessionsResponse);
     rpc GetActiveSession(GetActiveSessionRequest) returns (GetActiveSessionResponse);
+    rpc GetAllActiveSessions(GetAllSessionsRequest) returns (GetAllSessionsResponse);
     rpc GetSessionById(GetSessionRequest) returns (GetSessionResponse);
     rpc SendSessionOTP(SendSessionOTPRequest) returns (SendSessionOTPResponse);
     rpc CreateSession(CreateSessionRequest) returns (CreateSessionResponse);

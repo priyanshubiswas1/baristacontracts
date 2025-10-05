@@ -19,13 +19,14 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	SessionService_GetAllSessions_FullMethodName   = "/session.SessionService/GetAllSessions"
-	SessionService_GetActiveSession_FullMethodName = "/session.SessionService/GetActiveSession"
-	SessionService_GetSessionById_FullMethodName   = "/session.SessionService/GetSessionById"
-	SessionService_SendSessionOTP_FullMethodName   = "/session.SessionService/SendSessionOTP"
-	SessionService_CreateSession_FullMethodName    = "/session.SessionService/CreateSession"
-	SessionService_JoinSession_FullMethodName      = "/session.SessionService/JoinSession"
-	SessionService_UpdateSession_FullMethodName    = "/session.SessionService/UpdateSession"
+	SessionService_GetAllSessions_FullMethodName       = "/session.SessionService/GetAllSessions"
+	SessionService_GetActiveSession_FullMethodName     = "/session.SessionService/GetActiveSession"
+	SessionService_GetAllActiveSessions_FullMethodName = "/session.SessionService/GetAllActiveSessions"
+	SessionService_GetSessionById_FullMethodName       = "/session.SessionService/GetSessionById"
+	SessionService_SendSessionOTP_FullMethodName       = "/session.SessionService/SendSessionOTP"
+	SessionService_CreateSession_FullMethodName        = "/session.SessionService/CreateSession"
+	SessionService_JoinSession_FullMethodName          = "/session.SessionService/JoinSession"
+	SessionService_UpdateSession_FullMethodName        = "/session.SessionService/UpdateSession"
 )
 
 // SessionServiceClient is the client API for SessionService service.
@@ -34,6 +35,7 @@ const (
 type SessionServiceClient interface {
 	GetAllSessions(ctx context.Context, in *GetAllSessionsRequest, opts ...grpc.CallOption) (*GetAllSessionsResponse, error)
 	GetActiveSession(ctx context.Context, in *GetActiveSessionRequest, opts ...grpc.CallOption) (*GetActiveSessionResponse, error)
+	GetAllActiveSessions(ctx context.Context, in *GetAllSessionsRequest, opts ...grpc.CallOption) (*GetAllSessionsResponse, error)
 	GetSessionById(ctx context.Context, in *GetSessionRequest, opts ...grpc.CallOption) (*GetSessionResponse, error)
 	SendSessionOTP(ctx context.Context, in *SendSessionOTPRequest, opts ...grpc.CallOption) (*SendSessionOTPResponse, error)
 	CreateSession(ctx context.Context, in *CreateSessionRequest, opts ...grpc.CallOption) (*CreateSessionResponse, error)
@@ -63,6 +65,16 @@ func (c *sessionServiceClient) GetActiveSession(ctx context.Context, in *GetActi
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(GetActiveSessionResponse)
 	err := c.cc.Invoke(ctx, SessionService_GetActiveSession_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *sessionServiceClient) GetAllActiveSessions(ctx context.Context, in *GetAllSessionsRequest, opts ...grpc.CallOption) (*GetAllSessionsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetAllSessionsResponse)
+	err := c.cc.Invoke(ctx, SessionService_GetAllActiveSessions_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -125,6 +137,7 @@ func (c *sessionServiceClient) UpdateSession(ctx context.Context, in *UpdateSess
 type SessionServiceServer interface {
 	GetAllSessions(context.Context, *GetAllSessionsRequest) (*GetAllSessionsResponse, error)
 	GetActiveSession(context.Context, *GetActiveSessionRequest) (*GetActiveSessionResponse, error)
+	GetAllActiveSessions(context.Context, *GetAllSessionsRequest) (*GetAllSessionsResponse, error)
 	GetSessionById(context.Context, *GetSessionRequest) (*GetSessionResponse, error)
 	SendSessionOTP(context.Context, *SendSessionOTPRequest) (*SendSessionOTPResponse, error)
 	CreateSession(context.Context, *CreateSessionRequest) (*CreateSessionResponse, error)
@@ -145,6 +158,9 @@ func (UnimplementedSessionServiceServer) GetAllSessions(context.Context, *GetAll
 }
 func (UnimplementedSessionServiceServer) GetActiveSession(context.Context, *GetActiveSessionRequest) (*GetActiveSessionResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetActiveSession not implemented")
+}
+func (UnimplementedSessionServiceServer) GetAllActiveSessions(context.Context, *GetAllSessionsRequest) (*GetAllSessionsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAllActiveSessions not implemented")
 }
 func (UnimplementedSessionServiceServer) GetSessionById(context.Context, *GetSessionRequest) (*GetSessionResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetSessionById not implemented")
@@ -214,6 +230,24 @@ func _SessionService_GetActiveSession_Handler(srv interface{}, ctx context.Conte
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(SessionServiceServer).GetActiveSession(ctx, req.(*GetActiveSessionRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _SessionService_GetAllActiveSessions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetAllSessionsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SessionServiceServer).GetAllActiveSessions(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: SessionService_GetAllActiveSessions_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SessionServiceServer).GetAllActiveSessions(ctx, req.(*GetAllSessionsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -322,6 +356,10 @@ var SessionService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetActiveSession",
 			Handler:    _SessionService_GetActiveSession_Handler,
+		},
+		{
+			MethodName: "GetAllActiveSessions",
+			Handler:    _SessionService_GetAllActiveSessions_Handler,
 		},
 		{
 			MethodName: "GetSessionById",
