@@ -841,6 +841,7 @@ type CreateSessionAdminRequest struct {
 	TotalAmount   float32                `protobuf:"fixed32,5,opt,name=totalAmount,proto3" json:"totalAmount,omitempty"`
 	IsPaid        bool                   `protobuf:"varint,6,opt,name=isPaid,proto3" json:"isPaid,omitempty"`
 	PaymentMethod string                 `protobuf:"bytes,7,opt,name=paymentMethod,proto3" json:"paymentMethod,omitempty"`
+	PhoneNumber   string                 `protobuf:"bytes,10,opt,name=phoneNumber,proto3" json:"phoneNumber,omitempty"`
 	Active        bool                   `protobuf:"varint,8,opt,name=active,proto3" json:"active,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -914,6 +915,13 @@ func (x *CreateSessionAdminRequest) GetIsPaid() bool {
 func (x *CreateSessionAdminRequest) GetPaymentMethod() string {
 	if x != nil {
 		return x.PaymentMethod
+	}
+	return ""
+}
+
+func (x *CreateSessionAdminRequest) GetPhoneNumber() string {
+	if x != nil {
+		return x.PhoneNumber
 	}
 	return ""
 }
@@ -1239,14 +1247,16 @@ const file_session_proto_rawDesc = "" +
 	"\x06active\x18\b \x01(\bR\x06active\"Y\n" +
 	"\x15CreateSessionResponse\x12*\n" +
 	"\asession\x18\x01 \x01(\v2\x10.session.SessionR\asession\x12\x14\n" +
-	"\x05token\x18\x02 \x01(\tR\x05token\"\xeb\x01\n" +
+	"\x05token\x18\x02 \x01(\tR\x05token\"\x8d\x02\n" +
 	"\x19CreateSessionAdminRequest\x12\x16\n" +
 	"\x06shopId\x18\x01 \x01(\tR\x06shopId\x12\x18\n" +
 	"\atableId\x18\x02 \x01(\tR\atableId\x12$\n" +
 	"\rsessionStatus\x18\x04 \x01(\tR\rsessionStatus\x12 \n" +
 	"\vtotalAmount\x18\x05 \x01(\x02R\vtotalAmount\x12\x16\n" +
 	"\x06isPaid\x18\x06 \x01(\bR\x06isPaid\x12$\n" +
-	"\rpaymentMethod\x18\a \x01(\tR\rpaymentMethod\x12\x16\n" +
+	"\rpaymentMethod\x18\a \x01(\tR\rpaymentMethod\x12 \n" +
+	"\vphoneNumber\x18\n" +
+	" \x01(\tR\vphoneNumber\x12\x16\n" +
 	"\x06active\x18\b \x01(\bR\x06active\"^\n" +
 	"\x1aCreateSessionAdminResponse\x12*\n" +
 	"\asession\x18\x01 \x01(\v2\x10.session.SessionR\asession\x12\x14\n" +

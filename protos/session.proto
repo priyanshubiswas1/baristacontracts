@@ -92,6 +92,7 @@ message CreateSessionAdminRequest{
     float totalAmount = 5;
     bool isPaid = 6;
     string paymentMethod = 7;
+    string phoneNumber = 10;
     bool active = 8;
 }
 
