@@ -22,6 +22,7 @@ const (
 	OrderService_GetOrdersBySessionId_FullMethodName = "/order.OrderService/GetOrdersBySessionId"
 	OrderService_GetOrderById_FullMethodName         = "/order.OrderService/GetOrderById"
 	OrderService_CreateOrder_FullMethodName          = "/order.OrderService/CreateOrder"
+	OrderService_CreateOrderAdmin_FullMethodName     = "/order.OrderService/CreateOrderAdmin"
 	OrderService_UpdateOrder_FullMethodName          = "/order.OrderService/UpdateOrder"
 	OrderService_CancelOrder_FullMethodName          = "/order.OrderService/CancelOrder"
 )
@@ -33,6 +34,7 @@ type OrderServiceClient interface {
 	GetOrdersBySessionId(ctx context.Context, in *GetOrdersBySessionIdRequest, opts ...grpc.CallOption) (*GetOrdersBySessionIdResponse, error)
 	GetOrderById(ctx context.Context, in *GetOrderByIdRequest, opts ...grpc.CallOption) (*GetOrderByIdResponse, error)
 	CreateOrder(ctx context.Context, in *CreateOrderRequest, opts ...grpc.CallOption) (*CreateOrderResponse, error)
+	CreateOrderAdmin(ctx context.Context, in *CreateOrderAdminRequest, opts ...grpc.CallOption) (*CreateOrderResponse, error)
 	UpdateOrder(ctx context.Context, in *UpdateOrderRequest, opts ...grpc.CallOption) (*UpdateOrderResponse, error)
 	CancelOrder(ctx context.Context, in *CancelOrderRequest, opts ...grpc.CallOption) (*CancelOrderResponse, error)
 }
@@ -75,6 +77,16 @@ func (c *orderServiceClient) CreateOrder(ctx context.Context, in *CreateOrderReq
 	return out, nil
 }
 
+func (c *orderServiceClient) CreateOrderAdmin(ctx context.Context, in *CreateOrderAdminRequest, opts ...grpc.CallOption) (*CreateOrderResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CreateOrderResponse)
+	err := c.cc.Invoke(ctx, OrderService_CreateOrderAdmin_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *orderServiceClient) UpdateOrder(ctx context.Context, in *UpdateOrderRequest, opts ...grpc.CallOption) (*UpdateOrderResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(UpdateOrderResponse)
@@ -102,6 +114,7 @@ type OrderServiceServer interface {
 	GetOrdersBySessionId(context.Context, *GetOrdersBySessionIdRequest) (*GetOrdersBySessionIdResponse, error)
 	GetOrderById(context.Context, *GetOrderByIdRequest) (*GetOrderByIdResponse, error)
 	CreateOrder(context.Context, *CreateOrderRequest) (*CreateOrderResponse, error)
+	CreateOrderAdmin(context.Context, *CreateOrderAdminRequest) (*CreateOrderResponse, error)
 	UpdateOrder(context.Context, *UpdateOrderRequest) (*UpdateOrderResponse, error)
 	CancelOrder(context.Context, *CancelOrderRequest) (*CancelOrderResponse, error)
 	mustEmbedUnimplementedOrderServiceServer()
@@ -122,6 +135,9 @@ func (UnimplementedOrderServiceServer) GetOrderById(context.Context, *GetOrderBy
 }
 func (UnimplementedOrderServiceServer) CreateOrder(context.Context, *CreateOrderRequest) (*CreateOrderResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateOrder not implemented")
+}
+func (UnimplementedOrderServiceServer) CreateOrderAdmin(context.Context, *CreateOrderAdminRequest) (*CreateOrderResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateOrderAdmin not implemented")
 }
 func (UnimplementedOrderServiceServer) UpdateOrder(context.Context, *UpdateOrderRequest) (*UpdateOrderResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateOrder not implemented")
@@ -204,6 +220,24 @@ func _OrderService_CreateOrder_Handler(srv interface{}, ctx context.Context, dec
 	return interceptor(ctx, in, info, handler)
 }
 
+func _OrderService_CreateOrderAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateOrderAdminRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OrderServiceServer).CreateOrderAdmin(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: OrderService_CreateOrderAdmin_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OrderServiceServer).CreateOrderAdmin(ctx, req.(*CreateOrderAdminRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _OrderService_UpdateOrder_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(UpdateOrderRequest)
 	if err := dec(in); err != nil {
@@ -258,6 +292,10 @@ var OrderService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "CreateOrder",
 			Handler:    _OrderService_CreateOrder_Handler,
+		},
+		{
+			MethodName: "CreateOrderAdmin",
+			Handler:    _OrderService_CreateOrderAdmin_Handler,
 		},
 		{
 			MethodName: "UpdateOrder",

@@ -43,6 +43,13 @@ message GetOrderByIdResponse{
    float totalOrderPrice = 3;
 }
 
+message CreateOrderAdminRequest{
+    string shopId = 1;
+    string tableId = 2;
+    string specialNotes = 3;
+    repeated OrderItemReq orderItems = 4;
+}
+
 message CreateOrderRequest{
     string sessionId = 1;
     string specialNotes = 2;
@@ -75,6 +82,7 @@ service OrderService{
     rpc GetOrdersBySessionId(GetOrdersBySessionIdRequest) returns (GetOrdersBySessionIdResponse);
     rpc GetOrderById(GetOrderByIdRequest) returns (GetOrderByIdResponse);
     rpc CreateOrder(CreateOrderRequest) returns (CreateOrderResponse);
+    rpc CreateOrderAdmin(CreateOrderAdminRequest) returns (CreateOrderResponse);
     rpc UpdateOrder(UpdateOrderRequest) returns (UpdateOrderResponse);
     rpc CancelOrder(CancelOrderRequest) returns (CancelOrderResponse);
 }
