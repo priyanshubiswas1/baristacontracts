@@ -833,6 +833,150 @@ func (x *CreateSessionResponse) GetToken() string {
 	return ""
 }
 
+type CreateSessionAdminRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ShopId        string                 `protobuf:"bytes,1,opt,name=shopId,proto3" json:"shopId,omitempty"`
+	TableId       string                 `protobuf:"bytes,2,opt,name=tableId,proto3" json:"tableId,omitempty"`
+	SessionStatus string                 `protobuf:"bytes,4,opt,name=sessionStatus,proto3" json:"sessionStatus,omitempty"`
+	TotalAmount   float32                `protobuf:"fixed32,5,opt,name=totalAmount,proto3" json:"totalAmount,omitempty"`
+	IsPaid        bool                   `protobuf:"varint,6,opt,name=isPaid,proto3" json:"isPaid,omitempty"`
+	PaymentMethod string                 `protobuf:"bytes,7,opt,name=paymentMethod,proto3" json:"paymentMethod,omitempty"`
+	Active        bool                   `protobuf:"varint,8,opt,name=active,proto3" json:"active,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateSessionAdminRequest) Reset() {
+	*x = CreateSessionAdminRequest{}
+	mi := &file_session_proto_msgTypes[13]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateSessionAdminRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateSessionAdminRequest) ProtoMessage() {}
+
+func (x *CreateSessionAdminRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_session_proto_msgTypes[13]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateSessionAdminRequest.ProtoReflect.Descriptor instead.
+func (*CreateSessionAdminRequest) Descriptor() ([]byte, []int) {
+	return file_session_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *CreateSessionAdminRequest) GetShopId() string {
+	if x != nil {
+		return x.ShopId
+	}
+	return ""
+}
+
+func (x *CreateSessionAdminRequest) GetTableId() string {
+	if x != nil {
+		return x.TableId
+	}
+	return ""
+}
+
+func (x *CreateSessionAdminRequest) GetSessionStatus() string {
+	if x != nil {
+		return x.SessionStatus
+	}
+	return ""
+}
+
+func (x *CreateSessionAdminRequest) GetTotalAmount() float32 {
+	if x != nil {
+		return x.TotalAmount
+	}
+	return 0
+}
+
+func (x *CreateSessionAdminRequest) GetIsPaid() bool {
+	if x != nil {
+		return x.IsPaid
+	}
+	return false
+}
+
+func (x *CreateSessionAdminRequest) GetPaymentMethod() string {
+	if x != nil {
+		return x.PaymentMethod
+	}
+	return ""
+}
+
+func (x *CreateSessionAdminRequest) GetActive() bool {
+	if x != nil {
+		return x.Active
+	}
+	return false
+}
+
+type CreateSessionAdminResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Session       *Session               `protobuf:"bytes,1,opt,name=session,proto3" json:"session,omitempty"`
+	Token         string                 `protobuf:"bytes,2,opt,name=token,proto3" json:"token,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateSessionAdminResponse) Reset() {
+	*x = CreateSessionAdminResponse{}
+	mi := &file_session_proto_msgTypes[14]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateSessionAdminResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateSessionAdminResponse) ProtoMessage() {}
+
+func (x *CreateSessionAdminResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_session_proto_msgTypes[14]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateSessionAdminResponse.ProtoReflect.Descriptor instead.
+func (*CreateSessionAdminResponse) Descriptor() ([]byte, []int) {
+	return file_session_proto_rawDescGZIP(), []int{14}
+}
+
+func (x *CreateSessionAdminResponse) GetSession() *Session {
+	if x != nil {
+		return x.Session
+	}
+	return nil
+}
+
+func (x *CreateSessionAdminResponse) GetToken() string {
+	if x != nil {
+		return x.Token
+	}
+	return ""
+}
+
 type JoinSessionRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ShopId        string                 `protobuf:"bytes,1,opt,name=shopId,proto3" json:"shopId,omitempty"`
@@ -844,7 +988,7 @@ type JoinSessionRequest struct {
 
 func (x *JoinSessionRequest) Reset() {
 	*x = JoinSessionRequest{}
-	mi := &file_session_proto_msgTypes[13]
+	mi := &file_session_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -856,7 +1000,7 @@ func (x *JoinSessionRequest) String() string {
 func (*JoinSessionRequest) ProtoMessage() {}
 
 func (x *JoinSessionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_session_proto_msgTypes[13]
+	mi := &file_session_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -869,7 +1013,7 @@ func (x *JoinSessionRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use JoinSessionRequest.ProtoReflect.Descriptor instead.
 func (*JoinSessionRequest) Descriptor() ([]byte, []int) {
-	return file_session_proto_rawDescGZIP(), []int{13}
+	return file_session_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *JoinSessionRequest) GetShopId() string {
@@ -903,7 +1047,7 @@ type JoinSessionResponse struct {
 
 func (x *JoinSessionResponse) Reset() {
 	*x = JoinSessionResponse{}
-	mi := &file_session_proto_msgTypes[14]
+	mi := &file_session_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -915,7 +1059,7 @@ func (x *JoinSessionResponse) String() string {
 func (*JoinSessionResponse) ProtoMessage() {}
 
 func (x *JoinSessionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_session_proto_msgTypes[14]
+	mi := &file_session_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -928,7 +1072,7 @@ func (x *JoinSessionResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use JoinSessionResponse.ProtoReflect.Descriptor instead.
 func (*JoinSessionResponse) Descriptor() ([]byte, []int) {
-	return file_session_proto_rawDescGZIP(), []int{14}
+	return file_session_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *JoinSessionResponse) GetSession() *Session {
@@ -954,7 +1098,7 @@ type UpdateSessionRequest struct {
 
 func (x *UpdateSessionRequest) Reset() {
 	*x = UpdateSessionRequest{}
-	mi := &file_session_proto_msgTypes[15]
+	mi := &file_session_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -966,7 +1110,7 @@ func (x *UpdateSessionRequest) String() string {
 func (*UpdateSessionRequest) ProtoMessage() {}
 
 func (x *UpdateSessionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_session_proto_msgTypes[15]
+	mi := &file_session_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -979,7 +1123,7 @@ func (x *UpdateSessionRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateSessionRequest.ProtoReflect.Descriptor instead.
 func (*UpdateSessionRequest) Descriptor() ([]byte, []int) {
-	return file_session_proto_rawDescGZIP(), []int{15}
+	return file_session_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *UpdateSessionRequest) GetSession() *Session {
@@ -998,7 +1142,7 @@ type UpdateSessionResponse struct {
 
 func (x *UpdateSessionResponse) Reset() {
 	*x = UpdateSessionResponse{}
-	mi := &file_session_proto_msgTypes[16]
+	mi := &file_session_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1010,7 +1154,7 @@ func (x *UpdateSessionResponse) String() string {
 func (*UpdateSessionResponse) ProtoMessage() {}
 
 func (x *UpdateSessionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_session_proto_msgTypes[16]
+	mi := &file_session_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1023,7 +1167,7 @@ func (x *UpdateSessionResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateSessionResponse.ProtoReflect.Descriptor instead.
 func (*UpdateSessionResponse) Descriptor() ([]byte, []int) {
-	return file_session_proto_rawDescGZIP(), []int{16}
+	return file_session_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *UpdateSessionResponse) GetSuccess() bool {
@@ -1095,6 +1239,17 @@ const file_session_proto_rawDesc = "" +
 	"\x06active\x18\b \x01(\bR\x06active\"Y\n" +
 	"\x15CreateSessionResponse\x12*\n" +
 	"\asession\x18\x01 \x01(\v2\x10.session.SessionR\asession\x12\x14\n" +
+	"\x05token\x18\x02 \x01(\tR\x05token\"\xeb\x01\n" +
+	"\x19CreateSessionAdminRequest\x12\x16\n" +
+	"\x06shopId\x18\x01 \x01(\tR\x06shopId\x12\x18\n" +
+	"\atableId\x18\x02 \x01(\tR\atableId\x12$\n" +
+	"\rsessionStatus\x18\x04 \x01(\tR\rsessionStatus\x12 \n" +
+	"\vtotalAmount\x18\x05 \x01(\x02R\vtotalAmount\x12\x16\n" +
+	"\x06isPaid\x18\x06 \x01(\bR\x06isPaid\x12$\n" +
+	"\rpaymentMethod\x18\a \x01(\tR\rpaymentMethod\x12\x16\n" +
+	"\x06active\x18\b \x01(\bR\x06active\"^\n" +
+	"\x1aCreateSessionAdminResponse\x12*\n" +
+	"\asession\x18\x01 \x01(\v2\x10.session.SessionR\asession\x12\x14\n" +
 	"\x05token\x18\x02 \x01(\tR\x05token\"X\n" +
 	"\x12JoinSessionRequest\x12\x16\n" +
 	"\x06shopId\x18\x01 \x01(\tR\x06shopId\x12\x18\n" +
@@ -1106,14 +1261,15 @@ const file_session_proto_rawDesc = "" +
 	"\x14UpdateSessionRequest\x12*\n" +
 	"\asession\x18\x01 \x01(\v2\x10.session.SessionR\asession\"1\n" +
 	"\x15UpdateSessionResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess2\xa3\x05\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess2\x82\x06\n" +
 	"\x0eSessionService\x12Q\n" +
 	"\x0eGetAllSessions\x12\x1e.session.GetAllSessionsRequest\x1a\x1f.session.GetAllSessionsResponse\x12W\n" +
 	"\x10GetActiveSession\x12 .session.GetActiveSessionRequest\x1a!.session.GetActiveSessionResponse\x12]\n" +
 	"\x14GetAllActiveSessions\x12\x1e.session.GetAllSessionsRequest\x1a%.session.GetAllActiveSessionsResponse\x12I\n" +
 	"\x0eGetSessionById\x12\x1a.session.GetSessionRequest\x1a\x1b.session.GetSessionResponse\x12Q\n" +
 	"\x0eSendSessionOTP\x12\x1e.session.SendSessionOTPRequest\x1a\x1f.session.SendSessionOTPResponse\x12N\n" +
-	"\rCreateSession\x12\x1d.session.CreateSessionRequest\x1a\x1e.session.CreateSessionResponse\x12H\n" +
+	"\rCreateSession\x12\x1d.session.CreateSessionRequest\x1a\x1e.session.CreateSessionResponse\x12]\n" +
+	"\x12CreateSessionAdmin\x12\".session.CreateSessionAdminRequest\x1a#.session.CreateSessionAdminResponse\x12H\n" +
 	"\vJoinSession\x12\x1b.session.JoinSessionRequest\x1a\x1c.session.JoinSessionResponse\x12N\n" +
 	"\rUpdateSession\x12\x1d.session.UpdateSessionRequest\x1a\x1e.session.UpdateSessionResponseB\n" +
 	"Z\b/sessionb\x06proto3"
@@ -1130,7 +1286,7 @@ func file_session_proto_rawDescGZIP() []byte {
 	return file_session_proto_rawDescData
 }
 
-var file_session_proto_msgTypes = make([]protoimpl.MessageInfo, 17)
+var file_session_proto_msgTypes = make([]protoimpl.MessageInfo, 19)
 var file_session_proto_goTypes = []any{
 	(*Session)(nil),                      // 0: session.Session
 	(*ActiveSession)(nil),                // 1: session.ActiveSession
@@ -1145,10 +1301,12 @@ var file_session_proto_goTypes = []any{
 	(*SendSessionOTPResponse)(nil),       // 10: session.SendSessionOTPResponse
 	(*CreateSessionRequest)(nil),         // 11: session.CreateSessionRequest
 	(*CreateSessionResponse)(nil),        // 12: session.CreateSessionResponse
-	(*JoinSessionRequest)(nil),           // 13: session.JoinSessionRequest
-	(*JoinSessionResponse)(nil),          // 14: session.JoinSessionResponse
-	(*UpdateSessionRequest)(nil),         // 15: session.UpdateSessionRequest
-	(*UpdateSessionResponse)(nil),        // 16: session.UpdateSessionResponse
+	(*CreateSessionAdminRequest)(nil),    // 13: session.CreateSessionAdminRequest
+	(*CreateSessionAdminResponse)(nil),   // 14: session.CreateSessionAdminResponse
+	(*JoinSessionRequest)(nil),           // 15: session.JoinSessionRequest
+	(*JoinSessionResponse)(nil),          // 16: session.JoinSessionResponse
+	(*UpdateSessionRequest)(nil),         // 17: session.UpdateSessionRequest
+	(*UpdateSessionResponse)(nil),        // 18: session.UpdateSessionResponse
 }
 var file_session_proto_depIdxs = []int32{
 	0,  // 0: session.GetAllSessionsResponse.sessions:type_name -> session.Session
@@ -1156,29 +1314,32 @@ var file_session_proto_depIdxs = []int32{
 	0,  // 2: session.GetActiveSessionResponse.session:type_name -> session.Session
 	0,  // 3: session.GetSessionResponse.session:type_name -> session.Session
 	0,  // 4: session.CreateSessionResponse.session:type_name -> session.Session
-	0,  // 5: session.JoinSessionResponse.session:type_name -> session.Session
-	0,  // 6: session.UpdateSessionRequest.session:type_name -> session.Session
-	2,  // 7: session.SessionService.GetAllSessions:input_type -> session.GetAllSessionsRequest
-	5,  // 8: session.SessionService.GetActiveSession:input_type -> session.GetActiveSessionRequest
-	2,  // 9: session.SessionService.GetAllActiveSessions:input_type -> session.GetAllSessionsRequest
-	7,  // 10: session.SessionService.GetSessionById:input_type -> session.GetSessionRequest
-	9,  // 11: session.SessionService.SendSessionOTP:input_type -> session.SendSessionOTPRequest
-	11, // 12: session.SessionService.CreateSession:input_type -> session.CreateSessionRequest
-	13, // 13: session.SessionService.JoinSession:input_type -> session.JoinSessionRequest
-	15, // 14: session.SessionService.UpdateSession:input_type -> session.UpdateSessionRequest
-	3,  // 15: session.SessionService.GetAllSessions:output_type -> session.GetAllSessionsResponse
-	6,  // 16: session.SessionService.GetActiveSession:output_type -> session.GetActiveSessionResponse
-	4,  // 17: session.SessionService.GetAllActiveSessions:output_type -> session.GetAllActiveSessionsResponse
-	8,  // 18: session.SessionService.GetSessionById:output_type -> session.GetSessionResponse
-	10, // 19: session.SessionService.SendSessionOTP:output_type -> session.SendSessionOTPResponse
-	12, // 20: session.SessionService.CreateSession:output_type -> session.CreateSessionResponse
-	14, // 21: session.SessionService.JoinSession:output_type -> session.JoinSessionResponse
-	16, // 22: session.SessionService.UpdateSession:output_type -> session.UpdateSessionResponse
-	15, // [15:23] is the sub-list for method output_type
-	7,  // [7:15] is the sub-list for method input_type
-	7,  // [7:7] is the sub-list for extension type_name
-	7,  // [7:7] is the sub-list for extension extendee
-	0,  // [0:7] is the sub-list for field type_name
+	0,  // 5: session.CreateSessionAdminResponse.session:type_name -> session.Session
+	0,  // 6: session.JoinSessionResponse.session:type_name -> session.Session
+	0,  // 7: session.UpdateSessionRequest.session:type_name -> session.Session
+	2,  // 8: session.SessionService.GetAllSessions:input_type -> session.GetAllSessionsRequest
+	5,  // 9: session.SessionService.GetActiveSession:input_type -> session.GetActiveSessionRequest
+	2,  // 10: session.SessionService.GetAllActiveSessions:input_type -> session.GetAllSessionsRequest
+	7,  // 11: session.SessionService.GetSessionById:input_type -> session.GetSessionRequest
+	9,  // 12: session.SessionService.SendSessionOTP:input_type -> session.SendSessionOTPRequest
+	11, // 13: session.SessionService.CreateSession:input_type -> session.CreateSessionRequest
+	13, // 14: session.SessionService.CreateSessionAdmin:input_type -> session.CreateSessionAdminRequest
+	15, // 15: session.SessionService.JoinSession:input_type -> session.JoinSessionRequest
+	17, // 16: session.SessionService.UpdateSession:input_type -> session.UpdateSessionRequest
+	3,  // 17: session.SessionService.GetAllSessions:output_type -> session.GetAllSessionsResponse
+	6,  // 18: session.SessionService.GetActiveSession:output_type -> session.GetActiveSessionResponse
+	4,  // 19: session.SessionService.GetAllActiveSessions:output_type -> session.GetAllActiveSessionsResponse
+	8,  // 20: session.SessionService.GetSessionById:output_type -> session.GetSessionResponse
+	10, // 21: session.SessionService.SendSessionOTP:output_type -> session.SendSessionOTPResponse
+	12, // 22: session.SessionService.CreateSession:output_type -> session.CreateSessionResponse
+	14, // 23: session.SessionService.CreateSessionAdmin:output_type -> session.CreateSessionAdminResponse
+	16, // 24: session.SessionService.JoinSession:output_type -> session.JoinSessionResponse
+	18, // 25: session.SessionService.UpdateSession:output_type -> session.UpdateSessionResponse
+	17, // [17:26] is the sub-list for method output_type
+	8,  // [8:17] is the sub-list for method input_type
+	8,  // [8:8] is the sub-list for extension type_name
+	8,  // [8:8] is the sub-list for extension extendee
+	0,  // [0:8] is the sub-list for field type_name
 }
 
 func init() { file_session_proto_init() }
@@ -1192,7 +1353,7 @@ func file_session_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_session_proto_rawDesc), len(file_session_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   17,
+			NumMessages:   19,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

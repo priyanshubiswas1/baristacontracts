@@ -85,6 +85,21 @@ message CreateSessionResponse{
     string token = 2;
 }
 
+message CreateSessionAdminRequest{
+    string shopId = 1;
+    string tableId = 2;
+    string sessionStatus = 4;
+    float totalAmount = 5;
+    bool isPaid = 6;
+    string paymentMethod = 7;
+    bool active = 8;
+}
+
+message CreateSessionAdminResponse{
+    Session session = 1;
+    string token = 2;
+}
+
 message JoinSessionRequest{
     string shopId = 1;
     string tableId = 2;
@@ -111,6 +126,7 @@ service SessionService{
     rpc GetSessionById(GetSessionRequest) returns (GetSessionResponse);
     rpc SendSessionOTP(SendSessionOTPRequest) returns (SendSessionOTPResponse);
     rpc CreateSession(CreateSessionRequest) returns (CreateSessionResponse);
+    rpc CreateSessionAdmin(CreateSessionAdminRequest) returns (CreateSessionAdminResponse);
     rpc JoinSession(JoinSessionRequest) returns (JoinSessionResponse);
     rpc UpdateSession(UpdateSessionRequest) returns (UpdateSessionResponse);
 }

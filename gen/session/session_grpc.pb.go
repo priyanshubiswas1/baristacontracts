@@ -25,6 +25,7 @@ const (
 	SessionService_GetSessionById_FullMethodName       = "/session.SessionService/GetSessionById"
 	SessionService_SendSessionOTP_FullMethodName       = "/session.SessionService/SendSessionOTP"
 	SessionService_CreateSession_FullMethodName        = "/session.SessionService/CreateSession"
+	SessionService_CreateSessionAdmin_FullMethodName   = "/session.SessionService/CreateSessionAdmin"
 	SessionService_JoinSession_FullMethodName          = "/session.SessionService/JoinSession"
 	SessionService_UpdateSession_FullMethodName        = "/session.SessionService/UpdateSession"
 )
@@ -39,6 +40,7 @@ type SessionServiceClient interface {
 	GetSessionById(ctx context.Context, in *GetSessionRequest, opts ...grpc.CallOption) (*GetSessionResponse, error)
 	SendSessionOTP(ctx context.Context, in *SendSessionOTPRequest, opts ...grpc.CallOption) (*SendSessionOTPResponse, error)
 	CreateSession(ctx context.Context, in *CreateSessionRequest, opts ...grpc.CallOption) (*CreateSessionResponse, error)
+	CreateSessionAdmin(ctx context.Context, in *CreateSessionAdminRequest, opts ...grpc.CallOption) (*CreateSessionAdminResponse, error)
 	JoinSession(ctx context.Context, in *JoinSessionRequest, opts ...grpc.CallOption) (*JoinSessionResponse, error)
 	UpdateSession(ctx context.Context, in *UpdateSessionRequest, opts ...grpc.CallOption) (*UpdateSessionResponse, error)
 }
@@ -111,6 +113,16 @@ func (c *sessionServiceClient) CreateSession(ctx context.Context, in *CreateSess
 	return out, nil
 }
 
+func (c *sessionServiceClient) CreateSessionAdmin(ctx context.Context, in *CreateSessionAdminRequest, opts ...grpc.CallOption) (*CreateSessionAdminResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CreateSessionAdminResponse)
+	err := c.cc.Invoke(ctx, SessionService_CreateSessionAdmin_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *sessionServiceClient) JoinSession(ctx context.Context, in *JoinSessionRequest, opts ...grpc.CallOption) (*JoinSessionResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(JoinSessionResponse)
@@ -141,6 +153,7 @@ type SessionServiceServer interface {
 	GetSessionById(context.Context, *GetSessionRequest) (*GetSessionResponse, error)
 	SendSessionOTP(context.Context, *SendSessionOTPRequest) (*SendSessionOTPResponse, error)
 	CreateSession(context.Context, *CreateSessionRequest) (*CreateSessionResponse, error)
+	CreateSessionAdmin(context.Context, *CreateSessionAdminRequest) (*CreateSessionAdminResponse, error)
 	JoinSession(context.Context, *JoinSessionRequest) (*JoinSessionResponse, error)
 	UpdateSession(context.Context, *UpdateSessionRequest) (*UpdateSessionResponse, error)
 	mustEmbedUnimplementedSessionServiceServer()
@@ -170,6 +183,9 @@ func (UnimplementedSessionServiceServer) SendSessionOTP(context.Context, *SendSe
 }
 func (UnimplementedSessionServiceServer) CreateSession(context.Context, *CreateSessionRequest) (*CreateSessionResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateSession not implemented")
+}
+func (UnimplementedSessionServiceServer) CreateSessionAdmin(context.Context, *CreateSessionAdminRequest) (*CreateSessionAdminResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateSessionAdmin not implemented")
 }
 func (UnimplementedSessionServiceServer) JoinSession(context.Context, *JoinSessionRequest) (*JoinSessionResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method JoinSession not implemented")
@@ -306,6 +322,24 @@ func _SessionService_CreateSession_Handler(srv interface{}, ctx context.Context,
 	return interceptor(ctx, in, info, handler)
 }
 
+func _SessionService_CreateSessionAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateSessionAdminRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SessionServiceServer).CreateSessionAdmin(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: SessionService_CreateSessionAdmin_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SessionServiceServer).CreateSessionAdmin(ctx, req.(*CreateSessionAdminRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _SessionService_JoinSession_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(JoinSessionRequest)
 	if err := dec(in); err != nil {
@@ -372,6 +406,10 @@ var SessionService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "CreateSession",
 			Handler:    _SessionService_CreateSession_Handler,
+		},
+		{
+			MethodName: "CreateSessionAdmin",
+			Handler:    _SessionService_CreateSessionAdmin_Handler,
 		},
 		{
 			MethodName: "JoinSession",
