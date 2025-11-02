@@ -21,6 +21,8 @@ message OrderItems{
 
 message SessionSummaryRequest{
     string shopId = 1;
+    int32 offset = 2;
+    int32 limit = 3;         
 }
 
 message SessionSummaryResponse{

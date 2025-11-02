@@ -176,6 +176,8 @@ func (x *OrderItems) GetQuantity() int32 {
 type SessionSummaryRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ShopId        string                 `protobuf:"bytes,1,opt,name=shopId,proto3" json:"shopId,omitempty"`
+	Offset        int32                  `protobuf:"varint,2,opt,name=offset,proto3" json:"offset,omitempty"`
+	Limit         int32                  `protobuf:"varint,3,opt,name=limit,proto3" json:"limit,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -215,6 +217,20 @@ func (x *SessionSummaryRequest) GetShopId() string {
 		return x.ShopId
 	}
 	return ""
+}
+
+func (x *SessionSummaryRequest) GetOffset() int32 {
+	if x != nil {
+		return x.Offset
+	}
+	return 0
+}
+
+func (x *SessionSummaryRequest) GetLimit() int32 {
+	if x != nil {
+		return x.Limit
+	}
+	return 0
 }
 
 type SessionSummaryResponse struct {
@@ -546,9 +562,11 @@ const file_history_proto_rawDesc = "" +
 	"OrderItems\x12 \n" +
 	"\vorderItemId\x18\x01 \x01(\tR\vorderItemId\x12\x1c\n" +
 	"\titemPrice\x18\x02 \x01(\x02R\titemPrice\x12\x1a\n" +
-	"\bquantity\x18\x03 \x01(\x05R\bquantity\"/\n" +
+	"\bquantity\x18\x03 \x01(\x05R\bquantity\"]\n" +
 	"\x15SessionSummaryRequest\x12\x16\n" +
-	"\x06shopId\x18\x01 \x01(\tR\x06shopId\"Y\n" +
+	"\x06shopId\x18\x01 \x01(\tR\x06shopId\x12\x16\n" +
+	"\x06offset\x18\x02 \x01(\x05R\x06offset\x12\x14\n" +
+	"\x05limit\x18\x03 \x01(\x05R\x05limit\"Y\n" +
 	"\x16SessionSummaryResponse\x12?\n" +
 	"\x0esessionSummary\x18\x01 \x03(\v2\x17.history.SessionSummaryR\x0esessionSummary\"r\n" +
 	"\x14CreateSessionRequest\x12\x1c\n" +
