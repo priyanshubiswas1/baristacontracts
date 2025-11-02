@@ -1,0 +1,62 @@
+syntax = "proto3";
+package history;
+
+option go_package = "/history";
+
+message SessionSummary{
+    string sessionId = 1;
+    string shopId = 2;
+    int32 sessionNumber = 3;
+    float totalAmount = 4;
+    string createdAt = 5;
+    string updatedAt = 6;
+    repeated string ordered_items = 7;
+}
+
+message OrderItems{
+    string orderItemId = 1;
+    float itemPrice = 2;
+    int32 quantity = 3;
+}
+
+message SessionSummaryRequest{
+    string shopId = 1;
+}
+
+message SessionSummaryResponse{
+    repeated SessionSummary sessionSummary = 1;
+}
+
+message CreateSessionRequest {
+    string sessionId = 1;
+    string shopId = 2;
+    int32 sessionNumber = 3;
+}
+
+message CloseSessionRequest {
+    string sessionId = 1;
+}
+
+message AddOrderRequest {
+    string sessionId = 1;
+    string orderId = 2;
+    repeated OrderItems orderItems = 3;
+}
+
+message RemoveOrderItemsRequest { //to remove entire order, send all orderItemIds in that order
+    string sessionId = 1;
+    repeated string orderItemId = 2;
+}
+
+message StatusResponse {
+    bool success = 1;
+    string message = 2;
+}
+
+service HistoryService {
+    rpc GetSessionSummary(SessionSummaryRequest) returns (SessionSummaryResponse);
+    rpc CreateSession(CreateSessionRequest) returns (SessionSummaryResponse);
+    rpc CloseSession(CloseSessionRequest) returns (StatusResponse);
+    rpc AddOrder(AddOrderRequest) returns (SessionSummaryResponse);
+    rpc RemoveOrderItems(RemoveOrderItemsRequest) returns (StatusResponse);
+}
