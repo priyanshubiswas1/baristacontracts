@@ -588,12 +588,12 @@ const file_history_proto_rawDesc = "" +
 	"\vorderItemId\x18\x02 \x03(\tR\vorderItemId\"D\n" +
 	"\x0eStatusResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12\x18\n" +
-	"\amessage\x18\x02 \x01(\tR\amessage2\x94\x03\n" +
+	"\amessage\x18\x02 \x01(\tR\amessage2\x84\x03\n" +
 	"\x0eHistoryService\x12T\n" +
-	"\x11GetSessionSummary\x12\x1e.history.SessionSummaryRequest\x1a\x1f.history.SessionSummaryResponse\x12O\n" +
-	"\rCreateSession\x12\x1d.history.CreateSessionRequest\x1a\x1f.history.SessionSummaryResponse\x12E\n" +
-	"\fCloseSession\x12\x1c.history.CloseSessionRequest\x1a\x17.history.StatusResponse\x12E\n" +
-	"\bAddOrder\x12\x18.history.AddOrderRequest\x1a\x1f.history.SessionSummaryResponse\x12M\n" +
+	"\x11GetSessionSummary\x12\x1e.history.SessionSummaryRequest\x1a\x1f.history.SessionSummaryResponse\x12G\n" +
+	"\rCreateSession\x12\x1d.history.CreateSessionRequest\x1a\x17.history.SessionSummary\x12E\n" +
+	"\fCloseSession\x12\x1c.history.CloseSessionRequest\x1a\x17.history.StatusResponse\x12=\n" +
+	"\bAddOrder\x12\x18.history.AddOrderRequest\x1a\x17.history.SessionSummary\x12M\n" +
 	"\x10RemoveOrderItems\x12 .history.RemoveOrderItemsRequest\x1a\x17.history.StatusResponseB\n" +
 	"Z\b/historyb\x06proto3"
 
@@ -631,9 +631,9 @@ var file_history_proto_depIdxs = []int32{
 	6, // 6: history.HistoryService.AddOrder:input_type -> history.AddOrderRequest
 	7, // 7: history.HistoryService.RemoveOrderItems:input_type -> history.RemoveOrderItemsRequest
 	3, // 8: history.HistoryService.GetSessionSummary:output_type -> history.SessionSummaryResponse
-	3, // 9: history.HistoryService.CreateSession:output_type -> history.SessionSummaryResponse
+	0, // 9: history.HistoryService.CreateSession:output_type -> history.SessionSummary
 	8, // 10: history.HistoryService.CloseSession:output_type -> history.StatusResponse
-	3, // 11: history.HistoryService.AddOrder:output_type -> history.SessionSummaryResponse
+	0, // 11: history.HistoryService.AddOrder:output_type -> history.SessionSummary
 	8, // 12: history.HistoryService.RemoveOrderItems:output_type -> history.StatusResponse
 	8, // [8:13] is the sub-list for method output_type
 	3, // [3:8] is the sub-list for method input_type

@@ -31,9 +31,9 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type HistoryServiceClient interface {
 	GetSessionSummary(ctx context.Context, in *SessionSummaryRequest, opts ...grpc.CallOption) (*SessionSummaryResponse, error)
-	CreateSession(ctx context.Context, in *CreateSessionRequest, opts ...grpc.CallOption) (*SessionSummaryResponse, error)
+	CreateSession(ctx context.Context, in *CreateSessionRequest, opts ...grpc.CallOption) (*SessionSummary, error)
 	CloseSession(ctx context.Context, in *CloseSessionRequest, opts ...grpc.CallOption) (*StatusResponse, error)
-	AddOrder(ctx context.Context, in *AddOrderRequest, opts ...grpc.CallOption) (*SessionSummaryResponse, error)
+	AddOrder(ctx context.Context, in *AddOrderRequest, opts ...grpc.CallOption) (*SessionSummary, error)
 	RemoveOrderItems(ctx context.Context, in *RemoveOrderItemsRequest, opts ...grpc.CallOption) (*StatusResponse, error)
 }
 
@@ -55,9 +55,9 @@ func (c *historyServiceClient) GetSessionSummary(ctx context.Context, in *Sessio
 	return out, nil
 }
 
-func (c *historyServiceClient) CreateSession(ctx context.Context, in *CreateSessionRequest, opts ...grpc.CallOption) (*SessionSummaryResponse, error) {
+func (c *historyServiceClient) CreateSession(ctx context.Context, in *CreateSessionRequest, opts ...grpc.CallOption) (*SessionSummary, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(SessionSummaryResponse)
+	out := new(SessionSummary)
 	err := c.cc.Invoke(ctx, HistoryService_CreateSession_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -75,9 +75,9 @@ func (c *historyServiceClient) CloseSession(ctx context.Context, in *CloseSessio
 	return out, nil
 }
 
-func (c *historyServiceClient) AddOrder(ctx context.Context, in *AddOrderRequest, opts ...grpc.CallOption) (*SessionSummaryResponse, error) {
+func (c *historyServiceClient) AddOrder(ctx context.Context, in *AddOrderRequest, opts ...grpc.CallOption) (*SessionSummary, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(SessionSummaryResponse)
+	out := new(SessionSummary)
 	err := c.cc.Invoke(ctx, HistoryService_AddOrder_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -100,9 +100,9 @@ func (c *historyServiceClient) RemoveOrderItems(ctx context.Context, in *RemoveO
 // for forward compatibility.
 type HistoryServiceServer interface {
 	GetSessionSummary(context.Context, *SessionSummaryRequest) (*SessionSummaryResponse, error)
-	CreateSession(context.Context, *CreateSessionRequest) (*SessionSummaryResponse, error)
+	CreateSession(context.Context, *CreateSessionRequest) (*SessionSummary, error)
 	CloseSession(context.Context, *CloseSessionRequest) (*StatusResponse, error)
-	AddOrder(context.Context, *AddOrderRequest) (*SessionSummaryResponse, error)
+	AddOrder(context.Context, *AddOrderRequest) (*SessionSummary, error)
 	RemoveOrderItems(context.Context, *RemoveOrderItemsRequest) (*StatusResponse, error)
 	mustEmbedUnimplementedHistoryServiceServer()
 }
@@ -117,13 +117,13 @@ type UnimplementedHistoryServiceServer struct{}
 func (UnimplementedHistoryServiceServer) GetSessionSummary(context.Context, *SessionSummaryRequest) (*SessionSummaryResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetSessionSummary not implemented")
 }
-func (UnimplementedHistoryServiceServer) CreateSession(context.Context, *CreateSessionRequest) (*SessionSummaryResponse, error) {
+func (UnimplementedHistoryServiceServer) CreateSession(context.Context, *CreateSessionRequest) (*SessionSummary, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateSession not implemented")
 }
 func (UnimplementedHistoryServiceServer) CloseSession(context.Context, *CloseSessionRequest) (*StatusResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CloseSession not implemented")
 }
-func (UnimplementedHistoryServiceServer) AddOrder(context.Context, *AddOrderRequest) (*SessionSummaryResponse, error) {
+func (UnimplementedHistoryServiceServer) AddOrder(context.Context, *AddOrderRequest) (*SessionSummary, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AddOrder not implemented")
 }
 func (UnimplementedHistoryServiceServer) RemoveOrderItems(context.Context, *RemoveOrderItemsRequest) (*StatusResponse, error) {
