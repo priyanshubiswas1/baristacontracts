@@ -29,7 +29,7 @@ type SessionSummary struct {
 	TotalAmount   float32                `protobuf:"fixed32,4,opt,name=totalAmount,proto3" json:"totalAmount,omitempty"`
 	CreatedAt     string                 `protobuf:"bytes,5,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
 	UpdatedAt     string                 `protobuf:"bytes,6,opt,name=updatedAt,proto3" json:"updatedAt,omitempty"`
-	OrderedItems  []string               `protobuf:"bytes,7,rep,name=ordered_items,json=orderedItems,proto3" json:"ordered_items,omitempty"`
+	OrderItems    []*OrderItems          `protobuf:"bytes,7,rep,name=orderItems,proto3" json:"orderItems,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -106,9 +106,9 @@ func (x *SessionSummary) GetUpdatedAt() string {
 	return ""
 }
 
-func (x *SessionSummary) GetOrderedItems() []string {
+func (x *SessionSummary) GetOrderItems() []*OrderItems {
 	if x != nil {
-		return x.OrderedItems
+		return x.OrderItems
 	}
 	return nil
 }
@@ -549,15 +549,17 @@ var File_history_proto protoreflect.FileDescriptor
 
 const file_history_proto_rawDesc = "" +
 	"\n" +
-	"\rhistory.proto\x12\ahistory\"\xef\x01\n" +
+	"\rhistory.proto\x12\ahistory\"\xff\x01\n" +
 	"\x0eSessionSummary\x12\x1c\n" +
 	"\tsessionId\x18\x01 \x01(\tR\tsessionId\x12\x16\n" +
 	"\x06shopId\x18\x02 \x01(\tR\x06shopId\x12$\n" +
 	"\rsessionNumber\x18\x03 \x01(\x05R\rsessionNumber\x12 \n" +
 	"\vtotalAmount\x18\x04 \x01(\x02R\vtotalAmount\x12\x1c\n" +
 	"\tcreatedAt\x18\x05 \x01(\tR\tcreatedAt\x12\x1c\n" +
-	"\tupdatedAt\x18\x06 \x01(\tR\tupdatedAt\x12#\n" +
-	"\rordered_items\x18\a \x03(\tR\forderedItems\"h\n" +
+	"\tupdatedAt\x18\x06 \x01(\tR\tupdatedAt\x123\n" +
+	"\n" +
+	"orderItems\x18\a \x03(\v2\x13.history.OrderItemsR\n" +
+	"orderItems\"h\n" +
 	"\n" +
 	"OrderItems\x12 \n" +
 	"\vorderItemId\x18\x01 \x01(\tR\vorderItemId\x12\x1c\n" +
@@ -620,23 +622,24 @@ var file_history_proto_goTypes = []any{
 	(*StatusResponse)(nil),          // 8: history.StatusResponse
 }
 var file_history_proto_depIdxs = []int32{
-	0, // 0: history.SessionSummaryResponse.sessionSummary:type_name -> history.SessionSummary
-	1, // 1: history.AddOrderRequest.orderItems:type_name -> history.OrderItems
-	2, // 2: history.HistoryService.GetSessionSummary:input_type -> history.SessionSummaryRequest
-	4, // 3: history.HistoryService.CreateSession:input_type -> history.CreateSessionRequest
-	5, // 4: history.HistoryService.CloseSession:input_type -> history.CloseSessionRequest
-	6, // 5: history.HistoryService.AddOrder:input_type -> history.AddOrderRequest
-	7, // 6: history.HistoryService.RemoveOrderItems:input_type -> history.RemoveOrderItemsRequest
-	3, // 7: history.HistoryService.GetSessionSummary:output_type -> history.SessionSummaryResponse
-	3, // 8: history.HistoryService.CreateSession:output_type -> history.SessionSummaryResponse
-	8, // 9: history.HistoryService.CloseSession:output_type -> history.StatusResponse
-	3, // 10: history.HistoryService.AddOrder:output_type -> history.SessionSummaryResponse
-	8, // 11: history.HistoryService.RemoveOrderItems:output_type -> history.StatusResponse
-	7, // [7:12] is the sub-list for method output_type
-	2, // [2:7] is the sub-list for method input_type
-	2, // [2:2] is the sub-list for extension type_name
-	2, // [2:2] is the sub-list for extension extendee
-	0, // [0:2] is the sub-list for field type_name
+	1, // 0: history.SessionSummary.orderItems:type_name -> history.OrderItems
+	0, // 1: history.SessionSummaryResponse.sessionSummary:type_name -> history.SessionSummary
+	1, // 2: history.AddOrderRequest.orderItems:type_name -> history.OrderItems
+	2, // 3: history.HistoryService.GetSessionSummary:input_type -> history.SessionSummaryRequest
+	4, // 4: history.HistoryService.CreateSession:input_type -> history.CreateSessionRequest
+	5, // 5: history.HistoryService.CloseSession:input_type -> history.CloseSessionRequest
+	6, // 6: history.HistoryService.AddOrder:input_type -> history.AddOrderRequest
+	7, // 7: history.HistoryService.RemoveOrderItems:input_type -> history.RemoveOrderItemsRequest
+	3, // 8: history.HistoryService.GetSessionSummary:output_type -> history.SessionSummaryResponse
+	3, // 9: history.HistoryService.CreateSession:output_type -> history.SessionSummaryResponse
+	8, // 10: history.HistoryService.CloseSession:output_type -> history.StatusResponse
+	3, // 11: history.HistoryService.AddOrder:output_type -> history.SessionSummaryResponse
+	8, // 12: history.HistoryService.RemoveOrderItems:output_type -> history.StatusResponse
+	8, // [8:13] is the sub-list for method output_type
+	3, // [3:8] is the sub-list for method input_type
+	3, // [3:3] is the sub-list for extension type_name
+	3, // [3:3] is the sub-list for extension extendee
+	0, // [0:3] is the sub-list for field type_name
 }
 
 func init() { file_history_proto_init() }

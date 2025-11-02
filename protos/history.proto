@@ -10,7 +10,7 @@ message SessionSummary{
     float totalAmount = 4;
     string createdAt = 5;
     string updatedAt = 6;
-    repeated string ordered_items = 7;
+    repeated OrderItems orderItems = 7;
 }
 
 message OrderItems{
