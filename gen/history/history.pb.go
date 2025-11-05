@@ -23,13 +23,14 @@ const (
 
 type SessionSummary struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	SessionId     string                 `protobuf:"bytes,1,opt,name=sessionId,proto3" json:"sessionId,omitempty"`
-	ShopId        string                 `protobuf:"bytes,2,opt,name=shopId,proto3" json:"shopId,omitempty"`
-	SessionNumber int32                  `protobuf:"varint,3,opt,name=sessionNumber,proto3" json:"sessionNumber,omitempty"`
-	TotalAmount   float32                `protobuf:"fixed32,4,opt,name=totalAmount,proto3" json:"totalAmount,omitempty"`
-	CreatedAt     string                 `protobuf:"bytes,5,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
-	UpdatedAt     string                 `protobuf:"bytes,6,opt,name=updatedAt,proto3" json:"updatedAt,omitempty"`
-	OrderItems    []*OrderItems          `protobuf:"bytes,7,rep,name=orderItems,proto3" json:"orderItems,omitempty"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	SessionId     string                 `protobuf:"bytes,2,opt,name=sessionId,proto3" json:"sessionId,omitempty"`
+	ShopId        string                 `protobuf:"bytes,3,opt,name=shopId,proto3" json:"shopId,omitempty"`
+	SessionNumber int32                  `protobuf:"varint,4,opt,name=sessionNumber,proto3" json:"sessionNumber,omitempty"`
+	TotalAmount   float32                `protobuf:"fixed32,5,opt,name=totalAmount,proto3" json:"totalAmount,omitempty"`
+	CreatedAt     string                 `protobuf:"bytes,6,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
+	UpdatedAt     string                 `protobuf:"bytes,7,opt,name=updatedAt,proto3" json:"updatedAt,omitempty"`
+	OrderItems    []*OrderItems          `protobuf:"bytes,8,rep,name=orderItems,proto3" json:"orderItems,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -62,6 +63,13 @@ func (x *SessionSummary) ProtoReflect() protoreflect.Message {
 // Deprecated: Use SessionSummary.ProtoReflect.Descriptor instead.
 func (*SessionSummary) Descriptor() ([]byte, []int) {
 	return file_history_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *SessionSummary) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
 }
 
 func (x *SessionSummary) GetSessionId() string {
@@ -549,16 +557,17 @@ var File_history_proto protoreflect.FileDescriptor
 
 const file_history_proto_rawDesc = "" +
 	"\n" +
-	"\rhistory.proto\x12\ahistory\"\xff\x01\n" +
-	"\x0eSessionSummary\x12\x1c\n" +
-	"\tsessionId\x18\x01 \x01(\tR\tsessionId\x12\x16\n" +
-	"\x06shopId\x18\x02 \x01(\tR\x06shopId\x12$\n" +
-	"\rsessionNumber\x18\x03 \x01(\x05R\rsessionNumber\x12 \n" +
-	"\vtotalAmount\x18\x04 \x01(\x02R\vtotalAmount\x12\x1c\n" +
-	"\tcreatedAt\x18\x05 \x01(\tR\tcreatedAt\x12\x1c\n" +
-	"\tupdatedAt\x18\x06 \x01(\tR\tupdatedAt\x123\n" +
+	"\rhistory.proto\x12\ahistory\"\x8f\x02\n" +
+	"\x0eSessionSummary\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1c\n" +
+	"\tsessionId\x18\x02 \x01(\tR\tsessionId\x12\x16\n" +
+	"\x06shopId\x18\x03 \x01(\tR\x06shopId\x12$\n" +
+	"\rsessionNumber\x18\x04 \x01(\x05R\rsessionNumber\x12 \n" +
+	"\vtotalAmount\x18\x05 \x01(\x02R\vtotalAmount\x12\x1c\n" +
+	"\tcreatedAt\x18\x06 \x01(\tR\tcreatedAt\x12\x1c\n" +
+	"\tupdatedAt\x18\a \x01(\tR\tupdatedAt\x123\n" +
 	"\n" +
-	"orderItems\x18\a \x03(\v2\x13.history.OrderItemsR\n" +
+	"orderItems\x18\b \x03(\v2\x13.history.OrderItemsR\n" +
 	"orderItems\"h\n" +
 	"\n" +
 	"OrderItems\x12 \n" +

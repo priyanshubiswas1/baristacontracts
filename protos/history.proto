@@ -4,13 +4,14 @@ package history;
 option go_package = "/history";
 
 message SessionSummary{
-    string sessionId = 1;
-    string shopId = 2;
-    int32 sessionNumber = 3;
-    float totalAmount = 4;
-    string createdAt = 5;
-    string updatedAt = 6;
-    repeated OrderItems orderItems = 7;
+    string id = 1;
+    string sessionId = 2;
+    string shopId = 3;
+    int32 sessionNumber = 4;
+    float totalAmount = 5;
+    string createdAt = 6;
+    string updatedAt = 7;
+    repeated OrderItems orderItems = 8;
 }
 
 message OrderItems{
