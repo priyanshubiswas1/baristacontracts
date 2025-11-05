@@ -1,6 +1,8 @@
 syntax = "proto3";
 package history;
 
+import "google/protobuf/timestamp.proto";
+
 option go_package = "/history";
 
 message SessionSummary{
@@ -9,8 +11,8 @@ message SessionSummary{
     string shopId = 3;
     int32 sessionNumber = 4;
     float totalAmount = 5;
-    string createdAt = 6;
-    string updatedAt = 7;
+    google.protobuf.Timestamp createdAt = 6;
+    google.protobuf.Timestamp updatedAt = 7;
     repeated OrderItems orderItems = 8;
 }
 

@@ -9,6 +9,7 @@ package history
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
@@ -28,8 +29,8 @@ type SessionSummary struct {
 	ShopId        string                 `protobuf:"bytes,3,opt,name=shopId,proto3" json:"shopId,omitempty"`
 	SessionNumber int32                  `protobuf:"varint,4,opt,name=sessionNumber,proto3" json:"sessionNumber,omitempty"`
 	TotalAmount   float32                `protobuf:"fixed32,5,opt,name=totalAmount,proto3" json:"totalAmount,omitempty"`
-	CreatedAt     string                 `protobuf:"bytes,6,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
-	UpdatedAt     string                 `protobuf:"bytes,7,opt,name=updatedAt,proto3" json:"updatedAt,omitempty"`
+	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
+	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=updatedAt,proto3" json:"updatedAt,omitempty"`
 	OrderItems    []*OrderItems          `protobuf:"bytes,8,rep,name=orderItems,proto3" json:"orderItems,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -100,18 +101,18 @@ func (x *SessionSummary) GetTotalAmount() float32 {
 	return 0
 }
 
-func (x *SessionSummary) GetCreatedAt() string {
+func (x *SessionSummary) GetCreatedAt() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreatedAt
 	}
-	return ""
+	return nil
 }
 
-func (x *SessionSummary) GetUpdatedAt() string {
+func (x *SessionSummary) GetUpdatedAt() *timestamppb.Timestamp {
 	if x != nil {
 		return x.UpdatedAt
 	}
-	return ""
+	return nil
 }
 
 func (x *SessionSummary) GetOrderItems() []*OrderItems {
@@ -557,15 +558,15 @@ var File_history_proto protoreflect.FileDescriptor
 
 const file_history_proto_rawDesc = "" +
 	"\n" +
-	"\rhistory.proto\x12\ahistory\"\x8f\x02\n" +
+	"\rhistory.proto\x12\ahistory\x1a\x1fgoogle/protobuf/timestamp.proto\"\xc7\x02\n" +
 	"\x0eSessionSummary\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1c\n" +
 	"\tsessionId\x18\x02 \x01(\tR\tsessionId\x12\x16\n" +
 	"\x06shopId\x18\x03 \x01(\tR\x06shopId\x12$\n" +
 	"\rsessionNumber\x18\x04 \x01(\x05R\rsessionNumber\x12 \n" +
-	"\vtotalAmount\x18\x05 \x01(\x02R\vtotalAmount\x12\x1c\n" +
-	"\tcreatedAt\x18\x06 \x01(\tR\tcreatedAt\x12\x1c\n" +
-	"\tupdatedAt\x18\a \x01(\tR\tupdatedAt\x123\n" +
+	"\vtotalAmount\x18\x05 \x01(\x02R\vtotalAmount\x128\n" +
+	"\tcreatedAt\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x128\n" +
+	"\tupdatedAt\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x123\n" +
 	"\n" +
 	"orderItems\x18\b \x03(\v2\x13.history.OrderItemsR\n" +
 	"orderItems\"h\n" +
@@ -629,26 +630,29 @@ var file_history_proto_goTypes = []any{
 	(*AddOrderRequest)(nil),         // 6: history.AddOrderRequest
 	(*RemoveOrderItemsRequest)(nil), // 7: history.RemoveOrderItemsRequest
 	(*StatusResponse)(nil),          // 8: history.StatusResponse
+	(*timestamppb.Timestamp)(nil),   // 9: google.protobuf.Timestamp
 }
 var file_history_proto_depIdxs = []int32{
-	1, // 0: history.SessionSummary.orderItems:type_name -> history.OrderItems
-	0, // 1: history.SessionSummaryResponse.sessionSummary:type_name -> history.SessionSummary
-	1, // 2: history.AddOrderRequest.orderItems:type_name -> history.OrderItems
-	2, // 3: history.HistoryService.GetSessionSummary:input_type -> history.SessionSummaryRequest
-	4, // 4: history.HistoryService.CreateSession:input_type -> history.CreateSessionRequest
-	5, // 5: history.HistoryService.CloseSession:input_type -> history.CloseSessionRequest
-	6, // 6: history.HistoryService.AddOrder:input_type -> history.AddOrderRequest
-	7, // 7: history.HistoryService.RemoveOrderItems:input_type -> history.RemoveOrderItemsRequest
-	3, // 8: history.HistoryService.GetSessionSummary:output_type -> history.SessionSummaryResponse
-	0, // 9: history.HistoryService.CreateSession:output_type -> history.SessionSummary
-	8, // 10: history.HistoryService.CloseSession:output_type -> history.StatusResponse
-	0, // 11: history.HistoryService.AddOrder:output_type -> history.SessionSummary
-	8, // 12: history.HistoryService.RemoveOrderItems:output_type -> history.StatusResponse
-	8, // [8:13] is the sub-list for method output_type
-	3, // [3:8] is the sub-list for method input_type
-	3, // [3:3] is the sub-list for extension type_name
-	3, // [3:3] is the sub-list for extension extendee
-	0, // [0:3] is the sub-list for field type_name
+	9,  // 0: history.SessionSummary.createdAt:type_name -> google.protobuf.Timestamp
+	9,  // 1: history.SessionSummary.updatedAt:type_name -> google.protobuf.Timestamp
+	1,  // 2: history.SessionSummary.orderItems:type_name -> history.OrderItems
+	0,  // 3: history.SessionSummaryResponse.sessionSummary:type_name -> history.SessionSummary
+	1,  // 4: history.AddOrderRequest.orderItems:type_name -> history.OrderItems
+	2,  // 5: history.HistoryService.GetSessionSummary:input_type -> history.SessionSummaryRequest
+	4,  // 6: history.HistoryService.CreateSession:input_type -> history.CreateSessionRequest
+	5,  // 7: history.HistoryService.CloseSession:input_type -> history.CloseSessionRequest
+	6,  // 8: history.HistoryService.AddOrder:input_type -> history.AddOrderRequest
+	7,  // 9: history.HistoryService.RemoveOrderItems:input_type -> history.RemoveOrderItemsRequest
+	3,  // 10: history.HistoryService.GetSessionSummary:output_type -> history.SessionSummaryResponse
+	0,  // 11: history.HistoryService.CreateSession:output_type -> history.SessionSummary
+	8,  // 12: history.HistoryService.CloseSession:output_type -> history.StatusResponse
+	0,  // 13: history.HistoryService.AddOrder:output_type -> history.SessionSummary
+	8,  // 14: history.HistoryService.RemoveOrderItems:output_type -> history.StatusResponse
+	10, // [10:15] is the sub-list for method output_type
+	5,  // [5:10] is the sub-list for method input_type
+	5,  // [5:5] is the sub-list for extension type_name
+	5,  // [5:5] is the sub-list for extension extendee
+	0,  // [0:5] is the sub-list for field type_name
 }
 
 func init() { file_history_proto_init() }
