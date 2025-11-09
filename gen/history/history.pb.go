@@ -125,8 +125,9 @@ func (x *SessionSummary) GetOrderItems() []*OrderItems {
 type OrderItems struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	OrderItemId   string                 `protobuf:"bytes,1,opt,name=orderItemId,proto3" json:"orderItemId,omitempty"`
-	ItemPrice     float32                `protobuf:"fixed32,2,opt,name=itemPrice,proto3" json:"itemPrice,omitempty"`
-	Quantity      int32                  `protobuf:"varint,3,opt,name=quantity,proto3" json:"quantity,omitempty"`
+	OrderId       string                 `protobuf:"bytes,2,opt,name=orderId,proto3" json:"orderId,omitempty"`
+	ItemPrice     float32                `protobuf:"fixed32,3,opt,name=itemPrice,proto3" json:"itemPrice,omitempty"`
+	Quantity      int32                  `protobuf:"varint,4,opt,name=quantity,proto3" json:"quantity,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -164,6 +165,13 @@ func (*OrderItems) Descriptor() ([]byte, []int) {
 func (x *OrderItems) GetOrderItemId() string {
 	if x != nil {
 		return x.OrderItemId
+	}
+	return ""
+}
+
+func (x *OrderItems) GetOrderId() string {
+	if x != nil {
+		return x.OrderId
 	}
 	return ""
 }
@@ -569,12 +577,13 @@ const file_history_proto_rawDesc = "" +
 	"\tupdatedAt\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x123\n" +
 	"\n" +
 	"orderItems\x18\b \x03(\v2\x13.history.OrderItemsR\n" +
-	"orderItems\"h\n" +
+	"orderItems\"\x82\x01\n" +
 	"\n" +
 	"OrderItems\x12 \n" +
-	"\vorderItemId\x18\x01 \x01(\tR\vorderItemId\x12\x1c\n" +
-	"\titemPrice\x18\x02 \x01(\x02R\titemPrice\x12\x1a\n" +
-	"\bquantity\x18\x03 \x01(\x05R\bquantity\"]\n" +
+	"\vorderItemId\x18\x01 \x01(\tR\vorderItemId\x12\x18\n" +
+	"\aorderId\x18\x02 \x01(\tR\aorderId\x12\x1c\n" +
+	"\titemPrice\x18\x03 \x01(\x02R\titemPrice\x12\x1a\n" +
+	"\bquantity\x18\x04 \x01(\x05R\bquantity\"]\n" +
 	"\x15SessionSummaryRequest\x12\x16\n" +
 	"\x06shopId\x18\x01 \x01(\tR\x06shopId\x12\x16\n" +
 	"\x06offset\x18\x02 \x01(\x05R\x06offset\x12\x14\n" +
