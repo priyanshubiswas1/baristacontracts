@@ -39,6 +39,11 @@ message CreateSessionRequest {
     int32 sessionNumber = 3;
 }
 
+message UpdateSessionRequest {
+    string sessionId = 1;
+    float totalAmount = 2;
+}
+
 message CloseSessionRequest {
     string sessionId = 1;
 }
@@ -62,6 +67,7 @@ message StatusResponse {
 service HistoryService {
     rpc GetSessionSummary(SessionSummaryRequest) returns (SessionSummaryResponse);
     rpc CreateSession(CreateSessionRequest) returns (SessionSummary);
+    rpc UpdateSession(UpdateSessionRequest) returns (SessionSummary);
     rpc CloseSession(CloseSessionRequest) returns (StatusResponse);
     rpc AddOrder(AddOrderRequest) returns (SessionSummary);
     rpc RemoveOrderItems(RemoveOrderItemsRequest) returns (StatusResponse);

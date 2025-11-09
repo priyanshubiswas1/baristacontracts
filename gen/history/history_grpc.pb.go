@@ -21,6 +21,7 @@ const _ = grpc.SupportPackageIsVersion9
 const (
 	HistoryService_GetSessionSummary_FullMethodName = "/history.HistoryService/GetSessionSummary"
 	HistoryService_CreateSession_FullMethodName     = "/history.HistoryService/CreateSession"
+	HistoryService_UpdateSession_FullMethodName     = "/history.HistoryService/UpdateSession"
 	HistoryService_CloseSession_FullMethodName      = "/history.HistoryService/CloseSession"
 	HistoryService_AddOrder_FullMethodName          = "/history.HistoryService/AddOrder"
 	HistoryService_RemoveOrderItems_FullMethodName  = "/history.HistoryService/RemoveOrderItems"
@@ -32,6 +33,7 @@ const (
 type HistoryServiceClient interface {
 	GetSessionSummary(ctx context.Context, in *SessionSummaryRequest, opts ...grpc.CallOption) (*SessionSummaryResponse, error)
 	CreateSession(ctx context.Context, in *CreateSessionRequest, opts ...grpc.CallOption) (*SessionSummary, error)
+	UpdateSession(ctx context.Context, in *UpdateSessionRequest, opts ...grpc.CallOption) (*SessionSummary, error)
 	CloseSession(ctx context.Context, in *CloseSessionRequest, opts ...grpc.CallOption) (*StatusResponse, error)
 	AddOrder(ctx context.Context, in *AddOrderRequest, opts ...grpc.CallOption) (*SessionSummary, error)
 	RemoveOrderItems(ctx context.Context, in *RemoveOrderItemsRequest, opts ...grpc.CallOption) (*StatusResponse, error)
@@ -59,6 +61,16 @@ func (c *historyServiceClient) CreateSession(ctx context.Context, in *CreateSess
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(SessionSummary)
 	err := c.cc.Invoke(ctx, HistoryService_CreateSession_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *historyServiceClient) UpdateSession(ctx context.Context, in *UpdateSessionRequest, opts ...grpc.CallOption) (*SessionSummary, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(SessionSummary)
+	err := c.cc.Invoke(ctx, HistoryService_UpdateSession_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -101,6 +113,7 @@ func (c *historyServiceClient) RemoveOrderItems(ctx context.Context, in *RemoveO
 type HistoryServiceServer interface {
 	GetSessionSummary(context.Context, *SessionSummaryRequest) (*SessionSummaryResponse, error)
 	CreateSession(context.Context, *CreateSessionRequest) (*SessionSummary, error)
+	UpdateSession(context.Context, *UpdateSessionRequest) (*SessionSummary, error)
 	CloseSession(context.Context, *CloseSessionRequest) (*StatusResponse, error)
 	AddOrder(context.Context, *AddOrderRequest) (*SessionSummary, error)
 	RemoveOrderItems(context.Context, *RemoveOrderItemsRequest) (*StatusResponse, error)
@@ -119,6 +132,9 @@ func (UnimplementedHistoryServiceServer) GetSessionSummary(context.Context, *Ses
 }
 func (UnimplementedHistoryServiceServer) CreateSession(context.Context, *CreateSessionRequest) (*SessionSummary, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateSession not implemented")
+}
+func (UnimplementedHistoryServiceServer) UpdateSession(context.Context, *UpdateSessionRequest) (*SessionSummary, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateSession not implemented")
 }
 func (UnimplementedHistoryServiceServer) CloseSession(context.Context, *CloseSessionRequest) (*StatusResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CloseSession not implemented")
@@ -182,6 +198,24 @@ func _HistoryService_CreateSession_Handler(srv interface{}, ctx context.Context,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(HistoryServiceServer).CreateSession(ctx, req.(*CreateSessionRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _HistoryService_UpdateSession_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateSessionRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(HistoryServiceServer).UpdateSession(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: HistoryService_UpdateSession_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(HistoryServiceServer).UpdateSession(ctx, req.(*UpdateSessionRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -254,6 +288,10 @@ var HistoryService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "CreateSession",
 			Handler:    _HistoryService_CreateSession_Handler,
+		},
+		{
+			MethodName: "UpdateSession",
+			Handler:    _HistoryService_UpdateSession_Handler,
 		},
 		{
 			MethodName: "CloseSession",

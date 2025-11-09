@@ -354,6 +354,58 @@ func (x *CreateSessionRequest) GetSessionNumber() int32 {
 	return 0
 }
 
+type UpdateSessionRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	SessionId     string                 `protobuf:"bytes,1,opt,name=sessionId,proto3" json:"sessionId,omitempty"`
+	TotalAmount   float32                `protobuf:"fixed32,2,opt,name=totalAmount,proto3" json:"totalAmount,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateSessionRequest) Reset() {
+	*x = UpdateSessionRequest{}
+	mi := &file_history_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateSessionRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateSessionRequest) ProtoMessage() {}
+
+func (x *UpdateSessionRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_history_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateSessionRequest.ProtoReflect.Descriptor instead.
+func (*UpdateSessionRequest) Descriptor() ([]byte, []int) {
+	return file_history_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *UpdateSessionRequest) GetSessionId() string {
+	if x != nil {
+		return x.SessionId
+	}
+	return ""
+}
+
+func (x *UpdateSessionRequest) GetTotalAmount() float32 {
+	if x != nil {
+		return x.TotalAmount
+	}
+	return 0
+}
+
 type CloseSessionRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	SessionId     string                 `protobuf:"bytes,1,opt,name=sessionId,proto3" json:"sessionId,omitempty"`
@@ -363,7 +415,7 @@ type CloseSessionRequest struct {
 
 func (x *CloseSessionRequest) Reset() {
 	*x = CloseSessionRequest{}
-	mi := &file_history_proto_msgTypes[5]
+	mi := &file_history_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -375,7 +427,7 @@ func (x *CloseSessionRequest) String() string {
 func (*CloseSessionRequest) ProtoMessage() {}
 
 func (x *CloseSessionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_history_proto_msgTypes[5]
+	mi := &file_history_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -388,7 +440,7 @@ func (x *CloseSessionRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CloseSessionRequest.ProtoReflect.Descriptor instead.
 func (*CloseSessionRequest) Descriptor() ([]byte, []int) {
-	return file_history_proto_rawDescGZIP(), []int{5}
+	return file_history_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *CloseSessionRequest) GetSessionId() string {
@@ -409,7 +461,7 @@ type AddOrderRequest struct {
 
 func (x *AddOrderRequest) Reset() {
 	*x = AddOrderRequest{}
-	mi := &file_history_proto_msgTypes[6]
+	mi := &file_history_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -421,7 +473,7 @@ func (x *AddOrderRequest) String() string {
 func (*AddOrderRequest) ProtoMessage() {}
 
 func (x *AddOrderRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_history_proto_msgTypes[6]
+	mi := &file_history_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -434,7 +486,7 @@ func (x *AddOrderRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddOrderRequest.ProtoReflect.Descriptor instead.
 func (*AddOrderRequest) Descriptor() ([]byte, []int) {
-	return file_history_proto_rawDescGZIP(), []int{6}
+	return file_history_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *AddOrderRequest) GetSessionId() string {
@@ -468,7 +520,7 @@ type RemoveOrderItemsRequest struct {
 
 func (x *RemoveOrderItemsRequest) Reset() {
 	*x = RemoveOrderItemsRequest{}
-	mi := &file_history_proto_msgTypes[7]
+	mi := &file_history_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -480,7 +532,7 @@ func (x *RemoveOrderItemsRequest) String() string {
 func (*RemoveOrderItemsRequest) ProtoMessage() {}
 
 func (x *RemoveOrderItemsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_history_proto_msgTypes[7]
+	mi := &file_history_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -493,7 +545,7 @@ func (x *RemoveOrderItemsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RemoveOrderItemsRequest.ProtoReflect.Descriptor instead.
 func (*RemoveOrderItemsRequest) Descriptor() ([]byte, []int) {
-	return file_history_proto_rawDescGZIP(), []int{7}
+	return file_history_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *RemoveOrderItemsRequest) GetSessionId() string {
@@ -520,7 +572,7 @@ type StatusResponse struct {
 
 func (x *StatusResponse) Reset() {
 	*x = StatusResponse{}
-	mi := &file_history_proto_msgTypes[8]
+	mi := &file_history_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -532,7 +584,7 @@ func (x *StatusResponse) String() string {
 func (*StatusResponse) ProtoMessage() {}
 
 func (x *StatusResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_history_proto_msgTypes[8]
+	mi := &file_history_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -545,7 +597,7 @@ func (x *StatusResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StatusResponse.ProtoReflect.Descriptor instead.
 func (*StatusResponse) Descriptor() ([]byte, []int) {
-	return file_history_proto_rawDescGZIP(), []int{8}
+	return file_history_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *StatusResponse) GetSuccess() bool {
@@ -593,7 +645,10 @@ const file_history_proto_rawDesc = "" +
 	"\x14CreateSessionRequest\x12\x1c\n" +
 	"\tsessionId\x18\x01 \x01(\tR\tsessionId\x12\x16\n" +
 	"\x06shopId\x18\x02 \x01(\tR\x06shopId\x12$\n" +
-	"\rsessionNumber\x18\x03 \x01(\x05R\rsessionNumber\"3\n" +
+	"\rsessionNumber\x18\x03 \x01(\x05R\rsessionNumber\"V\n" +
+	"\x14UpdateSessionRequest\x12\x1c\n" +
+	"\tsessionId\x18\x01 \x01(\tR\tsessionId\x12 \n" +
+	"\vtotalAmount\x18\x02 \x01(\x02R\vtotalAmount\"3\n" +
 	"\x13CloseSessionRequest\x12\x1c\n" +
 	"\tsessionId\x18\x01 \x01(\tR\tsessionId\"~\n" +
 	"\x0fAddOrderRequest\x12\x1c\n" +
@@ -607,10 +662,11 @@ const file_history_proto_rawDesc = "" +
 	"\vorderItemId\x18\x02 \x03(\tR\vorderItemId\"D\n" +
 	"\x0eStatusResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12\x18\n" +
-	"\amessage\x18\x02 \x01(\tR\amessage2\x84\x03\n" +
+	"\amessage\x18\x02 \x01(\tR\amessage2\xcd\x03\n" +
 	"\x0eHistoryService\x12T\n" +
 	"\x11GetSessionSummary\x12\x1e.history.SessionSummaryRequest\x1a\x1f.history.SessionSummaryResponse\x12G\n" +
-	"\rCreateSession\x12\x1d.history.CreateSessionRequest\x1a\x17.history.SessionSummary\x12E\n" +
+	"\rCreateSession\x12\x1d.history.CreateSessionRequest\x1a\x17.history.SessionSummary\x12G\n" +
+	"\rUpdateSession\x12\x1d.history.UpdateSessionRequest\x1a\x17.history.SessionSummary\x12E\n" +
 	"\fCloseSession\x12\x1c.history.CloseSessionRequest\x1a\x17.history.StatusResponse\x12=\n" +
 	"\bAddOrder\x12\x18.history.AddOrderRequest\x1a\x17.history.SessionSummary\x12M\n" +
 	"\x10RemoveOrderItems\x12 .history.RemoveOrderItemsRequest\x1a\x17.history.StatusResponseB\n" +
@@ -628,37 +684,40 @@ func file_history_proto_rawDescGZIP() []byte {
 	return file_history_proto_rawDescData
 }
 
-var file_history_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
+var file_history_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
 var file_history_proto_goTypes = []any{
 	(*SessionSummary)(nil),          // 0: history.SessionSummary
 	(*OrderItems)(nil),              // 1: history.OrderItems
 	(*SessionSummaryRequest)(nil),   // 2: history.SessionSummaryRequest
 	(*SessionSummaryResponse)(nil),  // 3: history.SessionSummaryResponse
 	(*CreateSessionRequest)(nil),    // 4: history.CreateSessionRequest
-	(*CloseSessionRequest)(nil),     // 5: history.CloseSessionRequest
-	(*AddOrderRequest)(nil),         // 6: history.AddOrderRequest
-	(*RemoveOrderItemsRequest)(nil), // 7: history.RemoveOrderItemsRequest
-	(*StatusResponse)(nil),          // 8: history.StatusResponse
-	(*timestamppb.Timestamp)(nil),   // 9: google.protobuf.Timestamp
+	(*UpdateSessionRequest)(nil),    // 5: history.UpdateSessionRequest
+	(*CloseSessionRequest)(nil),     // 6: history.CloseSessionRequest
+	(*AddOrderRequest)(nil),         // 7: history.AddOrderRequest
+	(*RemoveOrderItemsRequest)(nil), // 8: history.RemoveOrderItemsRequest
+	(*StatusResponse)(nil),          // 9: history.StatusResponse
+	(*timestamppb.Timestamp)(nil),   // 10: google.protobuf.Timestamp
 }
 var file_history_proto_depIdxs = []int32{
-	9,  // 0: history.SessionSummary.createdAt:type_name -> google.protobuf.Timestamp
-	9,  // 1: history.SessionSummary.updatedAt:type_name -> google.protobuf.Timestamp
+	10, // 0: history.SessionSummary.createdAt:type_name -> google.protobuf.Timestamp
+	10, // 1: history.SessionSummary.updatedAt:type_name -> google.protobuf.Timestamp
 	1,  // 2: history.SessionSummary.orderItems:type_name -> history.OrderItems
 	0,  // 3: history.SessionSummaryResponse.sessionSummary:type_name -> history.SessionSummary
 	1,  // 4: history.AddOrderRequest.orderItems:type_name -> history.OrderItems
 	2,  // 5: history.HistoryService.GetSessionSummary:input_type -> history.SessionSummaryRequest
 	4,  // 6: history.HistoryService.CreateSession:input_type -> history.CreateSessionRequest
-	5,  // 7: history.HistoryService.CloseSession:input_type -> history.CloseSessionRequest
-	6,  // 8: history.HistoryService.AddOrder:input_type -> history.AddOrderRequest
-	7,  // 9: history.HistoryService.RemoveOrderItems:input_type -> history.RemoveOrderItemsRequest
-	3,  // 10: history.HistoryService.GetSessionSummary:output_type -> history.SessionSummaryResponse
-	0,  // 11: history.HistoryService.CreateSession:output_type -> history.SessionSummary
-	8,  // 12: history.HistoryService.CloseSession:output_type -> history.StatusResponse
-	0,  // 13: history.HistoryService.AddOrder:output_type -> history.SessionSummary
-	8,  // 14: history.HistoryService.RemoveOrderItems:output_type -> history.StatusResponse
-	10, // [10:15] is the sub-list for method output_type
-	5,  // [5:10] is the sub-list for method input_type
+	5,  // 7: history.HistoryService.UpdateSession:input_type -> history.UpdateSessionRequest
+	6,  // 8: history.HistoryService.CloseSession:input_type -> history.CloseSessionRequest
+	7,  // 9: history.HistoryService.AddOrder:input_type -> history.AddOrderRequest
+	8,  // 10: history.HistoryService.RemoveOrderItems:input_type -> history.RemoveOrderItemsRequest
+	3,  // 11: history.HistoryService.GetSessionSummary:output_type -> history.SessionSummaryResponse
+	0,  // 12: history.HistoryService.CreateSession:output_type -> history.SessionSummary
+	0,  // 13: history.HistoryService.UpdateSession:output_type -> history.SessionSummary
+	9,  // 14: history.HistoryService.CloseSession:output_type -> history.StatusResponse
+	0,  // 15: history.HistoryService.AddOrder:output_type -> history.SessionSummary
+	9,  // 16: history.HistoryService.RemoveOrderItems:output_type -> history.StatusResponse
+	11, // [11:17] is the sub-list for method output_type
+	5,  // [5:11] is the sub-list for method input_type
 	5,  // [5:5] is the sub-list for extension type_name
 	5,  // [5:5] is the sub-list for extension extendee
 	0,  // [0:5] is the sub-list for field type_name
@@ -675,7 +734,7 @@ func file_history_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_history_proto_rawDesc), len(file_history_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   9,
+			NumMessages:   10,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
