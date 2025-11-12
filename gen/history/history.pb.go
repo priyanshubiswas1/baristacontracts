@@ -453,8 +453,7 @@ func (x *CloseSessionRequest) GetSessionId() string {
 type AddOrderRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	SessionId     string                 `protobuf:"bytes,1,opt,name=sessionId,proto3" json:"sessionId,omitempty"`
-	OrderId       string                 `protobuf:"bytes,2,opt,name=orderId,proto3" json:"orderId,omitempty"`
-	OrderItems    []*OrderItems          `protobuf:"bytes,3,rep,name=orderItems,proto3" json:"orderItems,omitempty"`
+	OrderItems    []*OrderItems          `protobuf:"bytes,2,rep,name=orderItems,proto3" json:"orderItems,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -496,13 +495,6 @@ func (x *AddOrderRequest) GetSessionId() string {
 	return ""
 }
 
-func (x *AddOrderRequest) GetOrderId() string {
-	if x != nil {
-		return x.OrderId
-	}
-	return ""
-}
-
 func (x *AddOrderRequest) GetOrderItems() []*OrderItems {
 	if x != nil {
 		return x.OrderItems
@@ -513,7 +505,7 @@ func (x *AddOrderRequest) GetOrderItems() []*OrderItems {
 type RemoveOrderItemsRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	SessionId     string                 `protobuf:"bytes,1,opt,name=sessionId,proto3" json:"sessionId,omitempty"`
-	OrderItemId   []string               `protobuf:"bytes,2,rep,name=orderItemId,proto3" json:"orderItemId,omitempty"`
+	OrderItemIds  []string               `protobuf:"bytes,2,rep,name=orderItemIds,proto3" json:"orderItemIds,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -555,9 +547,9 @@ func (x *RemoveOrderItemsRequest) GetSessionId() string {
 	return ""
 }
 
-func (x *RemoveOrderItemsRequest) GetOrderItemId() []string {
+func (x *RemoveOrderItemsRequest) GetOrderItemIds() []string {
 	if x != nil {
-		return x.OrderItemId
+		return x.OrderItemIds
 	}
 	return nil
 }
@@ -650,16 +642,15 @@ const file_history_proto_rawDesc = "" +
 	"\tsessionId\x18\x01 \x01(\tR\tsessionId\x12 \n" +
 	"\vtotalAmount\x18\x02 \x01(\x02R\vtotalAmount\"3\n" +
 	"\x13CloseSessionRequest\x12\x1c\n" +
-	"\tsessionId\x18\x01 \x01(\tR\tsessionId\"~\n" +
+	"\tsessionId\x18\x01 \x01(\tR\tsessionId\"d\n" +
 	"\x0fAddOrderRequest\x12\x1c\n" +
-	"\tsessionId\x18\x01 \x01(\tR\tsessionId\x12\x18\n" +
-	"\aorderId\x18\x02 \x01(\tR\aorderId\x123\n" +
+	"\tsessionId\x18\x01 \x01(\tR\tsessionId\x123\n" +
 	"\n" +
-	"orderItems\x18\x03 \x03(\v2\x13.history.OrderItemsR\n" +
-	"orderItems\"Y\n" +
+	"orderItems\x18\x02 \x03(\v2\x13.history.OrderItemsR\n" +
+	"orderItems\"[\n" +
 	"\x17RemoveOrderItemsRequest\x12\x1c\n" +
-	"\tsessionId\x18\x01 \x01(\tR\tsessionId\x12 \n" +
-	"\vorderItemId\x18\x02 \x03(\tR\vorderItemId\"D\n" +
+	"\tsessionId\x18\x01 \x01(\tR\tsessionId\x12\"\n" +
+	"\forderItemIds\x18\x02 \x03(\tR\forderItemIds\"D\n" +
 	"\x0eStatusResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12\x18\n" +
 	"\amessage\x18\x02 \x01(\tR\amessage2\xcd\x03\n" +

@@ -50,13 +50,12 @@ message CloseSessionRequest {
 
 message AddOrderRequest {
     string sessionId = 1;
-    string orderId = 2;
-    repeated OrderItems orderItems = 3;
+    repeated OrderItems orderItems = 2;
 }
 
 message RemoveOrderItemsRequest { //to remove entire order, send all orderItemIds in that order
     string sessionId = 1;
-    repeated string orderItemId = 2;
+    repeated string orderItemIds = 2;
 }
 
 message StatusResponse {
