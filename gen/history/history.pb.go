@@ -252,7 +252,9 @@ func (x *SessionSummaryRequest) GetLimit() int32 {
 
 type SessionSummaryResponse struct {
 	state          protoimpl.MessageState `protogen:"open.v1"`
-	SessionSummary []*SessionSummary      `protobuf:"bytes,1,rep,name=sessionSummary,proto3" json:"sessionSummary,omitempty"`
+	TotalAmount    int32                  `protobuf:"varint,1,opt,name=totalAmount,proto3" json:"totalAmount,omitempty"`
+	TotalSessions  int32                  `protobuf:"varint,2,opt,name=totalSessions,proto3" json:"totalSessions,omitempty"`
+	SessionSummary []*SessionSummary      `protobuf:"bytes,3,rep,name=sessionSummary,proto3" json:"sessionSummary,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
 }
@@ -285,6 +287,20 @@ func (x *SessionSummaryResponse) ProtoReflect() protoreflect.Message {
 // Deprecated: Use SessionSummaryResponse.ProtoReflect.Descriptor instead.
 func (*SessionSummaryResponse) Descriptor() ([]byte, []int) {
 	return file_history_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *SessionSummaryResponse) GetTotalAmount() int32 {
+	if x != nil {
+		return x.TotalAmount
+	}
+	return 0
+}
+
+func (x *SessionSummaryResponse) GetTotalSessions() int32 {
+	if x != nil {
+		return x.TotalSessions
+	}
+	return 0
 }
 
 func (x *SessionSummaryResponse) GetSessionSummary() []*SessionSummary {
@@ -631,9 +647,11 @@ const file_history_proto_rawDesc = "" +
 	"\x15SessionSummaryRequest\x12\x16\n" +
 	"\x06shopId\x18\x01 \x01(\tR\x06shopId\x12\x16\n" +
 	"\x06offset\x18\x02 \x01(\x05R\x06offset\x12\x14\n" +
-	"\x05limit\x18\x03 \x01(\x05R\x05limit\"Y\n" +
-	"\x16SessionSummaryResponse\x12?\n" +
-	"\x0esessionSummary\x18\x01 \x03(\v2\x17.history.SessionSummaryR\x0esessionSummary\"r\n" +
+	"\x05limit\x18\x03 \x01(\x05R\x05limit\"\xa1\x01\n" +
+	"\x16SessionSummaryResponse\x12 \n" +
+	"\vtotalAmount\x18\x01 \x01(\x05R\vtotalAmount\x12$\n" +
+	"\rtotalSessions\x18\x02 \x01(\x05R\rtotalSessions\x12?\n" +
+	"\x0esessionSummary\x18\x03 \x03(\v2\x17.history.SessionSummaryR\x0esessionSummary\"r\n" +
 	"\x14CreateSessionRequest\x12\x1c\n" +
 	"\tsessionId\x18\x01 \x01(\tR\tsessionId\x12\x16\n" +
 	"\x06shopId\x18\x02 \x01(\tR\x06shopId\x12$\n" +

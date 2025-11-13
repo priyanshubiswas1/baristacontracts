@@ -30,7 +30,9 @@ message SessionSummaryRequest{
 }
 
 message SessionSummaryResponse{
-    repeated SessionSummary sessionSummary = 1;
+    int32 totalAmount = 1;
+    int32 totalSessions = 2;
+    repeated SessionSummary sessionSummary = 3;
 }
 
 message CreateSessionRequest {
