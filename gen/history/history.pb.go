@@ -22,6 +22,58 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type TimeRange int32
+
+const (
+	TimeRange_TODAY         TimeRange = 0
+	TimeRange_LAST_WEEK     TimeRange = 1
+	TimeRange_LAST_MONTH    TimeRange = 2
+	TimeRange_LAST_3_MONTHS TimeRange = 3
+)
+
+// Enum value maps for TimeRange.
+var (
+	TimeRange_name = map[int32]string{
+		0: "TODAY",
+		1: "LAST_WEEK",
+		2: "LAST_MONTH",
+		3: "LAST_3_MONTHS",
+	}
+	TimeRange_value = map[string]int32{
+		"TODAY":         0,
+		"LAST_WEEK":     1,
+		"LAST_MONTH":    2,
+		"LAST_3_MONTHS": 3,
+	}
+)
+
+func (x TimeRange) Enum() *TimeRange {
+	p := new(TimeRange)
+	*p = x
+	return p
+}
+
+func (x TimeRange) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (TimeRange) Descriptor() protoreflect.EnumDescriptor {
+	return file_history_proto_enumTypes[0].Descriptor()
+}
+
+func (TimeRange) Type() protoreflect.EnumType {
+	return &file_history_proto_enumTypes[0]
+}
+
+func (x TimeRange) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use TimeRange.Descriptor instead.
+func (TimeRange) EnumDescriptor() ([]byte, []int) {
+	return file_history_proto_rawDescGZIP(), []int{0}
+}
+
 type SessionSummary struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
@@ -195,6 +247,7 @@ type SessionSummaryRequest struct {
 	ShopId        string                 `protobuf:"bytes,1,opt,name=shopId,proto3" json:"shopId,omitempty"`
 	Offset        int32                  `protobuf:"varint,2,opt,name=offset,proto3" json:"offset,omitempty"`
 	Limit         int32                  `protobuf:"varint,3,opt,name=limit,proto3" json:"limit,omitempty"`
+	TimeRange     TimeRange              `protobuf:"varint,4,opt,name=timeRange,proto3,enum=history.TimeRange" json:"timeRange,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -248,6 +301,13 @@ func (x *SessionSummaryRequest) GetLimit() int32 {
 		return x.Limit
 	}
 	return 0
+}
+
+func (x *SessionSummaryRequest) GetTimeRange() TimeRange {
+	if x != nil {
+		return x.TimeRange
+	}
+	return TimeRange_TODAY
 }
 
 type SessionSummaryResponse struct {
@@ -643,11 +703,12 @@ const file_history_proto_rawDesc = "" +
 	"\vorderItemId\x18\x01 \x01(\tR\vorderItemId\x12\x18\n" +
 	"\aorderId\x18\x02 \x01(\tR\aorderId\x12\x1c\n" +
 	"\titemPrice\x18\x03 \x01(\x02R\titemPrice\x12\x1a\n" +
-	"\bquantity\x18\x04 \x01(\x05R\bquantity\"]\n" +
+	"\bquantity\x18\x04 \x01(\x05R\bquantity\"\x8f\x01\n" +
 	"\x15SessionSummaryRequest\x12\x16\n" +
 	"\x06shopId\x18\x01 \x01(\tR\x06shopId\x12\x16\n" +
 	"\x06offset\x18\x02 \x01(\x05R\x06offset\x12\x14\n" +
-	"\x05limit\x18\x03 \x01(\x05R\x05limit\"\xa1\x01\n" +
+	"\x05limit\x18\x03 \x01(\x05R\x05limit\x120\n" +
+	"\ttimeRange\x18\x04 \x01(\x0e2\x12.history.TimeRangeR\ttimeRange\"\xa1\x01\n" +
 	"\x16SessionSummaryResponse\x12 \n" +
 	"\vtotalAmount\x18\x01 \x01(\x05R\vtotalAmount\x12$\n" +
 	"\rtotalSessions\x18\x02 \x01(\x05R\rtotalSessions\x12?\n" +
@@ -671,7 +732,13 @@ const file_history_proto_rawDesc = "" +
 	"\forderItemIds\x18\x02 \x03(\tR\forderItemIds\"D\n" +
 	"\x0eStatusResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12\x18\n" +
-	"\amessage\x18\x02 \x01(\tR\amessage2\xcd\x03\n" +
+	"\amessage\x18\x02 \x01(\tR\amessage*H\n" +
+	"\tTimeRange\x12\t\n" +
+	"\x05TODAY\x10\x00\x12\r\n" +
+	"\tLAST_WEEK\x10\x01\x12\x0e\n" +
+	"\n" +
+	"LAST_MONTH\x10\x02\x12\x11\n" +
+	"\rLAST_3_MONTHS\x10\x032\xcd\x03\n" +
 	"\x0eHistoryService\x12T\n" +
 	"\x11GetSessionSummary\x12\x1e.history.SessionSummaryRequest\x1a\x1f.history.SessionSummaryResponse\x12G\n" +
 	"\rCreateSession\x12\x1d.history.CreateSessionRequest\x1a\x17.history.SessionSummary\x12G\n" +
@@ -693,43 +760,46 @@ func file_history_proto_rawDescGZIP() []byte {
 	return file_history_proto_rawDescData
 }
 
+var file_history_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
 var file_history_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
 var file_history_proto_goTypes = []any{
-	(*SessionSummary)(nil),          // 0: history.SessionSummary
-	(*OrderItems)(nil),              // 1: history.OrderItems
-	(*SessionSummaryRequest)(nil),   // 2: history.SessionSummaryRequest
-	(*SessionSummaryResponse)(nil),  // 3: history.SessionSummaryResponse
-	(*CreateSessionRequest)(nil),    // 4: history.CreateSessionRequest
-	(*UpdateSessionRequest)(nil),    // 5: history.UpdateSessionRequest
-	(*CloseSessionRequest)(nil),     // 6: history.CloseSessionRequest
-	(*AddOrderRequest)(nil),         // 7: history.AddOrderRequest
-	(*RemoveOrderItemsRequest)(nil), // 8: history.RemoveOrderItemsRequest
-	(*StatusResponse)(nil),          // 9: history.StatusResponse
-	(*timestamppb.Timestamp)(nil),   // 10: google.protobuf.Timestamp
+	(TimeRange)(0),                  // 0: history.TimeRange
+	(*SessionSummary)(nil),          // 1: history.SessionSummary
+	(*OrderItems)(nil),              // 2: history.OrderItems
+	(*SessionSummaryRequest)(nil),   // 3: history.SessionSummaryRequest
+	(*SessionSummaryResponse)(nil),  // 4: history.SessionSummaryResponse
+	(*CreateSessionRequest)(nil),    // 5: history.CreateSessionRequest
+	(*UpdateSessionRequest)(nil),    // 6: history.UpdateSessionRequest
+	(*CloseSessionRequest)(nil),     // 7: history.CloseSessionRequest
+	(*AddOrderRequest)(nil),         // 8: history.AddOrderRequest
+	(*RemoveOrderItemsRequest)(nil), // 9: history.RemoveOrderItemsRequest
+	(*StatusResponse)(nil),          // 10: history.StatusResponse
+	(*timestamppb.Timestamp)(nil),   // 11: google.protobuf.Timestamp
 }
 var file_history_proto_depIdxs = []int32{
-	10, // 0: history.SessionSummary.createdAt:type_name -> google.protobuf.Timestamp
-	10, // 1: history.SessionSummary.updatedAt:type_name -> google.protobuf.Timestamp
-	1,  // 2: history.SessionSummary.orderItems:type_name -> history.OrderItems
-	0,  // 3: history.SessionSummaryResponse.sessionSummary:type_name -> history.SessionSummary
-	1,  // 4: history.AddOrderRequest.orderItems:type_name -> history.OrderItems
-	2,  // 5: history.HistoryService.GetSessionSummary:input_type -> history.SessionSummaryRequest
-	4,  // 6: history.HistoryService.CreateSession:input_type -> history.CreateSessionRequest
-	5,  // 7: history.HistoryService.UpdateSession:input_type -> history.UpdateSessionRequest
-	6,  // 8: history.HistoryService.CloseSession:input_type -> history.CloseSessionRequest
-	7,  // 9: history.HistoryService.AddOrder:input_type -> history.AddOrderRequest
-	8,  // 10: history.HistoryService.RemoveOrderItems:input_type -> history.RemoveOrderItemsRequest
-	3,  // 11: history.HistoryService.GetSessionSummary:output_type -> history.SessionSummaryResponse
-	0,  // 12: history.HistoryService.CreateSession:output_type -> history.SessionSummary
-	0,  // 13: history.HistoryService.UpdateSession:output_type -> history.SessionSummary
-	9,  // 14: history.HistoryService.CloseSession:output_type -> history.StatusResponse
-	0,  // 15: history.HistoryService.AddOrder:output_type -> history.SessionSummary
-	9,  // 16: history.HistoryService.RemoveOrderItems:output_type -> history.StatusResponse
-	11, // [11:17] is the sub-list for method output_type
-	5,  // [5:11] is the sub-list for method input_type
-	5,  // [5:5] is the sub-list for extension type_name
-	5,  // [5:5] is the sub-list for extension extendee
-	0,  // [0:5] is the sub-list for field type_name
+	11, // 0: history.SessionSummary.createdAt:type_name -> google.protobuf.Timestamp
+	11, // 1: history.SessionSummary.updatedAt:type_name -> google.protobuf.Timestamp
+	2,  // 2: history.SessionSummary.orderItems:type_name -> history.OrderItems
+	0,  // 3: history.SessionSummaryRequest.timeRange:type_name -> history.TimeRange
+	1,  // 4: history.SessionSummaryResponse.sessionSummary:type_name -> history.SessionSummary
+	2,  // 5: history.AddOrderRequest.orderItems:type_name -> history.OrderItems
+	3,  // 6: history.HistoryService.GetSessionSummary:input_type -> history.SessionSummaryRequest
+	5,  // 7: history.HistoryService.CreateSession:input_type -> history.CreateSessionRequest
+	6,  // 8: history.HistoryService.UpdateSession:input_type -> history.UpdateSessionRequest
+	7,  // 9: history.HistoryService.CloseSession:input_type -> history.CloseSessionRequest
+	8,  // 10: history.HistoryService.AddOrder:input_type -> history.AddOrderRequest
+	9,  // 11: history.HistoryService.RemoveOrderItems:input_type -> history.RemoveOrderItemsRequest
+	4,  // 12: history.HistoryService.GetSessionSummary:output_type -> history.SessionSummaryResponse
+	1,  // 13: history.HistoryService.CreateSession:output_type -> history.SessionSummary
+	1,  // 14: history.HistoryService.UpdateSession:output_type -> history.SessionSummary
+	10, // 15: history.HistoryService.CloseSession:output_type -> history.StatusResponse
+	1,  // 16: history.HistoryService.AddOrder:output_type -> history.SessionSummary
+	10, // 17: history.HistoryService.RemoveOrderItems:output_type -> history.StatusResponse
+	12, // [12:18] is the sub-list for method output_type
+	6,  // [6:12] is the sub-list for method input_type
+	6,  // [6:6] is the sub-list for extension type_name
+	6,  // [6:6] is the sub-list for extension extendee
+	0,  // [0:6] is the sub-list for field type_name
 }
 
 func init() { file_history_proto_init() }
@@ -742,13 +812,14 @@ func file_history_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_history_proto_rawDesc), len(file_history_proto_rawDesc)),
-			NumEnums:      0,
+			NumEnums:      1,
 			NumMessages:   10,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
 		GoTypes:           file_history_proto_goTypes,
 		DependencyIndexes: file_history_proto_depIdxs,
+		EnumInfos:         file_history_proto_enumTypes,
 		MessageInfos:      file_history_proto_msgTypes,
 	}.Build()
 	File_history_proto = out.File
