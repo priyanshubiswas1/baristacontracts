@@ -88,9 +88,10 @@ type Item struct {
 	Name          string                 `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
 	Description   string                 `protobuf:"bytes,4,opt,name=description,proto3" json:"description,omitempty"`
 	Category      string                 `protobuf:"bytes,5,opt,name=category,proto3" json:"category,omitempty"`
-	Price         float32                `protobuf:"fixed32,6,opt,name=price,proto3" json:"price,omitempty"`
-	Image         string                 `protobuf:"bytes,7,opt,name=image,proto3" json:"image,omitempty"`
-	IsAvailable   bool                   `protobuf:"varint,8,opt,name=isAvailable,proto3" json:"isAvailable,omitempty"`
+	Veg           bool                   `protobuf:"varint,6,opt,name=veg,proto3" json:"veg,omitempty"`
+	Price         float32                `protobuf:"fixed32,7,opt,name=price,proto3" json:"price,omitempty"`
+	Image         string                 `protobuf:"bytes,8,opt,name=image,proto3" json:"image,omitempty"`
+	IsAvailable   bool                   `protobuf:"varint,9,opt,name=isAvailable,proto3" json:"isAvailable,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -158,6 +159,13 @@ func (x *Item) GetCategory() string {
 		return x.Category
 	}
 	return ""
+}
+
+func (x *Item) GetVeg() bool {
+	if x != nil {
+		return x.Veg
+	}
+	return false
 }
 
 func (x *Item) GetPrice() float32 {
@@ -737,9 +745,10 @@ type CreateItemRequest struct {
 	ShopId        string                 `protobuf:"bytes,2,opt,name=shopId,proto3" json:"shopId,omitempty"`
 	Description   string                 `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
 	CategoryId    string                 `protobuf:"bytes,4,opt,name=categoryId,proto3" json:"categoryId,omitempty"`
-	Price         float32                `protobuf:"fixed32,5,opt,name=price,proto3" json:"price,omitempty"`
-	Image         string                 `protobuf:"bytes,6,opt,name=image,proto3" json:"image,omitempty"`
-	IsAvailable   bool                   `protobuf:"varint,7,opt,name=isAvailable,proto3" json:"isAvailable,omitempty"`
+	Veg           bool                   `protobuf:"varint,5,opt,name=veg,proto3" json:"veg,omitempty"`
+	Price         float32                `protobuf:"fixed32,6,opt,name=price,proto3" json:"price,omitempty"`
+	Image         string                 `protobuf:"bytes,7,opt,name=image,proto3" json:"image,omitempty"`
+	IsAvailable   bool                   `protobuf:"varint,8,opt,name=isAvailable,proto3" json:"isAvailable,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -800,6 +809,13 @@ func (x *CreateItemRequest) GetCategoryId() string {
 		return x.CategoryId
 	}
 	return ""
+}
+
+func (x *CreateItemRequest) GetVeg() bool {
+	if x != nil {
+		return x.Veg
+	}
+	return false
 }
 
 func (x *CreateItemRequest) GetPrice() float32 {
@@ -1050,9 +1066,10 @@ type UpdateItemRequest struct {
 	Name          string                 `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
 	Description   string                 `protobuf:"bytes,4,opt,name=description,proto3" json:"description,omitempty"`
 	CategoryId    string                 `protobuf:"bytes,5,opt,name=categoryId,proto3" json:"categoryId,omitempty"`
-	Price         float32                `protobuf:"fixed32,6,opt,name=price,proto3" json:"price,omitempty"`
-	Image         string                 `protobuf:"bytes,7,opt,name=image,proto3" json:"image,omitempty"`
-	IsAvailable   bool                   `protobuf:"varint,8,opt,name=isAvailable,proto3" json:"isAvailable,omitempty"`
+	Veg           bool                   `protobuf:"varint,6,opt,name=veg,proto3" json:"veg,omitempty"`
+	Price         float32                `protobuf:"fixed32,7,opt,name=price,proto3" json:"price,omitempty"`
+	Image         string                 `protobuf:"bytes,8,opt,name=image,proto3" json:"image,omitempty"`
+	IsAvailable   bool                   `protobuf:"varint,9,opt,name=isAvailable,proto3" json:"isAvailable,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1120,6 +1137,13 @@ func (x *UpdateItemRequest) GetCategoryId() string {
 		return x.CategoryId
 	}
 	return ""
+}
+
+func (x *UpdateItemRequest) GetVeg() bool {
+	if x != nil {
+		return x.Veg
+	}
+	return false
 }
 
 func (x *UpdateItemRequest) GetPrice() float32 {
@@ -1978,16 +2002,17 @@ const file_menu_proto_rawDesc = "" +
 	"\x04Menu\x12\x16\n" +
 	"\x06menuId\x18\x01 \x01(\tR\x06menuId\x12\x16\n" +
 	"\x06shopId\x18\x02 \x01(\tR\x06shopId\x12\x12\n" +
-	"\x04name\x18\x03 \x01(\tR\x04name\"\xd6\x01\n" +
+	"\x04name\x18\x03 \x01(\tR\x04name\"\xe8\x01\n" +
 	"\x04Item\x12\x16\n" +
 	"\x06itemId\x18\x01 \x01(\tR\x06itemId\x12\x16\n" +
 	"\x06shopId\x18\x02 \x01(\tR\x06shopId\x12\x12\n" +
 	"\x04name\x18\x03 \x01(\tR\x04name\x12 \n" +
 	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x1a\n" +
-	"\bcategory\x18\x05 \x01(\tR\bcategory\x12\x14\n" +
-	"\x05price\x18\x06 \x01(\x02R\x05price\x12\x14\n" +
-	"\x05image\x18\a \x01(\tR\x05image\x12 \n" +
-	"\visAvailable\x18\b \x01(\bR\visAvailable\"Z\n" +
+	"\bcategory\x18\x05 \x01(\tR\bcategory\x12\x10\n" +
+	"\x03veg\x18\x06 \x01(\bR\x03veg\x12\x14\n" +
+	"\x05price\x18\a \x01(\x02R\x05price\x12\x14\n" +
+	"\x05image\x18\b \x01(\tR\x05image\x12 \n" +
+	"\visAvailable\x18\t \x01(\bR\visAvailable\"Z\n" +
 	"\bMenuItem\x12\x1e\n" +
 	"\n" +
 	"menuItemId\x18\x01 \x01(\tR\n" +
@@ -2022,17 +2047,18 @@ const file_menu_proto_rawDesc = "" +
 	"\x11DeleteMenuRequest\x12\x16\n" +
 	"\x06menuId\x18\x01 \x01(\tR\x06menuId\".\n" +
 	"\x12DeleteMenuResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess\"\xcf\x01\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\"\xe1\x01\n" +
 	"\x11CreateItemRequest\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12\x16\n" +
 	"\x06shopId\x18\x02 \x01(\tR\x06shopId\x12 \n" +
 	"\vdescription\x18\x03 \x01(\tR\vdescription\x12\x1e\n" +
 	"\n" +
 	"categoryId\x18\x04 \x01(\tR\n" +
-	"categoryId\x12\x14\n" +
-	"\x05price\x18\x05 \x01(\x02R\x05price\x12\x14\n" +
-	"\x05image\x18\x06 \x01(\tR\x05image\x12 \n" +
-	"\visAvailable\x18\a \x01(\bR\visAvailable\"4\n" +
+	"categoryId\x12\x10\n" +
+	"\x03veg\x18\x05 \x01(\bR\x03veg\x12\x14\n" +
+	"\x05price\x18\x06 \x01(\x02R\x05price\x12\x14\n" +
+	"\x05image\x18\a \x01(\tR\x05image\x12 \n" +
+	"\visAvailable\x18\b \x01(\bR\visAvailable\"4\n" +
 	"\x12CreateItemResponse\x12\x1e\n" +
 	"\x04item\x18\x01 \x01(\v2\n" +
 	".menu.ItemR\x04item\"(\n" +
@@ -2045,7 +2071,7 @@ const file_menu_proto_rawDesc = "" +
 	"\x06shopId\x18\x01 \x01(\tR\x06shopId\"4\n" +
 	"\x10GetItemsResponse\x12 \n" +
 	"\x05items\x18\x01 \x03(\v2\n" +
-	".menu.ItemR\x05items\"\xe7\x01\n" +
+	".menu.ItemR\x05items\"\xf9\x01\n" +
 	"\x11UpdateItemRequest\x12\x16\n" +
 	"\x06itemId\x18\x01 \x01(\tR\x06itemId\x12\x16\n" +
 	"\x06shopId\x18\x02 \x01(\tR\x06shopId\x12\x12\n" +
@@ -2053,10 +2079,11 @@ const file_menu_proto_rawDesc = "" +
 	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x1e\n" +
 	"\n" +
 	"categoryId\x18\x05 \x01(\tR\n" +
-	"categoryId\x12\x14\n" +
-	"\x05price\x18\x06 \x01(\x02R\x05price\x12\x14\n" +
-	"\x05image\x18\a \x01(\tR\x05image\x12 \n" +
-	"\visAvailable\x18\b \x01(\bR\visAvailable\".\n" +
+	"categoryId\x12\x10\n" +
+	"\x03veg\x18\x06 \x01(\bR\x03veg\x12\x14\n" +
+	"\x05price\x18\a \x01(\x02R\x05price\x12\x14\n" +
+	"\x05image\x18\b \x01(\tR\x05image\x12 \n" +
+	"\visAvailable\x18\t \x01(\bR\visAvailable\".\n" +
 	"\x12UpdateItemResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\"+\n" +
 	"\x11DeleteItemRequest\x12\x16\n" +

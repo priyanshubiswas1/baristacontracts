@@ -15,9 +15,10 @@ message Item {
     string name = 3;
     string description = 4;
     string category = 5;
-    float price = 6;
-    string image = 7;
-    bool isAvailable = 8;
+    bool veg = 6;
+    float price = 7;
+    string image = 8;
+    bool isAvailable = 9;
 }
 
 message MenuItem {
@@ -72,9 +73,10 @@ message CreateItemRequest{
     string shopId = 2;
     string description = 3;
     string categoryId = 4;
-    float price = 5;
-    string image = 6;
-    bool isAvailable = 7;
+    bool veg = 5;
+    float price = 6;
+    string image = 7;
+    bool isAvailable = 8;
 }
 message CreateItemResponse{
     Item item = 1;
@@ -97,9 +99,10 @@ message UpdateItemRequest{
     string name = 3;
     string description = 4;
     string categoryId = 5;
-    float price = 6;
-    string image = 7;
-    bool isAvailable = 8;
+    bool veg = 6;
+    float price = 7;
+    string image = 8;
+    bool isAvailable = 9;
 }
 message UpdateItemResponse{
     bool success = 1;
