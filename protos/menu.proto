@@ -186,7 +186,7 @@ service MenuService{
     rpc GetItems(GetItemsRequest) returns (GetItemsResponse);
     rpc GetItemsAdmin(GetItemsRequest) returns (GetItemsResponse);
     rpc UpdateItem(UpdateItemRequest) returns (UpdateItemResponse);
-    rpc UpdateItemAvailable(UpdateItemAvailableRequest) returns (UpdateItemAvailableRequest);
+    rpc UpdateItemAvailable(UpdateItemAvailableRequest) returns (UpdateItemAvailableResponse);
     rpc DeleteItem(DeleteItemRequest) returns (DeleteItemResponse);
     
     rpc CreateMenuItem(CreateMenuItemRequest) returns (CreateMenuItemResponse);

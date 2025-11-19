@@ -2238,7 +2238,7 @@ const file_menu_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x16\n" +
 	"\x06shopId\x18\x02 \x01(\tR\x06shopId\"2\n" +
 	"\x16DeleteCategoryResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess2\xb8\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess2\xb9\n" +
 	"\n" +
 	"\vMenuService\x12?\n" +
 	"\n" +
@@ -2253,8 +2253,8 @@ const file_menu_proto_rawDesc = "" +
 	"\bGetItems\x12\x15.menu.GetItemsRequest\x1a\x16.menu.GetItemsResponse\x12>\n" +
 	"\rGetItemsAdmin\x12\x15.menu.GetItemsRequest\x1a\x16.menu.GetItemsResponse\x12?\n" +
 	"\n" +
-	"UpdateItem\x12\x17.menu.UpdateItemRequest\x1a\x18.menu.UpdateItemResponse\x12Y\n" +
-	"\x13UpdateItemAvailable\x12 .menu.UpdateItemAvailableRequest\x1a .menu.UpdateItemAvailableRequest\x12?\n" +
+	"UpdateItem\x12\x17.menu.UpdateItemRequest\x1a\x18.menu.UpdateItemResponse\x12Z\n" +
+	"\x13UpdateItemAvailable\x12 .menu.UpdateItemAvailableRequest\x1a!.menu.UpdateItemAvailableResponse\x12?\n" +
 	"\n" +
 	"DeleteItem\x12\x17.menu.DeleteItemRequest\x1a\x18.menu.DeleteItemResponse\x12K\n" +
 	"\x0eCreateMenuItem\x12\x1b.menu.CreateMenuItemRequest\x1a\x1c.menu.CreateMenuItemResponse\x12E\n" +
@@ -2361,7 +2361,7 @@ var file_menu_proto_depIdxs = []int32{
 	18, // 36: menu.MenuService.GetItems:output_type -> menu.GetItemsResponse
 	18, // 37: menu.MenuService.GetItemsAdmin:output_type -> menu.GetItemsResponse
 	20, // 38: menu.MenuService.UpdateItem:output_type -> menu.UpdateItemResponse
-	21, // 39: menu.MenuService.UpdateItemAvailable:output_type -> menu.UpdateItemAvailableRequest
+	22, // 39: menu.MenuService.UpdateItemAvailable:output_type -> menu.UpdateItemAvailableResponse
 	24, // 40: menu.MenuService.DeleteItem:output_type -> menu.DeleteItemResponse
 	26, // 41: menu.MenuService.CreateMenuItem:output_type -> menu.CreateMenuItemResponse
 	28, // 42: menu.MenuService.GetMenuItems:output_type -> menu.GetMenuItemsResponse

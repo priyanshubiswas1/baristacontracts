@@ -53,7 +53,7 @@ type MenuServiceClient interface {
 	GetItems(ctx context.Context, in *GetItemsRequest, opts ...grpc.CallOption) (*GetItemsResponse, error)
 	GetItemsAdmin(ctx context.Context, in *GetItemsRequest, opts ...grpc.CallOption) (*GetItemsResponse, error)
 	UpdateItem(ctx context.Context, in *UpdateItemRequest, opts ...grpc.CallOption) (*UpdateItemResponse, error)
-	UpdateItemAvailable(ctx context.Context, in *UpdateItemAvailableRequest, opts ...grpc.CallOption) (*UpdateItemAvailableRequest, error)
+	UpdateItemAvailable(ctx context.Context, in *UpdateItemAvailableRequest, opts ...grpc.CallOption) (*UpdateItemAvailableResponse, error)
 	DeleteItem(ctx context.Context, in *DeleteItemRequest, opts ...grpc.CallOption) (*DeleteItemResponse, error)
 	CreateMenuItem(ctx context.Context, in *CreateMenuItemRequest, opts ...grpc.CallOption) (*CreateMenuItemResponse, error)
 	GetMenuItems(ctx context.Context, in *GetMenuItemsRequest, opts ...grpc.CallOption) (*GetMenuItemsResponse, error)
@@ -163,9 +163,9 @@ func (c *menuServiceClient) UpdateItem(ctx context.Context, in *UpdateItemReques
 	return out, nil
 }
 
-func (c *menuServiceClient) UpdateItemAvailable(ctx context.Context, in *UpdateItemAvailableRequest, opts ...grpc.CallOption) (*UpdateItemAvailableRequest, error) {
+func (c *menuServiceClient) UpdateItemAvailable(ctx context.Context, in *UpdateItemAvailableRequest, opts ...grpc.CallOption) (*UpdateItemAvailableResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateItemAvailableRequest)
+	out := new(UpdateItemAvailableResponse)
 	err := c.cc.Invoke(ctx, MenuService_UpdateItemAvailable_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -276,7 +276,7 @@ type MenuServiceServer interface {
 	GetItems(context.Context, *GetItemsRequest) (*GetItemsResponse, error)
 	GetItemsAdmin(context.Context, *GetItemsRequest) (*GetItemsResponse, error)
 	UpdateItem(context.Context, *UpdateItemRequest) (*UpdateItemResponse, error)
-	UpdateItemAvailable(context.Context, *UpdateItemAvailableRequest) (*UpdateItemAvailableRequest, error)
+	UpdateItemAvailable(context.Context, *UpdateItemAvailableRequest) (*UpdateItemAvailableResponse, error)
 	DeleteItem(context.Context, *DeleteItemRequest) (*DeleteItemResponse, error)
 	CreateMenuItem(context.Context, *CreateMenuItemRequest) (*CreateMenuItemResponse, error)
 	GetMenuItems(context.Context, *GetMenuItemsRequest) (*GetMenuItemsResponse, error)
@@ -323,7 +323,7 @@ func (UnimplementedMenuServiceServer) GetItemsAdmin(context.Context, *GetItemsRe
 func (UnimplementedMenuServiceServer) UpdateItem(context.Context, *UpdateItemRequest) (*UpdateItemResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateItem not implemented")
 }
-func (UnimplementedMenuServiceServer) UpdateItemAvailable(context.Context, *UpdateItemAvailableRequest) (*UpdateItemAvailableRequest, error) {
+func (UnimplementedMenuServiceServer) UpdateItemAvailable(context.Context, *UpdateItemAvailableRequest) (*UpdateItemAvailableResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateItemAvailable not implemented")
 }
 func (UnimplementedMenuServiceServer) DeleteItem(context.Context, *DeleteItemRequest) (*DeleteItemResponse, error) {
