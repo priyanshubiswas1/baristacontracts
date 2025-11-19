@@ -158,6 +158,14 @@ message CreateCategoryRequest{
 message CreateCategoryResponse{
     Category category = 1;
 }
+message UpdateCategoryRequest{
+    string categoryId = 1;
+    string shopId = 2;
+    string name = 3;
+}
+message UpdateCategoryResponse{
+    Category category = 1;
+}
 message GetCategoryRequest{
     string shopId = 1;
 }
@@ -196,6 +204,7 @@ service MenuService{
     rpc DeleteMenuItems(DeleteMenuItemsRequest) returns (DeleteMenuItemsResponse);
     
     rpc CreateCategory(CreateCategoryRequest) returns (CreateCategoryResponse);
+    rpc UpdateCategory(UpdateCategoryRequest) returns (UpdateCategoryResponse);
     rpc GetCategory(GetCategoryRequest) returns (GetCategoryResponse);
     rpc GetCategoryWithItems(GetCategoryRequest) returns (GetCategoryWithItemsResponse);
     rpc DeleteCategory(DeleteCategoryRequest) returns (DeleteCategoryResponse);
