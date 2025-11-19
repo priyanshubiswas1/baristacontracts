@@ -26,6 +26,7 @@ const (
 	MenuService_CreateItem_FullMethodName           = "/menu.MenuService/CreateItem"
 	MenuService_GetItem_FullMethodName              = "/menu.MenuService/GetItem"
 	MenuService_GetItems_FullMethodName             = "/menu.MenuService/GetItems"
+	MenuService_GetItemsAdmin_FullMethodName        = "/menu.MenuService/GetItemsAdmin"
 	MenuService_UpdateItem_FullMethodName           = "/menu.MenuService/UpdateItem"
 	MenuService_UpdateItemAvailable_FullMethodName  = "/menu.MenuService/UpdateItemAvailable"
 	MenuService_DeleteItem_FullMethodName           = "/menu.MenuService/DeleteItem"
@@ -51,6 +52,7 @@ type MenuServiceClient interface {
 	CreateItem(ctx context.Context, in *CreateItemRequest, opts ...grpc.CallOption) (*CreateItemResponse, error)
 	GetItem(ctx context.Context, in *GetItemRequest, opts ...grpc.CallOption) (*GetItemResponse, error)
 	GetItems(ctx context.Context, in *GetItemsRequest, opts ...grpc.CallOption) (*GetItemsResponse, error)
+	GetItemsAdmin(ctx context.Context, in *GetItemsRequest, opts ...grpc.CallOption) (*GetItemsResponse, error)
 	UpdateItem(ctx context.Context, in *UpdateItemRequest, opts ...grpc.CallOption) (*UpdateItemResponse, error)
 	UpdateItemAvailable(ctx context.Context, in *UpdateItemAvailableRequest, opts ...grpc.CallOption) (*UpdateItemAvailableResponse, error)
 	DeleteItem(ctx context.Context, in *DeleteItemRequest, opts ...grpc.CallOption) (*DeleteItemResponse, error)
@@ -137,6 +139,16 @@ func (c *menuServiceClient) GetItems(ctx context.Context, in *GetItemsRequest, o
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(GetItemsResponse)
 	err := c.cc.Invoke(ctx, MenuService_GetItems_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *menuServiceClient) GetItemsAdmin(ctx context.Context, in *GetItemsRequest, opts ...grpc.CallOption) (*GetItemsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetItemsResponse)
+	err := c.cc.Invoke(ctx, MenuService_GetItemsAdmin_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -274,6 +286,7 @@ type MenuServiceServer interface {
 	CreateItem(context.Context, *CreateItemRequest) (*CreateItemResponse, error)
 	GetItem(context.Context, *GetItemRequest) (*GetItemResponse, error)
 	GetItems(context.Context, *GetItemsRequest) (*GetItemsResponse, error)
+	GetItemsAdmin(context.Context, *GetItemsRequest) (*GetItemsResponse, error)
 	UpdateItem(context.Context, *UpdateItemRequest) (*UpdateItemResponse, error)
 	UpdateItemAvailable(context.Context, *UpdateItemAvailableRequest) (*UpdateItemAvailableResponse, error)
 	DeleteItem(context.Context, *DeleteItemRequest) (*DeleteItemResponse, error)
@@ -316,6 +329,9 @@ func (UnimplementedMenuServiceServer) GetItem(context.Context, *GetItemRequest) 
 }
 func (UnimplementedMenuServiceServer) GetItems(context.Context, *GetItemsRequest) (*GetItemsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetItems not implemented")
+}
+func (UnimplementedMenuServiceServer) GetItemsAdmin(context.Context, *GetItemsRequest) (*GetItemsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetItemsAdmin not implemented")
 }
 func (UnimplementedMenuServiceServer) UpdateItem(context.Context, *UpdateItemRequest) (*UpdateItemResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateItem not implemented")
@@ -496,6 +512,24 @@ func _MenuService_GetItems_Handler(srv interface{}, ctx context.Context, dec fun
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(MenuServiceServer).GetItems(ctx, req.(*GetItemsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _MenuService_GetItemsAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetItemsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MenuServiceServer).GetItemsAdmin(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: MenuService_GetItemsAdmin_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MenuServiceServer).GetItemsAdmin(ctx, req.(*GetItemsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -750,6 +784,10 @@ var MenuService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetItems",
 			Handler:    _MenuService_GetItems_Handler,
+		},
+		{
+			MethodName: "GetItemsAdmin",
+			Handler:    _MenuService_GetItemsAdmin_Handler,
 		},
 		{
 			MethodName: "UpdateItem",

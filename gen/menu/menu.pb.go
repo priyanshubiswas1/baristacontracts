@@ -2238,8 +2238,7 @@ const file_menu_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x16\n" +
 	"\x06shopId\x18\x02 \x01(\tR\x06shopId\"2\n" +
 	"\x16DeleteCategoryResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess2\xc5\n" +
-	"\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess2\x85\v\n" +
 	"\vMenuService\x12?\n" +
 	"\n" +
 	"CreateMenu\x12\x17.menu.CreateMenuRequest\x1a\x18.menu.CreateMenuResponse\x129\n" +
@@ -2250,7 +2249,8 @@ const file_menu_proto_rawDesc = "" +
 	"\n" +
 	"CreateItem\x12\x17.menu.CreateItemRequest\x1a\x18.menu.CreateItemResponse\x126\n" +
 	"\aGetItem\x12\x14.menu.GetItemRequest\x1a\x15.menu.GetItemResponse\x129\n" +
-	"\bGetItems\x12\x15.menu.GetItemsRequest\x1a\x16.menu.GetItemsResponse\x12?\n" +
+	"\bGetItems\x12\x15.menu.GetItemsRequest\x1a\x16.menu.GetItemsResponse\x12>\n" +
+	"\rGetItemsAdmin\x12\x15.menu.GetItemsRequest\x1a\x16.menu.GetItemsResponse\x12?\n" +
 	"\n" +
 	"UpdateItem\x12\x17.menu.UpdateItemRequest\x1a\x18.menu.UpdateItemResponse\x12Z\n" +
 	"\x13UpdateItemAvailable\x12 .menu.UpdateItemAvailableRequest\x1a!.menu.UpdateItemAvailableResponse\x12?\n" +
@@ -2340,39 +2340,41 @@ var file_menu_proto_depIdxs = []int32{
 	13, // 15: menu.MenuService.CreateItem:input_type -> menu.CreateItemRequest
 	15, // 16: menu.MenuService.GetItem:input_type -> menu.GetItemRequest
 	17, // 17: menu.MenuService.GetItems:input_type -> menu.GetItemsRequest
-	19, // 18: menu.MenuService.UpdateItem:input_type -> menu.UpdateItemRequest
-	21, // 19: menu.MenuService.UpdateItemAvailable:input_type -> menu.UpdateItemAvailableRequest
-	23, // 20: menu.MenuService.DeleteItem:input_type -> menu.DeleteItemRequest
-	25, // 21: menu.MenuService.CreateMenuItem:input_type -> menu.CreateMenuItemRequest
-	27, // 22: menu.MenuService.GetMenuItems:input_type -> menu.GetMenuItemsRequest
-	27, // 23: menu.MenuService.GetMenuItemsAdmin:input_type -> menu.GetMenuItemsRequest
-	29, // 24: menu.MenuService.DeleteMenuItem:input_type -> menu.DeleteMenuItemRequest
-	31, // 25: menu.MenuService.DeleteMenuItems:input_type -> menu.DeleteMenuItemsRequest
-	33, // 26: menu.MenuService.CreateCategory:input_type -> menu.CreateCategoryRequest
-	35, // 27: menu.MenuService.GetCategory:input_type -> menu.GetCategoryRequest
-	35, // 28: menu.MenuService.GetCategoryWithItems:input_type -> menu.GetCategoryRequest
-	38, // 29: menu.MenuService.DeleteCategory:input_type -> menu.DeleteCategoryRequest
-	6,  // 30: menu.MenuService.CreateMenu:output_type -> menu.CreateMenuResponse
-	8,  // 31: menu.MenuService.GetMenus:output_type -> menu.GetMenusResponse
-	10, // 32: menu.MenuService.SetMenu:output_type -> menu.SetMenuResponse
-	12, // 33: menu.MenuService.DeleteMenu:output_type -> menu.DeleteMenuResponse
-	14, // 34: menu.MenuService.CreateItem:output_type -> menu.CreateItemResponse
-	16, // 35: menu.MenuService.GetItem:output_type -> menu.GetItemResponse
-	18, // 36: menu.MenuService.GetItems:output_type -> menu.GetItemsResponse
-	20, // 37: menu.MenuService.UpdateItem:output_type -> menu.UpdateItemResponse
-	22, // 38: menu.MenuService.UpdateItemAvailable:output_type -> menu.UpdateItemAvailableResponse
-	24, // 39: menu.MenuService.DeleteItem:output_type -> menu.DeleteItemResponse
-	26, // 40: menu.MenuService.CreateMenuItem:output_type -> menu.CreateMenuItemResponse
-	28, // 41: menu.MenuService.GetMenuItems:output_type -> menu.GetMenuItemsResponse
-	28, // 42: menu.MenuService.GetMenuItemsAdmin:output_type -> menu.GetMenuItemsResponse
-	30, // 43: menu.MenuService.DeleteMenuItem:output_type -> menu.DeleteMenuItemResponse
-	32, // 44: menu.MenuService.DeleteMenuItems:output_type -> menu.DeleteMenuItemsResponse
-	34, // 45: menu.MenuService.CreateCategory:output_type -> menu.CreateCategoryResponse
-	36, // 46: menu.MenuService.GetCategory:output_type -> menu.GetCategoryResponse
-	37, // 47: menu.MenuService.GetCategoryWithItems:output_type -> menu.GetCategoryWithItemsResponse
-	39, // 48: menu.MenuService.DeleteCategory:output_type -> menu.DeleteCategoryResponse
-	30, // [30:49] is the sub-list for method output_type
-	11, // [11:30] is the sub-list for method input_type
+	17, // 18: menu.MenuService.GetItemsAdmin:input_type -> menu.GetItemsRequest
+	19, // 19: menu.MenuService.UpdateItem:input_type -> menu.UpdateItemRequest
+	21, // 20: menu.MenuService.UpdateItemAvailable:input_type -> menu.UpdateItemAvailableRequest
+	23, // 21: menu.MenuService.DeleteItem:input_type -> menu.DeleteItemRequest
+	25, // 22: menu.MenuService.CreateMenuItem:input_type -> menu.CreateMenuItemRequest
+	27, // 23: menu.MenuService.GetMenuItems:input_type -> menu.GetMenuItemsRequest
+	27, // 24: menu.MenuService.GetMenuItemsAdmin:input_type -> menu.GetMenuItemsRequest
+	29, // 25: menu.MenuService.DeleteMenuItem:input_type -> menu.DeleteMenuItemRequest
+	31, // 26: menu.MenuService.DeleteMenuItems:input_type -> menu.DeleteMenuItemsRequest
+	33, // 27: menu.MenuService.CreateCategory:input_type -> menu.CreateCategoryRequest
+	35, // 28: menu.MenuService.GetCategory:input_type -> menu.GetCategoryRequest
+	35, // 29: menu.MenuService.GetCategoryWithItems:input_type -> menu.GetCategoryRequest
+	38, // 30: menu.MenuService.DeleteCategory:input_type -> menu.DeleteCategoryRequest
+	6,  // 31: menu.MenuService.CreateMenu:output_type -> menu.CreateMenuResponse
+	8,  // 32: menu.MenuService.GetMenus:output_type -> menu.GetMenusResponse
+	10, // 33: menu.MenuService.SetMenu:output_type -> menu.SetMenuResponse
+	12, // 34: menu.MenuService.DeleteMenu:output_type -> menu.DeleteMenuResponse
+	14, // 35: menu.MenuService.CreateItem:output_type -> menu.CreateItemResponse
+	16, // 36: menu.MenuService.GetItem:output_type -> menu.GetItemResponse
+	18, // 37: menu.MenuService.GetItems:output_type -> menu.GetItemsResponse
+	18, // 38: menu.MenuService.GetItemsAdmin:output_type -> menu.GetItemsResponse
+	20, // 39: menu.MenuService.UpdateItem:output_type -> menu.UpdateItemResponse
+	22, // 40: menu.MenuService.UpdateItemAvailable:output_type -> menu.UpdateItemAvailableResponse
+	24, // 41: menu.MenuService.DeleteItem:output_type -> menu.DeleteItemResponse
+	26, // 42: menu.MenuService.CreateMenuItem:output_type -> menu.CreateMenuItemResponse
+	28, // 43: menu.MenuService.GetMenuItems:output_type -> menu.GetMenuItemsResponse
+	28, // 44: menu.MenuService.GetMenuItemsAdmin:output_type -> menu.GetMenuItemsResponse
+	30, // 45: menu.MenuService.DeleteMenuItem:output_type -> menu.DeleteMenuItemResponse
+	32, // 46: menu.MenuService.DeleteMenuItems:output_type -> menu.DeleteMenuItemsResponse
+	34, // 47: menu.MenuService.CreateCategory:output_type -> menu.CreateCategoryResponse
+	36, // 48: menu.MenuService.GetCategory:output_type -> menu.GetCategoryResponse
+	37, // 49: menu.MenuService.GetCategoryWithItems:output_type -> menu.GetCategoryWithItemsResponse
+	39, // 50: menu.MenuService.DeleteCategory:output_type -> menu.DeleteCategoryResponse
+	31, // [31:51] is the sub-list for method output_type
+	11, // [11:31] is the sub-list for method input_type
 	11, // [11:11] is the sub-list for extension type_name
 	11, // [11:11] is the sub-list for extension extendee
 	0,  // [0:11] is the sub-list for field type_name
