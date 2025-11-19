@@ -107,6 +107,14 @@ message UpdateItemRequest{
 message UpdateItemResponse{
     bool success = 1;
 }
+message UpdateItemAvailableRequest{
+    string itemId = 1;
+    string shopId = 2;
+    bool isAvailable = 3;
+}
+message UpdateItemAvailableResponse{
+    bool success = 1;
+}
 message DeleteItemRequest{
     string itemId = 1;
 }
@@ -176,7 +184,9 @@ service MenuService{
     rpc CreateItem(CreateItemRequest) returns (CreateItemResponse);
     rpc GetItem(GetItemRequest) returns (GetItemResponse);
     rpc GetItems(GetItemsRequest) returns (GetItemsResponse);
+    rpc GetItemsAdmin(GetItemsRequest) returns (GetItemsResponse);
     rpc UpdateItem(UpdateItemRequest) returns (UpdateItemResponse);
+    rpc UpdateItemAvailable(UpdateItemAvailableRequest) returns (UpdateItemAvailableRequest);
     rpc DeleteItem(DeleteItemRequest) returns (DeleteItemResponse);
     
     rpc CreateMenuItem(CreateMenuItemRequest) returns (CreateMenuItemResponse);
