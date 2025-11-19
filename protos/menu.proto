@@ -184,13 +184,13 @@ service MenuService{
     rpc CreateItem(CreateItemRequest) returns (CreateItemResponse);
     rpc GetItem(GetItemRequest) returns (GetItemResponse);
     rpc GetItems(GetItemsRequest) returns (GetItemsResponse);
-    rpc GetItemsAdmin(GetItemsRequest) returns (GetItemsResponse);
     rpc UpdateItem(UpdateItemRequest) returns (UpdateItemResponse);
     rpc UpdateItemAvailable(UpdateItemAvailableRequest) returns (UpdateItemAvailableResponse);
     rpc DeleteItem(DeleteItemRequest) returns (DeleteItemResponse);
     
     rpc CreateMenuItem(CreateMenuItemRequest) returns (CreateMenuItemResponse);
     rpc GetMenuItems(GetMenuItemsRequest) returns (GetMenuItemsResponse);
+    rpc GetMenuItemsAdmin(GetMenuItemsRequest) returns (GetMenuItemsResponse);
     rpc DeleteMenuItem(DeleteMenuItemRequest) returns (DeleteMenuItemResponse);
     rpc DeleteMenuItems(DeleteMenuItemsRequest) returns (DeleteMenuItemsResponse);
     
