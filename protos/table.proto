@@ -52,7 +52,7 @@ message UpdateTableStatusRequest{
 }
 
 message UpdateTableStatusResponse{
-    Table table = 1;
+    bool success = 1;
 }
 
 message DeleteTableRequest{

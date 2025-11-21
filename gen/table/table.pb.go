@@ -527,7 +527,7 @@ func (x *UpdateTableStatusRequest) GetStatus() string {
 
 type UpdateTableStatusResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Table         *Table                 `protobuf:"bytes,1,opt,name=table,proto3" json:"table,omitempty"`
+	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -562,11 +562,11 @@ func (*UpdateTableStatusResponse) Descriptor() ([]byte, []int) {
 	return file_table_proto_rawDescGZIP(), []int{10}
 }
 
-func (x *UpdateTableStatusResponse) GetTable() *Table {
+func (x *UpdateTableStatusResponse) GetSuccess() bool {
 	if x != nil {
-		return x.Table
+		return x.Success
 	}
-	return nil
+	return false
 }
 
 type DeleteTableRequest struct {
@@ -697,9 +697,9 @@ const file_table_proto_rawDesc = "" +
 	"\x18UpdateTableStatusRequest\x12\x19\n" +
 	"\btable_id\x18\x01 \x01(\tR\atableId\x12\x17\n" +
 	"\ashop_id\x18\x02 \x01(\tR\x06shopId\x12\x16\n" +
-	"\x06status\x18\x03 \x01(\tR\x06status\"?\n" +
-	"\x19UpdateTableStatusResponse\x12\"\n" +
-	"\x05table\x18\x01 \x01(\v2\f.table.TableR\x05table\"=\n" +
+	"\x06status\x18\x03 \x01(\tR\x06status\"5\n" +
+	"\x19UpdateTableStatusResponse\x12\x18\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\"=\n" +
 	"\x12DeleteTableRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x17\n" +
 	"\ashop_id\x18\x02 \x01(\tR\x06shopId\"/\n" +
@@ -746,24 +746,23 @@ var file_table_proto_depIdxs = []int32{
 	0,  // 1: table.GetTablesResponse.tables:type_name -> table.Table
 	0,  // 2: table.GetTableResponse.table:type_name -> table.Table
 	0,  // 3: table.UpdateTableRequest.table:type_name -> table.Table
-	0,  // 4: table.UpdateTableStatusResponse.table:type_name -> table.Table
-	1,  // 5: table.TableService.CreateTable:input_type -> table.CreateTableRequest
-	5,  // 6: table.TableService.GetTable:input_type -> table.GetTableRequest
-	3,  // 7: table.TableService.GetTables:input_type -> table.GetTablesRequest
-	7,  // 8: table.TableService.UpdateTable:input_type -> table.UpdateTableRequest
-	9,  // 9: table.TableService.UpdateTableStatus:input_type -> table.UpdateTableStatusRequest
-	11, // 10: table.TableService.DeleteTable:input_type -> table.DeleteTableRequest
-	2,  // 11: table.TableService.CreateTable:output_type -> table.CreateTableResponse
-	6,  // 12: table.TableService.GetTable:output_type -> table.GetTableResponse
-	4,  // 13: table.TableService.GetTables:output_type -> table.GetTablesResponse
-	8,  // 14: table.TableService.UpdateTable:output_type -> table.UpdateTableResponse
-	10, // 15: table.TableService.UpdateTableStatus:output_type -> table.UpdateTableStatusResponse
-	12, // 16: table.TableService.DeleteTable:output_type -> table.DeleteTableResponse
-	11, // [11:17] is the sub-list for method output_type
-	5,  // [5:11] is the sub-list for method input_type
-	5,  // [5:5] is the sub-list for extension type_name
-	5,  // [5:5] is the sub-list for extension extendee
-	0,  // [0:5] is the sub-list for field type_name
+	1,  // 4: table.TableService.CreateTable:input_type -> table.CreateTableRequest
+	5,  // 5: table.TableService.GetTable:input_type -> table.GetTableRequest
+	3,  // 6: table.TableService.GetTables:input_type -> table.GetTablesRequest
+	7,  // 7: table.TableService.UpdateTable:input_type -> table.UpdateTableRequest
+	9,  // 8: table.TableService.UpdateTableStatus:input_type -> table.UpdateTableStatusRequest
+	11, // 9: table.TableService.DeleteTable:input_type -> table.DeleteTableRequest
+	2,  // 10: table.TableService.CreateTable:output_type -> table.CreateTableResponse
+	6,  // 11: table.TableService.GetTable:output_type -> table.GetTableResponse
+	4,  // 12: table.TableService.GetTables:output_type -> table.GetTablesResponse
+	8,  // 13: table.TableService.UpdateTable:output_type -> table.UpdateTableResponse
+	10, // 14: table.TableService.UpdateTableStatus:output_type -> table.UpdateTableStatusResponse
+	12, // 15: table.TableService.DeleteTable:output_type -> table.DeleteTableResponse
+	10, // [10:16] is the sub-list for method output_type
+	4,  // [4:10] is the sub-list for method input_type
+	4,  // [4:4] is the sub-list for extension type_name
+	4,  // [4:4] is the sub-list for extension extendee
+	0,  // [0:4] is the sub-list for field type_name
 }
 
 func init() { file_table_proto_init() }
