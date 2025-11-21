@@ -93,10 +93,11 @@ type OrderItem struct {
 	state            protoimpl.MessageState `protogen:"open.v1"`
 	OrderItemId      string                 `protobuf:"bytes,1,opt,name=orderItemId,proto3" json:"orderItemId,omitempty"`
 	OrderId          string                 `protobuf:"bytes,2,opt,name=orderId,proto3" json:"orderId,omitempty"`
-	ItemId           string                 `protobuf:"bytes,3,opt,name=itemId,proto3" json:"itemId,omitempty"`
-	Quantity         int32                  `protobuf:"varint,4,opt,name=quantity,proto3" json:"quantity,omitempty"`
-	PriceAtOrderTime float32                `protobuf:"fixed32,5,opt,name=priceAtOrderTime,proto3" json:"priceAtOrderTime,omitempty"`
-	OrderStatus      string                 `protobuf:"bytes,6,opt,name=orderStatus,proto3" json:"orderStatus,omitempty"`
+	OrderNumber      string                 `protobuf:"bytes,3,opt,name=orderNumber,proto3" json:"orderNumber,omitempty"`
+	ItemId           string                 `protobuf:"bytes,4,opt,name=itemId,proto3" json:"itemId,omitempty"`
+	Quantity         int32                  `protobuf:"varint,5,opt,name=quantity,proto3" json:"quantity,omitempty"`
+	PriceAtOrderTime float32                `protobuf:"fixed32,6,opt,name=priceAtOrderTime,proto3" json:"priceAtOrderTime,omitempty"`
+	OrderStatus      string                 `protobuf:"bytes,7,opt,name=orderStatus,proto3" json:"orderStatus,omitempty"`
 	unknownFields    protoimpl.UnknownFields
 	sizeCache        protoimpl.SizeCache
 }
@@ -141,6 +142,13 @@ func (x *OrderItem) GetOrderItemId() string {
 func (x *OrderItem) GetOrderId() string {
 	if x != nil {
 		return x.OrderId
+	}
+	return ""
+}
+
+func (x *OrderItem) GetOrderNumber() string {
+	if x != nil {
+		return x.OrderNumber
 	}
 	return ""
 }
@@ -798,14 +806,15 @@ const file_order_proto_rawDesc = "" +
 	"\aorderId\x18\x01 \x01(\tR\aorderId\x12\x1c\n" +
 	"\tsessionId\x18\x02 \x01(\tR\tsessionId\x12 \n" +
 	"\vorderStatus\x18\x03 \x01(\tR\vorderStatus\x12\"\n" +
-	"\fspecialNotes\x18\x05 \x01(\tR\fspecialNotes\"\xc9\x01\n" +
+	"\fspecialNotes\x18\x05 \x01(\tR\fspecialNotes\"\xeb\x01\n" +
 	"\tOrderItem\x12 \n" +
 	"\vorderItemId\x18\x01 \x01(\tR\vorderItemId\x12\x18\n" +
-	"\aorderId\x18\x02 \x01(\tR\aorderId\x12\x16\n" +
-	"\x06itemId\x18\x03 \x01(\tR\x06itemId\x12\x1a\n" +
-	"\bquantity\x18\x04 \x01(\x05R\bquantity\x12*\n" +
-	"\x10priceAtOrderTime\x18\x05 \x01(\x02R\x10priceAtOrderTime\x12 \n" +
-	"\vorderStatus\x18\x06 \x01(\tR\vorderStatus\"n\n" +
+	"\aorderId\x18\x02 \x01(\tR\aorderId\x12 \n" +
+	"\vorderNumber\x18\x03 \x01(\tR\vorderNumber\x12\x16\n" +
+	"\x06itemId\x18\x04 \x01(\tR\x06itemId\x12\x1a\n" +
+	"\bquantity\x18\x05 \x01(\x05R\bquantity\x12*\n" +
+	"\x10priceAtOrderTime\x18\x06 \x01(\x02R\x10priceAtOrderTime\x12 \n" +
+	"\vorderStatus\x18\a \x01(\tR\vorderStatus\"n\n" +
 	"\fOrderItemReq\x12\x16\n" +
 	"\x06itemId\x18\x01 \x01(\tR\x06itemId\x12\x1a\n" +
 	"\bquantity\x18\x02 \x01(\x05R\bquantity\x12*\n" +

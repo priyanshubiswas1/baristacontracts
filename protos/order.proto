@@ -13,10 +13,11 @@ message Order {
 message OrderItem {
     string orderItemId = 1;
     string orderId = 2;
-    string itemId = 3;
-    int32 quantity = 4;
-    float priceAtOrderTime = 5;
-    string orderStatus = 6;
+    string orderNumber = 3;
+    string itemId = 4;
+    int32 quantity = 5;
+    float priceAtOrderTime = 6;
+    string orderStatus = 7;
 }
 
 message OrderItemReq {
