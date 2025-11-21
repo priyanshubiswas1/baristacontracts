@@ -27,6 +27,7 @@ type Table struct {
 	ShopId        string                 `protobuf:"bytes,2,opt,name=shop_id,json=shopId,proto3" json:"shop_id,omitempty"`
 	TableNumber   string                 `protobuf:"bytes,3,opt,name=table_number,json=tableNumber,proto3" json:"table_number,omitempty"`
 	Qr            string                 `protobuf:"bytes,4,opt,name=qr,proto3" json:"qr,omitempty"`
+	Status        string                 `protobuf:"bytes,5,opt,name=status,proto3" json:"status,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -85,6 +86,13 @@ func (x *Table) GetTableNumber() string {
 func (x *Table) GetQr() string {
 	if x != nil {
 		return x.Qr
+	}
+	return ""
+}
+
+func (x *Table) GetStatus() string {
+	if x != nil {
+		return x.Status
 	}
 	return ""
 }
@@ -457,6 +465,110 @@ func (x *UpdateTableResponse) GetSuccess() bool {
 	return false
 }
 
+type UpdateTableStatusRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	TableId       string                 `protobuf:"bytes,1,opt,name=table_id,json=tableId,proto3" json:"table_id,omitempty"`
+	ShopId        string                 `protobuf:"bytes,2,opt,name=shop_id,json=shopId,proto3" json:"shop_id,omitempty"`
+	Status        string                 `protobuf:"bytes,3,opt,name=status,proto3" json:"status,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateTableStatusRequest) Reset() {
+	*x = UpdateTableStatusRequest{}
+	mi := &file_table_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateTableStatusRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateTableStatusRequest) ProtoMessage() {}
+
+func (x *UpdateTableStatusRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_table_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateTableStatusRequest.ProtoReflect.Descriptor instead.
+func (*UpdateTableStatusRequest) Descriptor() ([]byte, []int) {
+	return file_table_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *UpdateTableStatusRequest) GetTableId() string {
+	if x != nil {
+		return x.TableId
+	}
+	return ""
+}
+
+func (x *UpdateTableStatusRequest) GetShopId() string {
+	if x != nil {
+		return x.ShopId
+	}
+	return ""
+}
+
+func (x *UpdateTableStatusRequest) GetStatus() string {
+	if x != nil {
+		return x.Status
+	}
+	return ""
+}
+
+type UpdateTableStatusResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Table         *Table                 `protobuf:"bytes,1,opt,name=table,proto3" json:"table,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateTableStatusResponse) Reset() {
+	*x = UpdateTableStatusResponse{}
+	mi := &file_table_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateTableStatusResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateTableStatusResponse) ProtoMessage() {}
+
+func (x *UpdateTableStatusResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_table_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateTableStatusResponse.ProtoReflect.Descriptor instead.
+func (*UpdateTableStatusResponse) Descriptor() ([]byte, []int) {
+	return file_table_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *UpdateTableStatusResponse) GetTable() *Table {
+	if x != nil {
+		return x.Table
+	}
+	return nil
+}
+
 type DeleteTableRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
@@ -467,7 +579,7 @@ type DeleteTableRequest struct {
 
 func (x *DeleteTableRequest) Reset() {
 	*x = DeleteTableRequest{}
-	mi := &file_table_proto_msgTypes[9]
+	mi := &file_table_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -479,7 +591,7 @@ func (x *DeleteTableRequest) String() string {
 func (*DeleteTableRequest) ProtoMessage() {}
 
 func (x *DeleteTableRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_table_proto_msgTypes[9]
+	mi := &file_table_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -492,7 +604,7 @@ func (x *DeleteTableRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteTableRequest.ProtoReflect.Descriptor instead.
 func (*DeleteTableRequest) Descriptor() ([]byte, []int) {
-	return file_table_proto_rawDescGZIP(), []int{9}
+	return file_table_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *DeleteTableRequest) GetId() string {
@@ -518,7 +630,7 @@ type DeleteTableResponse struct {
 
 func (x *DeleteTableResponse) Reset() {
 	*x = DeleteTableResponse{}
-	mi := &file_table_proto_msgTypes[10]
+	mi := &file_table_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -530,7 +642,7 @@ func (x *DeleteTableResponse) String() string {
 func (*DeleteTableResponse) ProtoMessage() {}
 
 func (x *DeleteTableResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_table_proto_msgTypes[10]
+	mi := &file_table_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -543,7 +655,7 @@ func (x *DeleteTableResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteTableResponse.ProtoReflect.Descriptor instead.
 func (*DeleteTableResponse) Descriptor() ([]byte, []int) {
-	return file_table_proto_rawDescGZIP(), []int{10}
+	return file_table_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *DeleteTableResponse) GetSuccess() bool {
@@ -557,12 +669,13 @@ var File_table_proto protoreflect.FileDescriptor
 
 const file_table_proto_rawDesc = "" +
 	"\n" +
-	"\vtable.proto\x12\x05table\"c\n" +
+	"\vtable.proto\x12\x05table\"{\n" +
 	"\x05Table\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x17\n" +
 	"\ashop_id\x18\x02 \x01(\tR\x06shopId\x12!\n" +
 	"\ftable_number\x18\x03 \x01(\tR\vtableNumber\x12\x0e\n" +
-	"\x02qr\x18\x04 \x01(\tR\x02qr\"P\n" +
+	"\x02qr\x18\x04 \x01(\tR\x02qr\x12\x16\n" +
+	"\x06status\x18\x05 \x01(\tR\x06status\"P\n" +
 	"\x12CreateTableRequest\x12\x17\n" +
 	"\ashop_id\x18\x01 \x01(\tR\x06shopId\x12!\n" +
 	"\ftable_number\x18\x02 \x01(\tR\vtableNumber\"9\n" +
@@ -580,17 +693,24 @@ const file_table_proto_rawDesc = "" +
 	"\x12UpdateTableRequest\x12\"\n" +
 	"\x05table\x18\x01 \x01(\v2\f.table.TableR\x05table\"/\n" +
 	"\x13UpdateTableResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess\"=\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\"f\n" +
+	"\x18UpdateTableStatusRequest\x12\x19\n" +
+	"\btable_id\x18\x01 \x01(\tR\atableId\x12\x17\n" +
+	"\ashop_id\x18\x02 \x01(\tR\x06shopId\x12\x16\n" +
+	"\x06status\x18\x03 \x01(\tR\x06status\"?\n" +
+	"\x19UpdateTableStatusResponse\x12\"\n" +
+	"\x05table\x18\x01 \x01(\v2\f.table.TableR\x05table\"=\n" +
 	"\x12DeleteTableRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x17\n" +
 	"\ashop_id\x18\x02 \x01(\tR\x06shopId\"/\n" +
 	"\x13DeleteTableResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess2\xdd\x02\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess2\xb5\x03\n" +
 	"\fTableService\x12D\n" +
 	"\vCreateTable\x12\x19.table.CreateTableRequest\x1a\x1a.table.CreateTableResponse\x12;\n" +
 	"\bGetTable\x12\x16.table.GetTableRequest\x1a\x17.table.GetTableResponse\x12>\n" +
 	"\tGetTables\x12\x17.table.GetTablesRequest\x1a\x18.table.GetTablesResponse\x12D\n" +
-	"\vUpdateTable\x12\x19.table.UpdateTableRequest\x1a\x1a.table.UpdateTableResponse\x12D\n" +
+	"\vUpdateTable\x12\x19.table.UpdateTableRequest\x1a\x1a.table.UpdateTableResponse\x12V\n" +
+	"\x11UpdateTableStatus\x12\x1f.table.UpdateTableStatusRequest\x1a .table.UpdateTableStatusResponse\x12D\n" +
 	"\vDeleteTable\x12\x19.table.DeleteTableRequest\x1a\x1a.table.DeleteTableResponseB\bZ\x06/tableb\x06proto3"
 
 var (
@@ -605,40 +725,45 @@ func file_table_proto_rawDescGZIP() []byte {
 	return file_table_proto_rawDescData
 }
 
-var file_table_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
+var file_table_proto_msgTypes = make([]protoimpl.MessageInfo, 13)
 var file_table_proto_goTypes = []any{
-	(*Table)(nil),               // 0: table.Table
-	(*CreateTableRequest)(nil),  // 1: table.CreateTableRequest
-	(*CreateTableResponse)(nil), // 2: table.CreateTableResponse
-	(*GetTablesRequest)(nil),    // 3: table.GetTablesRequest
-	(*GetTablesResponse)(nil),   // 4: table.GetTablesResponse
-	(*GetTableRequest)(nil),     // 5: table.GetTableRequest
-	(*GetTableResponse)(nil),    // 6: table.GetTableResponse
-	(*UpdateTableRequest)(nil),  // 7: table.UpdateTableRequest
-	(*UpdateTableResponse)(nil), // 8: table.UpdateTableResponse
-	(*DeleteTableRequest)(nil),  // 9: table.DeleteTableRequest
-	(*DeleteTableResponse)(nil), // 10: table.DeleteTableResponse
+	(*Table)(nil),                     // 0: table.Table
+	(*CreateTableRequest)(nil),        // 1: table.CreateTableRequest
+	(*CreateTableResponse)(nil),       // 2: table.CreateTableResponse
+	(*GetTablesRequest)(nil),          // 3: table.GetTablesRequest
+	(*GetTablesResponse)(nil),         // 4: table.GetTablesResponse
+	(*GetTableRequest)(nil),           // 5: table.GetTableRequest
+	(*GetTableResponse)(nil),          // 6: table.GetTableResponse
+	(*UpdateTableRequest)(nil),        // 7: table.UpdateTableRequest
+	(*UpdateTableResponse)(nil),       // 8: table.UpdateTableResponse
+	(*UpdateTableStatusRequest)(nil),  // 9: table.UpdateTableStatusRequest
+	(*UpdateTableStatusResponse)(nil), // 10: table.UpdateTableStatusResponse
+	(*DeleteTableRequest)(nil),        // 11: table.DeleteTableRequest
+	(*DeleteTableResponse)(nil),       // 12: table.DeleteTableResponse
 }
 var file_table_proto_depIdxs = []int32{
 	0,  // 0: table.CreateTableResponse.table:type_name -> table.Table
 	0,  // 1: table.GetTablesResponse.tables:type_name -> table.Table
 	0,  // 2: table.GetTableResponse.table:type_name -> table.Table
 	0,  // 3: table.UpdateTableRequest.table:type_name -> table.Table
-	1,  // 4: table.TableService.CreateTable:input_type -> table.CreateTableRequest
-	5,  // 5: table.TableService.GetTable:input_type -> table.GetTableRequest
-	3,  // 6: table.TableService.GetTables:input_type -> table.GetTablesRequest
-	7,  // 7: table.TableService.UpdateTable:input_type -> table.UpdateTableRequest
-	9,  // 8: table.TableService.DeleteTable:input_type -> table.DeleteTableRequest
-	2,  // 9: table.TableService.CreateTable:output_type -> table.CreateTableResponse
-	6,  // 10: table.TableService.GetTable:output_type -> table.GetTableResponse
-	4,  // 11: table.TableService.GetTables:output_type -> table.GetTablesResponse
-	8,  // 12: table.TableService.UpdateTable:output_type -> table.UpdateTableResponse
-	10, // 13: table.TableService.DeleteTable:output_type -> table.DeleteTableResponse
-	9,  // [9:14] is the sub-list for method output_type
-	4,  // [4:9] is the sub-list for method input_type
-	4,  // [4:4] is the sub-list for extension type_name
-	4,  // [4:4] is the sub-list for extension extendee
-	0,  // [0:4] is the sub-list for field type_name
+	0,  // 4: table.UpdateTableStatusResponse.table:type_name -> table.Table
+	1,  // 5: table.TableService.CreateTable:input_type -> table.CreateTableRequest
+	5,  // 6: table.TableService.GetTable:input_type -> table.GetTableRequest
+	3,  // 7: table.TableService.GetTables:input_type -> table.GetTablesRequest
+	7,  // 8: table.TableService.UpdateTable:input_type -> table.UpdateTableRequest
+	9,  // 9: table.TableService.UpdateTableStatus:input_type -> table.UpdateTableStatusRequest
+	11, // 10: table.TableService.DeleteTable:input_type -> table.DeleteTableRequest
+	2,  // 11: table.TableService.CreateTable:output_type -> table.CreateTableResponse
+	6,  // 12: table.TableService.GetTable:output_type -> table.GetTableResponse
+	4,  // 13: table.TableService.GetTables:output_type -> table.GetTablesResponse
+	8,  // 14: table.TableService.UpdateTable:output_type -> table.UpdateTableResponse
+	10, // 15: table.TableService.UpdateTableStatus:output_type -> table.UpdateTableStatusResponse
+	12, // 16: table.TableService.DeleteTable:output_type -> table.DeleteTableResponse
+	11, // [11:17] is the sub-list for method output_type
+	5,  // [5:11] is the sub-list for method input_type
+	5,  // [5:5] is the sub-list for extension type_name
+	5,  // [5:5] is the sub-list for extension extendee
+	0,  // [0:5] is the sub-list for field type_name
 }
 
 func init() { file_table_proto_init() }
@@ -652,7 +777,7 @@ func file_table_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_table_proto_rawDesc), len(file_table_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   11,
+			NumMessages:   13,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

@@ -19,11 +19,12 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	TableService_CreateTable_FullMethodName = "/table.TableService/CreateTable"
-	TableService_GetTable_FullMethodName    = "/table.TableService/GetTable"
-	TableService_GetTables_FullMethodName   = "/table.TableService/GetTables"
-	TableService_UpdateTable_FullMethodName = "/table.TableService/UpdateTable"
-	TableService_DeleteTable_FullMethodName = "/table.TableService/DeleteTable"
+	TableService_CreateTable_FullMethodName       = "/table.TableService/CreateTable"
+	TableService_GetTable_FullMethodName          = "/table.TableService/GetTable"
+	TableService_GetTables_FullMethodName         = "/table.TableService/GetTables"
+	TableService_UpdateTable_FullMethodName       = "/table.TableService/UpdateTable"
+	TableService_UpdateTableStatus_FullMethodName = "/table.TableService/UpdateTableStatus"
+	TableService_DeleteTable_FullMethodName       = "/table.TableService/DeleteTable"
 )
 
 // TableServiceClient is the client API for TableService service.
@@ -34,6 +35,7 @@ type TableServiceClient interface {
 	GetTable(ctx context.Context, in *GetTableRequest, opts ...grpc.CallOption) (*GetTableResponse, error)
 	GetTables(ctx context.Context, in *GetTablesRequest, opts ...grpc.CallOption) (*GetTablesResponse, error)
 	UpdateTable(ctx context.Context, in *UpdateTableRequest, opts ...grpc.CallOption) (*UpdateTableResponse, error)
+	UpdateTableStatus(ctx context.Context, in *UpdateTableStatusRequest, opts ...grpc.CallOption) (*UpdateTableStatusResponse, error)
 	DeleteTable(ctx context.Context, in *DeleteTableRequest, opts ...grpc.CallOption) (*DeleteTableResponse, error)
 }
 
@@ -85,6 +87,16 @@ func (c *tableServiceClient) UpdateTable(ctx context.Context, in *UpdateTableReq
 	return out, nil
 }
 
+func (c *tableServiceClient) UpdateTableStatus(ctx context.Context, in *UpdateTableStatusRequest, opts ...grpc.CallOption) (*UpdateTableStatusResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateTableStatusResponse)
+	err := c.cc.Invoke(ctx, TableService_UpdateTableStatus_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *tableServiceClient) DeleteTable(ctx context.Context, in *DeleteTableRequest, opts ...grpc.CallOption) (*DeleteTableResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(DeleteTableResponse)
@@ -103,6 +115,7 @@ type TableServiceServer interface {
 	GetTable(context.Context, *GetTableRequest) (*GetTableResponse, error)
 	GetTables(context.Context, *GetTablesRequest) (*GetTablesResponse, error)
 	UpdateTable(context.Context, *UpdateTableRequest) (*UpdateTableResponse, error)
+	UpdateTableStatus(context.Context, *UpdateTableStatusRequest) (*UpdateTableStatusResponse, error)
 	DeleteTable(context.Context, *DeleteTableRequest) (*DeleteTableResponse, error)
 	mustEmbedUnimplementedTableServiceServer()
 }
@@ -125,6 +138,9 @@ func (UnimplementedTableServiceServer) GetTables(context.Context, *GetTablesRequ
 }
 func (UnimplementedTableServiceServer) UpdateTable(context.Context, *UpdateTableRequest) (*UpdateTableResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateTable not implemented")
+}
+func (UnimplementedTableServiceServer) UpdateTableStatus(context.Context, *UpdateTableStatusRequest) (*UpdateTableStatusResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateTableStatus not implemented")
 }
 func (UnimplementedTableServiceServer) DeleteTable(context.Context, *DeleteTableRequest) (*DeleteTableResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteTable not implemented")
@@ -222,6 +238,24 @@ func _TableService_UpdateTable_Handler(srv interface{}, ctx context.Context, dec
 	return interceptor(ctx, in, info, handler)
 }
 
+func _TableService_UpdateTableStatus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateTableStatusRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TableServiceServer).UpdateTableStatus(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: TableService_UpdateTableStatus_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TableServiceServer).UpdateTableStatus(ctx, req.(*UpdateTableStatusRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _TableService_DeleteTable_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(DeleteTableRequest)
 	if err := dec(in); err != nil {
@@ -262,6 +296,10 @@ var TableService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "UpdateTable",
 			Handler:    _TableService_UpdateTable_Handler,
+		},
+		{
+			MethodName: "UpdateTableStatus",
+			Handler:    _TableService_UpdateTableStatus_Handler,
 		},
 		{
 			MethodName: "DeleteTable",

@@ -8,6 +8,7 @@ message Table{
     string shop_id = 2;
     string table_number = 3;
     string qr = 4;
+    string status = 5;
 }
 
 message CreateTableRequest{
@@ -44,6 +45,16 @@ message UpdateTableResponse{
     bool success = 1;
 }
 
+message UpdateTableStatusRequest{
+    string table_id = 1;
+    string shop_id = 2;
+    string status = 3;
+}
+
+message UpdateTableStatusResponse{
+    Table table = 1;
+}
+
 message DeleteTableRequest{
     string id = 1;
     string shop_id = 2;
@@ -58,5 +69,6 @@ service TableService{
     rpc GetTable(GetTableRequest) returns (GetTableResponse);
     rpc GetTables(GetTablesRequest) returns (GetTablesResponse);
     rpc UpdateTable(UpdateTableRequest) returns (UpdateTableResponse);
+    rpc UpdateTableStatus(UpdateTableStatusRequest) returns (UpdateTableStatusResponse);
     rpc DeleteTable(DeleteTableRequest) returns (DeleteTableResponse);
 }
