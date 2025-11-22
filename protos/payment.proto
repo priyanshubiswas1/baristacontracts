@@ -15,7 +15,7 @@ message Payment {
 message CreatePaymentRequest{
     string sessionId = 1;
     string tableId = 2;
-    float phoneNumber = 3;
+    string phoneNumber = 3;
     float amount = 4;
     string paymentMethod = 5;
     string paymentStatus = 6;
