@@ -183,6 +183,15 @@ message DeleteCategoryResponse{
     bool success = 1;
 }
 
+//IMAGE UPLOAD
+message UploadImageRequest{
+    bytes imageData = 1;
+    string filename = 2;
+}
+message UploadImageResponse{
+    string imageUrl = 1;
+}
+
 service MenuService{
     rpc CreateMenu(CreateMenuRequest) returns (CreateMenuResponse);
     rpc GetMenus(GetMenusRequest) returns (GetMenusResponse);
@@ -208,4 +217,6 @@ service MenuService{
     rpc GetCategory(GetCategoryRequest) returns (GetCategoryResponse);
     rpc GetCategoryWithItems(GetCategoryRequest) returns (GetCategoryWithItemsResponse);
     rpc DeleteCategory(DeleteCategoryRequest) returns (DeleteCategoryResponse);
+    
+    rpc UploadImage(UploadImageRequest) returns (UploadImageResponse);
 }

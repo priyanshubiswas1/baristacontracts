@@ -2201,6 +2201,103 @@ func (x *DeleteCategoryResponse) GetSuccess() bool {
 	return false
 }
 
+// IMAGE UPLOAD
+type UploadImageRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ImageData     []byte                 `protobuf:"bytes,1,opt,name=imageData,proto3" json:"imageData,omitempty"`
+	Filename      string                 `protobuf:"bytes,2,opt,name=filename,proto3" json:"filename,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UploadImageRequest) Reset() {
+	*x = UploadImageRequest{}
+	mi := &file_menu_proto_msgTypes[42]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UploadImageRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UploadImageRequest) ProtoMessage() {}
+
+func (x *UploadImageRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_menu_proto_msgTypes[42]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UploadImageRequest.ProtoReflect.Descriptor instead.
+func (*UploadImageRequest) Descriptor() ([]byte, []int) {
+	return file_menu_proto_rawDescGZIP(), []int{42}
+}
+
+func (x *UploadImageRequest) GetImageData() []byte {
+	if x != nil {
+		return x.ImageData
+	}
+	return nil
+}
+
+func (x *UploadImageRequest) GetFilename() string {
+	if x != nil {
+		return x.Filename
+	}
+	return ""
+}
+
+type UploadImageResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ImageUrl      string                 `protobuf:"bytes,1,opt,name=imageUrl,proto3" json:"imageUrl,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UploadImageResponse) Reset() {
+	*x = UploadImageResponse{}
+	mi := &file_menu_proto_msgTypes[43]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UploadImageResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UploadImageResponse) ProtoMessage() {}
+
+func (x *UploadImageResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_menu_proto_msgTypes[43]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UploadImageResponse.ProtoReflect.Descriptor instead.
+func (*UploadImageResponse) Descriptor() ([]byte, []int) {
+	return file_menu_proto_rawDescGZIP(), []int{43}
+}
+
+func (x *UploadImageResponse) GetImageUrl() string {
+	if x != nil {
+		return x.ImageUrl
+	}
+	return ""
+}
+
 var File_menu_proto protoreflect.FileDescriptor
 
 const file_menu_proto_rawDesc = "" +
@@ -2350,7 +2447,12 @@ const file_menu_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x16\n" +
 	"\x06shopId\x18\x02 \x01(\tR\x06shopId\"2\n" +
 	"\x16DeleteCategoryResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess2\xd2\v\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\"N\n" +
+	"\x12UploadImageRequest\x12\x1c\n" +
+	"\timageData\x18\x01 \x01(\fR\timageData\x12\x1a\n" +
+	"\bfilename\x18\x02 \x01(\tR\bfilename\"1\n" +
+	"\x13UploadImageResponse\x12\x1a\n" +
+	"\bimageUrl\x18\x01 \x01(\tR\bimageUrl2\x96\f\n" +
 	"\vMenuService\x12?\n" +
 	"\n" +
 	"CreateMenu\x12\x17.menu.CreateMenuRequest\x1a\x18.menu.CreateMenuResponse\x129\n" +
@@ -2377,7 +2479,8 @@ const file_menu_proto_rawDesc = "" +
 	"\x0eUpdateCategory\x12\x1b.menu.UpdateCategoryRequest\x1a\x1c.menu.UpdateCategoryResponse\x12B\n" +
 	"\vGetCategory\x12\x18.menu.GetCategoryRequest\x1a\x19.menu.GetCategoryResponse\x12T\n" +
 	"\x14GetCategoryWithItems\x12\x18.menu.GetCategoryRequest\x1a\".menu.GetCategoryWithItemsResponse\x12K\n" +
-	"\x0eDeleteCategory\x12\x1b.menu.DeleteCategoryRequest\x1a\x1c.menu.DeleteCategoryResponseB\aZ\x05/menub\x06proto3"
+	"\x0eDeleteCategory\x12\x1b.menu.DeleteCategoryRequest\x1a\x1c.menu.DeleteCategoryResponse\x12B\n" +
+	"\vUploadImage\x12\x18.menu.UploadImageRequest\x1a\x19.menu.UploadImageResponseB\aZ\x05/menub\x06proto3"
 
 var (
 	file_menu_proto_rawDescOnce sync.Once
@@ -2391,7 +2494,7 @@ func file_menu_proto_rawDescGZIP() []byte {
 	return file_menu_proto_rawDescData
 }
 
-var file_menu_proto_msgTypes = make([]protoimpl.MessageInfo, 42)
+var file_menu_proto_msgTypes = make([]protoimpl.MessageInfo, 44)
 var file_menu_proto_goTypes = []any{
 	(*Menu)(nil),                         // 0: menu.Menu
 	(*Item)(nil),                         // 1: menu.Item
@@ -2435,6 +2538,8 @@ var file_menu_proto_goTypes = []any{
 	(*GetCategoryWithItemsResponse)(nil), // 39: menu.GetCategoryWithItemsResponse
 	(*DeleteCategoryRequest)(nil),        // 40: menu.DeleteCategoryRequest
 	(*DeleteCategoryResponse)(nil),       // 41: menu.DeleteCategoryResponse
+	(*UploadImageRequest)(nil),           // 42: menu.UploadImageRequest
+	(*UploadImageResponse)(nil),          // 43: menu.UploadImageResponse
 }
 var file_menu_proto_depIdxs = []int32{
 	1,  // 0: menu.CategoryWithItems.items:type_name -> menu.Item
@@ -2470,29 +2575,31 @@ var file_menu_proto_depIdxs = []int32{
 	37, // 30: menu.MenuService.GetCategory:input_type -> menu.GetCategoryRequest
 	37, // 31: menu.MenuService.GetCategoryWithItems:input_type -> menu.GetCategoryRequest
 	40, // 32: menu.MenuService.DeleteCategory:input_type -> menu.DeleteCategoryRequest
-	6,  // 33: menu.MenuService.CreateMenu:output_type -> menu.CreateMenuResponse
-	8,  // 34: menu.MenuService.GetMenus:output_type -> menu.GetMenusResponse
-	10, // 35: menu.MenuService.SetMenu:output_type -> menu.SetMenuResponse
-	12, // 36: menu.MenuService.DeleteMenu:output_type -> menu.DeleteMenuResponse
-	14, // 37: menu.MenuService.CreateItem:output_type -> menu.CreateItemResponse
-	16, // 38: menu.MenuService.GetItem:output_type -> menu.GetItemResponse
-	18, // 39: menu.MenuService.GetItems:output_type -> menu.GetItemsResponse
-	18, // 40: menu.MenuService.GetItemsAdmin:output_type -> menu.GetItemsResponse
-	20, // 41: menu.MenuService.UpdateItem:output_type -> menu.UpdateItemResponse
-	22, // 42: menu.MenuService.UpdateItemAvailable:output_type -> menu.UpdateItemAvailableResponse
-	24, // 43: menu.MenuService.DeleteItem:output_type -> menu.DeleteItemResponse
-	26, // 44: menu.MenuService.CreateMenuItem:output_type -> menu.CreateMenuItemResponse
-	28, // 45: menu.MenuService.GetMenuItems:output_type -> menu.GetMenuItemsResponse
-	28, // 46: menu.MenuService.GetMenuItemsAdmin:output_type -> menu.GetMenuItemsResponse
-	30, // 47: menu.MenuService.DeleteMenuItem:output_type -> menu.DeleteMenuItemResponse
-	32, // 48: menu.MenuService.DeleteMenuItems:output_type -> menu.DeleteMenuItemsResponse
-	34, // 49: menu.MenuService.CreateCategory:output_type -> menu.CreateCategoryResponse
-	36, // 50: menu.MenuService.UpdateCategory:output_type -> menu.UpdateCategoryResponse
-	38, // 51: menu.MenuService.GetCategory:output_type -> menu.GetCategoryResponse
-	39, // 52: menu.MenuService.GetCategoryWithItems:output_type -> menu.GetCategoryWithItemsResponse
-	41, // 53: menu.MenuService.DeleteCategory:output_type -> menu.DeleteCategoryResponse
-	33, // [33:54] is the sub-list for method output_type
-	12, // [12:33] is the sub-list for method input_type
+	42, // 33: menu.MenuService.UploadImage:input_type -> menu.UploadImageRequest
+	6,  // 34: menu.MenuService.CreateMenu:output_type -> menu.CreateMenuResponse
+	8,  // 35: menu.MenuService.GetMenus:output_type -> menu.GetMenusResponse
+	10, // 36: menu.MenuService.SetMenu:output_type -> menu.SetMenuResponse
+	12, // 37: menu.MenuService.DeleteMenu:output_type -> menu.DeleteMenuResponse
+	14, // 38: menu.MenuService.CreateItem:output_type -> menu.CreateItemResponse
+	16, // 39: menu.MenuService.GetItem:output_type -> menu.GetItemResponse
+	18, // 40: menu.MenuService.GetItems:output_type -> menu.GetItemsResponse
+	18, // 41: menu.MenuService.GetItemsAdmin:output_type -> menu.GetItemsResponse
+	20, // 42: menu.MenuService.UpdateItem:output_type -> menu.UpdateItemResponse
+	22, // 43: menu.MenuService.UpdateItemAvailable:output_type -> menu.UpdateItemAvailableResponse
+	24, // 44: menu.MenuService.DeleteItem:output_type -> menu.DeleteItemResponse
+	26, // 45: menu.MenuService.CreateMenuItem:output_type -> menu.CreateMenuItemResponse
+	28, // 46: menu.MenuService.GetMenuItems:output_type -> menu.GetMenuItemsResponse
+	28, // 47: menu.MenuService.GetMenuItemsAdmin:output_type -> menu.GetMenuItemsResponse
+	30, // 48: menu.MenuService.DeleteMenuItem:output_type -> menu.DeleteMenuItemResponse
+	32, // 49: menu.MenuService.DeleteMenuItems:output_type -> menu.DeleteMenuItemsResponse
+	34, // 50: menu.MenuService.CreateCategory:output_type -> menu.CreateCategoryResponse
+	36, // 51: menu.MenuService.UpdateCategory:output_type -> menu.UpdateCategoryResponse
+	38, // 52: menu.MenuService.GetCategory:output_type -> menu.GetCategoryResponse
+	39, // 53: menu.MenuService.GetCategoryWithItems:output_type -> menu.GetCategoryWithItemsResponse
+	41, // 54: menu.MenuService.DeleteCategory:output_type -> menu.DeleteCategoryResponse
+	43, // 55: menu.MenuService.UploadImage:output_type -> menu.UploadImageResponse
+	34, // [34:56] is the sub-list for method output_type
+	12, // [12:34] is the sub-list for method input_type
 	12, // [12:12] is the sub-list for extension type_name
 	12, // [12:12] is the sub-list for extension extendee
 	0,  // [0:12] is the sub-list for field type_name
@@ -2509,7 +2616,7 @@ func file_menu_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_menu_proto_rawDesc), len(file_menu_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   42,
+			NumMessages:   44,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
