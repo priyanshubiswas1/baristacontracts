@@ -109,11 +109,12 @@ type CreatePaymentRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	SessionId     string                 `protobuf:"bytes,1,opt,name=sessionId,proto3" json:"sessionId,omitempty"`
 	TableId       string                 `protobuf:"bytes,2,opt,name=tableId,proto3" json:"tableId,omitempty"`
-	PhoneNumber   string                 `protobuf:"bytes,3,opt,name=phoneNumber,proto3" json:"phoneNumber,omitempty"`
-	Amount        float32                `protobuf:"fixed32,4,opt,name=amount,proto3" json:"amount,omitempty"`
-	PaymentMethod string                 `protobuf:"bytes,5,opt,name=paymentMethod,proto3" json:"paymentMethod,omitempty"`
-	PaymentStatus string                 `protobuf:"bytes,6,opt,name=paymentStatus,proto3" json:"paymentStatus,omitempty"`
-	TransactionId string                 `protobuf:"bytes,7,opt,name=transactionId,proto3" json:"transactionId,omitempty"`
+	ShopId        string                 `protobuf:"bytes,3,opt,name=shopId,proto3" json:"shopId,omitempty"`
+	PhoneNumber   string                 `protobuf:"bytes,4,opt,name=phoneNumber,proto3" json:"phoneNumber,omitempty"`
+	Amount        float32                `protobuf:"fixed32,5,opt,name=amount,proto3" json:"amount,omitempty"`
+	PaymentMethod string                 `protobuf:"bytes,6,opt,name=paymentMethod,proto3" json:"paymentMethod,omitempty"`
+	PaymentStatus string                 `protobuf:"bytes,7,opt,name=paymentStatus,proto3" json:"paymentStatus,omitempty"`
+	TransactionId string                 `protobuf:"bytes,8,opt,name=transactionId,proto3" json:"transactionId,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -158,6 +159,13 @@ func (x *CreatePaymentRequest) GetSessionId() string {
 func (x *CreatePaymentRequest) GetTableId() string {
 	if x != nil {
 		return x.TableId
+	}
+	return ""
+}
+
+func (x *CreatePaymentRequest) GetShopId() string {
+	if x != nil {
+		return x.ShopId
 	}
 	return ""
 }
@@ -340,15 +348,16 @@ const file_payment_proto_rawDesc = "" +
 	"\x06amount\x18\x03 \x01(\x02R\x06amount\x12$\n" +
 	"\rpaymentMethod\x18\x04 \x01(\tR\rpaymentMethod\x12$\n" +
 	"\rpaymentStatus\x18\x05 \x01(\tR\rpaymentStatus\x12$\n" +
-	"\rtransactionId\x18\x06 \x01(\tR\rtransactionId\"\xfa\x01\n" +
+	"\rtransactionId\x18\x06 \x01(\tR\rtransactionId\"\x92\x02\n" +
 	"\x14CreatePaymentRequest\x12\x1c\n" +
 	"\tsessionId\x18\x01 \x01(\tR\tsessionId\x12\x18\n" +
-	"\atableId\x18\x02 \x01(\tR\atableId\x12 \n" +
-	"\vphoneNumber\x18\x03 \x01(\tR\vphoneNumber\x12\x16\n" +
-	"\x06amount\x18\x04 \x01(\x02R\x06amount\x12$\n" +
-	"\rpaymentMethod\x18\x05 \x01(\tR\rpaymentMethod\x12$\n" +
-	"\rpaymentStatus\x18\x06 \x01(\tR\rpaymentStatus\x12$\n" +
-	"\rtransactionId\x18\a \x01(\tR\rtransactionId\"C\n" +
+	"\atableId\x18\x02 \x01(\tR\atableId\x12\x16\n" +
+	"\x06shopId\x18\x03 \x01(\tR\x06shopId\x12 \n" +
+	"\vphoneNumber\x18\x04 \x01(\tR\vphoneNumber\x12\x16\n" +
+	"\x06amount\x18\x05 \x01(\x02R\x06amount\x12$\n" +
+	"\rpaymentMethod\x18\x06 \x01(\tR\rpaymentMethod\x12$\n" +
+	"\rpaymentStatus\x18\a \x01(\tR\rpaymentStatus\x12$\n" +
+	"\rtransactionId\x18\b \x01(\tR\rtransactionId\"C\n" +
 	"\x15CreatePaymentResponse\x12*\n" +
 	"\apayment\x18\x01 \x01(\v2\x10.payment.PaymentR\apayment\"1\n" +
 	"\x11GetPaymentRequest\x12\x1c\n" +
