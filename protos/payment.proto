@@ -14,10 +14,12 @@ message Payment {
 
 message CreatePaymentRequest{
     string sessionId = 1;
-    float amount = 2;
-    string paymentMethod = 3;
-    string paymentStatus = 4;
-    string transactionId = 5;
+    string tableId = 2;
+    float phoneNumber = 3;
+    float amount = 4;
+    string paymentMethod = 5;
+    string paymentStatus = 6;
+    string transactionId = 7;
 }
 
 message CreatePaymentResponse{

@@ -108,10 +108,12 @@ func (x *Payment) GetTransactionId() string {
 type CreatePaymentRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	SessionId     string                 `protobuf:"bytes,1,opt,name=sessionId,proto3" json:"sessionId,omitempty"`
-	Amount        float32                `protobuf:"fixed32,2,opt,name=amount,proto3" json:"amount,omitempty"`
-	PaymentMethod string                 `protobuf:"bytes,3,opt,name=paymentMethod,proto3" json:"paymentMethod,omitempty"`
-	PaymentStatus string                 `protobuf:"bytes,4,opt,name=paymentStatus,proto3" json:"paymentStatus,omitempty"`
-	TransactionId string                 `protobuf:"bytes,5,opt,name=transactionId,proto3" json:"transactionId,omitempty"`
+	TableId       string                 `protobuf:"bytes,2,opt,name=tableId,proto3" json:"tableId,omitempty"`
+	PhoneNumber   float32                `protobuf:"fixed32,3,opt,name=phoneNumber,proto3" json:"phoneNumber,omitempty"`
+	Amount        float32                `protobuf:"fixed32,4,opt,name=amount,proto3" json:"amount,omitempty"`
+	PaymentMethod string                 `protobuf:"bytes,5,opt,name=paymentMethod,proto3" json:"paymentMethod,omitempty"`
+	PaymentStatus string                 `protobuf:"bytes,6,opt,name=paymentStatus,proto3" json:"paymentStatus,omitempty"`
+	TransactionId string                 `protobuf:"bytes,7,opt,name=transactionId,proto3" json:"transactionId,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -151,6 +153,20 @@ func (x *CreatePaymentRequest) GetSessionId() string {
 		return x.SessionId
 	}
 	return ""
+}
+
+func (x *CreatePaymentRequest) GetTableId() string {
+	if x != nil {
+		return x.TableId
+	}
+	return ""
+}
+
+func (x *CreatePaymentRequest) GetPhoneNumber() float32 {
+	if x != nil {
+		return x.PhoneNumber
+	}
+	return 0
 }
 
 func (x *CreatePaymentRequest) GetAmount() float32 {
@@ -324,13 +340,15 @@ const file_payment_proto_rawDesc = "" +
 	"\x06amount\x18\x03 \x01(\x02R\x06amount\x12$\n" +
 	"\rpaymentMethod\x18\x04 \x01(\tR\rpaymentMethod\x12$\n" +
 	"\rpaymentStatus\x18\x05 \x01(\tR\rpaymentStatus\x12$\n" +
-	"\rtransactionId\x18\x06 \x01(\tR\rtransactionId\"\xbe\x01\n" +
+	"\rtransactionId\x18\x06 \x01(\tR\rtransactionId\"\xfa\x01\n" +
 	"\x14CreatePaymentRequest\x12\x1c\n" +
-	"\tsessionId\x18\x01 \x01(\tR\tsessionId\x12\x16\n" +
-	"\x06amount\x18\x02 \x01(\x02R\x06amount\x12$\n" +
-	"\rpaymentMethod\x18\x03 \x01(\tR\rpaymentMethod\x12$\n" +
-	"\rpaymentStatus\x18\x04 \x01(\tR\rpaymentStatus\x12$\n" +
-	"\rtransactionId\x18\x05 \x01(\tR\rtransactionId\"C\n" +
+	"\tsessionId\x18\x01 \x01(\tR\tsessionId\x12\x18\n" +
+	"\atableId\x18\x02 \x01(\tR\atableId\x12 \n" +
+	"\vphoneNumber\x18\x03 \x01(\x02R\vphoneNumber\x12\x16\n" +
+	"\x06amount\x18\x04 \x01(\x02R\x06amount\x12$\n" +
+	"\rpaymentMethod\x18\x05 \x01(\tR\rpaymentMethod\x12$\n" +
+	"\rpaymentStatus\x18\x06 \x01(\tR\rpaymentStatus\x12$\n" +
+	"\rtransactionId\x18\a \x01(\tR\rtransactionId\"C\n" +
 	"\x15CreatePaymentResponse\x12*\n" +
 	"\apayment\x18\x01 \x01(\v2\x10.payment.PaymentR\apayment\"1\n" +
 	"\x11GetPaymentRequest\x12\x1c\n" +
