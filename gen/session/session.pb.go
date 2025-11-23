@@ -448,6 +448,7 @@ func (x *GetActiveSessionRequest) GetTableId() string {
 type GetActiveSessionResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Session       *Session               `protobuf:"bytes,1,opt,name=session,proto3" json:"session,omitempty"`
+	Token         string                 `protobuf:"bytes,2,opt,name=token,proto3" json:"token,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -487,6 +488,13 @@ func (x *GetActiveSessionResponse) GetSession() *Session {
 		return x.Session
 	}
 	return nil
+}
+
+func (x *GetActiveSessionResponse) GetToken() string {
+	if x != nil {
+		return x.Token
+	}
+	return ""
 }
 
 type GetSessionRequest struct {
@@ -1223,9 +1231,10 @@ const file_session_proto_rawDesc = "" +
 	"\bsessions\x18\x01 \x03(\v2\x16.session.ActiveSessionR\bsessions\"K\n" +
 	"\x17GetActiveSessionRequest\x12\x16\n" +
 	"\x06shopId\x18\x01 \x01(\tR\x06shopId\x12\x18\n" +
-	"\atableId\x18\x02 \x01(\tR\atableId\"F\n" +
+	"\atableId\x18\x02 \x01(\tR\atableId\"\\\n" +
 	"\x18GetActiveSessionResponse\x12*\n" +
-	"\asession\x18\x01 \x01(\v2\x10.session.SessionR\asession\"1\n" +
+	"\asession\x18\x01 \x01(\v2\x10.session.SessionR\asession\x12\x14\n" +
+	"\x05token\x18\x02 \x01(\tR\x05token\"1\n" +
 	"\x11GetSessionRequest\x12\x1c\n" +
 	"\tsessionId\x18\x01 \x01(\tR\tsessionId\"@\n" +
 	"\x12GetSessionResponse\x12*\n" +

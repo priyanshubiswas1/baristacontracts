@@ -49,6 +49,7 @@ message GetActiveSessionRequest{
 
 message GetActiveSessionResponse{
     Session session = 1;
+    string token = 2;
 }
 
 message GetSessionRequest{

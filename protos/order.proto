@@ -60,6 +60,7 @@ message CreateOrderRequest{
 message CreateOrderResponse{
     Order order = 1;
     repeated OrderItem orderItems = 2;
+    string sessionToken = 3;
 }
 
 message UpdateOrderRequest{

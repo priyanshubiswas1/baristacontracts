@@ -565,6 +565,7 @@ type CreateOrderResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Order         *Order                 `protobuf:"bytes,1,opt,name=order,proto3" json:"order,omitempty"`
 	OrderItems    []*OrderItem           `protobuf:"bytes,2,rep,name=orderItems,proto3" json:"orderItems,omitempty"`
+	SessionToken  string                 `protobuf:"bytes,3,opt,name=sessionToken,proto3" json:"sessionToken,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -611,6 +612,13 @@ func (x *CreateOrderResponse) GetOrderItems() []*OrderItem {
 		return x.OrderItems
 	}
 	return nil
+}
+
+func (x *CreateOrderResponse) GetSessionToken() string {
+	if x != nil {
+		return x.SessionToken
+	}
+	return ""
 }
 
 type UpdateOrderRequest struct {
@@ -845,12 +853,13 @@ const file_order_proto_rawDesc = "" +
 	"\fspecialNotes\x18\x02 \x01(\tR\fspecialNotes\x123\n" +
 	"\n" +
 	"orderItems\x18\x03 \x03(\v2\x13.order.OrderItemReqR\n" +
-	"orderItems\"k\n" +
+	"orderItems\"\x8f\x01\n" +
 	"\x13CreateOrderResponse\x12\"\n" +
 	"\x05order\x18\x01 \x01(\v2\f.order.OrderR\x05order\x120\n" +
 	"\n" +
 	"orderItems\x18\x02 \x03(\v2\x10.order.OrderItemR\n" +
-	"orderItems\"P\n" +
+	"orderItems\x12\"\n" +
+	"\fsessionToken\x18\x03 \x01(\tR\fsessionToken\"P\n" +
 	"\x12UpdateOrderRequest\x12\x18\n" +
 	"\aorderId\x18\x01 \x01(\tR\aorderId\x12 \n" +
 	"\vorderStatus\x18\x02 \x01(\tR\vorderStatus\"/\n" +
